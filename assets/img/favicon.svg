@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 320" role="img" aria-labelledby="hv">
+<title id="hv">Three overlapping circles: AI, VR and Human Oversight, meeting at the centre</title>
+<circle cx="135" cy="125" r="95" fill="#0f5c73" fill-opacity=".85"/>
+<circle cx="225" cy="125" r="95" fill="#3d8fa6" fill-opacity=".75"/>
+<circle cx="180" cy="200" r="95" fill="#e4a11b" fill-opacity=".8"/>
+<g font-family="Georgia,serif" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">
+<text x="100" y="105">AI</text>
+<text x="262" y="105">VR</text>
+<text x="180" y="262" fill="#0c2230">Human oversight</text>
+</g>
+</svg>

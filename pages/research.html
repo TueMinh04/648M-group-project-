@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research | VIRTUCARE</title>
+<meta name="description" content="VIRTUCARE: a conceptual AI-assisted clinical simulation prototype.">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+</head>
+<body data-mode="site" data-page="research">
+<a class="skip" href="#main">Skip to main content</a>
+<header id="site-header"></header>
+<main id="main">
+<div class="container page-head"><h1>Key research findings</h1><p class="muted">Add findings in <code>assets/js/data/research.js</code>. They render here automatically.</p></div>
+<section class="container section"><div class="grid" id="findings"></div></section>
+
+<section class="container section" id="ai-use"><h2>How we used generative AI</h2>
+<div class="grid"><div class="card"><h3>Claude</h3><p>Claude was used to generate the initial website code and placeholder text. <span class="placeholder">Team to add further uses</span></p></div>
+<div class="card"><h3>Other tools</h3><p><span class="placeholder">To be completed by the team</span></p></div>
+<div class="card"><h3>What humans reviewed and decided</h3><p><span class="placeholder">To be completed by the team</span></p></div></div>
+<p class="muted">Running record: <code>docs/ai-usage-log.md</code>.</p></section>
+</main>
+<footer id="site-footer"></footer>
+<script src="../assets/js/state.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/data/research.js"></script>
+<script>
+(function(){var R=VC.RESEARCH,e=VC.esc,el=document.getElementById('findings');
+if(!R.length){R=[1,2,3].map(function(){return{ph:1}})}
+el.innerHTML=R.map(function(r){
+ if(r.ph)return'<article class="card"><h3><span class="placeholder">Research finding to be added</span></h3><p><span class="placeholder">Source to be added</span></p><p><span class="placeholder">Design implication to be added</span></p></article>';
+ return'<article class="card"><span class="badge">'+e(r.issue)+'</span><h3>'+e(r.finding)+'</h3><p><strong>Source:</strong> '+e(r.source)+'</p><p><strong>Design implication:</strong> '+e(r.implication)+'</p><p class="muted">'+e(r.citation)+'</p></article>'}).join('')})();
+</script>
+</body>
+</html>

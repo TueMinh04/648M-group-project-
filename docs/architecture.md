@@ -1,0 +1,2 @@
+# Architecture
+Static site (HTML/CSS/vanilla JS). `main.js` derives the site root from its own script URL, so links work locally and on GitHub Pages subpaths. State is one sessionStorage key (`virtucare.v1`) in `state.js`. `prototype.js` renders five stages (Consent, Processing, Practice, AI Feedback, Review) into `#proto`, using `engine.js` (answers), `scoring.js` (illustrative scores) and `feedback.js` (deterministic rules). Script order: `state.js`, `main.js`, data, then feature scripts.

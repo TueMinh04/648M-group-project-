@@ -1,0 +1,12 @@
+/* Edit brand values here. */
+:root{
+--ink:#0c2230;--ink-2:#46606b;--paper:#f2f6f7;--surface:#fff;--line:#d3dde1;
+--brand:#0f5c73;--brand-dark:#0a4254;--brand-tint:#dcecf1;
+--oversight:#e4a11b;--oversight-tint:#fdf1d3;
+--ok:#1f7a4d;--ok-tint:#dff3e7;--bad:#b3261e;--bad-tint:#fbe4e1;
+--font-display:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+--font-body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+--s1:.25rem;--s2:.5rem;--s3:.75rem;--s4:1rem;--s5:1.5rem;--s6:2rem;--s7:3rem;--s8:5rem;
+--r-sm:4px;--r-md:8px;--r-lg:14px;--max:1120px;
+--t-sm:.875rem;--t-base:1rem;--t-lg:1.25rem;--t-xl:1.75rem;--t-2xl:clamp(2rem,4vw,2.75rem);--t-hero:clamp(2.6rem,7vw,5rem);
+}
