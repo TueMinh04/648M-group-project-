@@ -33,3 +33,4 @@ Add a row to `docs/ai-usage-log.md` every time a generative AI tool is used. It 
 1. `ngt-steps.js`: replace placeholder steps with clinically validated, cited content (and set `validated: true`).
 2. `feedback-rules.js`: add rules tied to those steps.
 3. Search the repo for `to be added` to find remaining placeholders.
+
