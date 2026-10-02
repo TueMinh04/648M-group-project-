@@ -45,6 +45,7 @@ h1 {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   background: linear-gradient(135deg, #fff 0%, var(--text-muted) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.02em;
 }
@@ -315,9 +316,58 @@ section {
 /* Footer */
 footer {
   background: var(--surface-color);
-  padding: 4rem 0;
+  padding: 4rem 0 2rem;
   text-align: center;
   border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.team-members {
+  margin: 3rem 0;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.team-members h4 {
+  margin-bottom: 2rem;
+  color: var(--primary);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.team-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.member-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.member-role {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.05);
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+}
+
+.disclaimer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
 }
 
 .placeholder-text {

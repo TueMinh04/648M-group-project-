@@ -17,8 +17,9 @@
     <div class="container">
       <div class="logo">VIRTU<span>CARE</span></div>
       <div class="nav-links">
-        <a href="#overview">Overview</a>
+        <a href="#overview">Problem</a>
         <a href="#proposal">Proposal</a>
+        <a href="#demo">Demo</a>
         <a href="#social">Social</a>
         <a href="#ethics">Ethics</a>
         <a href="#research">Research</a>
@@ -32,6 +33,7 @@
       <div class="hero-content">
         <h1>AI-Assisted Clinical Simulation</h1>
         <p class="lede">Empowering healthcare learners to practice procedural skills in a controlled, virtual environment. Real procedures. Virtual practice. Responsible AI.</p>
+        <p class="team-names" style="margin-bottom: 2.5rem; font-weight: 500; color: var(--text-muted);">Team: Youngin Choi, Yvonne Ma, Paul Leung, Minh Vuong</p>
         <div class="cta">
           <a class="btn btn-primary" href="pages/prototype.html">Explore Prototype App</a>
           <a class="btn btn-secondary" href="#overview">Learn More</a>
@@ -40,40 +42,36 @@
     </div>
   </section>
 
-  <!-- Topic Selection & Overview -->
+  <!-- The Problem -->
   <section id="overview" class="section">
     <div class="container">
-      <h2>1. Topic Selection & Overview</h2>
-      <p>Our project focuses on <strong>AI in Procedural Training</strong>. We are proposing <em>VIRTUCARE</em>, an AI-assisted clinical simulation concept.</p>
+      <h2>1. The Problem</h2>
+      <p>Current clinical training relies heavily on physical simulation labs or direct patient interaction. These existing methods face several critical shortcomings:</p>
       
       <div class="grid-2">
         <div class="card">
-          <div class="card-icon"><i class="fas fa-check-circle"></i></div>
-          <h3>Anticipated Benefits</h3>
+          <div class="card-icon" style="color: var(--danger); background: rgba(239, 68, 68, 0.1);"><i class="fas fa-times-circle"></i></div>
+          <h3>Shortcomings of Existing Technology</h3>
           <ul>
-            <li><p>Provides a safe, low-stakes environment for clinical practice.</p></li>
-            <li><p>Scalable training that doesn't rely on constant human supervision.</p></li>
-            <li><p>Personalized feedback powered by AI algorithms.</p></li>
+            <li><p><strong>Limited Accessibility:</strong> Physical simulation labs are expensive and require scheduled access.</p></li>
+            <li><p><strong>High Resource Demands:</strong> Require constant human supervision and expert availability for feedback.</p></li>
+            <li><p><strong>Lack of Personalization:</strong> Standardized mannequins offer uniform scenarios that don't adapt to individual learner needs.</p></li>
           </ul>
         </div>
         <div class="card">
-          <div class="card-icon" style="color: var(--danger); background: rgba(239, 68, 68, 0.1);"><i class="fas fa-exclamation-triangle"></i></div>
-          <h3>Potential Shortcomings</h3>
-          <ul>
-            <li><p>Risk of AI hallucinations or incorrect clinical feedback.</p></li>
-            <li><p>High development costs and required computational resources.</p></li>
-            <li><p>Lack of tactile feedback compared to real-world practice.</p></li>
-          </ul>
+          <div class="card-icon"><i class="fas fa-search-plus"></i></div>
+          <h3>The Need for Change</h3>
+          <p>There is a growing need for a scalable, low-stakes environment where learners can practice procedures with real-time, personalized feedback without risking patient safety or overwhelming limited clinical resources.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Proposal -->
+  <!-- Our Proposal -->
   <section id="proposal" class="section" style="background: rgba(255,255,255,0.02);">
     <div class="container">
-      <h2>2. Proposal: How It Works</h2>
-      <p>VIRTUCARE leverages consented clinical procedure recordings and transforms them into interactive scenarios. AI analyzes the procedure structure, and students can practice virtually while receiving real-time AI-assisted feedback.</p>
+      <h2>2. Our Proposal: VIRTUCARE</h2>
+      <p>We propose <em>VIRTUCARE</em>, an AI-assisted clinical simulation platform that addresses the shortcomings of existing methods by transforming consented clinical procedure recordings into interactive, personalized, and scalable training scenarios.</p>
       
       <div class="grid-3">
         <div class="card">
@@ -95,10 +93,27 @@
     </div>
   </section>
 
+  <!-- Prototype / Demo -->
+  <section id="demo" class="section">
+    <div class="container">
+      <h2>3. Prototype & Demo</h2>
+      <p>Explore our interactive academic prototype of VIRTUCARE. It demonstrates how AI can assess clinical simulations in real-time.</p>
+      
+      <div class="demo-container" style="margin-top: 2rem; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: var(--surface-color);">
+        <div style="padding: 2rem; text-align: center;">
+          <img src="assets/img/demo-placeholder.svg" alt="VIRTUCARE Demo Screenshot" style="max-width: 100%; border-radius: 8px; margin-bottom: 2rem; background: rgba(0,0,0,0.2); min-height: 200px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-style: italic;">
+          <h3>Interactive Web Prototype</h3>
+          <p style="margin-bottom: 2rem;">Experience the AI-driven feedback loop directly in your browser.</p>
+          <a href="pages/prototype.html" class="btn btn-primary"><i class="fas fa-play" style="margin-right: 0.5rem;"></i> Launch Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Social Implications -->
   <section id="social" class="section">
     <div class="container">
-      <h2>3. Social Implications</h2>
+      <h2>4. Social Implications</h2>
       <p>How the tool impacts society and our strategies to address these impacts.</p>
       
       <div class="grid-2">
@@ -119,7 +134,7 @@
   <!-- Ethical Considerations -->
   <section id="ethics" class="section" style="background: rgba(255,255,255,0.02);">
     <div class="container">
-      <h2>4. Ethical Considerations</h2>
+      <h2>5. Ethical Considerations</h2>
       <p>Addressing the moral challenges of using AI in clinical education.</p>
       
       <div class="grid-3">
@@ -142,7 +157,7 @@
   <!-- Research & Gen AI -->
   <section id="research" class="section">
     <div class="container">
-      <h2>5. Research & Methodology</h2>
+      <h2>6. Research & Methodology</h2>
       <div class="grid-2">
         <div class="card">
           <h3>Key Research Findings</h3>
@@ -166,7 +181,30 @@
     <div class="container">
       <h3>VIRTUCARE</h3>
       <p>A conceptual academic prototype for the 648M Small-Group Project.</p>
-      <p style="margin-top: 1rem; font-size: 0.9rem;">Not a medical system. Not clinically validated.</p>
+      
+      <div class="team-members">
+        <h4>Team</h4>
+        <div class="team-grid">
+          <div class="team-member">
+            <span class="member-name">Youngin Choi</span>
+            <span class="member-role">[Role]</span>
+          </div>
+          <div class="team-member">
+            <span class="member-name">Yvonne Ma</span>
+            <span class="member-role">[Role]</span>
+          </div>
+          <div class="team-member">
+            <span class="member-name">Paul Leung</span>
+            <span class="member-role">[Role]</span>
+          </div>
+          <div class="team-member">
+            <span class="member-name">Minh Vuong</span>
+            <span class="member-role">[Role]</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="disclaimer">Not a medical system. Not clinically validated.</p>
     </div>
   </footer>
 
