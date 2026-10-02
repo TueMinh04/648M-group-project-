@@ -1,37 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home | VIRTUCARE</title>
-<meta name="description" content="VIRTUCARE: a conceptual AI-assisted clinical simulation prototype.">
-<link rel="stylesheet" href="./assets/css/tokens.css">
-<link rel="stylesheet" href="./assets/css/base.css">
-<link rel="stylesheet" href="./assets/css/components.css">
-<link rel="stylesheet" href="./assets/css/site.css">
-<link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VIRTUCARE | Health Tech Proposal</title>
+  <meta name="description" content="VIRTUCARE: a conceptual AI-assisted clinical simulation prototype for 648M.">
+  <link rel="stylesheet" href="./assets/css/premium.css">
+  <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body data-mode="site" data-page="index">
-<a class="skip" href="#main">Skip to main content</a>
-<header id="site-header"></header>
-<main id="main">
-<section class="hero"><div class="container hero-grid">
-<div><h1>VIRTUCARE</h1><p style="font:600 1.8rem/1.3 var(--font-display)">Real Procedures.<br>Virtual Practice.<br>Responsible AI.</p>
-<p class="lede">An AI-assisted clinical simulation concept designed to help healthcare learners practice procedural skills in a controlled virtual environment.</p>
-<div class="cta"><a class="btn" href="pages/prototype.html">EXPLORE THE PROTOTYPE</a><a class="btn btn-ghost" href="pages/how-it-works.html">HOW IT WORKS</a></div></div>
-<figure style="margin:0"><svg viewBox="0 0 360 320" role="img" aria-labelledby="hv"><title id="hv">Three overlapping circles: AI, VR and Human Oversight, meeting at the centre</title>
-<circle cx="135" cy="125" r="95" fill="#0f5c73" fill-opacity=".85"/><circle cx="225" cy="125" r="95" fill="#3d8fa6" fill-opacity=".75"/><circle cx="180" cy="200" r="95" fill="#e4a11b" fill-opacity=".8"/>
-<g font-family="Georgia,serif" font-size="17" font-weight="700" fill="#fff" text-anchor="middle"><text x="100" y="105">AI</text><text x="262" y="105">VR</text><text x="180" y="262" fill="#0c2230">Human oversight</text></g></svg>
-<figcaption class="muted" style="text-align:center">AI assists. VR immerses. Clinicians remain accountable.</figcaption></figure></div></section>
-<section class="section alt"><div class="container"><p class="principle">AI assists; clinicians remain accountable.</p>
-<p>VIRTUCARE is a <em>proposed</em> platform. This site is a student concept prototype. It is not clinically validated and uses simulated, rule-based feedback.</p></div></section>
-<section class="section"><div class="container grid">
-<div class="card"><h3>See how it works</h3><p>A six-stage workflow from consented recording to learner practice.</p><a href="pages/how-it-works.html">How it works</a></div>
-<div class="card"><h3>Try the prototype</h3><p>Walk through a simulated NGT learning session.</p><a href="pages/prototype.html">Open prototype</a></div>
-<div class="card"><h3>Read the ethics</h3><p>Risks, safeguards and remaining limitations.</p><a href="pages/ethics.html">Ethics</a></div></div></section>
-</main>
-<footer id="site-footer"></footer>
-<script src="./assets/js/state.js"></script>
-<script src="./assets/js/main.js"></script>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">VIRTU<span>CARE</span></div>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#proposal">Proposal</a>
+        <a href="#social">Social</a>
+        <a href="#ethics">Ethics</a>
+        <a href="#research">Research</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <h1>AI-Assisted Clinical Simulation</h1>
+        <p class="lede">Empowering healthcare learners to practice procedural skills in a controlled, virtual environment. Real procedures. Virtual practice. Responsible AI.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="pages/prototype.html">Explore Prototype App</a>
+          <a class="btn btn-secondary" href="#overview">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Topic Selection & Overview -->
+  <section id="overview" class="section">
+    <div class="container">
+      <h2>1. Topic Selection & Overview</h2>
+      <p>Our project focuses on <strong>AI in Procedural Training</strong>. We are proposing <em>VIRTUCARE</em>, an AI-assisted clinical simulation concept.</p>
+      
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-check-circle"></i></div>
+          <h3>Anticipated Benefits</h3>
+          <ul>
+            <li><p>Provides a safe, low-stakes environment for clinical practice.</p></li>
+            <li><p>Scalable training that doesn't rely on constant human supervision.</p></li>
+            <li><p>Personalized feedback powered by AI algorithms.</p></li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="color: var(--danger); background: rgba(239, 68, 68, 0.1);"><i class="fas fa-exclamation-triangle"></i></div>
+          <h3>Potential Shortcomings</h3>
+          <ul>
+            <li><p>Risk of AI hallucinations or incorrect clinical feedback.</p></li>
+            <li><p>High development costs and required computational resources.</p></li>
+            <li><p>Lack of tactile feedback compared to real-world practice.</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proposal -->
+  <section id="proposal" class="section" style="background: rgba(255,255,255,0.02);">
+    <div class="container">
+      <h2>2. Proposal: How It Works</h2>
+      <p>VIRTUCARE leverages consented clinical procedure recordings and transforms them into interactive scenarios. AI analyzes the procedure structure, and students can practice virtually while receiving real-time AI-assisted feedback.</p>
+      
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-video"></i></div>
+          <h3>1. Capture & Protect</h3>
+          <p>Consented recordings are collected, and identifiers are detected and removed for privacy.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-brain"></i></div>
+          <h3>2. Understand & Transform</h3>
+          <p>AI analyzes the structure of the procedure to generate dynamic interactive scenarios.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-user-md"></i></div>
+          <h3>3. Validate & Practice</h3>
+          <p>Clinicians review the content. Learners practice with AI oversight.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Implications -->
+  <section id="social" class="section">
+    <div class="container">
+      <h2>3. Social Implications</h2>
+      <p>How the tool impacts society and our strategies to address these impacts.</p>
+      
+      <div class="grid-2">
+        <div class="card social-card">
+          <h3>Accessibility & Equity</h3>
+          <p><strong>Impact:</strong> High-end VR devices may exclude underfunded institutions.</p>
+          <p><strong>Solution:</strong> Provide a browser-based, lightweight 2D alternative alongside the VR mode.</p>
+        </div>
+        <div class="card social-card">
+          <h3>Bias in Training Data</h3>
+          <p><strong>Impact:</strong> Source recordings may under-represent certain demographics or rare conditions.</p>
+          <p><strong>Solution:</strong> Conduct mandatory audits of source diversity and actively recruit varied clinical scenarios.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ethical Considerations -->
+  <section id="ethics" class="section" style="background: rgba(255,255,255,0.02);">
+    <div class="container">
+      <h2>4. Ethical Considerations</h2>
+      <p>Addressing the moral challenges of using AI in clinical education.</p>
+      
+      <div class="grid-3">
+        <div class="card ethics-card">
+          <h3>Consent</h3>
+          <p>Patients may not fully understand how their recordings are used. We enforce layered, easily withdrawable consent.</p>
+        </div>
+        <div class="card ethics-card">
+          <h3>Safety & Accuracy</h3>
+          <p>AI feedback might be incorrect. We enforce a "Human-in-the-loop" policy where educators can override AI.</p>
+        </div>
+        <div class="card ethics-card">
+          <h3>Privacy</h3>
+          <p>Learner performance data must be protected. We guarantee clear purpose limits and give learners control over their data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research & Gen AI -->
+  <section id="research" class="section">
+    <div class="container">
+      <h2>5. Research & Methodology</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Key Research Findings</h3>
+          <ul>
+            <li><p>AI simulation improves procedural confidence. <span class="placeholder-text">[Citation needed]</span></p></li>
+            <li><p>De-identification algorithms still pose re-identification risks. <span class="placeholder-text">[Citation needed]</span></p></li>
+            <li><p>Human oversight remains the gold standard in clinical AI. <span class="placeholder-text">[Citation needed]</span></p></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Use of Generative AI</h3>
+          <p>Generative AI (Claude and Gemini) was used to assist in brainstorming the ethical framework, developing the website layout, and generating CSS styling and boilerplate code.</p>
+          <p>All AI-generated content was heavily reviewed, modified, and validated by the student team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <h3>VIRTUCARE</h3>
+      <p>A conceptual academic prototype for the 648M Small-Group Project.</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem;">Not a medical system. Not clinically validated.</p>
+    </div>
+  </footer>
+
 </body>
 </html>
