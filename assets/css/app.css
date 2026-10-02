@@ -28,3 +28,8 @@
 .stepper li.done { border-color: var(--accent); }
 .stepper li.current { border-color: var(--primary); color: var(--text-main); font-weight: 700; }
 .stepbar { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; margin-top: 2rem; }
+
+.check { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; cursor: pointer; }
+.check:last-child { margin-bottom: 0; }
+.check input[type="checkbox"] { width: 1.5rem; height: 1.5rem; flex-shrink: 0; accent-color: var(--primary); margin-top: 0.1rem; cursor: pointer; }
+.check span { font-size: 1.1rem; line-height: 1.4; color: var(--text-main); }

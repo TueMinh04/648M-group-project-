@@ -23,18 +23,30 @@ function focusTop(){document.getElementById('ptop').focus()}
 var V=[
 function consent(el){
  var s=VC.get();
- el.innerHTML='<div class="card"><h3>NGT insertion (placeholder overview)</h3><p>Learning objectives: <span class="placeholder">to be added</span>. Estimated time: about 5 minutes. Difficulty: introductory (placeholder).</p><p class="alert"><strong>Safety notice.</strong> Placeholder steps only. This does not teach real clinical technique.</p></div>'+
+ var skillId=s.skillId||'ngt';
+ var skill=VC.SKILLS[skillId];
+ el.innerHTML='<div class="card"><h3>'+e(skill.title)+' (placeholder overview)</h3><p>Learning objectives: <span class="placeholder">'+e(skill.objectives)+'</span>. Estimated time: about '+e(skill.time)+'. Difficulty: '+e(skill.difficulty)+' (placeholder).</p><p class="alert"><strong>Safety notice.</strong> Placeholder steps only. This does not teach real clinical technique.</p></div>'+
  '<ol class="flow" aria-label="Privacy pipeline"><li>Clinical recording</li><li>Identifier detection</li><li>De-identification</li><li>Privacy review</li><li>AI processing</li></ol>'+
  '<p class="alert"><strong>Conceptual design only.</strong> This is not a legal consent form and does not meet PHIPA, PIPEDA or TCPS 2 requirements.</p>'+
  '<div class="card"><label class="check"><input type="checkbox" id="c1"><span><strong>Recording consent confirmed (simulated).</strong> Nothing is processed without it. Consent would be withdrawable.</span></label>'+
- '<label class="check"><input type="checkbox" id="c2"><span>Allow my performance summary to be shared with an educator (optional). Your data stays in this browser tab only.</span></label></div>';
- var c1=el.querySelector('#c1'),c2=el.querySelector('#c2');c1.checked=s.consent.recording;c2.checked=s.consent.learner;cfg.ok=c1.checked;cfg.label='Continue to processing';
- c1.onchange=c2.onchange=function(){VC.set({consent:{recording:c1.checked,learner:c2.checked},processed:c1.checked?VC.get().processed:false});cfg.ok=c1.checked;bar()};
+ '<label class="check"><input type="checkbox" id="c2"><span>Allow my performance summary to be shared with an educator (optional).</span></label>'+
+ '<label class="check"><input type="checkbox" id="c3"><span>I understand that my data stays in this browser tab only.</span></label></div>';
+ var c1=el.querySelector('#c1'),c2=el.querySelector('#c2'),c3=el.querySelector('#c3');
+ c1.checked=s.consent.recording;c2.checked=s.consent.learner;c3.checked=s.consent.data||false;
+ cfg.ok=c1.checked&&c3.checked;cfg.label='Continue to processing';
+ c1.onchange=c2.onchange=c3.onchange=function(){
+  VC.set({
+   consent:{recording:c1.checked,learner:c2.checked,data:c3.checked},
+   processed:c1.checked&&c3.checked?VC.get().processed:false
+  });
+  cfg.ok=c1.checked&&c3.checked;
+  bar();
+ };
 },
 function processing(el){
  var s=VC.get();
  function list(i){return'<ol class="pipeline">'+STAGES.map(function(t,k){return'<li class="'+(k<i?'done':k===i?'active':'')+'"><span class="dot"></span><div><strong>'+t+'</strong><br><span class="muted">'+NOTES[k]+'</span></div></li>'}).join('')+'</ol>'}
- el.innerHTML='<p class="alert"><strong>Simulated.</strong> No data is processed. This illustrates a proposed pipeline.</p><div id="pl"></div><p id="pm" role="status"></p><button class="btn" id="run">Run simulated processing</button>';
+ el.innerHTML='<p class="alert"><strong>Simulated.</strong> No data is processed. This illustrates a proposed pipeline.</p><button class="btn" id="run" style="margin-bottom: 1.5rem;">Run simulated processing</button><p id="pm" role="status" style="margin-bottom: 1rem;"></p><div id="pl"></div>';
  var pl=el.querySelector('#pl'),pm=el.querySelector('#pm'),run=el.querySelector('#run');cfg.label='Continue to practice';
  pl.innerHTML=list(s.processed?5:-1);cfg.ok=s.processed;
  if(s.processed){pm.textContent='Simulated processing complete.';run.textContent='Run again'}
@@ -43,7 +55,7 @@ function processing(el){
    pm.textContent='Simulated: '+STAGES[i]+'…';i++;setTimeout(step,ms)})()};
 },
 function practice(el){
- var s=VC.get(),st=VC.NGT_STEPS,i=s.idx;cfg.label='See AI feedback';cfg.ok=i>=st.length;bar();
+ var s=VC.get(),st=VC.engine.steps(),i=s.idx;cfg.label='See AI feedback';cfg.ok=i>=st.length;bar();
  if(i>=st.length){el.innerHTML='<div class="card"><h3>All placeholder steps complete</h3><p>Continue for simulated feedback, or practise again.</p><button class="btn btn-ghost" id="again">Practise again</button></div>';el.querySelector('#again').onclick=function(){VC.resetSim();practice(el)};return}
  var step=st[i],pct=Math.round(100*i/st.length);
  el.innerHTML='<div class="sim"><section class="card"><p class="muted">Step '+(i+1)+' of '+st.length+(step.severity==='critical'?' <span class="badge warn">Safety-critical</span>':'')+'</p><h3>'+e(step.title)+'</h3><p>'+e(step.prompt)+'</p><div role="group" aria-label="Choices" id="opts">'+
@@ -78,4 +90,5 @@ function review(el){
  ['accept','modify','override'].forEach(function(k){el.querySelector('#'+k).onclick=function(){decide(k)}});show();
 }];
 draw();
+VC.draw=draw;
 })();

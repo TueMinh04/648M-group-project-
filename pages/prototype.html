@@ -14,19 +14,60 @@
 <header id="site-header"></header>
 <main id="main">
   <div class="container section" style="padding-top: 4rem;">
-    <h1>NGT Insertion Prototype</h1>
-    <p class="muted" style="margin-bottom: 3rem;">A simulated walkthrough of the proposed experience. Five steps, about five minutes.</p>
+    <h1>Clinical Skills Prototype</h1>
+    <p class="muted" style="margin-bottom: 2rem;">A simulated walkthrough of the proposed experience. Select a skill module to begin.</p>
+    
+    <div style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;" id="skill-selector">
+      <button class="btn btn-primary" data-skill="ngt">NGT Insertion</button>
+      <button class="btn btn-secondary" data-skill="iv">IV Insertion</button>
+      <button class="btn btn-secondary" data-skill="foley">Foley Catheter</button>
+    </div>
+
     <div id="proto"></div>
   </div>
 </main>
 <footer id="site-footer"></footer>
 <script src="../assets/js/state.js"></script>
 <script src="../assets/js/main.js"></script>
-<script src="../assets/js/data/ngt-steps.js"></script>
+<script src="../assets/js/data/skills.js"></script>
 <script src="../assets/js/data/feedback-rules.js"></script>
 <script src="../assets/js/simulation/engine.js"></script>
 <script src="../assets/js/simulation/scoring.js"></script>
 <script src="../assets/js/feedback.js"></script>
 <script src="../assets/js/prototype.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var sel = document.getElementById('skill-selector');
+  var btns = sel.querySelectorAll('button');
+  
+  var currentSkill = VC.get().skillId || 'ngt';
+  btns.forEach(b => {
+    if (b.dataset.skill === currentSkill) {
+      b.classList.add('btn-primary');
+      b.classList.remove('btn-secondary');
+    } else {
+      b.classList.remove('btn-primary');
+      b.classList.add('btn-secondary');
+    }
+  });
+
+  sel.onclick = function(e) {
+    var t = e.target.closest('button');
+    if(t) {
+      btns.forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-secondary'); });
+      t.classList.add('btn-primary');
+      t.classList.remove('btn-secondary');
+      
+      var id = t.dataset.skill;
+      VC.reset();
+      var s = VC.get();
+      s.skillId = id;
+      VC.set(s);
+      
+      if(VC.draw) VC.draw();
+    }
+  };
+});
+</script>
 </body>
 </html>
