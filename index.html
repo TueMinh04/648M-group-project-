@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>VIRTUCARE | Health Tech Proposal</title>
-  <meta name="description" content="VIRTUCARE: a conceptual AI-assisted clinical simulation prototype for 648M.">
+  <meta name="description" content="VIRTUCARE: a conceptual AI-assisted clinical simulation prototype for the 648M Small-Group Project.">
   <link rel="stylesheet" href="./assets/css/premium.css">
   <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
   <!-- FontAwesome for Icons -->
@@ -17,10 +17,9 @@
     <div class="container">
       <div class="logo">VIRTU<span>CARE</span></div>
       <div class="nav-links">
-        <a href="#overview">Problem</a>
+        <a href="#problem">Problem</a>
         <a href="#proposal">Proposal</a>
         <a href="#demo">Demo</a>
-        <a href="#social">Social</a>
         <a href="#ethics">Ethics</a>
         <a href="#research">Research</a>
       </div>
@@ -32,145 +31,215 @@
     <div class="container">
       <div class="hero-content">
         <h1>AI-Assisted Clinical Simulation</h1>
-        <p class="lede">Empowering healthcare learners to practice procedural skills in a controlled, virtual environment. Real procedures. Virtual practice. Responsible AI.</p>
+        <p class="lede">A conceptual proposal for using AI to transform clinical procedure training into safe, scalable, and personalized learning experiences for healthcare students.</p>
         <p class="team-names" style="margin-bottom: 2.5rem; font-weight: 500; color: var(--text-muted);">Team: Youngin Choi, Yvonne Ma, Paul Leung, Minh Vuong</p>
         <div class="cta">
-          <a class="btn btn-primary" href="pages/prototype.html">Explore Prototype App</a>
-          <a class="btn btn-secondary" href="#overview">Learn More</a>
+          <a class="btn btn-primary" href="pages/prototype.html">Explore the Prototype Flow</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- The Problem -->
-  <section id="overview" class="section">
+  <!-- 1. The Problem -->
+  <section id="problem" class="section">
     <div class="container">
       <h2>1. The Problem</h2>
-      <p>Current clinical training relies heavily on physical simulation labs or direct patient interaction. These existing methods face several critical shortcomings:</p>
-      
-      <div class="grid-2">
+      <p>Clinical procedural training today relies primarily on <strong>physical simulation labs and manikin-based practice</strong>. While foundational, these approaches carry significant structural limitations:</p>
+
+      <div class="grid-2" style="margin-top: 2rem;">
         <div class="card">
           <div class="card-icon" style="color: var(--danger); background: rgba(239, 68, 68, 0.1);"><i class="fas fa-times-circle"></i></div>
           <h3>Shortcomings of Existing Technology</h3>
           <ul>
-            <li><p><strong>Limited Accessibility:</strong> Physical simulation labs are expensive and require scheduled access.</p></li>
-            <li><p><strong>High Resource Demands:</strong> Require constant human supervision and expert availability for feedback.</p></li>
-            <li><p><strong>Lack of Personalization:</strong> Standardized mannequins offer uniform scenarios that don't adapt to individual learner needs.</p></li>
+            <li><p><strong>Limited Availability:</strong> Simulation labs require scheduled access, trained staff, and expensive equipment — not equally accessible to all institutions.</p></li>
+            <li><p><strong>No Adaptive Feedback:</strong> Manikins and physical models cannot tailor difficulty or feedback to individual learner performance in real time.</p></li>
+            <li><p><strong>Scalability Ceiling:</strong> Each session requires physical setup and direct supervision, making large-scale or self-directed practice impractical.</p></li>
+            <li><p><strong>Procedural Gaps:</strong> Rare or high-risk procedures are infrequently practiced due to limited safe exposure opportunities.</p></li>
           </ul>
         </div>
         <div class="card">
-          <div class="card-icon"><i class="fas fa-search-plus"></i></div>
-          <h3>The Need for Change</h3>
-          <p>There is a growing need for a scalable, low-stakes environment where learners can practice procedures with real-time, personalized feedback without risking patient safety or overwhelming limited clinical resources.</p>
+          <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+          <h3>Why This Matters</h3>
+          <p>Procedural confidence directly affects patient safety. When learners lack sufficient practice opportunities — especially outside structured lab hours — clinical errors become more likely.</p>
+          <p style="margin-top: 1rem;">There is a clear need for a training approach that is <strong>accessible on-demand, adaptive to the learner, and safe to repeat</strong> without resource constraints.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Our Proposal -->
+  <!-- 2. Our Proposal -->
   <section id="proposal" class="section" style="background: rgba(255,255,255,0.02);">
     <div class="container">
       <h2>2. Our Proposal: VIRTUCARE</h2>
-      <p>We propose <em>VIRTUCARE</em>, an AI-assisted clinical simulation platform that addresses the shortcomings of existing methods by transforming consented clinical procedure recordings into interactive, personalized, and scalable training scenarios.</p>
-      
-      <div class="grid-3">
+      <p>We propose <em>VIRTUCARE</em> — a web-based, AI-assisted clinical simulation platform. Rather than replacing physical labs, VIRTUCARE supplements them by providing structured, consent-governed, AI-guided practice sessions accessible anytime, from any browser.</p>
+
+      <div class="grid-3" style="margin-top: 2rem;">
         <div class="card">
-          <div class="card-icon"><i class="fas fa-video"></i></div>
-          <h3>1. Capture & Protect</h3>
-          <p>Consented recordings are collected, and identifiers are detected and removed for privacy.</p>
+          <div class="card-icon"><i class="fas fa-file-signature"></i></div>
+          <h3>Consent-First Design</h3>
+          <p>Every session begins with an explicit, layered consent process. Learners understand what data is collected, how AI is used, and how to withdraw at any point.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-hand-holding-medical"></i></div>
+          <h3>Guided Procedural Practice</h3>
+          <p>Learners work through step-by-step clinical scenarios (e.g., NGT insertion, IV placement) in an interactive, decision-based format — repeatable on demand.</p>
         </div>
         <div class="card">
           <div class="card-icon"><i class="fas fa-brain"></i></div>
-          <h3>2. Understand & Transform</h3>
-          <p>AI analyzes the structure of the procedure to generate dynamic interactive scenarios.</p>
+          <h3>AI-Generated Feedback</h3>
+          <p>AI analyzes learner decisions and generates structured feedback on accuracy, sequencing, and safety. A human clinician can review or override feedback at any time.</p>
         </div>
-        <div class="card">
-          <div class="card-icon"><i class="fas fa-user-md"></i></div>
-          <h3>3. Validate & Practice</h3>
-          <p>Clinicians review the content. Learners practice with AI oversight.</p>
+      </div>
+
+      <div class="card" style="margin-top: 2rem; border-top: 3px solid var(--primary);">
+        <h3>How VIRTUCARE Differs</h3>
+        <div class="grid-2" style="margin-top: 1rem;">
+          <div>
+            <p style="color: var(--danger); font-weight: 600; margin-bottom: 0.5rem;"><i class="fas fa-times" style="margin-right: 0.5rem;"></i>Current Approach</p>
+            <ul>
+              <li><p>Scheduled lab time required</p></li>
+              <li><p>Fixed, non-adaptive scenarios</p></li>
+              <li><p>Expert supervisor must be physically present</p></li>
+              <li><p>No persistent learner data across sessions</p></li>
+            </ul>
+          </div>
+          <div>
+            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;"><i class="fas fa-check" style="margin-right: 0.5rem;"></i>VIRTUCARE Proposal</p>
+            <ul>
+              <li><p>On-demand, browser-based access</p></li>
+              <li><p>Adaptive difficulty based on performance</p></li>
+              <li><p>AI feedback with clinician oversight layer</p></li>
+              <li><p>Optional longitudinal progress tracking</p></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Prototype / Demo -->
+  <!-- 3. Prototype / Demo -->
   <section id="demo" class="section">
     <div class="container">
-      <h2>3. Prototype & Demo</h2>
-      <p>Explore our interactive academic prototype of VIRTUCARE. It demonstrates how AI can assess clinical simulations in real-time.</p>
-      
-      <div class="demo-container" style="margin-top: 2rem; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: var(--surface-color);">
-        <div style="padding: 2rem; text-align: center;">
-          <img src="assets/img/demo-placeholder.svg" alt="VIRTUCARE Demo Screenshot" style="max-width: 100%; border-radius: 8px; margin-bottom: 2rem; background: rgba(0,0,0,0.2); min-height: 200px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-style: italic;">
-          <h3>Interactive Web Prototype</h3>
-          <p style="margin-bottom: 2rem;">Experience the AI-driven feedback loop directly in your browser.</p>
-          <a href="pages/prototype.html" class="btn btn-primary"><i class="fas fa-play" style="margin-right: 0.5rem;"></i> Launch Demo</a>
+      <h2>3. Prototype Demo</h2>
+      <p>The walkthrough below illustrates the proposed learner experience in VIRTUCARE. This is a conceptual academic prototype — it demonstrates the interaction flow, not a production clinical system.</p>
+
+      <div class="flow-steps" style="margin-top: 2.5rem;">
+
+        <div class="flow-step card">
+          <div class="flow-step-number">01</div>
+          <div class="card-icon"><i class="fas fa-file-signature"></i></div>
+          <h3>Consent</h3>
+          <p>The learner is presented with a plain-language consent form explaining how the session works, what the AI is doing, and how their data is handled. They must explicitly agree before proceeding.</p>
+          <div class="flow-badge">Informed. Reversible. Transparent.</div>
         </div>
+
+        <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
+
+        <div class="flow-step card">
+          <div class="flow-step-number">02</div>
+          <div class="card-icon"><i class="fas fa-hand-holding-medical"></i></div>
+          <h3>Practice</h3>
+          <p>The learner selects a clinical procedure (e.g., NGT insertion) and works through it step-by-step, choosing the correct action at each decision point from a set of options.</p>
+          <div class="flow-badge">Self-paced. Decision-based. Repeatable.</div>
+        </div>
+
+        <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
+
+        <div class="flow-step card">
+          <div class="flow-step-number">03</div>
+          <div class="card-icon"><i class="fas fa-robot"></i></div>
+          <h3>AI Feedback</h3>
+          <p>Upon completion, AI evaluates the session. Feedback is structured around accuracy, safety sequencing, and missed steps — phrased constructively, not as a binary pass/fail grade.</p>
+          <div class="flow-badge">Specific. Constructive. Clinician-reviewable.</div>
+        </div>
+
+        <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
+
+        <div class="flow-step card">
+          <div class="flow-step-number">04</div>
+          <div class="card-icon"><i class="fas fa-clipboard-check"></i></div>
+          <h3>Review</h3>
+          <p>The learner sees a full summary: correct steps, errors, and a recommended focus area. They can re-attempt the scenario or move on to a different module.</p>
+          <div class="flow-badge">Reflective. Iterative. Learner-controlled.</div>
+        </div>
+
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="pages/prototype.html" class="btn btn-primary"><i class="fas fa-play" style="margin-right: 0.5rem;"></i> Launch Interactive Prototype</a>
       </div>
     </div>
   </section>
 
-  <!-- Social Implications -->
-  <section id="social" class="section">
-    <div class="container">
-      <h2>4. Social Implications</h2>
-      <p>How the tool impacts society and our strategies to address these impacts.</p>
-      
-      <div class="grid-2">
-        <div class="card social-card">
-          <h3>Accessibility & Equity</h3>
-          <p><strong>Impact:</strong> High-end VR devices may exclude underfunded institutions.</p>
-          <p><strong>Solution:</strong> Provide a browser-based, lightweight 2D alternative alongside the VR mode.</p>
-        </div>
-        <div class="card social-card">
-          <h3>Bias in Training Data</h3>
-          <p><strong>Impact:</strong> Source recordings may under-represent certain demographics or rare conditions.</p>
-          <p><strong>Solution:</strong> Conduct mandatory audits of source diversity and actively recruit varied clinical scenarios.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Ethical Considerations -->
+  <!-- 4. Ethical Analysis -->
   <section id="ethics" class="section" style="background: rgba(255,255,255,0.02);">
     <div class="container">
-      <h2>5. Ethical Considerations</h2>
-      <p>Addressing the moral challenges of using AI in clinical education.</p>
-      
-      <div class="grid-3">
+      <h2>4. Ethical Analysis</h2>
+      <p>Using AI in clinical education raises important ethical and social questions. Our proposal addresses each of these directly.</p>
+
+      <div class="grid-2" style="margin-top: 2rem;">
         <div class="card ethics-card">
-          <h3>Consent</h3>
-          <p>Patients may not fully understand how their recordings are used. We enforce layered, easily withdrawable consent.</p>
+          <h3><i class="fas fa-file-signature" style="margin-right: 0.5rem; color: var(--secondary);"></i>Consent</h3>
+          <p><strong>Concern:</strong> Patients and learners may not fully understand how recordings or session data are used in an AI training context.</p>
+          <p style="margin-top: 0.75rem;"><strong>Approach:</strong> All data collection uses layered, plain-language informed consent. Consent can be withdrawn at any point without academic penalty.</p>
         </div>
         <div class="card ethics-card">
-          <h3>Safety & Accuracy</h3>
-          <p>AI feedback might be incorrect. We enforce a "Human-in-the-loop" policy where educators can override AI.</p>
+          <h3><i class="fas fa-balance-scale" style="margin-right: 0.5rem; color: var(--secondary);"></i>Fairness &amp; Bias</h3>
+          <p><strong>Concern:</strong> AI training scenarios may reflect biased clinical data — under-representing certain demographics or rare conditions.</p>
+          <p style="margin-top: 0.75rem;"><strong>Approach:</strong> Mandatory diversity audits of all source materials. Active recruitment of varied clinical scenarios across institutions.</p>
         </div>
         <div class="card ethics-card">
-          <h3>Privacy</h3>
-          <p>Learner performance data must be protected. We guarantee clear purpose limits and give learners control over their data.</p>
+          <h3><i class="fas fa-lock" style="margin-right: 0.5rem; color: var(--secondary);"></i>Privacy</h3>
+          <p><strong>Concern:</strong> Learner performance data could be misused for high-stakes evaluations or shared without consent.</p>
+          <p style="margin-top: 0.75rem;"><strong>Approach:</strong> Clear purpose limitation policies. Learners retain ownership of their performance data and can request deletion.</p>
+        </div>
+        <div class="card ethics-card">
+          <h3><i class="fas fa-user-shield" style="margin-right: 0.5rem; color: var(--secondary);"></i>Safety &amp; Accuracy</h3>
+          <p><strong>Concern:</strong> AI feedback may be incorrect, reinforcing wrong clinical behaviors if not reviewed.</p>
+          <p style="margin-top: 0.75rem;"><strong>Approach:</strong> "Human-in-the-loop" policy — a clinician educator can flag, override, or correct any AI feedback at any time.</p>
+        </div>
+        <div class="card social-card">
+          <h3><i class="fas fa-universal-access" style="margin-right: 0.5rem; color: var(--accent);"></i>Accessibility &amp; Equity</h3>
+          <p><strong>Concern:</strong> Browser-based tools still require reliable internet and devices, which not all learners have equally.</p>
+          <p style="margin-top: 0.75rem;"><strong>Approach:</strong> Designed to run in lightweight 2D mode on low-spec devices. Offline-first caching is planned for future iterations.</p>
+        </div>
+        <div class="card social-card">
+          <h3><i class="fas fa-chalkboard-teacher" style="margin-right: 0.5rem; color: var(--accent);"></i>Role of the Educator</h3>
+          <p><strong>Concern:</strong> AI feedback tools may be perceived as reducing the need for human clinical instructors.</p>
+          <p style="margin-top: 0.75rem;"><strong>Approach:</strong> VIRTUCARE is a supplement, not a replacement. Educator oversight is built into the review layer of every session.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Research & Gen AI -->
+  <!-- 5. Research Findings -->
   <section id="research" class="section">
     <div class="container">
-      <h2>6. Research & Methodology</h2>
-      <div class="grid-2">
+      <h2>5. Research Findings</h2>
+      <p>The following findings from our literature review informed the design of VIRTUCARE. Full citations will be added as research is finalized.</p>
+
+      <div class="grid-2" style="margin-top: 2rem;">
         <div class="card">
-          <h3>Key Research Findings</h3>
+          <div class="card-icon"><i class="fas fa-book-open"></i></div>
+          <h3>Key Findings</h3>
           <ul>
-            <li><p>AI simulation improves procedural confidence. <span class="placeholder-text">[Citation needed]</span></p></li>
-            <li><p>De-identification algorithms still pose re-identification risks. <span class="placeholder-text">[Citation needed]</span></p></li>
-            <li><p>Human oversight remains the gold standard in clinical AI. <span class="placeholder-text">[Citation needed]</span></p></li>
+            <li><p>AI-assisted simulation has been shown to improve procedural confidence among clinical learners. <span class="placeholder-text">[Citation to be added]</span></p></li>
+            <li><p>De-identification algorithms reduce but do not eliminate re-identification risk in clinical video datasets. <span class="placeholder-text">[Citation to be added]</span></p></li>
+            <li><p>Human oversight remains the gold standard in clinical AI — automated feedback without review increases error propagation risk. <span class="placeholder-text">[Citation to be added]</span></p></li>
+            <li><p>Learner-controlled, self-paced simulation environments show improved engagement compared to scheduled lab sessions. <span class="placeholder-text">[Citation to be added]</span></p></li>
           </ul>
         </div>
-        <div class="card">
-          <h3>Use of Generative AI</h3>
-          <p>Generative AI (Claude and Gemini) was used to assist in brainstorming the ethical framework, developing the website layout, and generating CSS styling and boilerplate code.</p>
-          <p>All AI-generated content was heavily reviewed, modified, and validated by the student team.</p>
+
+        <div class="card" style="border-top: 3px solid var(--primary);">
+          <div class="card-icon"><i class="fas fa-robot"></i></div>
+          <h3>How We Used Claude</h3>
+          <p>We used Claude (Anthropic) and Gemini (Google) as assistants for specific parts of this project. In the interest of academic honesty:</p>
+          <ul style="margin-top: 1rem;">
+            <li><p><strong>Ethical Framework:</strong> Claude helped brainstorm initial ethical considerations, which the team then discussed, revised, and verified.</p></li>
+            <li><p><strong>Website Structure:</strong> AI assisted in generating the HTML/CSS layout scaffold and boilerplate code for the prototype interface.</p></li>
+            <li><p><strong>Writing Refinement:</strong> Section descriptions were drafted with AI assistance and edited by the team for accuracy and tone.</p></li>
+          </ul>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">All AI-generated content was reviewed and validated by the student team. No research findings or clinical claims were AI-generated.</p>
         </div>
       </div>
     </div>
@@ -181,7 +250,7 @@
     <div class="container">
       <h3>VIRTUCARE</h3>
       <p>A conceptual academic prototype for the 648M Small-Group Project.</p>
-      
+
       <div class="team-members">
         <h4>Team</h4>
         <div class="team-grid">
@@ -204,7 +273,7 @@
         </div>
       </div>
 
-      <p class="disclaimer">Not a medical system. Not clinically validated.</p>
+      <p class="disclaimer">648M Small-Group Project &nbsp;·&nbsp; Not a medical system &nbsp;·&nbsp; Not clinically validated</p>
     </div>
   </footer>
 

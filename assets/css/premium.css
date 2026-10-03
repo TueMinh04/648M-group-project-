@@ -23,7 +23,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-family: 'Outfit', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-main);
@@ -87,6 +86,7 @@ a:hover {
 section {
   padding: 6rem 0;
   position: relative;
+  scroll-margin-top: 80px;
 }
 
 /* Navbar */
@@ -376,6 +376,54 @@ footer {
   font-size: 0.9em;
 }
 
+/* Prototype Flow Steps */
+.flow-steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.flow-step {
+  width: 100%;
+  position: relative;
+  padding-left: 5rem;
+  text-align: left;
+}
+
+.flow-step-number {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  opacity: 0.25;
+  line-height: 1;
+}
+
+.flow-badge {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: rgba(var(--primary-rgb, 99, 102, 241), 0.08);
+  border: 1px solid rgba(var(--primary-rgb, 99, 102, 241), 0.2);
+  letter-spacing: 0.5px;
+}
+
+.flow-arrow {
+  font-size: 1.25rem;
+  color: var(--primary);
+  opacity: 0.4;
+  padding: 0.5rem 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .nav-links {
@@ -384,5 +432,11 @@ footer {
   .btn-secondary {
     margin-left: 0;
     margin-top: 1rem;
+  }
+  .flow-step {
+    padding-left: 1.5rem;
+  }
+  .flow-step-number {
+    display: none;
   }
 }
