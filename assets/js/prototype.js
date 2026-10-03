@@ -1,11 +1,11 @@
 /* One guided prototype: Consent → Processing → Practice → AI Feedback → Review. All simulated. */
 (function(){
 var root=document.getElementById('proto'),e=VC.esc,cfg,ST=['Consent','Processing','Practice','AI Feedback','Review'];
-var HELP=['Tick the simulated recording consent box, then continue.','Run the simulated processing, then continue.','Choose an option at each placeholder step. Retry if needed.','Read the simulated feedback and your illustrative scores.','Act as the instructor: accept, modify or override the AI suggestions.'];
+var HELP=['Tick the simulated recording consent box, then continue.','Run the simulated processing, then continue.','Choose an option at each placeholder step. Retry if needed.','Review the AI feedback based on how you completed the Practice test.','Act as the instructor: accept, modify or override the AI suggestions.'];
 var STAGES=['Consent check','De-identification','Procedure analysis','Simulation generation','Clinical validation'];
 var NOTES=['Checks that recording consent is recorded.','Illustrates identifier removal (no real data).','Illustrates feature extraction.','Illustrates building the scenario.','Illustrates queueing for clinician validation. Nothing is validated here.'];
 function draw(){
- var n=VC.get().stage;cfg={ok:false,label:'Continue',onNext:null};
+ var n=VC.get().stage;cfg={ok:false,label:'Continue',onNext:null,showNext:true};
  root.innerHTML='<ol class="stepper" aria-label="Progress">'+ST.map(function(t,i){return'<li class="'+(i<n?'done':i===n?'current':'')+'"'+(i===n?' aria-current="step"':'')+'>'+(i+1)+'. '+t+(i<n?' (done)':'')+'</li>'}).join('')+'</ol><h2 id="ptop" tabindex="-1">'+ST[n]+'</h2><p class="alert"><strong>What to do:</strong> '+HELP[n]+'</p><div id="view"></div><div class="row stepbar" id="bar"></div>';
  V[n](document.getElementById('view'));bar();
 }
@@ -13,11 +13,11 @@ function bar(){
  var n=VC.get().stage,b=document.getElementById('bar'),h='';
  if(n>0)h+='<button class="btn btn-ghost" id="back">Back</button>';
  h+='<button class="btn btn-ghost" id="restart">Restart</button>';
- if(n<4)h+='<button class="btn" id="next"'+(cfg.ok?'':' disabled')+'>'+cfg.label+'</button>';
+ if(n<4&&cfg.showNext)h+='<button class="btn" id="next"'+(cfg.ok?'':' disabled')+'>'+cfg.label+'</button>';
  b.innerHTML=h;
  if(n>0)b.querySelector('#back').onclick=function(){VC.set({stage:n-1});draw();focusTop()};
  b.querySelector('#restart').onclick=function(){if(confirm('Restart the prototype? Your progress will be cleared.')){VC.reset();draw();focusTop()}};
- if(n<4)b.querySelector('#next').onclick=function(){if(cfg.onNext)cfg.onNext();VC.set({stage:n+1});draw();focusTop()};
+ if(n<4&&cfg.showNext)b.querySelector('#next').onclick=function(){if(cfg.onNext)cfg.onNext();VC.set({stage:n+1});draw();focusTop()};
 }
 function focusTop(){document.getElementById('ptop').focus()}
 var V=[
@@ -55,8 +55,8 @@ function processing(el){
    pm.textContent='Simulated: '+STAGES[i]+'…';i++;setTimeout(step,ms)})()};
 },
 function practice(el){
- var s=VC.get(),st=VC.engine.steps(),i=s.idx;cfg.label='See AI feedback';cfg.ok=i>=st.length;bar();
- if(i>=st.length){el.innerHTML='<div class="card"><h3>All placeholder steps complete</h3><p>Continue for simulated feedback, or practise again.</p><button class="btn btn-ghost" id="again">Practise again</button></div>';el.querySelector('#again').onclick=function(){VC.resetSim();practice(el)};return}
+ var s=VC.get(),st=VC.engine.steps(),i=s.idx;cfg.label='AI feedback';cfg.ok=i>=st.length;cfg.showNext=i<st.length;bar();
+ if(i>=st.length){el.innerHTML='<div class="card"><h3>All placeholder steps complete</h3><p>Continue for simulated feedback, or practice again.</p><div class="row"><button class="btn btn-ghost" id="again">Practice again</button><button class="btn" id="feedback">AI feedback</button></div></div>';el.querySelector('#again').onclick=function(){VC.resetSim();practice(el)};el.querySelector('#feedback').onclick=function(){VC.set({stage:3});draw();focusTop()};return}
  var step=st[i],pct=Math.round(100*i/st.length);
  el.innerHTML='<div class="sim"><section class="card"><p class="muted">Step '+(i+1)+' of '+st.length+(step.severity==='critical'?' <span class="badge warn">Safety-critical</span>':'')+'</p><h3>'+e(step.title)+'</h3><p>'+e(step.prompt)+'</p><div role="group" aria-label="Choices" id="opts">'+
  step.options.map(function(o){return'<button class="opt" data-o="'+o.id+'">'+e(o.text)+'</button>'}).join('')+'</div><div id="res" aria-live="polite"></div></section><aside class="card"><h3>Progress</h3><div class="progress" role="progressbar" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><span style="width:'+pct+'%"></span></div><p class="muted">Placeholder content, not clinically validated.</p></aside></div>';
@@ -73,7 +73,9 @@ function feedback(el){
  var c=VC.scoring.compute(),has=Object.keys(c.answers).length>0;cfg.ok=has;cfg.label='Request instructor review';
  cfg.onNext=function(){var d=VC.get().educator;d.requested=true;VC.set({educator:d})};
  if(!has){el.innerHTML='<div class="alert">No practice data yet. Go back and complete Practice.</div>';return}
- el.innerHTML='<p class="alert">Feedback is generated by predefined JavaScript rules, not a trained AI model. Scores are illustrative prototype values, not benchmarks.</p>'+
+ var completed=c.steps.filter(function(step){return c.answers[step.id]&&c.answers[step.id].correct}).length,firstTry=c.steps.filter(function(step){var answer=c.answers[step.id];return answer&&answer.firstCorrect}).length,retries=completed-firstTry;
+ el.innerHTML='<p class="alert">This simulated AI feedback is based on how you completed the Practice test. It is generated by predefined JavaScript rules, not a trained AI model; scores are illustrative prototype values, not benchmarks.</p>'+
+ '<div class="card"><h3>Your Practice test result</h3><div class="grid"><div><strong>Completed steps</strong><p>'+completed+' of '+c.steps.length+'</p></div><div><strong>Correct first try</strong><p>'+firstTry+' of '+c.steps.length+'</p></div><div><strong>Steps retried</strong><p>'+retries+'</p></div><div><strong>Safety-critical retries</strong><p>'+c.flags.length+'</p></div></div></div>'+
  '<div class="grid"><div class="card"><h3>Overall score (illustrative)</h3><div class="score">'+c.overall+'%</div></div><div class="card"><h3>Category scores</h3>'+c.cats.map(function(x){return'<p>'+e(x.name)+': '+x.pct+'%<span class="progress" style="display:block"><span style="width:'+x.pct+'%"></span></span></p>'}).join('')+'</div><div class="card"><h3>Safety flags</h3>'+(c.flags.length?c.flags.map(function(s){return'<p class="alert bad">'+e(s.title)+' needed a retry.</p>'}).join(''):'<p class="alert ok">No safety flags.</p>')+'</div></div><h3 style="margin-top:var(--s5)">Simulated AI feedback</h3><div class="stack" id="fb"></div>';
  VC.feedback.render(el.querySelector('#fb'));
 },

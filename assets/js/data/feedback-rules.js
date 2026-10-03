@@ -1,19 +1,34 @@
 /* Deterministic rules standing in for AI. test(ctx) gets {answers, flags, steps}. Returns true if the rule fires. */
 window.VC=window.VC||{};
 VC.FEEDBACK_RULES=[
- {id:'FB-001',trigger:'A safety-critical step was answered incorrectly on the first attempt',
-  feedback:'Placeholder observation: a safety-critical step needed more than one attempt.',
-  issue:'Placeholder potential issue: possible gap in a safety-critical step.',
-  confidence:'Low',rationale:'Fires when any step with severity "critical" has firstCorrect = false.',severity:'high',
-  test:function(c){return c.flags.length>0}},
- {id:'FB-002',trigger:'Any step needed more than one attempt',
-  feedback:'Placeholder observation: some steps needed retries.',
-  issue:'Placeholder potential issue: inconsistent performance across steps.',
-  confidence:'Medium',rationale:'Fires when attempts > 1 on any step.',severity:'medium',
-  test:function(c){return Object.keys(c.answers).some(function(k){return c.answers[k].attempts>1})}},
- {id:'FB-003',trigger:'All steps correct on the first attempt',
-  feedback:'Placeholder observation: all steps were completed correctly on the first attempt.',
-  issue:'None detected by the placeholder rules. Rules are limited and this is not an assessment of competence.',
-  confidence:'Medium',rationale:'Fires when every step has firstCorrect = true.',severity:'low',
-  test:function(c){return c.steps.every(function(s){var a=c.answers[s.id];return a&&a.firstCorrect})}}
+  {id:'FB-001',trigger:'A safety-critical step was answered incorrectly on the first attempt',
+   feedback:'The learner required multiple attempts to correctly navigate a safety-critical decision point. This indicates a potential knowledge gap in patient safety protocols.',
+   issue:'Patient Safety Risk: Incorrect handling of safety-critical steps (e.g., contraindications, aseptic technique, or immediate complication management) can lead to severe iatrogenic harm.',
+   confidence:'High',rationale:'Fires when any step with severity "critical" has firstCorrect = false.',severity:'high',
+   test:function(c){return c.flags.length>0}},
+  {id:'FB-002',trigger:'Any step needed more than one attempt',
+   feedback:'The learner demonstrated hesitation or incorrect choices on one or more standard procedural steps, requiring retries to identify the optimal clinical action.',
+   issue:'Procedural Inconsistency: While safety-critical steps were managed, there are gaps in standard technique or preparation sequencing.',
+   confidence:'Medium',rationale:'Fires when attempts > 1 on any step, but no critical safety flags were triggered.',severity:'medium',
+   test:function(c){return c.flags.length===0 && Object.keys(c.answers).some(function(k){return c.answers[k].attempts>1})}},
+  {id:'FB-003',trigger:'All steps correct on the first attempt',
+   feedback:'The learner successfully navigated all decision points, including preparation, technique, and safety checks, on the first attempt.',
+   issue:'No immediate knowledge gaps identified in this scenario.',
+   confidence:'Medium',rationale:'Fires when every step has firstCorrect = true.',severity:'low',
+   test:function(c){return c.steps.every(function(s){var a=c.answers[s.id];return a&&a.firstCorrect})}},
+  {id:'FB-004',trigger:'Struggled with Preparation category',
+   feedback:'The learner exhibited difficulty with pre-procedural checks, such as patient identification, consent, or sterile field setup.',
+   issue:'Pre-procedural Readiness: Weakness in foundational preparation steps before invasive procedures.',
+   confidence:'Medium',rationale:'Fires when >50% of mistakes were in the Preparation category.',severity:'medium',
+   test:function(c){
+     var prepMistakes = 0, totalMistakes = 0;
+     c.steps.forEach(function(s) {
+       var a = c.answers[s.id];
+       if (a && !a.firstCorrect) {
+         totalMistakes++;
+         if (s.category === 'Preparation') prepMistakes++;
+       }
+     });
+     return totalMistakes > 0 && (prepMistakes / totalMistakes) > 0.5;
+   }}
 ];
