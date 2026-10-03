@@ -16,11 +16,35 @@
   <div class="container section" style="padding-top: 4rem;">
     <h1>Clinical Skills Prototype</h1>
     <p class="muted" style="margin-bottom: 2rem;">A simulated walkthrough of the proposed experience. Select a skill module to begin.</p>
-    
-    <div style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;" id="skill-selector">
-      <button class="btn btn-primary" data-skill="ngt">NGT Insertion</button>
-      <button class="btn btn-secondary" data-skill="iv">IV Insertion</button>
-      <button class="btn btn-secondary" data-skill="foley">Foley Catheter</button>
+
+    <div id="skill-selector" style="margin-bottom: 2.5rem;">
+
+      <div style="margin-bottom: 1.25rem;">
+        <p style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem;">🏥 General / Ward</p>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button class="btn btn-primary"    data-skill="ngt">NGT Insertion</button>
+          <button class="btn btn-secondary"  data-skill="iv">Peripheral IV</button>
+          <button class="btn btn-secondary"  data-skill="foley">Urinary Catheter</button>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1.25rem;">
+        <p style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem;">🔬 ICU Skills</p>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button class="btn btn-secondary"  data-skill="cl_jugular">Central Line – Jugular</button>
+          <button class="btn btn-secondary"  data-skill="arterial">Arterial Line</button>
+          <button class="btn btn-secondary"  data-skill="tracheostomy">Tracheostomy Care</button>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1.25rem;">
+        <p style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem;">🏨 OR / Surgical</p>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button class="btn btn-secondary"  data-skill="laparotomy">Exploratory Laparotomy</button>
+          <button class="btn btn-secondary"  data-skill="endoscopy">Upper GI Endoscopy (OGD)</button>
+        </div>
+      </div>
+
     </div>
 
     <div id="proto"></div>
