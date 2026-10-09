@@ -1,92 +1,220 @@
-/* One guided prototype: Consent → Processing → Practice → AI Feedback → Review. All simulated. */
+/* One guided prototype: Consent & Upload → AI 3DGS Processing → VR Simulation → Kinematic Feedback. All simulated. */
 (function(){
-var root=document.getElementById('proto'),e=VC.esc,cfg,ST=['Consent','Processing','Practice','AI Feedback','Review'];
-var HELP=['Tick the simulated recording consent box, then continue.','Select a VR or procedure recording, then generate the simulated 3D practice module.','Review the source recording and the requirements for a real first-person 3D practice model.','Review the AI feedback based on the simulated 3D practice-task review.','Act as the instructor: accept, modify or override the AI suggestions.'];
-var STAGES=['Consent and access check','Video de-identification','AI 3D scene reconstruction','First-person VR module','Clinical educator validation'];
-var NOTES=['Checks that recording consent and approved access are recorded.','Illustrates removing identifiers before training use.','Illustrates AI extracting movement and environment data to reconstruct a 3D scene.','Illustrates creating a first-person practice experience.','Illustrates queueing the module for clinical educator validation.'];
-function youtubeId(url){var match=String(url||'').match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?[^#]*v=|embed\/|shorts\/))([A-Za-z0-9_-]{11})/i);return match?match[1]:''}
+var root=document.getElementById('proto'),e=VC.esc,cfg,ST=['Consent & Upload','AI 3DGS Processing','VR Simulation','Kinematic Feedback'];
+var HELP=['Upload a consented surgical video recording.','Watch the AI process the video into a 3D Gaussian Splatting digital twin.','Experience the first-person physics-enabled VR practice module.','Review your objective kinematic performance against the expert baseline.'];
+var STAGES=['Extracting spatial point cloud...','Training 3D Gaussian Splats...','Masking surgical instruments...','Generating XPBD soft-tissue physics mesh...','Compiling interactive VR module...'];
+var NOTES=['Analyzing monocular video to estimate depth and structure.','Rendering high-fidelity tissue with real-time lighting.','Separating tools from anatomy for clean interaction.','Applying Extended Position Based Dynamics for realistic tissue deformation.','Finalizing module for standalone headset deployment.'];
+
 function draw(){
- var n=VC.get().stage;cfg={ok:false,label:'Continue',onNext:null,showNext:true};
+ var n=VC.get().stage || 0;
+ cfg={ok:false,label:'Continue',onNext:null,showNext:true};
  root.innerHTML='<ol class="stepper" aria-label="Progress">'+ST.map(function(t,i){return'<li class="'+(i<n?'done':i===n?'current':'')+'"'+(i===n?' aria-current="step"':'')+'>'+(i+1)+'. '+t+(i<n?' (done)':'')+'</li>'}).join('')+'</ol><h2 id="ptop" tabindex="-1">'+ST[n]+'</h2><p class="alert"><strong>What to do:</strong> '+HELP[n]+'</p><div id="view"></div><div class="row stepbar" id="bar"></div>';
  V[n](document.getElementById('view'));bar();
 }
+
 function bar(){
- var n=VC.get().stage,b=document.getElementById('bar'),h='';
+ var n=VC.get().stage || 0,b=document.getElementById('bar'),h='';
  if(n>0)h+='<button class="btn btn-ghost" id="back">Back</button>';
  h+='<button class="btn btn-ghost" id="restart">Restart</button>';
- if(n<4&&cfg.showNext)h+='<button class="btn" id="next"'+(cfg.ok?'':' disabled')+'>'+cfg.label+'</button>';
+ if(n<3&&cfg.showNext)h+='<button class="btn" id="next"'+(cfg.ok?'':' disabled')+'>'+cfg.label+'</button>';
  b.innerHTML=h;
  if(n>0)b.querySelector('#back').onclick=function(){VC.set({stage:n-1});draw();focusTop()};
  b.querySelector('#restart').onclick=function(){if(confirm('Restart the prototype? Your progress will be cleared.')){VC.reset();draw();focusTop()}};
- if(n<4&&cfg.showNext)b.querySelector('#next').onclick=function(){if(cfg.onNext)cfg.onNext();VC.set({stage:n+1});draw();focusTop()};
+ if(n<3&&cfg.showNext)b.querySelector('#next').onclick=function(){if(cfg.onNext)cfg.onNext();VC.set({stage:n+1});draw();focusTop()};
 }
+
 function focusTop(){document.getElementById('ptop').focus()}
+
 var V=[
 function consent(el){
  var s=VC.get();
- var skillId=s.skillId||'ngt';
- var skill=VC.SKILLS[skillId];
- el.innerHTML='<div class="card"><h3>'+e(skill.title)+' (placeholder overview)</h3><p>Learning objectives: <span class="placeholder">'+e(skill.objectives)+'</span>. Estimated time: about '+e(skill.time)+'. Difficulty: '+e(skill.difficulty)+' (placeholder).</p><p class="alert"><strong>Safety notice.</strong> Placeholder steps only. This does not teach real clinical technique.</p></div>'+
- '<ol class="flow" aria-label="Privacy pipeline"><li>Clinical recording</li><li>Identifier detection</li><li>De-identification</li><li>Privacy review</li><li>AI processing</li></ol>'+
- '<p class="alert"><strong>Conceptual design only.</strong> This is not a legal consent form and does not meet PHIPA, PIPEDA or TCPS 2 requirements.</p>'+
- '<div class="card"><label class="check"><input type="checkbox" id="c1"><span><strong>Recording consent confirmed (simulated).</strong> Nothing is processed without it. Consent would be withdrawable.</span></label>'+
- '<label class="check"><input type="checkbox" id="c2"><span>Allow my performance summary to be shared with an educator (optional).</span></label>'+
- '<label class="check"><input type="checkbox" id="c3"><span>I understand that my data stays in this browser tab only.</span></label></div>';
- var c1=el.querySelector('#c1'),c2=el.querySelector('#c2'),c3=el.querySelector('#c3');
- c1.checked=s.consent.recording;c2.checked=s.consent.learner;c3.checked=s.consent.data||false;
- cfg.ok=c1.checked&&c3.checked;cfg.label='Continue to processing';
- c1.onchange=c2.onchange=c3.onchange=function(){
+ el.innerHTML='<div class="card"><h3>Upload Surgical Recording</h3><p>Select a video captured from a procedure camera or endoscope. In a real system, only recordings with appropriate patient consent and de-identification would proceed.</p>' +
+ '<div style="margin: 1.5rem 0;"><label for="recording" class="btn btn-secondary" style="cursor:pointer;"><i class="fas fa-upload"></i> Choose Video File</label><input id="recording" type="file" accept="video/*" style="display:none;"><span id="file-status" style="margin-left: 1rem;" class="muted">No file selected.</span></div></div>'+
+ '<div class="card" style="margin-top: 1.5rem;"><label class="check"><input type="checkbox" id="c1"><span><strong>Patient consent confirmed (simulated).</strong> Verified that the patient has consented to their anonymized data being used for educational VR generation.</span></label>'+
+ '<label class="check"><input type="checkbox" id="c2"><span>I confirm this video contains no visible Protected Health Information (PHI) outside the surgical cavity.</span></label></div>';
+ 
+ var c1=el.querySelector('#c1'),c2=el.querySelector('#c2'),file=el.querySelector('#recording'),fileStatus=el.querySelector('#file-status');
+ c1.checked=s.consent?s.consent.recording:false;
+ c2.checked=s.consent?s.consent.phi:false;
+ 
+ var hasFile = s.recordingName ? true : false;
+ if(hasFile) fileStatus.innerHTML = 'Selected: <strong>' + e(s.recordingName) + '</strong>';
+
+ function checkOk() {
+   cfg.ok = c1.checked && c2.checked && hasFile;
+   cfg.label = 'Begin AI 3D Reconstruction';
+   bar();
+ }
+ 
+ file.onchange=function(){
+   var selected=file.files&&file.files[0];
+   if(!selected) return;
+   hasFile = true;
+   VC.set({recordingName: selected.name, processed: false});
+   fileStatus.innerHTML='Selected: <strong>'+e(selected.name)+'</strong>';
+   checkOk();
+ };
+
+ c1.onchange=c2.onchange=function(){
   VC.set({
-   consent:{recording:c1.checked,learner:c2.checked,data:c3.checked},
-   processed:c1.checked&&c3.checked?VC.get().processed:false
+   consent:{recording:c1.checked,phi:c2.checked}
   });
-  cfg.ok=c1.checked&&c3.checked;
-  bar();
+  checkOk();
+ };
+ checkOk();
+},
+
+function processing(el){
+ var s=VC.get();
+ function list(i){return'<ol class="pipeline">'+STAGES.map(function(t,k){return'<li class="'+(k<i?'done':k===i?'active':'')+'"><span class="dot"></span><div><strong>'+t+'</strong><br><span class="muted">'+NOTES[k]+'</span></div></li>'}).join('')+'</ol>'}
+ 
+ el.innerHTML='<style>@keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 10px var(--primary); } 50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 30px var(--primary); } } @keyframes spinRing { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }</style>'+
+ '<div class="grid-2"><div class="card" style="padding: 0; overflow: hidden; background: #0f172a; display: flex; align-items: center; justify-content: center; min-height: 250px; position: relative;">'+
+ '<div style="position: absolute; width: 160px; height: 160px; border: 2px solid rgba(14, 165, 233, 0.2); border-top: 2px solid var(--accent); border-radius: 50%; animation: spinRing 3s linear infinite reverse;"></div>'+
+ '<div style="position: absolute; width: 120px; height: 120px; border: 2px dashed rgba(14, 165, 233, 0.4); border-radius: 50%; animation: spinRing 6s linear infinite;"></div>'+
+ '<div style="width: 60px; height: 60px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulse 2s infinite; z-index: 2;"><i class="fas fa-microchip" style="color: #fff; font-size: 1.5rem;"></i></div>'+
+ '</div><div class="card"><h3>AI 3DGS Processing Pipeline</h3><p id="pm" class="muted">Waiting to start...</p><div id="pl"></div></div></div>';
+ 
+ var pl=el.querySelector('#pl'),pm=el.querySelector('#pm');
+ cfg.label='Enter VR Module';
+ 
+ if(s.processed){
+   pl.innerHTML=list(5);
+   pm.textContent='Module generation complete.';
+   cfg.ok=true;
+   bar();
+ } else {
+   pl.innerHTML=list(0);
+   cfg.ok=false;
+   bar();
+   var i=0,ms=1200;
+   (function step(){
+     pl.innerHTML=list(i);
+     if(i>=5){
+       VC.set({processed:true});
+       pm.textContent='Module generation complete.';
+       cfg.ok=true;
+       bar();
+       return;
+     }
+     pm.textContent='Processing: '+STAGES[i];
+     i++;
+     setTimeout(step,ms);
+   })();
+ }
+},
+
+function practice(el){
+ el.innerHTML='<div class="card" style="padding: 0; overflow: hidden; background: #000; text-align: center;"><div style="position: relative; display: inline-block; max-height: 380px;"><img src="../assets/img/ngt_vr.jpg" alt="First Person VR" style="max-height: 380px; width: auto; display: block;">'+
+ '<div id="visual-tube" style="position: absolute; top: 40%; left: 47.5%; width: 10px; height: 0%; background: repeating-linear-gradient(to bottom, transparent, transparent 15px, rgba(0,0,0,0.25) 15px, rgba(0,0,0,0.25) 17px), linear-gradient(90deg, rgba(220,220,220,0.8), rgba(255,255,255,1) 40%, rgba(200,200,200,0.8)); border: 1px solid rgba(100,100,100,0.5); border-top: none; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; z-index: 10; transition: height 0.1s linear; transform: rotate(-20deg); transform-origin: top center;"></div>'+
+ '<div style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.8); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary); width: 250px; text-align: left;"><h4 style="margin-bottom:0.5rem;">VR Telemetry</h4><p style="margin:0; font-size: 0.9rem; color: var(--accent);" id="telemetry-status">Tracking kinematics...</p><div style="margin-top: 0.5rem; background: #222; border-radius: 4px; overflow: hidden; height: 10px;"><div id="force-bar" style="width: 0%; height: 100%; background: var(--accent); transition: width 0.1s, background 0.1s;"></div></div></div></div></div>'+
+ '<div class="card" style="margin-top: 1.5rem; border-top: 4px solid var(--secondary);"><h3>VR Task: NGT Insertion</h3><p>Simulate advancing the tube. Move the slider steadily. Moving too fast simulates excessive tissue force.</p>'+
+ '<div style="margin: 2rem 0;"><input type="range" id="tube-slider" min="0" max="60" value="0" style="width: 100%; cursor: pointer;"></div>'+
+ '<div style="display:flex; justify-content: space-between;" class="muted"><span>Naris (0cm)</span><span>Nasopharynx (15cm)</span><span>Esophagus (40cm)</span><span>Stomach (60cm)</span></div>'+
+ '<p id="task-feedback" style="margin-top: 1.5rem; font-weight: 600; text-align: center; height: 1.5em;">Ready to insert...</p>'+
+ '<div style="text-align: center; margin-top: 1rem;"><button class="btn btn-primary" id="complete-sim" disabled style="opacity: 0.5; cursor: not-allowed;"><i class="fas fa-arrow-right"></i> Drag slider to 60cm to complete</button></div></div>';
+ 
+ cfg.showNext = false;
+ bar();
+ 
+ var slider = el.querySelector('#tube-slider');
+ var tubeOverlay = el.querySelector('#visual-tube');
+ var forceBar = el.querySelector('#force-bar');
+ var status = el.querySelector('#telemetry-status');
+ var feedback = el.querySelector('#task-feedback');
+ var btn = el.querySelector('#complete-sim');
+ 
+ var lastVal = 0;
+ var lastTime = Date.now();
+ var warnings = 0;
+ 
+ slider.oninput = function() {
+   var now = Date.now();
+   var dt = now - lastTime;
+   var val = parseInt(slider.value, 10);
+   var dv = Math.abs(val - lastVal);
+   
+   // Calculate "force" based on speed of slider movement
+   var force = dt > 0 ? (dv / dt) * 1000 : 0; 
+   var forcePct = Math.min(force * 5, 100);
+   
+   forceBar.style.width = forcePct + '%';
+   
+   if (forcePct > 80) {
+     forceBar.style.background = 'var(--danger)';
+     status.innerHTML = '<span style="color:var(--danger)"><i class="fas fa-exclamation-triangle"></i> Excessive Force!</span>';
+     slider.value = lastVal; // prevent moving forward if force is too high
+     warnings++;
+   } else {
+     forceBar.style.background = 'var(--accent)';
+     status.textContent = 'Force nominal';
+     lastVal = val;
+     
+     // Update visual tube length
+     tubeOverlay.style.height = (val / 60) * 48 + '%';
+   }
+   
+   if (val < 15) {
+     feedback.textContent = "Passing through nasal cavity...";
+     feedback.style.color = "var(--text-main)";
+     btn.disabled = true;
+     btn.style.opacity = '0.5';
+     btn.style.cursor = 'not-allowed';
+     btn.innerHTML = '<i class="fas fa-arrow-right"></i> Drag slider to 60cm to complete';
+   } else if (val < 40) {
+     feedback.textContent = "Instructing digital patient to swallow. Passing through pharynx...";
+     btn.disabled = true;
+     btn.style.opacity = '0.5';
+     btn.style.cursor = 'not-allowed';
+     btn.innerHTML = '<i class="fas fa-arrow-right"></i> Drag slider to 60cm to complete';
+   } else if (val < 59) {
+     feedback.textContent = "Advancing down esophagus...";
+     btn.disabled = true;
+     btn.style.opacity = '0.5';
+     btn.style.cursor = 'not-allowed';
+     btn.innerHTML = '<i class="fas fa-arrow-right"></i> Drag slider to 60cm to complete';
+   } else {
+     feedback.innerHTML = '<span style="color:var(--accent)"><i class="fas fa-check-circle"></i> Target depth reached (Stomach: 60cm).</span>';
+     btn.disabled = false;
+     btn.style.opacity = '1';
+     btn.style.cursor = 'pointer';
+     btn.innerHTML = '<i class="fas fa-vr-cardboard"></i> Complete Task & View Feedback';
+     VC.set({kinematicWarnings: warnings});
+   }
+   
+   lastTime = now;
+ };
+ 
+ btn.onclick = function() {
+   if (btn.disabled) return;
+   VC.set({stage: 3});
+   draw();
+   focusTop();
  };
 },
-function processing(el){
- var s=VC.get(),recordingName=s.recordingName||'',recordingUrl=s.recordingUrl||'',sourceStatus=recordingName?'Selected recording: <strong>'+e(recordingName)+'</strong>. The file remains on this device.':recordingUrl?'Video link added. The prototype will not open or upload it.':'No recording selected.';
- function list(i){return'<ol class="pipeline">'+STAGES.map(function(t,k){return'<li class="'+(k<i?'done':k===i?'active':'')+'"><span class="dot"></span><div><strong>'+t+'</strong><br><span class="muted">'+NOTES[k]+'</span></div></li>'}).join('')+'</ol>'}
- el.innerHTML='<p class="alert"><strong>Conceptual prototype.</strong> Selecting a file does not upload, retain, process, or create a 3D model from it. This screen demonstrates the proposed VR-training workflow only.</p>'+
- '<div class="card recording-upload"><h3>VR or procedure recording</h3><p>Choose a video captured from a VR headset, procedure camera, or simulation session. In a real system, only recordings with appropriate consent and de-identification could proceed.</p><label for="recording"><strong>Select a video recording</strong></label><input id="recording" class="recording-input" type="file" accept="video/*"><label for="recording-url"><strong>Or add a video link</strong></label><input id="recording-url" class="recording-input" type="url" value="'+e(recordingUrl)+'" placeholder="https://example.com/recording"><p id="file-status" class="muted" role="status">'+sourceStatus+'</p><button class="btn" id="run"'+(recordingName||recordingUrl||s.processed?'':' disabled')+'>Generate simulated 3D practice module</button></div><p id="pm" role="status" style="margin-bottom: 1rem;"></p><div id="pl"></div><div class="card generated-module" id="module"'+(s.processed?'':' hidden')+'><h3>First-person VR practice module ready (simulated)</h3><p>The proposed system would use the de-identified recording to reconstruct a 3D scene, then present skill-specific decisions and feedback for practice. No video or 3D model is generated by this prototype.</p></div>';
- var pl=el.querySelector('#pl'),pm=el.querySelector('#pm'),run=el.querySelector('#run'),file=el.querySelector('#recording'),url=el.querySelector('#recording-url'),fileStatus=el.querySelector('#file-status'),module=el.querySelector('#module');cfg.label='Continue to practice';
- pl.innerHTML=list(s.processed?5:-1);cfg.ok=s.processed;
- if(s.processed){pm.textContent='Simulated 3D practice module ready for the selected skill.';run.textContent='Regenerate simulated module'}
- file.onchange=function(){var selected=file.files&&file.files[0];if(!selected)return;recordingName=selected.name;recordingUrl='';url.value='';VC.set({recordingName:recordingName,recordingUrl:'',processed:false});fileStatus.innerHTML='Selected recording: <strong>'+e(recordingName)+'</strong>. The file remains on this device.';run.disabled=false;pm.textContent='';module.hidden=true;pl.innerHTML=list(-1);cfg.ok=false;bar()};
- url.onchange=function(){var link=url.value.trim();if(!link){run.disabled=!recordingName;return}recordingUrl=link;recordingName='';VC.set({recordingName:'',recordingUrl:recordingUrl,processed:false});fileStatus.textContent='Video link added. The prototype will not open or upload it.';run.disabled=false;pm.textContent='';module.hidden=true;pl.innerHTML=list(-1);cfg.ok=false;bar()};
- run.onclick=function(){run.disabled=true;var i=0,ms=matchMedia('(prefers-reduced-motion:reduce)').matches?200:1000;
-  (function step(){pl.innerHTML=list(i);if(i>=5){VC.set({processed:true});pm.textContent='Simulated 3D practice module ready. It would still require clinical educator validation.';cfg.ok=true;run.disabled=false;run.textContent='Regenerate simulated module';module.hidden=false;bar();return}
-   pm.textContent='Simulated: '+STAGES[i]+'…';i++;setTimeout(step,ms)})()};
-},
-function practice(el){
- var s=VC.get(),st=VC.engine.steps(),i=s.idx,skill=VC.SKILLS[s.skillId||'ngt'];cfg.label='AI feedback';cfg.ok=i>=st.length;cfg.showNext=i<st.length;bar();
- if(i>=st.length){el.innerHTML='<div class="card"><h3>All 3D practice tasks reviewed (demo)</h3><p>Review the simulated feedback, or practice again. A real patient model is still required for hands-on 3D practice.</p><div class="row"><button class="btn btn-ghost" id="again">Practice again</button><button class="btn" id="feedback">AI feedback</button></div></div>';el.querySelector('#again').onclick=function(){VC.resetSim();practice(el)};el.querySelector('#feedback').onclick=function(){VC.set({stage:3});draw();focusTop()};return}
- var step=st[i],pct=Math.round(100*i/st.length),source=s.recordingName?'local video recording':s.recordingUrl?'video link':'no source recording',videoId=youtubeId(s.recordingUrl),sourcePreview=videoId?'<div class="source-video"><h4>Selected YouTube source video</h4><iframe src="https://www.youtube-nocookie.com/embed/'+videoId+'" title="Selected YouTube source video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="muted">This source video has not been analysed or reconstructed by the prototype.</p></div>':'';
- el.innerHTML='<div class="sim vr-practice"><section class="card"><p class="muted">3D practice task '+(i+1)+' of '+st.length+(step.severity==='critical'?' <span class="badge warn">Safety-critical</span>':'')+'</p><h3>'+e(step.title)+'</h3><p>This task would appear in a first-person '+e(skill.title)+' practice environment after a real patient model is generated.</p><div class="model-required" role="status"><h4>3D patient model processing required</h4><p>The selected recording must be processed by an approved video-to-3D service and produce a reviewed <code>.glb</code> or <code>.gltf</code> model before an interactive patient viewer can be shown here.</p></div>'+sourcePreview+'<div class="row"><button class="btn" id="complete">Mark task reviewed (demo)</button></div><p id="scene-status" class="muted" role="status">A real 3D practice task cannot start until a reviewed patient model is available.</p></section><aside class="card"><h3>Practice progress</h3><div class="progress" role="progressbar" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><span style="width:'+pct+'%"></span></div><p><strong>Model source:</strong> '+source+'</p><p class="muted">This static prototype embeds the selected source video only. It does not process the video or generate a 3D patient model.</p></aside></div>';
- el.querySelector('#complete').onclick=function(){var latest=VC.get(),answers=latest.answers;answers[step.id]={attempts:1,firstCorrect:true,correct:true};VC.set({answers:answers,idx:i+1});practice(el)};
-},
+
 function feedback(el){
- var c=VC.scoring.compute(),has=Object.keys(c.answers).length>0;cfg.ok=has;cfg.label='Request instructor review';
- cfg.onNext=function(){var d=VC.get().educator;d.requested=true;VC.set({educator:d})};
- if(!has){el.innerHTML='<div class="alert">No practice data yet. Go back and complete Practice.</div>';return}
- var completed=c.steps.filter(function(step){return c.answers[step.id]&&c.answers[step.id].correct}).length,critical=c.steps.filter(function(step){return step.severity==='critical'}).length;
- el.innerHTML='<p class="alert">This simulated AI feedback is based on the 3D practice-task review. It is generated by predefined JavaScript rules, not a trained AI model; scores are illustrative prototype values, not benchmarks.</p>'+
- '<div class="card"><h3>Your 3D practice-task review</h3><div class="grid"><div><strong>Reviewed tasks</strong><p>'+completed+' of '+c.steps.length+'</p></div><div><strong>Demo actions completed</strong><p>'+completed+'</p></div><div><strong>Safety-critical tasks</strong><p>'+critical+'</p></div><div><strong>Tasks needing review</strong><p>'+c.flags.length+'</p></div></div></div>'+
- '<div class="grid"><div class="card"><h3>Overall session score (illustrative)</h3><div class="score">'+c.overall+'%</div></div><div class="card"><h3>Task-group scores</h3>'+c.cats.map(function(x){return'<p>'+e(x.name)+': '+x.pct+'%<span class="progress" style="display:block"><span style="width:'+x.pct+'%"></span></span></p>'}).join('')+'</div><div class="card"><h3>Safety flags</h3>'+(c.flags.length?c.flags.map(function(s){return'<p class="alert bad">'+e(s.title)+' needed a review.</p>'}).join(''):'<p class="alert ok">No safety flags.</p>')+'</div></div><h3 style="margin-top:var(--s5)">Simulated AI feedback</h3><div class="stack" id="fb"></div>';
- VC.feedback.render(el.querySelector('#fb'));
-},
-function review(el){
- var sc=VC.scoring.compute(),auto=sc.flags.length?'Needs further practice (simulated)':'No flags (simulated)';
- el.innerHTML='<p class="alert"><strong>Human oversight.</strong> The educator can accept, modify or override any AI observation, and the educator\'s decision is final. Demo role only, no login.</p><div class="grid"><div class="card"><h3>Learner performance</h3><p><strong>Illustrative score:</strong> '+sc.overall+'%</p><p><strong>Safety flags:</strong> '+sc.flags.length+'</p><p><strong>AI-suggested status:</strong> '+auto+'</p></div>'+
- '<div class="card"><h3>Instructor decision</h3><div id="status" role="status"></div><label for="comment"><strong>Instructor comments</strong></label><textarea id="comment"></textarea><label for="final"><strong>Final status (for override)</strong></label><br><select id="final"><option>Satisfactory (instructor)</option><option>Needs further practice (instructor)</option><option>Not yet ready (instructor)</option></select><div class="row"><button class="btn" id="accept">Accept</button><button class="btn btn-ghost" id="modify">Modify</button><button class="btn" id="override" style="background:var(--oversight);border-color:var(--oversight);color:var(--ink)">Override</button></div></div></div><h3 style="margin-top:var(--s5)">AI observations (simulated)</h3><div class="stack" id="obs"></div>';
- VC.feedback.render(el.querySelector('#obs'));
- function show(){var d=VC.get().educator;el.querySelector('#status').innerHTML=d.decision?'<div class="review-state"><strong>Instructor decision: '+e(d.decision.toUpperCase())+'</strong><br>Final status: '+e(d.finalStatus)+(d.comment?'<br>Comment: '+e(d.comment):'')+'<br><span class="muted">The instructor, not the AI, holds the final assessment.</span></div>':'<div class="alert">Awaiting instructor decision. AI suggestions are not final.</div>'}
- function decide(k){var c=el.querySelector('#comment').value.trim(),f=auto;
-  if((k==='override'||k==='modify')&&!c){alert('Please add a comment explaining your '+k+'.');return}
-  if(k==='override')f=el.querySelector('#final').value;
-  var d=VC.get().educator;VC.set({educator:Object.assign(d,{decision:k,comment:c,finalStatus:f,requested:true})});show()}
- ['accept','modify','override'].forEach(function(k){el.querySelector('#'+k).onclick=function(){decide(k)}});show();
-}];
+ var warnings = VC.get().kinematicWarnings || 0;
+ var score = Math.max(100 - (warnings * 15), 40);
+ var forceStatus = warnings === 0 ? '<span style="float:right; color: var(--accent);">Excellent (Smooth)</span><br><div class="progress"><span style="width: 100%; background: var(--accent);"></span></div>' : '<span style="float:right; color: var(--danger);">Excessive Force Detected ('+warnings+'x)</span><br><div class="progress"><span style="width: '+(100-(warnings*20))+'%; background: var(--danger);"></span></div>';
+ 
+ el.innerHTML='<div class="grid-2"><div class="card"><h3>Objective Kinematic Score</h3><div class="score" style="color: '+(score>70?'var(--accent)':'var(--danger)')+';">'+score+'%</div><p class="muted" style="text-align: center;">Compared against expert surgeon baseline</p></div><div class="card"><h3>Performance Metrics</h3><ul style="list-style: none; padding: 0;"><li style="margin-bottom: 1rem;"><strong>Economy of Motion:</strong> <span style="float:right; color: var(--accent);">Excellent (92%)</span><br><div class="progress"><span style="width: 92%; background: var(--accent);"></span></div></li><li style="margin-bottom: 1rem;"><strong>Tissue Handling Force:</strong> '+forceStatus+'</li><li style="margin-bottom: 1rem;"><strong>Instrument Path Deviation:</strong> <span style="float:right; color: #fbbf24;">+5% vs Expert</span><br><div class="progress"><span style="width: 95%; background: #fbbf24;"></span></div></li></ul></div></div><div class="card" style="margin-top: 2rem; border-left: 4px solid var(--primary);"><h3>AI Procedural Feedback</h3><p><strong>Phase 1 (Nasal Passage):</strong> '+ (warnings > 0 ? '<span style="color:var(--danger)">The AI detected rapid, excessive force applied during advancement. In a real clinical setting, this risks mucosal trauma and epistaxis. You must advance the tube slowly and gently.</span>' : '<span style="color:var(--accent)">Excellent, steady advancement through the turbinates. No excessive force detected.</span>') +'</p><p><strong>Phase 2 (Pharynx/Esophagus):</strong> Good synchronization with the simulated patient\'s swallowing reflex. The trajectory matched the expert baseline within a safe margin of error.</p><p><strong>Final Placement:</strong> Reached 60cm mark accurately based on NEX measurement.</p></div>';
+ 
+ cfg.ok = false;
+ cfg.showNext = false;
+ bar();
+}
+];
+
+if (!VC.get) {
+  // basic state management fallback if state.js isn't fully loaded the way we expect
+  window._vc_state = { stage: 0 };
+  VC.get = function() { return window._vc_state; };
+  VC.set = function(s) { window._vc_state = Object.assign(window._vc_state, s); };
+  VC.reset = function() { window._vc_state = { stage: 0 }; };
+  VC.esc = function(s) { return s; };
+}
+
 draw();
 VC.draw=draw;
 })();

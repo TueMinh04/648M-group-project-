@@ -1,4 +1,4 @@
-/* VIRTUCARE – Clinical Skills Data
+/* CLINOVA – Clinical Skills Data
  * Questions are illustrative educational scenarios for an academic prototype.
  * NOT clinical instructions. All content must be reviewed by a qualified clinician
  * before use in any real training context. */

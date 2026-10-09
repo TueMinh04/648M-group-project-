@@ -8,15 +8,16 @@ var b=document.body;
 var h=document.getElementById('site-header');
 if(h) {
   h.outerHTML = `
-  <nav class="navbar" style="position: sticky; top: 0; z-index: 1000;">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <div class="logo"><a href="${R}index.html" style="color: var(--text-main); font-weight: 700; font-size: 1.5rem; text-decoration: none;">VIRTU<span style="color: var(--primary);">CARE</span></a></div>
-      <div class="nav-links" style="display: flex; gap: 2rem;">
-        <a href="${R}index.html#overview" style="color: var(--text-muted); font-weight: 500; text-decoration: none;">Overview</a>
-        <a href="${R}index.html#proposal" style="color: var(--text-muted); font-weight: 500; text-decoration: none;">Proposal</a>
-        <a href="${R}index.html#social" style="color: var(--text-muted); font-weight: 500; text-decoration: none;">Social</a>
-        <a href="${R}index.html#ethics" style="color: var(--text-muted); font-weight: 500; text-decoration: none;">Ethics</a>
-        <a href="${R}index.html#research" style="color: var(--text-muted); font-weight: 500; text-decoration: none;">Research</a>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo"><a href="${R}index.html" style="color: inherit; text-decoration: none;">CLIN<span>OVA</span></a></div>
+      <div class="nav-links">
+        <a href="${R}index.html#problem">Problem</a>
+        <a href="${R}index.html#proposal">Proposal</a>
+        <a href="${R}index.html#demo">Demo</a>
+        <a href="${R}index.html#ethics">Ethics</a>
+        <a href="${R}index.html#research">Research</a>
+        <a href="${R}index.html#claude">AI Use</a>
       </div>
     </div>
   </nav>
@@ -35,7 +36,7 @@ if(f) {
   f.outerHTML = `
   <footer style="background: var(--surface-color); padding: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem;">
     <div class="container">
-      <h3 style="color: var(--text-main); font-weight: 600;">VIRTUCARE</h3>
+      <h3 style="color: var(--text-main); font-weight: 600;">CLINOVA</h3>
       <p style="color: var(--text-muted);">A conceptual academic prototype for the 648M Small-Group Project.</p>
       <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">Not a medical system. Not clinically validated.</p>
     </div>

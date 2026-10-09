@@ -1,7 +1,7 @@
-# VIRTUCARE
+# CLINOVA
 **Real Procedures. Virtual Practice. Responsible AI.**
 
-A *conceptual academic prototype* (MHIA healthcare AI ethics project). VIRTUCARE is a **proposed** AI-assisted clinical simulation platform using consented, de-identified procedure recordings as source material. The demo covers nasogastric tube (NGT) insertion.
+A *conceptual academic prototype* (MHIA healthcare AI ethics project). CLINOVA is a **proposed** AI-assisted clinical simulation platform using consented, de-identified procedure recordings as source material. The demo covers nasogastric tube (NGT) insertion.
 
 > Not a medical system. Not clinically validated. All "AI" behaviour is deterministic JavaScript rules. All scores are illustrative. Step content is **placeholder** until validated sources are added.
 

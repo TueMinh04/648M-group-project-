@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VIRTUCARE | Health Tech Proposal</title>
-  <meta name="description" content="VIRTUCARE: a conceptual AI-assisted clinical simulation prototype for the 648M Small-Group Project.">
+  <title>CLINOVA | Health Tech Proposal</title>
+  <meta name="description" content="CLINOVA: a conceptual AI-assisted clinical simulation prototype for the 648M Small-Group Project.">
   <link rel="stylesheet" href="./assets/css/premium.css">
   <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
   <!-- FontAwesome for Icons -->
@@ -15,7 +15,7 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="container">
-      <div class="logo">VIRTU<span>CARE</span></div>
+      <div class="logo">CLIN<span>OVA</span></div>
       <div class="nav-links">
         <a href="#problem">Problem</a>
         <a href="#proposal">Proposal</a>
@@ -45,24 +45,23 @@
   <section id="problem" class="section">
     <div class="container">
       <h2>1. The Problem</h2>
-      <p>Clinical procedural training today relies primarily on <strong>physical simulation labs and manikin-based practice</strong>. While foundational, these approaches carry significant structural limitations:</p>
+      <p>Clinical procedural training today relies primarily on <strong>physical simulation labs and static manikin-based practice</strong>. While foundational, these approaches carry significant structural limitations:</p>
 
       <div class="grid-2" style="margin-top: 2rem;">
         <div class="card">
           <div class="card-icon" style="color: var(--danger); background: rgba(239, 68, 68, 0.1);"><i class="fas fa-times-circle"></i></div>
           <h3>Shortcomings of Existing Technology</h3>
           <ul>
-            <li><p><strong>Limited Availability:</strong> Simulation labs require scheduled access, trained staff, and expensive equipment — not equally accessible to all institutions.</p></li>
-            <li><p><strong>No Adaptive Feedback:</strong> Manikins and physical models cannot tailor difficulty or feedback to individual learner performance in real time.</p></li>
-            <li><p><strong>Scalability Ceiling:</strong> Each session requires physical setup and direct supervision, making large-scale or self-directed practice impractical.</p></li>
-            <li><p><strong>Procedural Gaps:</strong> Rare or high-risk procedures are infrequently practiced due to limited safe exposure opportunities.</p></li>
+            <li><p><strong>Lack of Realism:</strong> Traditional VR requires manual 3D modeling by artists, which is incredibly expensive and fails to capture the true, deformative nature of human tissue.</p></li>
+            <li><p><strong>Limited Scenarios:</strong> Rare or highly complex surgical procedures are practically impossible to simulate due to the cost of bespoke 3D modeling.</p></li>
+            <li><p><strong>Subjective Assessment:</strong> Feedback on surgical technique relies heavily on the physical presence of an expert instructor, creating a bottleneck for large-scale practice.</p></li>
           </ul>
         </div>
         <div class="card">
           <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
           <h3>Why This Matters</h3>
-          <p>Procedural confidence directly affects patient safety. When learners lack sufficient practice opportunities — especially outside structured lab hours — clinical errors become more likely.</p>
-          <p style="margin-top: 1rem;">There is a clear need for a training approach that is <strong>accessible on-demand, adaptive to the learner, and safe to repeat</strong> without resource constraints.</p>
+          <p>Surgical confidence and patient safety are directly linked. When residents lack sufficient high-fidelity practice opportunities — especially for complex procedures — operative times increase and clinical errors become more likely.</p>
+          <p style="margin-top: 1rem;">There is a clear need for a training approach that can <strong>automatically generate true-to-life interactive modules directly from real-world surgical recordings</strong>.</p>
         </div>
       </div>
     </div>
@@ -71,46 +70,46 @@
   <!-- 2. Our Proposal -->
   <section id="proposal" class="section" style="background: rgba(255,255,255,0.02);">
     <div class="container">
-      <h2>2. Our Proposal: VIRTUCARE</h2>
-      <p>We propose <em>VIRTUCARE</em> — a web-based, AI-assisted clinical simulation platform. Rather than replacing physical labs, VIRTUCARE supplements them by providing structured, consent-governed, AI-guided practice sessions accessible anytime, from any browser.</p>
+      <h2>2. Our Proposal: CLINOVA</h2>
+      <p>We propose <em>CLINOVA</em> — an AI-powered pipeline that transforms real 2D surgical video into fully interactive, first-person VR practice modules using 3D Gaussian Splatting and provides automated kinematic feedback to the learner.</p>
 
       <div class="grid-3" style="margin-top: 2rem;">
         <div class="card">
-          <div class="card-icon"><i class="fas fa-file-signature"></i></div>
-          <h3>Consent-First Design</h3>
-          <p>Every session begins with an explicit, layered consent process. Learners understand what data is collected, how AI is used, and how to withdraw at any point.</p>
+          <div class="card-icon"><i class="fas fa-video"></i></div>
+          <h3>AI 3D Reconstruction</h3>
+          <p>Using 3D Gaussian Splatting (3DGS), our AI pipeline processes real, consented surgical video and reconstructs the surgical cavity into a true-to-life 3D digital twin without manual artist modeling.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><i class="fas fa-hand-holding-medical"></i></div>
-          <h3>Guided Procedural Practice</h3>
-          <p>Learners work through step-by-step clinical scenarios (e.g., NGT insertion, IV placement) in an interactive, decision-based format — repeatable on demand.</p>
+          <div class="card-icon"><i class="fas fa-vr-cardboard"></i></div>
+          <h3>Physics-Enabled VR Practice</h3>
+          <p>We map a physics engine (XPBD) over the reconstructed tissue, allowing students to step into the VR environment and use virtual instruments to manipulate, cut, and suture the AI-generated anatomy.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><i class="fas fa-brain"></i></div>
-          <h3>AI-Generated Feedback</h3>
-          <p>AI analyzes learner decisions and generates structured feedback on accuracy, sequencing, and safety. A human clinician can review or override feedback at any time.</p>
+          <div class="card-icon"><i class="fas fa-robot"></i></div>
+          <h3>Kinematic AI Feedback</h3>
+          <p>The AI tracks the student's VR controllers, comparing their surgical tool path length, velocity, and tissue handling against the original expert surgeon's data, providing automated, objective feedback.</p>
         </div>
       </div>
 
       <div class="card" style="margin-top: 2rem; border-top: 3px solid var(--primary);">
-        <h3>How VIRTUCARE Differs</h3>
+        <h3>How CLINOVA Differs</h3>
         <div class="grid-2" style="margin-top: 1rem;">
           <div>
-            <p style="color: var(--danger); font-weight: 600; margin-bottom: 0.5rem;"><i class="fas fa-times" style="margin-right: 0.5rem;"></i>Current Approach</p>
+            <p style="color: var(--danger); font-weight: 600; margin-bottom: 0.5rem;"><i class="fas fa-times" style="margin-right: 0.5rem;"></i>Current VR Training</p>
             <ul>
-              <li><p>Scheduled lab time required</p></li>
-              <li><p>Fixed, non-adaptive scenarios</p></li>
-              <li><p>Expert supervisor must be physically present</p></li>
-              <li><p>No persistent learner data across sessions</p></li>
+              <li><p>Modules take months to manually build</p></li>
+              <li><p>Looks like a cartoon video game</p></li>
+              <li><p>Rigid, scripted interactions</p></li>
+              <li><p>No real-time objective motion tracking</p></li>
             </ul>
           </div>
           <div>
-            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;"><i class="fas fa-check" style="margin-right: 0.5rem;"></i>VIRTUCARE Proposal</p>
+            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;"><i class="fas fa-check" style="margin-right: 0.5rem;"></i>CLINOVA Proposal</p>
             <ul>
-              <li><p>On-demand, browser-based access</p></li>
-              <li><p>Adaptive difficulty based on performance</p></li>
-              <li><p>AI feedback with clinician oversight layer</p></li>
-              <li><p>Optional longitudinal progress tracking</p></li>
+              <li><p>Modules generated in hours via AI</p></li>
+              <li><p>Photorealistic 3D Gaussian Splatting</p></li>
+              <li><p>Dynamic soft-tissue physics simulation</p></li>
+              <li><p>Automated kinematic & phase recognition feedback</p></li>
             </ul>
           </div>
         </div>
@@ -122,46 +121,46 @@
   <section id="demo" class="section">
     <div class="container">
       <h2>3. Prototype Demo</h2>
-      <p>The walkthrough below illustrates the proposed learner experience in VIRTUCARE. This is a conceptual academic prototype — it demonstrates the interaction flow, not a production clinical system.</p>
+      <p>The walkthrough below illustrates the proposed platform workflow in CLINOVA. This prototype demonstrates the web-based dashboard where surgical video is uploaded, processed by AI, and reviewed.</p>
 
       <div class="flow-steps" style="margin-top: 2.5rem;">
 
         <div class="flow-step card">
           <div class="flow-step-number">01</div>
           <div class="card-icon"><i class="fas fa-file-signature"></i></div>
-          <h3>Consent</h3>
-          <p>The learner is presented with a plain-language consent form explaining how the session works, what the AI is doing, and how their data is handled. They must explicitly agree before proceeding.</p>
-          <div class="flow-badge">Informed. Reversible. Transparent.</div>
+          <h3>Consent & Video Upload</h3>
+          <p>The surgeon obtains patient consent and uploads a de-identified, stabilized recording of the procedure.</p>
+          <div class="flow-badge">HIPAA Compliant. End-to-End Encrypted.</div>
         </div>
 
         <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
 
         <div class="flow-step card">
           <div class="flow-step-number">02</div>
-          <div class="card-icon"><i class="fas fa-hand-holding-medical"></i></div>
-          <h3>Practice</h3>
-          <p>The learner selects a clinical procedure (e.g., NGT insertion) and works through it step-by-step, choosing the correct action at each decision point from a set of options.</p>
-          <div class="flow-badge">Self-paced. Decision-based. Repeatable.</div>
+          <div class="card-icon"><i class="fas fa-microchip"></i></div>
+          <h3>AI 3DGS Processing</h3>
+          <p>The AI extracts spatial data from the video, rendering a millions-of-particles 3D Gaussian Splat of the surgical cavity, and applies a soft-tissue physics mesh.</p>
+          <div class="flow-badge">NeRF / 3DGS. XPBD Physics.</div>
         </div>
 
         <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
 
         <div class="flow-step card">
           <div class="flow-step-number">03</div>
-          <div class="card-icon"><i class="fas fa-robot"></i></div>
-          <h3>AI Feedback</h3>
-          <p>Upon completion, AI evaluates the session. Feedback is structured around accuracy, safety sequencing, and missed steps — phrased constructively, not as a binary pass/fail grade.</p>
-          <div class="flow-badge">Specific. Constructive. Clinician-reviewable.</div>
+          <div class="card-icon"><i class="fas fa-vr-cardboard"></i></div>
+          <h3>VR Practice</h3>
+          <p>Students access the module in their standalone VR headset, practicing the exact steps performed by the expert surgeon in a photorealistic environment.</p>
+          <div class="flow-badge">Haptic Integration. First-Person View.</div>
         </div>
 
         <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
 
         <div class="flow-step card">
           <div class="flow-step-number">04</div>
-          <div class="card-icon"><i class="fas fa-clipboard-check"></i></div>
-          <h3>Review</h3>
-          <p>The learner sees a full summary: correct steps, errors, and a recommended focus area. They can re-attempt the scenario or move on to a different module.</p>
-          <div class="flow-badge">Reflective. Iterative. Learner-controlled.</div>
+          <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Kinematic Feedback</h3>
+          <p>AI evaluates the session. Feedback is structured around tool economy of motion, instrument angles, and tissue handling safety compared to the expert baseline.</p>
+          <div class="flow-badge">Objective Metrics. Expert Baseline.</div>
         </div>
 
       </div>
@@ -207,7 +206,7 @@
         <div class="card social-card">
           <h3><i class="fas fa-chalkboard-teacher" style="margin-right: 0.5rem; color: var(--accent);"></i>Role of the Educator</h3>
           <p><strong>Concern:</strong> AI feedback tools may be perceived as reducing the need for human clinical instructors.</p>
-          <p style="margin-top: 0.75rem;"><strong>Approach:</strong> VIRTUCARE is a supplement, not a replacement. Educator oversight is built into the review layer of every session.</p>
+          <p style="margin-top: 0.75rem;"><strong>Approach:</strong> CLINOVA is a supplement, not a replacement. Educator oversight is built into the review layer of every session.</p>
         </div>
       </div>
     </div>
@@ -217,7 +216,7 @@
   <section id="research" class="section">
     <div class="container">
       <h2>5. Research Findings</h2>
-      <p>The following findings from our literature review informed the design of VIRTUCARE. Full citations will be added as research is finalized.</p>
+      <p>The following findings from our literature review informed the design of CLINOVA. Full citations will be added as research is finalized.</p>
 
       <div class="grid-2" style="margin-top: 2rem;">
         <div class="card">
@@ -267,7 +266,7 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <h3>VIRTUCARE</h3>
+      <h3>CLINOVA</h3>
       <p>A conceptual academic prototype for the 648M Small-Group Project.</p>
 
       <div class="team-members">
