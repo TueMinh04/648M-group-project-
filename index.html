@@ -71,23 +71,23 @@
   <section id="proposal" class="section" style="background: rgba(255,255,255,0.02);">
     <div class="container">
       <h2>2. Our Proposal: CLINOVA</h2>
-      <p>We propose <em>CLINOVA</em> — an AI-powered pipeline that transforms real 2D surgical video into fully interactive, first-person VR practice modules using 3D Gaussian Splatting and provides automated kinematic feedback to the learner.</p>
+      <p>We propose <em>CLINOVA</em> — an AI-powered pipeline that transforms real clinical video into interactive, web-based 2D practice modules, providing automated kinematic feedback to the learner.</p>
 
       <div class="grid-3" style="margin-top: 2rem;">
         <div class="card">
           <div class="card-icon"><i class="fas fa-video"></i></div>
-          <h3>AI 3D Reconstruction</h3>
-          <p>Using 3D Gaussian Splatting (3DGS), our AI pipeline processes real, consented surgical video and reconstructs the surgical cavity into a true-to-life 3D digital twin without manual artist modeling.</p>
+          <h3>AI Video Processing</h3>
+          <p>Using computer vision, our AI pipeline processes real, consented clinical video and extracts procedural steps and patient anatomy to generate interactive 2D simulations.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><i class="fas fa-vr-cardboard"></i></div>
-          <h3>Physics-Enabled VR Practice</h3>
-          <p>We map a physics engine (XPBD) over the reconstructed tissue, allowing students to step into the VR environment and use virtual instruments to manipulate, cut, and suture the AI-generated anatomy.</p>
+          <div class="card-icon"><i class="fas fa-laptop-medical"></i></div>
+          <h3>Interactive Web Practice</h3>
+          <p>Students access a simulated web environment, using interactive sliders and UI controls to manipulate medical instruments and simulate clinical tasks safely.</p>
         </div>
         <div class="card">
           <div class="card-icon"><i class="fas fa-robot"></i></div>
           <h3>Kinematic AI Feedback</h3>
-          <p>The AI tracks the student's VR controllers, comparing their surgical tool path length, velocity, and tissue handling against the original expert surgeon's data, providing automated, objective feedback.</p>
+          <p>The AI tracks the student's inputs (such as insertion speed and applied force), comparing their simulated performance against an expert baseline to provide objective feedback.</p>
         </div>
       </div>
 
@@ -97,19 +97,19 @@
           <div>
             <p style="color: var(--danger); font-weight: 600; margin-bottom: 0.5rem;"><i class="fas fa-times" style="margin-right: 0.5rem;"></i>Current VR Training</p>
             <ul>
+              <li><p>Requires expensive VR headsets</p></li>
               <li><p>Modules take months to manually build</p></li>
               <li><p>Looks like a cartoon video game</p></li>
-              <li><p>Rigid, scripted interactions</p></li>
               <li><p>No real-time objective motion tracking</p></li>
             </ul>
           </div>
           <div>
             <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;"><i class="fas fa-check" style="margin-right: 0.5rem;"></i>CLINOVA Proposal</p>
             <ul>
+              <li><p>Accessible directly in any web browser</p></li>
               <li><p>Modules generated in hours via AI</p></li>
-              <li><p>Photorealistic 3D Gaussian Splatting</p></li>
-              <li><p>Dynamic soft-tissue physics simulation</p></li>
-              <li><p>Automated kinematic & phase recognition feedback</p></li>
+              <li><p>Interactive 2D web simulations</p></li>
+              <li><p>Simulated kinematic force tracking</p></li>
             </ul>
           </div>
         </div>
@@ -138,19 +138,19 @@
         <div class="flow-step card">
           <div class="flow-step-number">02</div>
           <div class="card-icon"><i class="fas fa-microchip"></i></div>
-          <h3>AI 3DGS Processing</h3>
-          <p>The AI extracts spatial data from the video, rendering a millions-of-particles 3D Gaussian Splat of the surgical cavity, and applies a soft-tissue physics mesh.</p>
-          <div class="flow-badge">NeRF / 3DGS. XPBD Physics.</div>
+          <h3>AI Video Processing</h3>
+          <p>The AI extracts spatial data from the video, mapping the anatomy into a 2D interactive plane for web-based simulation without the need for manual artists.</p>
+          <div class="flow-badge">Computer Vision. 2D Mapping.</div>
         </div>
 
         <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
 
         <div class="flow-step card">
           <div class="flow-step-number">03</div>
-          <div class="card-icon"><i class="fas fa-vr-cardboard"></i></div>
-          <h3>VR Practice</h3>
-          <p>Students access the module in their standalone VR headset, practicing the exact steps performed by the expert surgeon in a photorealistic environment.</p>
-          <div class="flow-badge">Haptic Integration. First-Person View.</div>
+          <div class="card-icon"><i class="fas fa-laptop-medical"></i></div>
+          <h3>Web-Based Practice</h3>
+          <p>Students access the module directly in their browser, practicing the exact steps using interactive sliders and UI controls to simulate instrument manipulation.</p>
+          <div class="flow-badge">Web Interface. Real-Time Tracking.</div>
         </div>
 
         <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
