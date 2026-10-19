@@ -272,6 +272,12 @@ section {
   gap: 2rem;
 }
 
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
 /* Cards */
 .card {
   background: var(--surface-color);
@@ -312,6 +318,17 @@ section {
 .social-card {
   border-top: 4px solid var(--accent);
 }
+
+/* Clinical Guidelines Panel */
+.guideline-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.guideline-tab { padding: 0.6rem 1.25rem; border-radius: 99px; background: rgba(255,255,255,0.05); color: var(--text-muted); border: 1px solid rgba(255,255,255,0.1); cursor: pointer; font-size: 0.95rem; font-weight: 500; font-family: inherit; transition: var(--transition); }
+.guideline-tab:hover { background: rgba(255,255,255,0.12); color: var(--text-main); }
+.guideline-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 0 15px var(--primary-glow); }
+.guideline-content { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 2rem; }
+.guideline-badge-gap { background: rgba(239, 68, 68, 0.12); color: #fca5a5; padding: 0.85rem 1.25rem; border-radius: 8px; border-left: 3px solid var(--danger); font-size: 0.95rem; margin-bottom: 1.5rem; }
+.guideline-badge-verify { background: rgba(16, 185, 129, 0.12); color: #6ee7b7; padding: 0.85rem 1.25rem; border-radius: 8px; border-left: 3px solid var(--accent); font-size: 0.95rem; margin-top: 1.5rem; }
+.checklist-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.6rem; font-size: 1rem; color: var(--text-main); }
+.checklist-item i { color: var(--accent); margin-top: 0.25rem; }
 
 /* Footer */
 footer {

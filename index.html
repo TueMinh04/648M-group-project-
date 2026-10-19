@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CLINOVA | Health Tech Proposal</title>
-  <meta name="description" content="CLINOVA: a conceptual AI-assisted clinical simulation prototype for the 648M Small-Group Project.">
+  <title>Virtucare - The Future of Clinical Training</title>
+  <meta name="description" content="Virtucare is a virtual reality clinical education system to revolutionize training and improve patient outcomes.">
   <link rel="stylesheet" href="./assets/css/premium.css">
   <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
   <!-- FontAwesome for Icons -->
@@ -15,10 +15,11 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="container">
-      <div class="logo">CLIN<span>OVA</span></div>
+      <div class="logo">VIRTU<span>CARE</span></div>
       <div class="nav-links">
         <a href="#problem">Problem</a>
         <a href="#proposal">Proposal</a>
+        <a href="#guidelines">Guidelines</a>
         <a href="#demo">Demo</a>
         <a href="#ethics">Ethics</a>
         <a href="#research">Research</a>
@@ -31,8 +32,9 @@
   <section class="hero" id="home">
     <div class="container">
       <div class="hero-content">
-        <h1>AI-Assisted Clinical Simulation</h1>
-        <p class="lede">A conceptual proposal for using AI to transform clinical procedure training into safe, scalable, and personalized learning experiences for healthcare students.</p>
+        <h1>Virtucare</h1>
+        <p class="hero-subtitle" style="font-size: 1.5rem; font-weight: 500; color: var(--primary); margin-top: -0.5rem; margin-bottom: 1.5rem; letter-spacing: -0.01em;">The future of clinical training</p>
+        <p class="lede">Virtucare is a virtual reality clinical education system to revolutionize training and improve patient outcomes.</p>
         <p class="team-names" style="margin-bottom: 2.5rem; font-weight: 500; color: var(--text-muted);">Team: Youngin Choi, Yvonne Ma, Paul Leung, Minh Vuong</p>
         <div class="cta">
           <a class="btn btn-primary" href="pages/prototype.html">Explore the Prototype Flow</a>
@@ -52,16 +54,16 @@
           <div class="card-icon" style="color: var(--danger); background: rgba(239, 68, 68, 0.1);"><i class="fas fa-times-circle"></i></div>
           <h3>Shortcomings of Existing Technology</h3>
           <ul>
-            <li><p><strong>Lack of Realism:</strong> Traditional VR requires manual 3D modeling by artists, which is incredibly expensive and fails to capture the true, deformative nature of human tissue.</p></li>
-            <li><p><strong>Limited Scenarios:</strong> Rare or highly complex surgical procedures are practically impossible to simulate due to the cost of bespoke 3D modeling.</p></li>
-            <li><p><strong>Subjective Assessment:</strong> Feedback on surgical technique relies heavily on the physical presence of an expert instructor, creating a bottleneck for large-scale practice.</p></li>
+            <li><p><strong>Lack of Realism:</strong> Traditional physical manikins and static models fail to capture the true, deformative nature and complexity of human clinical procedures.</p></li>
+            <li><p><strong>Limited Scenarios:</strong> Rare or highly complex surgical procedures are practically impossible to simulate due to the physical limitations of manikins.</p></li>
+            <li><p><strong>Subjective Assessment:</strong> Feedback on clinical technique relies heavily on the physical presence of an expert instructor, creating a bottleneck for large-scale practice.</p></li>
           </ul>
         </div>
         <div class="card">
           <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
           <h3>Why This Matters</h3>
-          <p>Surgical confidence and patient safety are directly linked. When residents lack sufficient high-fidelity practice opportunities — especially for complex procedures — operative times increase and clinical errors become more likely.</p>
-          <p style="margin-top: 1rem;">There is a clear need for a training approach that can <strong>automatically generate true-to-life interactive modules directly from real-world surgical recordings</strong>.</p>
+          <p>Procedural confidence and patient safety are directly linked. When residents lack sufficient high-fidelity practice opportunities — especially for complex procedures — operative times increase and clinical errors become more likely.</p>
+          <p style="margin-top: 1rem;">There is a clear need for an <strong>immersive virtual reality education system that standardizes training, tracks performance, and improves patient outcomes</strong>.</p>
         </div>
       </div>
     </div>
@@ -70,47 +72,156 @@
   <!-- 2. Our Proposal -->
   <section id="proposal" class="section" style="background: rgba(255,255,255,0.02);">
     <div class="container">
-      <h2>2. Our Proposal: CLINOVA</h2>
-      <p>We propose <em>CLINOVA</em> — an AI-powered pipeline that transforms real clinical video into interactive, web-based 2D practice modules, providing automated kinematic feedback to the learner.</p>
+      <h2>2. Our Proposal: Virtucare</h2>
+      <p><strong>Virtucare is a virtual reality clinical education system to revolutionize training and improve patient outcomes.</strong></p>
+      <p>By blending immersive simulation with precision analytics, Virtucare empowers healthcare trainees to gain competence and confidence across four core categories:</p>
 
-      <div class="grid-3" style="margin-top: 2rem;">
+      <div class="grid-4" style="margin-top: 2rem;">
         <div class="card">
-          <div class="card-icon"><i class="fas fa-video"></i></div>
-          <h3>AI Video Processing</h3>
-          <p>Using computer vision, our AI pipeline processes real, consented clinical video and extracts procedural steps and patient anatomy to generate interactive 2D simulations.</p>
+          <div class="card-icon" style="color: var(--primary); background: rgba(59, 130, 246, 0.1);"><i class="fas fa-vr-cardboard"></i></div>
+          <h3>Immersive VR scenarios</h3>
+          <p>Realistic procedural environments that place learners directly into high-fidelity simulated clinical settings to build spatial and situational readiness.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><i class="fas fa-laptop-medical"></i></div>
-          <h3>Interactive Web Practice</h3>
-          <p>Students access a simulated web environment, using interactive sliders and UI controls to manipulate medical instruments and simulate clinical tasks safely.</p>
+          <div class="card-icon" style="color: var(--secondary); background: rgba(139, 92, 246, 0.1);"><i class="fas fa-hand-holding-medical"></i></div>
+          <h3>Experience hands-on clinical practice</h3>
+          <p>Interactive procedural practice allowing trainees to build muscle memory, master techniques, and refine decision-making in a risk-free environment.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><i class="fas fa-robot"></i></div>
-          <h3>Kinematic AI Feedback</h3>
-          <p>The AI tracks the student's inputs (such as insertion speed and applied force), comparing their simulated performance against an expert baseline to provide objective feedback.</p>
+          <div class="card-icon" style="color: var(--accent); background: rgba(16, 185, 129, 0.1);"><i class="fas fa-chart-line"></i></div>
+          <h3>Analyze performance tracking and feedback</h3>
+          <p>Objective metrics and kinematic motion tracking compare trainee performance against expert baselines to deliver data-driven, actionable feedback.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1);"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Standardize consistent curriculum delivery</h3>
+          <p>Repeatable, scalable training modules ensure every learner receives uniform high-quality instruction regardless of faculty availability.</p>
         </div>
       </div>
 
-      <div class="card" style="margin-top: 2rem; border-top: 3px solid var(--primary);">
-        <h3>How CLINOVA Differs</h3>
-        <div class="grid-2" style="margin-top: 1rem;">
-          <div>
-            <p style="color: var(--danger); font-weight: 600; margin-bottom: 0.5rem;"><i class="fas fa-times" style="margin-right: 0.5rem;"></i>Current VR Training</p>
-            <ul>
-              <li><p>Requires expensive VR headsets</p></li>
-              <li><p>Modules take months to manually build</p></li>
-              <li><p>Looks like a cartoon video game</p></li>
-              <li><p>No real-time objective motion tracking</p></li>
+      <div class="card" style="margin-top: 2.5rem; border-top: 3px solid var(--primary);">
+        <h3 style="margin-bottom: 0.5rem;">What Virtucare Can Do</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">A direct comparison between traditional clinical training and how Virtucare transforms procedural education:</p>
+        <div class="grid-2">
+          <div style="background: rgba(239, 68, 68, 0.05); padding: 1.75rem; border-radius: var(--radius); border: 1px solid rgba(239, 68, 68, 0.2);">
+            <p style="color: var(--danger); font-weight: 600; font-size: 1.15rem; margin-bottom: 1rem;"><i class="fas fa-user-clock" style="margin-right: 0.5rem;"></i>How skills are taught today</p>
+            <ul style="padding-left: 1.25rem;">
+              <li style="margin-bottom: 0.75rem;"><p style="margin: 0;">Clinicians learn skills only when opportunities arise.</p></li>
+              <li style="margin-bottom: 0.75rem;"><p style="margin: 0;">Independent practice is restricted until clinical judgement is proven.</p></li>
+              <li style="margin-bottom: 0.5rem;"><p style="margin: 0; color: #fca5a5; font-weight: 500;">This means a clinician’s first attempt at a critical skill may occur on a live patient.</p></li>
             </ul>
           </div>
-          <div>
-            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;"><i class="fas fa-check" style="margin-right: 0.5rem;"></i>CLINOVA Proposal</p>
-            <ul>
-              <li><p>Accessible directly in any web browser</p></li>
-              <li><p>Modules generated in hours via AI</p></li>
-              <li><p>Interactive 2D web simulations</p></li>
-              <li><p>Simulated kinematic force tracking</p></li>
+          <div style="background: rgba(59, 130, 246, 0.05); padding: 1.75rem; border-radius: var(--radius); border: 1px solid rgba(59, 130, 246, 0.2);">
+            <p style="color: var(--primary); font-weight: 600; font-size: 1.15rem; margin-bottom: 1rem;"><i class="fas fa-vr-cardboard" style="margin-right: 0.5rem;"></i>How Virtucare teaches the skill</p>
+            <ul style="padding-left: 1.25rem;">
+              <li style="margin-bottom: 0.75rem;"><p style="margin: 0;">Hands-on practice without patient risk.</p></li>
+              <li style="margin-bottom: 0.75rem;"><p style="margin: 0;">Performance feedback and metrics.</p></li>
+              <li style="margin-bottom: 0.5rem;"><p style="margin: 0; color: #93c5fd; font-weight: 500;">Accessible ‘anytime, anywhere’ learning safe environment to master complex skills.</p></li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clinical Practice Guidelines -->
+  <section id="guidelines" class="section">
+    <div class="container">
+      <h2>Evidence-Based Clinical Practice Guidelines</h2>
+      <p>Virtucare’s simulation curriculum is directly mapped to professional clinical guidelines, addressing common procedural errors, safety-critical steps, and placement verification standards across three foundational procedures:</p>
+
+      <div class="guideline-tabs" id="home-guideline-tabs">
+        <button type="button" class="guideline-tab active" data-target="home-tab-ngt"><i class="fas fa-lungs"></i> NG Tube Insertion</button>
+        <button type="button" class="guideline-tab" data-target="home-tab-foley"><i class="fas fa-procedures"></i> Urinary Catheterization</button>
+        <button type="button" class="guideline-tab" data-target="home-tab-iv"><i class="fas fa-syringe"></i> Peripheral IV Insertion</button>
+      </div>
+
+      <!-- NGT -->
+      <div id="home-tab-ngt" class="guideline-pane">
+        <div class="card" style="border-top: 3px solid var(--primary);">
+          <div class="guideline-badge-gap">
+            <strong><i class="fas fa-exclamation-triangle"></i> Common Training Gap:</strong> Tube inserted into the lung
+          </div>
+          <div class="grid-2">
+            <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.05);">
+              <h4 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-user" style="margin-right: 0.5rem;"></i>Adult Critical Steps</h4>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Check doctor’s order</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Collect equipment</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Measure the length of the tube to be inserted (NEX: Nose to Ear lobe to Xiphoid)</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Lubricate the tube with jelly</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Insert the tube into the nare while instructing the patient to drink water through a straw to ensure NG tube enters the esophagus</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Document procedure</span></div>
+              <div class="guideline-badge-verify">
+                <strong><i class="fas fa-x-ray" style="margin-right: 0.4rem;"></i>Adult Placement Verification:</strong><br>
+                Chest x-ray initially and measure external length of tube every 4 hours.
+              </div>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.05);">
+              <h4 style="color: var(--secondary); margin-bottom: 1rem;"><i class="fas fa-baby" style="margin-right: 0.5rem;"></i>Neonate Critical Steps</h4>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Check doctor’s order</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Collect equipment</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Measure the length of the tube to be inserted</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Lubricate the tube with sterile water</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Insert the tube quickly into the nare</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Provide pain management</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Document procedure</span></div>
+              <div class="guideline-badge-verify">
+                <strong><i class="fas fa-vial" style="margin-right: 0.4rem;"></i>Neonate Placement Verification:</strong><br>
+                Aspirate stomach contents and check the pH using a pH strip; less than 5.5 is the appropriate pH.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Foley -->
+      <div id="home-tab-foley" class="guideline-pane" style="display: none;">
+        <div class="card" style="border-top: 3px solid var(--primary);">
+          <div class="guideline-badge-gap">
+            <strong><i class="fas fa-exclamation-triangle"></i> Common Training Gap:</strong> Inability to locate the urethra (in females); breaking sterility
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.05);">
+            <h4 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>Critical Clinical Steps</h4>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Check doctor’s order</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Collect equipment</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Maintain sterility throughout the procedure</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Lubricate tube with lidocaine jelly</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Insert the tube and advance until urine flow is observed</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Attach syringe to inflate catheter balloon</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Do not exceed three attempts</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Document the procedure</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Must be assessed every 24 hours when catheter is indwelling</span></div>
+            <div class="guideline-badge-verify">
+              <strong><i class="fas fa-check-double" style="margin-right: 0.4rem;"></i>Placement Verification:</strong><br>
+              When urine flow through the catheter is observed.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PIV -->
+      <div id="home-tab-iv" class="guideline-pane" style="display: none;">
+        <div class="card" style="border-top: 3px solid var(--primary);">
+          <div class="guideline-badge-gap">
+            <strong><i class="fas fa-exclamation-triangle"></i> Common Training Gap:</strong> Selecting the correct catheter gauge size; missing the vein upon insertion; uncertainty at an interstitial site
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.05);">
+            <h4 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>Critical Clinical Steps</h4>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Check doctor’s order</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Collect equipment</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Use tourniquet to engorge the veins</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Disinfect site with antiseptic solution</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Visualize the vein and insert the needle with the catheter</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Advance the catheter</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Flush to ensure patency</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Secure cannula with Tegaderm</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>No more than 2 attempts</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Document the procedure</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Must be assessed every hour</span></div>
+            <div class="guideline-badge-verify">
+              <strong><i class="fas fa-check-double" style="margin-right: 0.4rem;"></i>Placement Verification:</strong><br>
+              When flashback is visualized in the catheter; flush the catheter and monitor the site to ensure patency.
+            </div>
           </div>
         </div>
       </div>
@@ -121,7 +232,7 @@
   <section id="demo" class="section">
     <div class="container">
       <h2>3. Prototype Demo</h2>
-      <p>The walkthrough below illustrates the proposed platform workflow in CLINOVA. This prototype demonstrates the web-based dashboard where surgical video is uploaded, processed by AI, and reviewed.</p>
+      <p>The walkthrough below illustrates the proposed platform workflow in Virtucare. This prototype demonstrates the web-based dashboard where surgical video is uploaded, processed by AI, and reviewed.</p>
 
       <div class="flow-steps" style="margin-top: 2.5rem;">
 
@@ -179,19 +290,25 @@
 
       <div class="grid-2" style="margin-top: 2rem;">
         <div class="card ethics-card">
-          <h3><i class="fas fa-file-signature" style="margin-right: 0.5rem; color: var(--secondary);"></i>Consent</h3>
-          <p><strong>Concern:</strong> Patients and learners may not fully understand how recordings or session data are used in an AI training context.</p>
-          <p style="margin-top: 0.75rem;"><strong>Approach:</strong> All data collection uses layered, plain-language informed consent. Consent can be withdrawn at any point without academic penalty.</p>
+          <h3><i class="fas fa-file-signature" style="margin-right: 0.5rem; color: var(--secondary);"></i>Consent &amp; Patient Privacy</h3>
+          <p><strong>Privacy Problem:</strong> According to Institutional Review Board (IRB) guidelines, any patient information where the patient is identifiable must be de-identified prior to publication.</p>
+          <p style="margin-top: 0.75rem;"><strong>Consent Challenges:</strong> Consent is not always obtained when clinical photographs are taken, however all procedure photographs must be rendered non-identifiable.</p>
+          <p style="margin-top: 0.75rem;"><strong>Policy Implementation:</strong> A strong policy is implemented to ensure consent practices inform patients fully, the patient is non-identifiable, and data is used strictly for educational purposes.</p>
+        </div>
+        <div class="card ethics-card">
+          <h3><i class="fas fa-shield-alt" style="margin-right: 0.5rem; color: var(--secondary);"></i>Cybersecurity &amp; Threat Defense</h3>
+          <p><strong>Security Challenge:</strong> AI technologies leave healthcare vulnerable to attackers, unauthorized intrusion, and data breaches.</p>
+          <p style="margin-top: 0.75rem;"><strong>Breach &amp; Attack Prevention:</strong></p>
+          <ul style="padding-left: 1.25rem; margin-top: 0.5rem;">
+            <li style="margin-bottom: 0.4rem;"><p style="margin: 0;"><strong>Security measures:</strong> End-to-end encryption, multi-factor authentication (MFA), and routine patching.</p></li>
+            <li style="margin-bottom: 0.4rem;"><p style="margin: 0;"><strong>Risk management:</strong> Enhance risk management with corporate risk management and rigorous vendor supervision.</p></li>
+            <li style="margin-bottom: 0.4rem;"><p style="margin: 0;"><strong>Corporate education:</strong> Invest in corporate education with continuous cybersecurity training.</p></li>
+          </ul>
         </div>
         <div class="card ethics-card">
           <h3><i class="fas fa-balance-scale" style="margin-right: 0.5rem; color: var(--secondary);"></i>Fairness &amp; Bias</h3>
           <p><strong>Concern:</strong> AI training scenarios may reflect biased clinical data — under-representing certain demographics or rare conditions.</p>
           <p style="margin-top: 0.75rem;"><strong>Approach:</strong> Mandatory diversity audits of all source materials. Active recruitment of varied clinical scenarios across institutions.</p>
-        </div>
-        <div class="card ethics-card">
-          <h3><i class="fas fa-lock" style="margin-right: 0.5rem; color: var(--secondary);"></i>Privacy</h3>
-          <p><strong>Concern:</strong> Learner performance data could be misused for high-stakes evaluations or shared without consent.</p>
-          <p style="margin-top: 0.75rem;"><strong>Approach:</strong> Clear purpose limitation policies. Learners retain ownership of their performance data and can request deletion.</p>
         </div>
         <div class="card ethics-card">
           <h3><i class="fas fa-user-shield" style="margin-right: 0.5rem; color: var(--secondary);"></i>Safety &amp; Accuracy</h3>
@@ -206,7 +323,7 @@
         <div class="card social-card">
           <h3><i class="fas fa-chalkboard-teacher" style="margin-right: 0.5rem; color: var(--accent);"></i>Role of the Educator</h3>
           <p><strong>Concern:</strong> AI feedback tools may be perceived as reducing the need for human clinical instructors.</p>
-          <p style="margin-top: 0.75rem;"><strong>Approach:</strong> CLINOVA is a supplement, not a replacement. Educator oversight is built into the review layer of every session.</p>
+          <p style="margin-top: 0.75rem;"><strong>Approach:</strong> Virtucare is a supplement, not a replacement. Educator oversight is built into the review layer of every session.</p>
         </div>
       </div>
     </div>
@@ -216,7 +333,7 @@
   <section id="research" class="section">
     <div class="container">
       <h2>5. Research Findings</h2>
-      <p>The following findings from our literature review informed the design of CLINOVA. Full citations will be added as research is finalized.</p>
+      <p>The following findings from our literature review informed the design of Virtucare. Full citations will be added as research is finalized.</p>
 
       <div class="grid-2" style="margin-top: 2rem;">
         <div class="card">
@@ -266,7 +383,8 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <h3>CLINOVA</h3>
+      <h3>VIRTUCARE</h3>
+      <p style="color: var(--primary); font-weight: 500; font-size: 1rem; margin-top: -0.5rem; margin-bottom: 0.75rem;">The future of clinical training</p>
       <p>A conceptual academic prototype for the 648M Small-Group Project.</p>
 
       <div class="team-members">
@@ -294,6 +412,22 @@
       <p class="disclaimer">648M Small-Group Project &nbsp;·&nbsp; Not a medical system &nbsp;·&nbsp; Not clinically validated</p>
     </div>
   </footer>
+
+  <script>
+    (function(){
+      var tabBtns = document.querySelectorAll('#home-guideline-tabs .guideline-tab');
+      var panes = document.querySelectorAll('.guideline-pane');
+      tabBtns.forEach(function(btn){
+        btn.addEventListener('click', function(){
+          tabBtns.forEach(function(b){ b.classList.remove('active'); });
+          panes.forEach(function(p){ p.style.display = 'none'; });
+          btn.classList.add('active');
+          var target = document.getElementById(btn.getAttribute('data-target'));
+          if(target) target.style.display = 'block';
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>

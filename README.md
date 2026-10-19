@@ -1,7 +1,26 @@
-# CLINOVA
-**Real Procedures. Virtual Practice. Responsible AI.**
+# Virtucare
+**(The future of clinical training)**
 
-A *conceptual academic prototype* (MHIA healthcare AI ethics project). CLINOVA is a **proposed** AI-assisted clinical simulation platform using consented, de-identified procedure recordings as source material. The demo covers nasogastric tube (NGT) insertion.
+Virtucare is a virtual reality clinical education system to revolutionize training and improve patient outcomes.
+
+### Core Categories
+- **Immersive VR scenarios:** Realistic procedural environments for deep situational readiness.
+- **Experience hands-on clinical practice:** Interactive procedural simulations for mastering clinical techniques safely.
+- **Analyze performance tracking and feedback:** Objective metrics, kinematic telemetry, and data-driven feedback.
+- **Standardize consistent curriculum delivery:** Repeatable, uniform clinical curriculum delivered at scale.
+
+### What Virtucare Can Do
+**How skills are taught today:**
+- Clinicians learn skills only when opportunities arise
+- Independent practice is restricted until clinical judgement is proven
+- *This means a clinician’s first attempt at a critical skill may occur on a live patient*
+
+**How Virtucare teaches the skill:**
+- Hands-on practice without patient risk
+- Performance feedback and metrics
+- Accessible ‘anytime, anywhere’ learning safe environment to master complex skills
+
+A *conceptual academic prototype* (MHIA healthcare AI ethics project). Virtucare is a **proposed** clinical simulation platform using consented, de-identified procedure recordings as source material. The demo covers nasogastric tube (NGT) insertion.
 
 > Not a medical system. Not clinically validated. All "AI" behaviour is deterministic JavaScript rules. All scores are illustrative. Step content is **placeholder** until validated sources are added.
 

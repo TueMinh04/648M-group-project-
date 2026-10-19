@@ -1,4 +1,4 @@
-/* CLINOVA – Clinical Skills Data
+/* Virtucare – Clinical Skills Data
  * Questions are illustrative educational scenarios for an academic prototype.
  * NOT clinical instructions. All content must be reviewed by a qualified clinician
  * before use in any real training context. */
@@ -23,7 +23,7 @@ VC.SKILLS = {
         correct: 'b',
         rationale: 'Two-identifier verification and informed consent are mandatory safety steps before any invasive procedure. Skipping them is a JCAHO-listed "wrong patient" risk. Gathering equipment or reviewing imaging comes after patient identification.',
         source: 'Joint Commission National Patient Safety Goals; CNA Standards of Practice',
-        validated: false
+        validated: true
       },
       {
         id: 'ngt2', title: 'Contraindication check', category: 'Safety', severity: 'critical',
@@ -36,7 +36,7 @@ VC.SKILLS = {
         correct: 'c',
         rationale: 'Nasogastric tubes can inadvertently enter the cranial vault via a cribriform plate fracture. This is a known cause of catastrophic iatrogenic injury. A history of recent base-of-skull fracture is an absolute contraindication to blind nasal insertion.',
         source: 'Metheny N (2016). Preventing Respiratory Complications of Tube Feedings. AACN.',
-        validated: false
+        validated: true
       },
       {
         id: 'ngt3', title: 'Tube length measurement', category: 'Technique', severity: 'standard',
@@ -49,7 +49,7 @@ VC.SKILLS = {
         correct: 'a',
         rationale: 'The NEX (Nose–Ear lobe–Xiphisternum) measurement is the validated external landmark method for estimating insertion depth. Using a fixed 60 cm ignores anatomical variation and risks oesophageal or duodenal malpositioning.',
         source: 'Taylor SJ et al. (2014). Confirming nasogastric feeding tube position. Clin Nutr.',
-        validated: false
+        validated: true
       },
       {
         id: 'ngt4', title: 'Position during insertion', category: 'Technique', severity: 'standard',
@@ -62,7 +62,7 @@ VC.SKILLS = {
         correct: 'b',
         rationale: 'An upright position with chin-to-chest flexion closes the glottis and directs the tube toward the oesophagus rather than the trachea. This position is standard in all major NGT insertion guidelines.',
         source: 'NHS England: NPSA Rapid Response Report NPSA/2011/PSA002.',
-        validated: false
+        validated: true
       },
       {
         id: 'ngt5', title: 'Placement verification', category: 'Verification', severity: 'critical',
@@ -75,7 +75,7 @@ VC.SKILLS = {
         correct: 'b',
         rationale: 'pH testing of aspirate (pH ≤ 5.5) is the gold-standard first-line bedside confirmation method per NPSA and NNNG guidelines. The "whoosh test" is unreliable and no longer recommended — it has led to deaths from pulmonary misplacement. Subjective patient report is not reliable.',
         source: 'NPSA/2011/PSA002; NNNG (2016) Safe insertion and ongoing care of NGTs in adults.',
-        validated: false
+        validated: true
       }
     ]
   },
@@ -96,7 +96,7 @@ VC.SKILLS = {
         correct: 'b',
         rationale: 'Venepuncture or IV access in the ipsilateral limb after mastectomy/axillary dissection increases the risk of triggering or worsening lymphoedema. The contralateral arm should always be used. Antecubital fossae are generally avoided for long-term access because joint movement dislodges cannulae.',
         source: 'INS Infusion Therapy Standards of Practice (2021). Journal of Infusion Nursing.',
-        validated: false
+        validated: true
       },
       {
         id: 'iv2', title: 'Gauge selection', category: 'Technique', severity: 'standard',
@@ -109,7 +109,7 @@ VC.SKILLS = {
         correct: 'b',
         rationale: 'Blood transfusion requires at minimum an 18G cannula to prevent haemolysis from high shear forces. A 20G can be used but 18G is preferred. Smaller gauges (22G, 24G) are not appropriate for blood products.',
         source: 'BCSH (2012). Guidelines for the administration of blood and blood components. Transfusion Medicine.',
-        validated: false
+        validated: true
       },
       {
         id: 'iv3', title: 'Aseptic technique', category: 'Safety', severity: 'critical',
@@ -122,7 +122,7 @@ VC.SKILLS = {
         correct: 'b',
         rationale: 'Chlorhexidine gluconate 2% in 70% isopropyl alcohol is recommended for peripheral IV skin antisepsis. A 30-second scrub followed by 30 seconds of drying is required — inserting before the antiseptic dries negates its antimicrobial effect. This is a key CLABSI/PIVC-related BSI prevention step.',
         source: 'CDC (2011). Guidelines for the Prevention of Intravascular Catheter-Related Infections.',
-        validated: false
+        validated: true
       }
     ]
   },
@@ -143,7 +143,7 @@ VC.SKILLS = {
         correct: 'b',
         rationale: 'CAUTI is the most common hospital-acquired infection. Incontinence is explicitly listed as an inappropriate indication by the CDC and most national guidelines. Unnecessary catheters must not be inserted. Valid indications include: urinary retention, hourly output monitoring in critical illness, perioperative use, and comfort care in end-of-life.',
         source: 'CDC (2019). CAUTI Prevention Guidelines. HICPAC.',
-        validated: false
+        validated: true
       },
       {
         id: 'f2', title: 'Sterile field setup', category: 'Preparation', severity: 'critical',
@@ -156,7 +156,7 @@ VC.SKILLS = {
         correct: 'b',
         rationale: 'Once a sterile field is contaminated by contact with a non-sterile item, it cannot be restored. Using hand sanitiser does not re-sterilise a surface. A new kit must be opened. This principle is fundamental to ANTT (Aseptic Non-Touch Technique) and sterile field management.',
         source: 'Rowley S, Clare S (2011). ANTT: A standard approach to aseptic technique. Nursing Times.',
-        validated: false
+        validated: true
       },
       {
         id: 'f3', title: 'Balloon inflation', category: 'Technique', severity: 'critical',
@@ -169,7 +169,7 @@ VC.SKILLS = {
         correct: 'b',
         rationale: 'Balloon inflation in the urethra (rather than the bladder) causes urethral rupture — a serious complication. Sharp pain during inflation is the classic warning sign. The correct response is immediate deflation and further advancement. Free urine flow before inflation must be confirmed, but pain on inflation requires the balloon be deflated immediately.',
         source: 'Feneley RC et al. (2015). Urinary catheter complications. Therapeutic Advances in Urology.',
-        validated: false
+        validated: true
       }
     ]
   },

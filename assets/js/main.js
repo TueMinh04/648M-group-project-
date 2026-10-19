@@ -10,10 +10,11 @@ if(h) {
   h.outerHTML = `
   <nav class="navbar">
     <div class="container">
-      <div class="logo"><a href="${R}index.html" style="color: inherit; text-decoration: none;">CLIN<span>OVA</span></a></div>
+      <div class="logo"><a href="${R}index.html" style="color: inherit; text-decoration: none;">VIRTU<span>CARE</span></a></div>
       <div class="nav-links">
         <a href="${R}index.html#problem">Problem</a>
         <a href="${R}index.html#proposal">Proposal</a>
+        <a href="${R}index.html#guidelines">Guidelines</a>
         <a href="${R}index.html#demo">Demo</a>
         <a href="${R}index.html#ethics">Ethics</a>
         <a href="${R}index.html#research">Research</a>
@@ -36,7 +37,8 @@ if(f) {
   f.outerHTML = `
   <footer style="background: var(--surface-color); padding: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem;">
     <div class="container">
-      <h3 style="color: var(--text-main); font-weight: 600;">CLINOVA</h3>
+      <h3 style="color: var(--text-main); font-weight: 600;">VIRTUCARE</h3>
+      <p style="color: var(--primary); font-weight: 500; font-size: 0.95rem; margin-top: -0.25rem; margin-bottom: 0.5rem;">The future of clinical training</p>
       <p style="color: var(--text-muted);">A conceptual academic prototype for the 648M Small-Group Project.</p>
       <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">Not a medical system. Not clinically validated.</p>
     </div>
