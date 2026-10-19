@@ -11,6 +11,7 @@ var GUIDELINES = {
     title: 'NG Tube Insertion Practice Guidelines',
     badge: 'Nasogastric (NG) Tube',
     icon: 'fa-lungs',
+    citation: 'Scarborough Health Network. (2025). Insertion of nasal and oral gastrointestinal tubes and nasogastric tube for gastric suction (Practice Standard SHN-PRSTAND-0102).',
     gap: 'Tube inserted into the lung',
     stepsAdult: [
       'Check doctor’s order',
@@ -39,6 +40,7 @@ var GUIDELINES = {
     title: 'Urinary Catheterization Practice Guidelines',
     badge: 'Urinary Catheterization',
     icon: 'fa-procedures',
+    citation: 'Humber River Health. (2023). Adult urinary catheterization (straight, indwelling, coudé) and bladder irrigation (Reference No. 2734).',
     gap: 'Inability to locate the urethra (in females); breaking sterility',
     steps: [
       'Check doctor’s order',
@@ -58,6 +60,7 @@ var GUIDELINES = {
     title: 'Peripheral IV Insertion Practice Guidelines',
     badge: 'Peripheral IV (PIV)',
     icon: 'fa-syringe',
+    citation: 'Humber River Health. (2023). Vascular access devices: Device & site selection, placement & removal (Policy and Procedure).',
     gap: 'Selecting the correct catheter gauge size; missing the vein upon insertion; uncertainty at an interstitial site',
     steps: [
       'Check doctor’s order',
@@ -94,6 +97,7 @@ function renderGuidelinesCard(activeTab) {
   var contentHtml = '';
   if (activeTab === 'ngt') {
     contentHtml = '<div class="guideline-content">' +
+      '<div style="font-size:0.85rem; color:var(--primary); margin-bottom:0.75rem;"><i class="fas fa-book-medical" style="margin-right:0.4rem;"></i><strong>Clinical Standard:</strong> ' + e(g.citation) + '</div>' +
       '<div class="guideline-badge-gap"><i class="fas fa-exclamation-triangle" style="margin-right:0.5rem;"></i><strong>Common Training Gap:</strong> ' + e(g.gap) + '</div>' +
       '<div class="grid-2">' +
         '<div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">' +
@@ -110,6 +114,7 @@ function renderGuidelinesCard(activeTab) {
     '</div>';
   } else if (activeTab === 'foley') {
     contentHtml = '<div class="guideline-content">' +
+      '<div style="font-size:0.85rem; color:var(--primary); margin-bottom:0.75rem;"><i class="fas fa-book-medical" style="margin-right:0.4rem;"></i><strong>Clinical Standard:</strong> ' + e(g.citation) + '</div>' +
       '<div class="guideline-badge-gap"><i class="fas fa-exclamation-triangle" style="margin-right:0.5rem;"></i><strong>Common Training Gap:</strong> ' + e(g.gap) + '</div>' +
       '<div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">' +
         '<h4 style="color: var(--primary); margin-bottom: 0.75rem;"><i class="fas fa-clipboard-check" style="margin-right: 0.5rem;"></i>Critical Clinical Steps</h4>' +
@@ -119,6 +124,7 @@ function renderGuidelinesCard(activeTab) {
     '</div>';
   } else if (activeTab === 'iv') {
     contentHtml = '<div class="guideline-content">' +
+      '<div style="font-size:0.85rem; color:var(--primary); margin-bottom:0.75rem;"><i class="fas fa-book-medical" style="margin-right:0.4rem;"></i><strong>Clinical Standard:</strong> ' + e(g.citation) + '</div>' +
       '<div class="guideline-badge-gap"><i class="fas fa-exclamation-triangle" style="margin-right:0.5rem;"></i><strong>Common Training Gap:</strong> ' + e(g.gap) + '</div>' +
       '<div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">' +
         '<h4 style="color: var(--primary); margin-bottom: 0.75rem;"><i class="fas fa-clipboard-check" style="margin-right: 0.5rem;"></i>Critical Clinical Steps</h4>' +
@@ -450,6 +456,11 @@ function feedback(el){
    '<p><strong>Phase 1 (Naris & Nasopharynx):</strong> '+ (warnings > 0 ? '<span style="color:var(--danger)">The AI detected rapid, excessive force applied during advancement. In a real clinical setting, this risks mucosal trauma and epistaxis. You must advance the tube slowly and gently.</span>' : '<span style="color:var(--accent)">Excellent, steady advancement through the turbinates. No excessive force detected.</span>') +'</p>' +
    '<p><strong>Phase 2 (Pharynx & Esophagus):</strong> Correct pacing maintained. Swallowing reflex timing aligned with expert baseline to ensure airway protection.</p>' +
    '<p><strong>Phase 3 (Gastric Placement & Audit):</strong> Reached predetermined depth (60cm). Initial confirmation protocol activated.</p>' +
+ '</div>' +
+ '<div class="card" style="margin-top: 2rem; border-top: 3px solid var(--secondary); background: rgba(139, 92, 246, 0.05);">' +
+   '<h4 style="color: var(--secondary); margin-bottom: 0.75rem;"><i class="fas fa-graduation-cap" style="margin-right: 0.5rem;"></i>Pedagogical &amp; Ethical Evidence in Virtucare</h4>' +
+   '<p style="font-size: 0.95rem; margin-bottom: 0.6rem;"><strong>Terminal Feedback Structure:</strong> Feedback is intentionally delivered upon procedure completion rather than through intrusive real-time popups. Meta-analyses demonstrate a pooled effect size of <em>d</em> = 0.74, proving that terminal debriefing fosters significantly superior novice skill retention and prevents motor interference (<a href="../index.html#ref-hatala-2014" target="_blank" style="color:var(--primary); font-weight:500;">Hatala et al., 2014</a>).</p>' +
+   '<p style="font-size: 0.95rem; margin: 0;"><strong>Mitigating Automation Bias:</strong> Objective scores serve as structured clinical decision support. To counteract automation bias—where users overlook automated inaccuracies (<a href="../index.html#ref-goddard-2012" target="_blank" style="color:var(--primary); font-weight:500;">Goddard et al., 2012</a>)—human educator review remains mandatory before any institutional sign-off (<a href="../index.html#ref-dsouza-2024" target="_blank" style="color:var(--primary); font-weight:500;">Franco D’Souza et al., 2024</a>, Tip 10).</p>' +
  '</div>';
  
  cfg.ok = false;

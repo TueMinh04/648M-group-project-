@@ -42,14 +42,15 @@ Push to GitHub → Settings → Pages → Deploy from branch `main`, folder `/ (
 ## Contributing
 See `CONTRIBUTING.md`. Branch per page/feature, open a pull request, one reviewer.
 
-## Adding research
-Edit `assets/js/data/research.js`: push objects with `source, finding, issue, implication, citation`. The Research page renders them automatically. Never add a finding without a real citation.
+## Research Literature & Clinical Guidelines
+All research literature and hospital standards are curated in `assets/js/data/research.js` and rendered on `index.html` (Section 5) and `docs/ethics-framework.md`. The platform incorporates 16 peer-reviewed academic sources covering:
+- Procedural simulation & competency-based progression (Cook et al., 2011; Mitchell & Ivimey-Cook, 2023; Simulation in Healthcare, 2024; Sung et al., 2024; Sim et al., 2022)
+- Feedback timing & automation bias (Hatala et al., 2014; Goddard et al., 2012)
+- AI misinformation, taxonomy & foundation model hazards (Hatem et al., 2023; Sun et al., 2024; Kim et al., 2025)
+- Privacy, IRB de-identification & cybersecurity (Bhattacharjee et al., 2023; Brooks, 2026)
+- AI ethics & governance frameworks (Franco D’Souza et al., 2024; Izquierdo-Condoy et al., 2026; Skulmowski, 2023; Cox et al., 2025)
+- Hospital clinical guidelines: Scarborough Health Network (2025, SHN-PRSTAND-0102 for NGT) and Humber River Health (2023, Ref 2734 for Foley catheterization & Vascular Access policy for PIV).
 
 ## Recording AI usage
-Add a row to `docs/ai-usage-log.md` every time a generative AI tool is used. It feeds the AI Disclosure page.
-
-## Replacing placeholders
-1. `ngt-steps.js`: replace placeholder steps with clinically validated, cited content (and set `validated: true`).
-2. `feedback-rules.js`: add rules tied to those steps.
-3. Search the repo for `to be added` to find remaining placeholders.
+Add a row to `docs/ai-usage-log.md` every time a generative AI tool is used. It feeds the AI Disclosure section.
 
