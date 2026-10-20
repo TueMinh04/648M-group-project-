@@ -1,7 +1,7 @@
 /* One guided prototype: Consent & Upload → AI 3DGS Processing → VR Simulation → Kinematic Feedback. All simulated. */
 (function(){
 var root=document.getElementById('proto'),e=VC.esc,cfg,ST=['Consent & Upload','AI 3DGS Processing','VR Simulation','Kinematic Feedback'];
-var HELP=['Upload a consented surgical video recording.','Watch the AI process the video into a 3D Gaussian Splatting digital twin.','Experience the first-person physics-enabled VR practice module with clinical guidelines.','Review your objective kinematic performance and clinical protocol verification.'];
+var HELP=['Confirm patient consent to proceed (video upload is optional — a sample clinical procedure is preloaded).','Watch the AI process the video into a 3D Gaussian Splatting digital twin.','Experience the first-person physics-enabled VR practice module with clinical guidelines.','Review your objective kinematic performance and clinical protocol verification.'];
 var STAGES=['Extracting spatial point cloud...','Training 3D Gaussian Splats...','Masking surgical instruments...','Generating XPBD soft-tissue physics mesh...','Compiling interactive VR module...'];
 var NOTES=['Analyzing monocular video to estimate depth and structure.','Rendering high-fidelity tissue with real-time lighting.','Separating tools from anatomy for clean interaction.','Applying Extended Position Based Dynamics for realistic tissue deformation.','Finalizing module for standalone headset deployment.'];
 
@@ -200,8 +200,8 @@ function focusTop(){document.getElementById('ptop').focus()}
 var V=[
 function consent(el){
  var s=VC.get();
- el.innerHTML='<div class="card"><h3>Upload Surgical Recording</h3><p>Select a video captured from a procedure camera or endoscope. In a real system, only recordings with appropriate patient consent and de-identification would proceed<a href="../index.html#ref-17" class="cite-num"><sup>[17]</sup></a>.</p>' +
- '<div style="margin: 1.5rem 0;"><label for="recording" class="btn btn-secondary" style="cursor:pointer;"><i class="fas fa-upload"></i> Choose Video File</label><input id="recording" type="file" accept="video/*" style="display:none;"><span id="file-status" style="margin-left: 1rem;" class="muted">No file selected.</span></div></div>'+
+ el.innerHTML='<div class="card"><h3>Upload Surgical Recording</h3><p>Select a video captured from a procedure camera or endoscope, or proceed with the preloaded clinical procedure. In a real system, only recordings with appropriate patient consent and de-identification would proceed<a href="../index.html#ref-17" class="cite-num"><sup>[17]</sup></a>.</p>' +
+ '<div style="margin: 1.5rem 0; display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem;"><label for="recording" class="btn btn-secondary" style="cursor:pointer;"><i class="fas fa-upload"></i> Choose Video File <span style="font-size:0.8rem; opacity:0.8;">(Optional)</span></label><input id="recording" type="file" accept="video/*" style="display:none;"><span id="file-status" class="muted"></span></div></div>'+
  '<div class="card" style="margin-top: 1.5rem;"><label class="check"><input type="checkbox" id="c1"><span><strong>Patient consent confirmed (simulated).</strong> Verified that the patient has consented to their anonymized data being used for educational VR generation<a href="../index.html#ref-17" class="cite-num"><sup>[17]</sup></a>.</span></label>'+
  '<label class="check"><input type="checkbox" id="c2"><span>I confirm this video contains no visible Protected Health Information (PHI) outside the surgical cavity.</span></label></div>';
  
@@ -209,21 +209,33 @@ function consent(el){
  c1.checked=s.consent?s.consent.recording:false;
  c2.checked=s.consent?s.consent.phi:false;
  
- var hasFile = s.recordingName ? true : false;
- if(hasFile) fileStatus.innerHTML = 'Selected: <strong>' + e(s.recordingName) + '</strong>';
+ function updateStatus() {
+   var cur=VC.get();
+   if(cur.recordingName) {
+     fileStatus.innerHTML='<span style="color:var(--text-main);"><i class="fas fa-check-circle" style="color:var(--accent); margin-right:0.35rem;"></i>Selected: <strong>'+e(cur.recordingName)+'</strong></span>';
+   } else {
+     fileStatus.innerHTML='<span class="muted"><i class="fas fa-info-circle" style="margin-right:0.35rem;"></i>No file selected (Optional — preloaded clinical procedure will be used)</span>';
+   }
+ }
+ updateStatus();
 
  function checkOk() {
-   cfg.ok = c1.checked && c2.checked && hasFile;
+   cfg.ok = c1.checked && c2.checked;
    cfg.label = 'Begin AI 3D Reconstruction';
+   cfg.onNext = function() {
+     var cur=VC.get();
+     if(!cur.recordingName) {
+       VC.set({recordingName: 'preloaded_clinical_procedure_shn.mp4'});
+     }
+   };
    bar();
  }
  
  file.onchange=function(){
    var selected=file.files&&file.files[0];
    if(!selected) return;
-   hasFile = true;
    VC.set({recordingName: selected.name, processed: false});
-   fileStatus.innerHTML='Selected: <strong>'+e(selected.name)+'</strong>';
+   updateStatus();
    checkOk();
  };
 
@@ -245,7 +257,7 @@ function processing(el){
  '<div style="position: absolute; width: 160px; height: 160px; border: 2px solid rgba(14, 165, 233, 0.2); border-top: 2px solid var(--accent); border-radius: 50%; animation: spinRing 3s linear infinite reverse;"></div>'+
  '<div style="position: absolute; width: 120px; height: 120px; border: 2px dashed rgba(14, 165, 233, 0.4); border-radius: 50%; animation: spinRing 6s linear infinite;"></div>'+
  '<div style="width: 60px; height: 60px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulse 2s infinite; z-index: 2;"><i class="fas fa-microchip" style="color: #fff; font-size: 1.5rem;"></i></div>'+
- '</div><div class="card"><h3>AI 3DGS Processing Pipeline</h3><p id="pm" class="muted">Waiting to start...</p><div id="pl"></div></div></div>';
+ '</div><div class="card"><h3>AI 3DGS Processing Pipeline</h3><div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;"><i class="fas fa-video" style="color: var(--primary); margin-right: 0.35rem;"></i>Source: <strong>'+e(s.recordingName || 'preloaded_clinical_procedure_shn.mp4')+'</strong></div><p id="pm" class="muted">Waiting to start...</p><div id="pl"></div></div></div>';
  
  var pl=el.querySelector('#pl'),pm=el.querySelector('#pm');
  cfg.label='Enter VR Module';
