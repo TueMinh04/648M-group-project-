@@ -200,9 +200,9 @@ function focusTop(){document.getElementById('ptop').focus()}
 var V=[
 function consent(el){
  var s=VC.get();
- el.innerHTML='<div class="card"><h3>Upload Surgical Recording</h3><p>Select a video captured from a procedure camera or endoscope. In a real system, only recordings with appropriate patient consent and de-identification would proceed.</p>' +
+ el.innerHTML='<div class="card"><h3>Upload Surgical Recording</h3><p>Select a video captured from a procedure camera or endoscope. In a real system, only recordings with appropriate patient consent and de-identification would proceed<a href="../index.html#ref-17" class="cite-num"><sup>[17]</sup></a>.</p>' +
  '<div style="margin: 1.5rem 0;"><label for="recording" class="btn btn-secondary" style="cursor:pointer;"><i class="fas fa-upload"></i> Choose Video File</label><input id="recording" type="file" accept="video/*" style="display:none;"><span id="file-status" style="margin-left: 1rem;" class="muted">No file selected.</span></div></div>'+
- '<div class="card" style="margin-top: 1.5rem;"><label class="check"><input type="checkbox" id="c1"><span><strong>Patient consent confirmed (simulated).</strong> Verified that the patient has consented to their anonymized data being used for educational VR generation.</span></label>'+
+ '<div class="card" style="margin-top: 1.5rem;"><label class="check"><input type="checkbox" id="c1"><span><strong>Patient consent confirmed (simulated).</strong> Verified that the patient has consented to their anonymized data being used for educational VR generation<a href="../index.html#ref-17" class="cite-num"><sup>[17]</sup></a>.</span></label>'+
  '<label class="check"><input type="checkbox" id="c2"><span>I confirm this video contains no visible Protected Health Information (PHI) outside the surgical cavity.</span></label></div>';
  
  var c1=el.querySelector('#c1'),c2=el.querySelector('#c2'),file=el.querySelector('#recording'),fileStatus=el.querySelector('#file-status');
