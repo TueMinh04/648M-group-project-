@@ -42,6 +42,12 @@ Push to GitHub → Settings → Pages → Deploy from branch `main`, folder `/ (
 ## Contributing
 See `CONTRIBUTING.md`. Branch per page/feature, open a pull request, one reviewer.
 
+## Team Members
+- **Noah Choi** — Researcher
+- **Yvonne Ma** — Researcher
+- **Paul Leung** — Researcher
+- **Minh Vuong** — Website Builder & Summarize
+
 ## Research Literature & Clinical Guidelines
 All research literature and hospital standards are curated in `assets/js/data/research.js` and rendered on `index.html` (Section 5) and `docs/ethics-framework.md`. The platform incorporates 16 peer-reviewed academic sources covering:
 - Procedural simulation & competency-based progression (Cook et al., 2011; Mitchell & Ivimey-Cook, 2023; Simulation in Healthcare, 2024; Sung et al., 2024; Sim et al., 2022)
