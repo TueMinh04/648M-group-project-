@@ -489,6 +489,8 @@ if (!VC.get) {
   VC.esc = function(s) { return s; };
 }
 
+// Always start at Step 1 (Consent & Upload) whenever the prototype is opened or reloaded
+VC.reset();
 draw();
 VC.draw=draw;
 })();
