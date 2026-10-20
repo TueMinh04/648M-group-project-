@@ -18,30 +18,34 @@
     <h1>Virtucare Clinical Simulation Prototype</h1>
     <p class="muted" style="margin-bottom: 2rem;">A simulated walkthrough of clinical practice guidelines, virtual procedure simulation, and kinematic feedback.</p>
 
-    <!-- Video Demo on top -->
-    <div class="card video-demo-card" style="margin-bottom: 2.5rem; padding: 1.75rem; border-top: 4px solid var(--primary); background: var(--surface-color); border-radius: var(--radius); box-shadow: 0 12px 32px rgba(0,0,0,0.35);">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
-        <div>
-          <h2 style="margin: 0; font-size: 1.35rem; font-weight: 600; color: var(--text-main); display: flex; align-items: center; gap: 0.6rem;">
-            <i class="fas fa-play-circle" style="color: var(--primary);"></i>
-            <span>Video Demo</span>
-          </h2>
-          <p class="muted" style="margin: 0.25rem 0 0 0; font-size: 0.92rem;">
-            Recorded demonstration of the Virtucare prototype flow and procedural simulation.
-          </p>
+    <!-- Collapsible Video Demo Dropdown (Saves space until clicked) -->
+    <div class="video-demo-dropdown" id="video-demo-dropdown">
+      <button type="button" class="video-toggle-btn" id="video-toggle-btn" aria-expanded="false" aria-controls="video-pane">
+        <div class="video-toggle-left">
+          <i class="fas fa-play-circle" style="color: var(--primary); font-size: 1.35rem;"></i>
+          <h2>Video Demo <span style="font-size: 0.95rem; font-weight: 400; color: var(--text-muted); margin-left: 0.25rem;">— Recorded Prototype Walkthrough</span></h2>
+          <span class="research-badge research-badge-blue" style="font-size: 0.75rem; padding: 0.2rem 0.65rem;">
+            <i class="fas fa-video"></i> Watch Demo
+          </span>
         </div>
-        <span class="research-badge research-badge-blue" style="font-size: 0.8rem; padding: 0.35rem 0.85rem;">
-          <i class="fas fa-video"></i> Prototype Walkthrough
-        </span>
-      </div>
+        <div class="video-toggle-right">
+          <span class="video-toggle-hint">Click to expand demo video</span>
+          <i class="fas fa-chevron-down video-toggle-arrow"></i>
+        </div>
+      </button>
 
-      <div class="video-container" style="position: relative; width: 100%; border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
-        <video controls playsinline preload="metadata" style="width: 100%; max-height: 540px; display: block; margin: 0 auto; background: #000;">
-          <source src="../assets/videos/demo_prototype.mp4" type="video/mp4">
-          <source src="../assets/videos/demo_prototype.mov" type="video/quicktime">
-          <source src="../demo prototype.mov" type="video/quicktime">
-          Your browser does not support the video tag.
-        </video>
+      <div class="video-pane" id="video-pane">
+        <p class="muted" style="margin: 0 0 1.25rem 0; font-size: 0.92rem;">
+          Recorded demonstration of the Virtucare prototype flow, clinical practice guidelines, and virtual procedure simulation.
+        </p>
+        <div class="video-container" style="position: relative; width: 100%; border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
+          <video id="demo-video-player" controls playsinline preload="metadata" style="width: 100%; max-height: 520px; display: block; margin: 0 auto; background: #000;">
+            <source src="../assets/videos/demo_prototype.mp4" type="video/mp4">
+            <source src="../assets/videos/demo_prototype.mov" type="video/quicktime">
+            <source src="../demo prototype.mov" type="video/quicktime">
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
     </div>
 
@@ -52,5 +56,27 @@
 <script src="../assets/js/state.js"></script>
 <script src="../assets/js/main.js"></script>
 <script src="../assets/js/prototype.js"></script>
+<script>
+  (function() {
+    var toggleBtn = document.getElementById('video-toggle-btn');
+    var pane = document.getElementById('video-pane');
+    var video = document.getElementById('demo-video-player');
+
+    if (toggleBtn && pane) {
+      toggleBtn.addEventListener('click', function() {
+        var isOpen = pane.classList.toggle('open');
+        toggleBtn.classList.toggle('expanded', isOpen);
+        toggleBtn.setAttribute('aria-expanded', isOpen);
+        var hint = toggleBtn.querySelector('.video-toggle-hint');
+        if (hint) {
+          hint.textContent = isOpen ? 'Click to hide video' : 'Click to expand demo video';
+        }
+        if (!isOpen && video && !video.paused) {
+          video.pause();
+        }
+      });
+    }
+  })();
+</script>
 </body>
 </html>
