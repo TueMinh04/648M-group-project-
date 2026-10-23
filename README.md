@@ -42,11 +42,16 @@ Push to GitHub → Settings → Pages → Deploy from branch `main`, folder `/ (
 ## Contributing
 See `CONTRIBUTING.md`. Branch per page/feature, open a pull request, one reviewer.
 
-## Team Members
-- **Noah Choi** — Researcher
-- **Yvonne Ma** — Researcher
-- **Paul Leung** — Researcher
-- **Minh Vuong** — Website Builder & Summarize
+## Team Members & Roles
+All team members contributed as **Presenters**, **Researchers**, and **Reporters**, while leading individual areas:
+- **Noah Choi** — *Presenter · Research · Reporter*
+  Researches AI literature and hallucination risks, analyzing how AI errors and misinformation affect clinical training.
+- **Yvonne Ma** — *Presenter · Research · Reporter*
+  Reviews hospital guidelines and summarizes medical literature to establish accurate clinical training steps.
+- **Paul Leung** — *Presenter · Research · Reporter*
+  Researches hospital care policies and medical articles, summarizing clinical standards and safety protocols.
+- **Minh Vuong** — *Presenter · Research · Reporter*
+  Built the website and interactive simulation prototype, while verifying clinical information and references.
 
 ## Research Literature & Clinical Guidelines
 All research literature and hospital standards are curated in `assets/js/data/research.js` and rendered on `index.html` (Section 5) and `docs/ethics-framework.md`. The platform incorporates 16 peer-reviewed academic sources covering:
@@ -57,6 +62,9 @@ All research literature and hospital standards are curated in `assets/js/data/re
 - AI ethics & governance frameworks (Franco D’Souza et al., 2024; Izquierdo-Condoy et al., 2026; Skulmowski, 2023; Cox et al., 2025)
 - Hospital clinical guidelines: Scarborough Health Network (2025, SHN-PRSTAND-0102 for NGT) and Humber River Health (2023, Ref 2734 for Foley catheterization & Vascular Access policy for PIV).
 
-## Recording AI usage
-Add a row to `docs/ai-usage-log.md` every time a generative AI tool is used. It feeds the AI Disclosure section.
+## Generative AI Disclosure & Verification
+In alignment with health professions education AI governance (Franco D’Souza et al., 2024, Tips 3 & 10) and academic integrity standards, all generative AI usage (Claude by Anthropic, Gemini by Google) is documented with full failure-mode auditing and verification notes.
+- Detailed in-browser disclosure: [index.html#claude](index.html#claude) (Section 6: Generative AI Transparency & Verification Disclosure)
+- Full chronological audit log: `docs/ai-usage-log.md`
+- Core principle: AI assists with code scaffolding, syntax conversion, and editorial polishing; all clinical standards, empirical literature syntheses, ethical stances, and prototype scoring algorithms are 100% human-authored and verified.
 

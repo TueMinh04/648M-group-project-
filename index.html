@@ -1020,32 +1020,145 @@
     </div>
   </section>
 
-  <!-- 6. How We Used Claude -->
+  <!-- 6. How We Used Generative AI (Claude & Gemini) -->
   <section id="claude" class="section" style="background: rgba(255,255,255,0.02);">
     <div class="container">
-      <h2>6. How We Used Claude</h2>
-      <p>In the interest of academic honesty, here is a transparent account of how generative AI tools (Claude by Anthropic, Gemini by Google) were used in this project.</p>
-
-      <div class="grid-3" style="margin-top: 2rem;">
-        <div class="card" style="border-top: 3px solid var(--secondary);">
-          <div class="card-icon" style="color: var(--secondary); background: rgba(139,92,246,0.1);"><i class="fas fa-balance-scale"></i></div>
-          <h3>Ethical Framework</h3>
-          <p>Claude helped brainstorm an initial set of ethical considerations. The team then discussed, critiqued, and revised each point independently before including it in the project.</p>
-        </div>
-        <div class="card" style="border-top: 3px solid var(--secondary);">
-          <div class="card-icon" style="color: var(--secondary); background: rgba(139,92,246,0.1);"><i class="fas fa-code"></i></div>
-          <h3>Website &amp; Prototype</h3>
-          <p>AI assisted in generating the HTML/CSS layout scaffold and boilerplate code for the prototype interface. All code was reviewed and modified by the team.</p>
-        </div>
-        <div class="card" style="border-top: 3px solid var(--secondary);">
-          <div class="card-icon" style="color: var(--secondary); background: rgba(139,92,246,0.1);"><i class="fas fa-pen-nib"></i></div>
-          <h3>Writing Refinement</h3>
-          <p>Section descriptions were drafted with AI assistance and edited by the team for accuracy, clarity, and appropriate tone for a healthcare education context.</p>
-        </div>
+      <div style="margin-bottom: 1.5rem;">
+        <h2>6. How We Used Generative AI (Claude &amp; Gemini)</h2>
+        <p style="margin-bottom: 0; font-size: 1.15rem; color: var(--primary); font-weight: 500;">
+          A transparent disclosure of AI assistance, failure modes caught, and human verification.
+        </p>
       </div>
 
-      <div class="card" style="margin-top: 2rem; border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 1.5rem;">
-        <p style="margin: 0; font-size: 1rem;"><i class="fas fa-shield-alt" style="color: var(--accent); margin-right: 0.5rem;"></i><strong>Disclosure:</strong> All AI-generated content was reviewed and validated by the student team. No research findings, clinical claims, or citations were AI-generated. The core ideas, ethical positions, and design decisions are the team's own work.</p>
+      <!-- Transparent Statement Banner -->
+      <div class="ai-disclosure-banner">
+        <p><strong><i class="fas fa-balance-scale" style="color: var(--secondary); margin-right: 0.5rem;"></i>Academic Integrity &amp; Transparency Statement:</strong> Generative AI tools (Claude and Gemini) were used strictly as an assistive aid for frontend layout scaffolding, code syntax structuring, analyzing procedure video into 2D simulation images, and editorial polishing. Following health professions AI governance<a href="#ref-12" class="cite-num"><sup>[12]</sup></a> and our core principle—<em>"AI assists; humans remain accountable"</em>—<strong>all clinical guidelines, research syntheses, ethical arguments, and simulation scoring rules were 100% human-authored and verified by our student team.</strong></p>
+      </div>
+
+      <!-- Clean 4-Column Table: Area | Contributed | Risk Caught | How Verified -->
+      <div class="ai-column-table-wrap" style="margin-top: 1.5rem;">
+        <table class="ai-column-table">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Project Area &amp; Tools</th>
+              <th style="width: 27%;">What AI Helped With</th>
+              <th style="width: 26%;">What Went Wrong (Risks Caught)</th>
+              <th style="width: 27%;">How We Checked &amp; Fixed It</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="ai-col-area">
+                <strong>Website &amp; Prototype</strong><br>
+                <span class="ai-badge ai-badge-purple" style="margin-top: 0.35rem;">Claude</span>
+                <span class="ai-badge ai-badge-blue" style="margin-top: 0.35rem;">Gemini</span>
+              </td>
+              <td class="ai-col-contrib">
+                <ul>
+                  <li>Helped build the responsive layout and CSS styling for the website.</li>
+                  <li>Set up browser session saving so user progress is remembered between steps.</li>
+                </ul>
+              </td>
+              <td class="ai-col-risk">
+                <ul>
+                  <li>Suggested heavy third-party software packages that we didn't need for a simple static site.</li>
+                  <li>Suggested using live AI to score students, which was slow and gave unpredictable feedback.</li>
+                </ul>
+              </td>
+              <td class="ai-col-verify">
+                <ul>
+                  <li>Kept the code lightweight and simple using standard HTML, CSS, and JavaScript.</li>
+                  <li>Replaced live AI scoring with fixed, clear rules so feedback is always accurate and reliable.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td class="ai-col-area">
+                <strong>Video &amp; 2D Images</strong><br>
+                <span class="ai-badge ai-badge-blue" style="margin-top: 0.35rem;">Gemini</span>
+              </td>
+              <td class="ai-col-contrib">
+                <ul>
+                  <li>Analyzed procedure videos and generated 2D anatomical images for the interactive simulation.</li>
+                </ul>
+              </td>
+              <td class="ai-col-risk">
+                <ul>
+                  <li>Generated blurry images, distorted anatomical boundaries, and awkward instrument angles.</li>
+                </ul>
+              </td>
+              <td class="ai-col-verify">
+                <ul>
+                  <li>Hand-checked and filtered every 2D image against real medical anatomical charts before using it in the demo.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td class="ai-col-area">
+                <strong>Clinical Questions &amp; Data</strong><br>
+                <span class="ai-badge ai-badge-purple" style="margin-top: 0.35rem;">Claude</span>
+              </td>
+              <td class="ai-col-contrib">
+                <ul>
+                  <li>Turned hospital procedural checklists into quiz questions, multiple-choice options, and explanations.</li>
+                </ul>
+              </td>
+              <td class="ai-col-risk">
+                <ul>
+                  <li>Made up wrong measurements (like tube insertion depth landmarks) and gave incorrect catheter sizes.</li>
+                </ul>
+              </td>
+              <td class="ai-col-verify">
+                <ul>
+                  <li>Audited every single question, landmark, and number directly against official hospital policies (Scarborough Health Network and Humber River Health).</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td class="ai-col-area">
+                <strong>Ethics &amp; Research</strong><br>
+                <span class="ai-badge ai-badge-purple" style="margin-top: 0.35rem;">Claude</span>
+                <span class="ai-badge ai-badge-blue" style="margin-top: 0.35rem;">Gemini</span>
+              </td>
+              <td class="ai-col-contrib">
+                <ul>
+                  <li>Brainstormed initial ethical topics (patient consent, data privacy, user fatigue).</li>
+                </ul>
+              </td>
+              <td class="ai-col-risk">
+                <ul>
+                  <li>Gave vague buzzwords ("ensure fairness", "protect data") without legal backing and hallucinated fake journal citations.</li>
+                </ul>
+              </td>
+              <td class="ai-col-verify">
+                <ul>
+                  <li>Threw out the fake citations and independently searched academic databases to find 17 real, peer-reviewed medical studies.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td class="ai-col-area">
+                <strong>Writing &amp; Tone</strong><br>
+                <span class="ai-badge ai-badge-purple" style="margin-top: 0.35rem;">Claude</span>
+              </td>
+              <td class="ai-col-contrib">
+                <ul>
+                  <li>Proofread draft paragraphs for clarity, active voice, and smoother flow.</li>
+                </ul>
+              </td>
+              <td class="ai-col-risk">
+                <ul>
+                  <li>Kept using the clinical word "hallucinations" and exaggerated marketing hype ("revolutionizes medicine overnight").</li>
+                </ul>
+              </td>
+              <td class="ai-col-verify">
+                <ul>
+                  <li>Changed "hallucinations" to "AI misinformation", and toned down hype so it clearly reads as an academic student prototype.</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -1058,23 +1171,30 @@
       <p>A conceptual academic prototype for the 648M Small-Group Project.</p>
 
       <div class="team-members">
-        <h4>Team</h4>
+        <h4>Team &amp; Roles</h4>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: -0.75rem; margin-bottom: 2rem;">
+          All team members contributed as <strong>Presenters, Researchers, and Reporters</strong>:
+        </p>
         <div class="team-grid">
           <div class="team-member">
             <span class="member-name">Noah Choi</span>
-            <span class="member-role">Researcher</span>
+            <span class="member-role">Presenter · Research · Reporter</span>
+            <p class="member-desc">Researches AI literature and hallucination risks, analyzing how AI errors and misinformation affect clinical training.</p>
           </div>
           <div class="team-member">
             <span class="member-name">Yvonne Ma</span>
-            <span class="member-role">Researcher</span>
+            <span class="member-role">Presenter · Research · Reporter</span>
+            <p class="member-desc">Reviews hospital guidelines and summarizes medical literature to establish accurate clinical training steps.</p>
           </div>
           <div class="team-member">
             <span class="member-name">Paul Leung</span>
-            <span class="member-role">Researcher</span>
+            <span class="member-role">Presenter · Research · Reporter</span>
+            <p class="member-desc">Researches hospital care policies and medical articles, summarizing clinical standards and safety protocols.</p>
           </div>
           <div class="team-member">
             <span class="member-name">Minh Vuong</span>
-            <span class="member-role">Website Builder &amp; Summarize</span>
+            <span class="member-role">Presenter · Research · Reporter</span>
+            <p class="member-desc">Built the website and interactive simulation prototype, while verifying clinical information and references.</p>
           </div>
         </div>
       </div>
