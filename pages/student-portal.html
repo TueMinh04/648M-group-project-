@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Portal &amp; Trainee Records | Virtucare</title>
+  <meta name="description" content="Access the Virtucare Student Simulation Portal to manage trainee credentials, review procedural trial logs, and inspect clinical feedback.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/premium.css">
+  <link rel="stylesheet" href="../assets/css/app.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+</head>
+<body data-mode="app" data-page="student-portal">
+
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div class="container section" style="padding-top: 5.5rem; min-height: 80vh;">
+      
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" style="margin-bottom: 1.5rem; font-size: 0.88rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="../index.html" style="color: var(--text-muted); text-decoration: none;">Virtucare</a>
+        <i class="fas fa-chevron-right" style="font-size: 0.7rem; opacity: 0.6;"></i>
+        <span style="color: var(--primary); font-weight: 500;">Student Simulation Portal</span>
+      </nav>
+
+      <!-- Portal Header Section -->
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <span class="research-badge research-badge-blue" style="font-size: 0.8rem; padding: 0.35rem 0.85rem; margin-bottom: 0.75rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+          <i class="fas fa-user-graduate"></i> Healthcare Trainee &amp; Student Access
+        </span>
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.6rem;">Clinical Simulation Portal</h1>
+        <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 780px; margin: 0 auto; line-height: 1.6;">
+          Sign in with your institutional credentials or register as a healthcare trainee to track simulated procedural attempts, rule-based checklists, preceptor evaluations, and objective debrief metrics.
+        </p>
+
+        <!-- Quick Access Action Bar -->
+        <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-primary" id="top-signin-btn" style="font-size: 0.92rem; padding: 0.65rem 1.4rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-sign-in-alt"></i> Sign In / Sign Up
+          </button>
+          <button type="button" class="btn btn-secondary" id="top-trainee-records-btn" style="font-size: 0.92rem; padding: 0.65rem 1.4rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-clipboard-list"></i> Trainee Records &amp; Feedback
+          </button>
+          <a href="../index.html#prototype-section" class="btn btn-secondary" style="font-size: 0.92rem; padding: 0.65rem 1.25rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-play"></i> Launch Simulation Prototype
+          </a>
+          <button type="button" onclick="window.print()" class="btn btn-secondary" style="font-size: 0.92rem; padding: 0.65rem 1.1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-print"></i> Export Record
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Portal Box -->
+      <div style="max-width: 860px; margin: 0 auto;">
+        <div class="portal-card" id="portal-card-container">
+          
+          <!-- 3-Way Tab Switcher: Sign In, Sign Up, Trainee Records -->
+          <div class="portal-tabs" id="portal-tab-group" style="display: flex;">
+            <button type="button" class="portal-tab-btn active" id="tab-signin-btn">
+              <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+            <button type="button" class="portal-tab-btn" id="tab-signup-btn">
+              <i class="fas fa-user-plus"></i> Sign Up (New Registration)
+            </button>
+            <button type="button" class="portal-tab-btn" id="tab-records-btn">
+              <i class="fas fa-clipboard-check"></i> Trainee Records &amp; Feedback
+            </button>
+          </div>
+
+          <!-- Sign In Form -->
+          <form id="form-signin" class="portal-form" onsubmit="event.preventDefault(); window.handlePortalAuth('signin');">
+            <div class="portal-field">
+              <label class="portal-label" for="signin-email">
+                <i class="fas fa-envelope" style="color: var(--primary);"></i> Institutional Email or Student ID
+              </label>
+              <input type="text" id="signin-email" class="portal-input" placeholder="e.g. s.chen@med.utoronto.ca or SHN-89214" value="s.chen@med.utoronto.ca" required>
+            </div>
+
+            <div class="portal-field">
+              <label class="portal-label" for="signin-hospital">
+                <i class="fas fa-hospital" style="color: var(--secondary);"></i> Teaching Hospital / Academic Institution
+              </label>
+              <select id="signin-hospital" class="portal-select" required>
+                <option value="Scarborough Health Network">Scarborough Health Network (SHN)</option>
+                <option value="Humber River Health">Humber River Health (HRH)</option>
+                <option value="University of Toronto">University of Toronto Faculty of Medicine</option>
+                <option value="Sunnybrook Health Sciences Centre">Sunnybrook Health Sciences Centre</option>
+                <option value="University Health Network">University Health Network (UHN)</option>
+                <option value="Michael Garron Hospital">Michael Garron Hospital</option>
+              </select>
+            </div>
+
+            <div class="portal-field">
+              <label class="portal-label" for="signin-password">
+                <i class="fas fa-lock" style="color: var(--accent);"></i> Simulation Password
+              </label>
+              <input type="password" id="signin-password" class="portal-input" placeholder="Enter password (demo: any value)" value="demo12345" required>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin: 0.5rem 0 1.25rem;">
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; color: var(--text-muted); cursor: pointer;">
+                <input type="checkbox" checked style="accent-color: var(--primary);"> Remember workstation session
+              </label>
+              <a href="javascript:void(0)" onclick="alert('Demo reset instructions sent to institutional email.')" style="font-size: 0.85rem; color: var(--primary); text-decoration: none;">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 1rem; padding: 0.9rem;">
+              <i class="fas fa-sign-in-alt" style="margin-right: 0.5rem;"></i> Sign In &amp; Open Trainee Records
+            </button>
+
+            <!-- Quick Demo Bypass for Evaluators & Professors -->
+            <div style="margin-top: 1.5rem; padding: 1.15rem; background: rgba(59, 130, 246, 0.08); border: 1px dashed rgba(59, 130, 246, 0.3); border-radius: 8px; text-align: center;">
+              <span style="font-size: 0.85rem; color: var(--text-muted); display: block; margin-bottom: 0.6rem;">
+                <i class="fas fa-bolt" style="color: #facc15; margin-right: 0.3rem;"></i> <strong>Evaluator / Faculty 1-Click Access:</strong>
+              </span>
+              <button type="button" class="btn btn-secondary btn-sm" id="quick-demo-login-btn" style="width: 100%; justify-content: center; font-size: 0.86rem; padding: 0.65rem;">
+                <i class="fas fa-user-check" style="margin-right: 0.4rem; color: var(--secondary);"></i> 1-Click Demo Trainee Login (Dr. Sarah Chen, MD · PGY-2)
+              </button>
+            </div>
+          </form>
+
+          <!-- Sign Up / Register Form -->
+          <form id="form-signup" class="portal-form" style="display: none;" onsubmit="event.preventDefault(); window.handlePortalAuth('signup');">
+            <div class="portal-grid-2">
+              <div class="portal-field">
+                <label class="portal-label" for="signup-name">
+                  <i class="fas fa-user" style="color: var(--primary);"></i> Full Legal Name &amp; Degree
+                </label>
+                <input type="text" id="signup-name" class="portal-input" placeholder="e.g. Dr. Alex Mercer, MD" required>
+              </div>
+
+              <div class="portal-field">
+                <label class="portal-label" for="signup-role">
+                  <i class="fas fa-id-badge" style="color: var(--primary);"></i> Trainee Role / Training Stage
+                </label>
+                <select id="signup-role" class="portal-select" required>
+                  <option value="Medical Resident (PGY-1)">Medical Resident (PGY-1)</option>
+                  <option value="Medical Resident (PGY-2)" selected>Medical Resident (PGY-2)</option>
+                  <option value="Senior Resident (PGY-3+)">Senior Resident (PGY-3+)</option>
+                  <option value="Clinical Fellow">Clinical Fellow</option>
+                  <option value="Medical Student (Clerkship)">Medical Student (Clerkship)</option>
+                  <option value="Advanced Practice Nursing Trainee">Advanced Practice Nursing Trainee</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="portal-field">
+              <label class="portal-label" for="signup-hospital">
+                <i class="fas fa-hospital-user" style="color: var(--secondary);"></i> Clinical Affiliation / Hospital Site
+              </label>
+              <select id="signup-hospital" class="portal-select" required>
+                <option value="Scarborough Health Network">Scarborough Health Network (SHN)</option>
+                <option value="Humber River Health">Humber River Health (HRH)</option>
+                <option value="University of Toronto">University of Toronto Faculty of Medicine</option>
+                <option value="Sunnybrook Health Sciences Centre">Sunnybrook Health Sciences Centre</option>
+                <option value="University Health Network">University Health Network (UHN)</option>
+                <option value="Michael Garron Hospital">Michael Garron Hospital</option>
+              </select>
+            </div>
+
+            <div class="portal-grid-2">
+              <div class="portal-field">
+                <label class="portal-label" for="signup-id">
+                  <i class="fas fa-hashtag" style="color: var(--secondary);"></i> Trainee ID / License #
+                </label>
+                <input type="text" id="signup-id" class="portal-input" placeholder="e.g. SHN-RES-91820" required>
+              </div>
+
+              <div class="portal-field">
+                <label class="portal-label" for="signup-mentor">
+                  <i class="fas fa-user-tie" style="color: var(--secondary);"></i> Supervising Preceptor / Faculty Mentor
+                </label>
+                <input type="text" id="signup-mentor" class="portal-input" placeholder="e.g. Dr. D. Cook, MD" required>
+              </div>
+            </div>
+
+            <div class="portal-grid-2">
+              <div class="portal-field">
+                <label class="portal-label" for="signup-password">
+                  <i class="fas fa-lock" style="color: var(--accent);"></i> Create Password
+                </label>
+                <input type="password" id="signup-password" class="portal-input" placeholder="At least 8 characters" required>
+              </div>
+
+              <div class="portal-field">
+                <label class="portal-label" for="signup-confirm">
+                  <i class="fas fa-lock" style="color: var(--accent);"></i> Confirm Password
+                </label>
+                <input type="password" id="signup-confirm" class="portal-input" placeholder="Repeat password" required>
+              </div>
+            </div>
+
+            <label class="portal-checkbox-label">
+              <input type="checkbox" required>
+              <span>I confirm I am an authorized healthcare trainee and agree to practice according to hospital procedural standards. (Concept prototype; no real patient data is transmitted or stored).</span>
+            </label>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 1rem; padding: 0.9rem;">
+              <i class="fas fa-user-plus" style="margin-right: 0.5rem;"></i> Register &amp; Open Simulation Workstation
+            </button>
+          </form>
+
+          <!-- Authenticated Trainee State (Shows once signed in) -->
+          <div id="trainee-authenticated-view" style="display: none;">
+            
+            <!-- Trainee Profile Card -->
+            <div class="trainee-profile-active">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.25rem;">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                  <div style="width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6, #10b981); display: flex; align-items: center; justify-content: center; font-size: 1.35rem; color: #fff; font-weight: 700;" id="auth-avatar">
+                    SC
+                  </div>
+                  <div>
+                    <h3 style="margin: 0; font-size: 1.3rem; color: var(--text-main);" id="auth-name">Dr. Sarah Chen, MD</h3>
+                    <div style="font-size: 0.88rem; color: var(--primary); font-weight: 500;" id="auth-role">
+                      Medical Resident (PGY-2) · Scarborough Health Network
+                    </div>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.6rem;">
+                  <span class="research-badge research-badge-green" style="font-size: 0.8rem; padding: 0.35rem 0.85rem;">
+                    <i class="fas fa-check-circle"></i> Simulation Session Active
+                  </span>
+                </div>
+              </div>
+
+              <div class="grid-3" style="gap: 1rem; margin: 0.5rem 0;">
+                <div style="background: rgba(0,0,0,0.25); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+                  <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase;">Trainee ID</div>
+                  <div style="font-size: 1.05rem; font-weight: 600; color: var(--text-main); margin-top: 0.2rem;" id="auth-id">SHN-RES-88219</div>
+                </div>
+                <div style="background: rgba(0,0,0,0.25); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+                  <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase;">Procedural Level</div>
+                  <div style="font-size: 1.05rem; font-weight: 600; color: #93c5fd; margin-top: 0.2rem;">Pre-Clinical Mastery Level 2</div>
+                </div>
+                <div style="background: rgba(0,0,0,0.25); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+                  <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase;">Assigned Faculty</div>
+                  <div style="font-size: 1.05rem; font-weight: 600; color: var(--text-main); margin-top: 0.2rem;" id="auth-mentor">Dr. D. Cook, MD</div>
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08);">
+                <div style="font-size: 0.88rem; color: #86efac; display: flex; align-items: center; gap: 0.4rem;">
+                  <i class="fas fa-check-circle"></i> Workstation authenticated. Trainee session initialized.
+                </div>
+                <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                  <a href="../index.html#prototype-section" class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size: 0.88rem;">
+                    <i class="fas fa-play" style="margin-right: 0.4rem;"></i> Start Procedures in Prototype
+                  </a>
+                  <button type="button" class="btn btn-secondary" id="auth-signout-btn" style="padding: 0.6rem 1rem; font-size: 0.88rem;">
+                    <i class="fas fa-sign-out-alt"></i> Switch Trainee
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Student Summary Feedback, Practice Trials & History Dossier -->
+            <div class="dossier-wrapper" id="portal-history-dossier" style="margin-top: 2rem;">
+              
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                  <span class="research-badge research-badge-blue" style="font-size: 0.78rem;">
+                    <i class="fas fa-clipboard-check"></i> Trainee Competency Dossier (Simulated)
+                  </span>
+                  <h2 style="font-size: 1.5rem; margin: 0.4rem 0 0.2rem 0; color: var(--text-main);">
+                    Performance Summary, Practice Trials &amp; Clinical Feedback
+                  </h2>
+                  <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">
+                    Historical simulator encounters, AI rule-engine kinematic audits, and supervising faculty sign-offs.
+                  </p>
+                </div>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                  <a href="student-history.html" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.55rem 1rem; display: inline-flex; align-items: center; gap: 0.45rem;">
+                    <i class="fas fa-external-link-alt"></i> Full-Screen Dossier Page
+                  </a>
+                  <button type="button" onclick="window.print()" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.55rem 0.9rem;" title="Print / Export Dossier">
+                    <i class="fas fa-print"></i> Export Record
+                  </button>
+                </div>
+              </div>
+
+              <!-- 4 Performance Summary KPIs -->
+              <div class="dossier-kpis">
+                <div class="dossier-kpi-card">
+                  <div class="dossier-kpi-label"><i class="fas fa-history" style="color: var(--primary);"></i> Total Practice Trials</div>
+                  <div class="dossier-kpi-val">14 <span style="font-size: 0.9rem; font-weight: 500; color: var(--text-muted);">attempts</span></div>
+                  <div class="dossier-kpi-sub"><i class="fas fa-check-double"></i> 3 Core Procedures Practiced</div>
+                </div>
+                <div class="dossier-kpi-card">
+                  <div class="dossier-kpi-label"><i class="fas fa-chart-line" style="color: var(--secondary);"></i> Overall Mean Score</div>
+                  <div class="dossier-kpi-val" style="color: #6ee7b7;">92.8%</div>
+                  <div class="dossier-kpi-sub"><i class="fas fa-arrow-up"></i> +14.8% vs. Trial 1 baseline</div>
+                </div>
+                <div class="dossier-kpi-card">
+                  <div class="dossier-kpi-label"><i class="fas fa-shield-alt" style="color: #f59e0b;"></i> Safety Compliance</div>
+                  <div class="dossier-kpi-val" style="color: #93c5fd;">100%</div>
+                  <div class="dossier-kpi-sub" style="color: #93c5fd;"><i class="fas fa-check-circle"></i> 0 Uncorrected Breaches</div>
+                </div>
+                <div class="dossier-kpi-card">
+                  <div class="dossier-kpi-label"><i class="fas fa-user-check" style="color: #a855f7;"></i> Preceptor Clearance</div>
+                  <div class="dossier-kpi-val" style="font-size: 1.35rem; color: #facc15;">Level 2 Cleared</div>
+                  <div class="dossier-kpi-sub" style="color: #facc15;"><i class="fas fa-stamp"></i> Dr. D. Cook, MD Verified</div>
+                </div>
+              </div>
+
+              <!-- Interactive Dossier Navigation Tabs -->
+              <div class="dossier-nav-tabs" role="tablist">
+                <button type="button" class="dossier-nav-tab active" data-portal-tab="tab-trials">
+                  <i class="fas fa-list-ol"></i> Practice Trials &amp; History Log (14)
+                </button>
+                <button type="button" class="dossier-nav-tab" data-portal-tab="tab-feedback">
+                  <i class="fas fa-comment-medical"></i> Faculty &amp; AI Feedback Summary
+                </button>
+                <button type="button" class="dossier-nav-tab" data-portal-tab="tab-competency">
+                  <i class="fas fa-tasks"></i> Procedure Mastery Breakdown
+                </button>
+              </div>
+
+              <!-- Tab 1: Practice Trials History -->
+              <div id="portal-tab-trials" class="portal-dossier-pane" style="display: block;">
+                
+                <div class="dossier-filter-row">
+                  <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;" id="portal-trial-filters">
+                    <button type="button" class="procedure-filter-pill active" data-filter="all">All Procedures (14)</button>
+                    <button type="button" class="procedure-filter-pill" data-filter="ng-tube">Nasogastric Tube (6)</button>
+                    <button type="button" class="procedure-filter-pill" data-filter="catheter">Foley Catheter (5)</button>
+                    <button type="button" class="procedure-filter-pill" data-filter="iv-cannula">Peripheral IV (3)</button>
+                  </div>
+                  <div style="position: relative; min-width: 240px;">
+                    <input type="text" id="portal-trial-search" placeholder="Search trials &amp; notes..." class="portal-input" style="padding: 0.45rem 0.85rem 0.45rem 2rem; font-size: 0.85rem; height: 34px;">
+                    <i class="fas fa-search" style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.8rem;"></i>
+                  </div>
+                </div>
+
+                <div class="trials-table-container">
+                  <table class="trials-table" id="portal-trials-table">
+                    <thead>
+                      <tr>
+                        <th>Trial #</th>
+                        <th>Date &amp; Time</th>
+                        <th>Procedure Module</th>
+                        <th>Duration</th>
+                        <th>Score</th>
+                        <th>Safety Checkpoint</th>
+                        <th>Preceptor / AI Feedback Note</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr data-proc="ng-tube">
+                        <td><strong style="color: var(--primary);">#14</strong></td>
+                        <td style="white-space: nowrap; color: var(--text-muted);">Today · 14:10</td>
+                        <td>
+                          <div style="font-weight: 600; color: var(--text-main);">Adult Nasogastric (NG) Tube Insertion</div>
+                          <span style="font-size: 0.76rem; color: #93c5fd;">High-Fowler's · NEX 52cm mark</span>
+                        </td>
+                        <td style="white-space: nowrap; font-family: monospace;">3m 42s</td>
+                        <td><span class="trial-score-pill trial-score-high">96% (Distinction)</span></td>
+                        <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (6/6)</span></td>
+                        <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                          <em>"Optimal lubrication and patient swallowing cue timing. Syringe aspirate pH 3.2 verified prior to flush."</em>
+                          <div style="font-size: 0.75rem; color: var(--primary); margin-top: 0.2rem;">— AI Rule Engine (Validated)</div>
+                        </td>
+                      </tr>
+                      <tr data-proc="catheter">
+                        <td><strong style="color: var(--primary);">#13</strong></td>
+                        <td style="white-space: nowrap; color: var(--text-muted);">Yesterday · 16:45</td>
+                        <td>
+                          <div style="font-weight: 600; color: var(--text-main);">Female Indwelling Urinary Catheterization</div>
+                          <span style="font-size: 0.76rem; color: #c4b5fd;">14 Fr Foley · 10mL retention balloon</span>
+                        </td>
+                        <td style="white-space: nowrap; font-family: monospace;">4m 15s</td>
+                        <td><span class="trial-score-pill trial-score-high">92% (Pass)</span></td>
+                        <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (5/5)</span></td>
+                        <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                          <em>"Rigorous sterile field maintained. Remember to advance 2.5cm further after first urine flash before balloon inflation."</em>
+                          <div style="font-size: 0.75rem; color: #facc15; margin-top: 0.2rem;">— Dr. D. Cook, MD</div>
+                        </td>
+                      </tr>
+                      <tr data-proc="iv-cannula">
+                        <td><strong style="color: var(--primary);">#12</strong></td>
+                        <td style="white-space: nowrap; color: var(--text-muted);">Oct 22 · 09:20</td>
+                        <td>
+                          <div style="font-weight: 600; color: var(--text-main);">Peripheral IV Cannulation (Antebrachial)</div>
+                          <span style="font-size: 0.76rem; color: #fcd34d;">18 Gauge · Cephalic Vein</span>
+                        </td>
+                        <td style="white-space: nowrap; font-family: monospace;">2m 58s</td>
+                        <td><span class="trial-score-pill trial-score-med">88% (Pass)</span></td>
+                        <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (5/5)</span></td>
+                        <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                          <em>"Smooth 25° bevel-up penetration. Flashback brisk. Practice releasing tourniquet immediately before saline flush."</em>
+                          <div style="font-size: 0.75rem; color: var(--primary); margin-top: 0.2rem;">— AI Rule Engine (Validated)</div>
+                        </td>
+                      </tr>
+                      <tr data-proc="ng-tube">
+                        <td><strong style="color: var(--primary);">#11</strong></td>
+                        <td style="white-space: nowrap; color: var(--text-muted);">Oct 21 · 11:30</td>
+                        <td>
+                          <div style="font-weight: 600; color: var(--text-main);">Neonatal Feeding Tube Insertion</div>
+                          <span style="font-size: 0.76rem; color: #93c5fd;">6 Fr Enteral · Neo-NEX measurement</span>
+                        </td>
+                        <td style="white-space: nowrap; font-family: monospace;">3m 10s</td>
+                        <td><span class="trial-score-pill trial-score-high">95% (Distinction)</span></td>
+                        <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (6/6)</span></td>
+                        <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                          <em>"Gentle insertion trajectory with zero vagal distress triggers. Measured markings verified at nares prior to securement."</em>
+                          <div style="font-size: 0.75rem; color: #facc15; margin-top: 0.2rem;">— Dr. D. Cook, MD</div>
+                        </td>
+                      </tr>
+                      <tr data-proc="catheter">
+                        <td><strong style="color: var(--primary);">#10</strong></td>
+                        <td style="white-space: nowrap; color: var(--text-muted);">Oct 20 · 15:10</td>
+                        <td>
+                          <div style="font-weight: 600; color: var(--text-main);">Male Indwelling Urinary Catheterization</div>
+                          <span style="font-size: 0.76rem; color: #c4b5fd;">16 Fr Foley · Syringe pre-test</span>
+                        </td>
+                        <td style="white-space: nowrap; font-family: monospace;">5m 20s</td>
+                        <td><span class="trial-score-pill trial-score-warn">78% (Remediated)</span></td>
+                        <td><span class="research-badge research-badge-amber" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-exclamation-triangle"></i> Self-Corrected</span></td>
+                        <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                          <em>"Sterile boundary warning tripped on fenestrated drape corner. Trainee successfully halted, exchanged sterile gloves, and cleared."</em>
+                          <div style="font-size: 0.75rem; color: #f59e0b; margin-top: 0.2rem;">— AI Safety Engine</div>
+                        </td>
+                      </tr>
+                      <tr data-proc="ng-tube">
+                        <td><strong style="color: var(--primary);">#09</strong></td>
+                        <td style="white-space: nowrap; color: var(--text-muted);">Oct 19 · 10:05</td>
+                        <td>
+                          <div style="font-weight: 600; color: var(--text-main);">Adult Nasogastric (NG) Tube Insertion</div>
+                          <span style="font-size: 0.76rem; color: #93c5fd;">Resistance Simulation · 14 Fr Levin</span>
+                        </td>
+                        <td style="white-space: nowrap; font-family: monospace;">4m 30s</td>
+                        <td><span class="trial-score-pill trial-score-med">84% (Pass)</span></td>
+                        <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (5/6)</span></td>
+                        <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                          <em>"Encountered pharyngeal resistance; safely withdrew 2cm, re-angled tube, and cued patient forward flexion and swallow."</em>
+                          <div style="font-size: 0.75rem; color: var(--primary); margin-top: 0.2rem;">— AI Rule Engine (Validated)</div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+                  <div>Showing 6 most recent trials (14 total logged in database).</div>
+                  <a href="student-history.html" style="color: var(--primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;">
+                    View Complete 14-Trial History &amp; Analytical Logs <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Tab 2: Faculty & AI Feedback Summary -->
+              <div id="portal-tab-feedback" class="portal-dossier-pane" style="display: none;">
+                
+                <div class="feedback-card" style="border-left: 4px solid var(--secondary);">
+                  <div class="feedback-card-header">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                      <div style="width: 42px; height: 42px; border-radius: 50%; background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.4); display: flex; align-items: center; justify-content: center; color: #6ee7b7; font-weight: 700;">
+                        DC
+                      </div>
+                      <div>
+                        <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Clinical Faculty Preceptor Evaluation</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">Dr. D. Cook, MD · Supervising Faculty, Scarborough Health Network</span>
+                      </div>
+                    </div>
+                    <span class="research-badge research-badge-green" style="font-size: 0.75rem;">
+                      <i class="fas fa-stamp"></i> Formally Endorsed
+                    </span>
+                  </div>
+                  <div class="feedback-quote">
+                    "Dr. Chen has demonstrated exemplary discipline in procedural preparation. Her adherence to aseptic boundaries and patient-centered communication during simulated resistance is well above the PGY-2 cohort mean. Specifically, her NG aspirate pH confirmation prior to phantom feeding solution instillation was executed flawlessly. Based on this dossier, I certify her for supervised bedside clinical transitions on the inpatient wards."
+                  </div>
+                  <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; font-size: 0.84rem; color: var(--text-muted);">
+                    <div><strong style="color: var(--text-main);">Procedural Readiness:</strong> Cleared for Supervised Patient Encounters</div>
+                    <div><strong style="color: var(--text-main);">Recommended Focus:</strong> Refine tactile speed on IV catheter hub stabilization</div>
+                  </div>
+                </div>
+
+                <div class="grid-2" style="gap: 1.25rem;">
+                  
+                  <div class="feedback-card">
+                    <div class="feedback-card-header">
+                      <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-brain" style="color: var(--primary); font-size: 1.1rem;"></i>
+                        <h4 style="margin: 0; font-size: 1rem; color: var(--text-main);">AI Rule-Engine Strengths</h4>
+                      </div>
+                      <span class="research-badge research-badge-blue" style="font-size: 0.72rem;">Automated</span>
+                    </div>
+                    <ul style="padding-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.65rem; margin: 0;">
+                      <li><strong>Aseptic Barrier Preservation:</strong> 98% compliance across trials. Rapid self-correction when sterile border was compromised.</li>
+                      <li><strong>Anatomical Landmark Accuracy:</strong> NEX measurement consistently accurate within ±0.4 cm of virtual anatomical targets.</li>
+                      <li><strong>Aspiration Verification:</strong> 100% adherence to gastric aspirate pH check step before considering tube placement secure.</li>
+                    </ul>
+                  </div>
+
+                  <div class="feedback-card">
+                    <div class="feedback-card-header">
+                      <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-bullseye" style="color: #f59e0b; font-size: 1.1rem;"></i>
+                        <h4 style="margin: 0; font-size: 1rem; color: var(--text-main);">Deliberate Practice Priorities</h4>
+                      </div>
+                      <span class="research-badge research-badge-amber" style="font-size: 0.72rem;">Target for Growth</span>
+                    </div>
+                    <ul style="padding-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.65rem; margin: 0;">
+                      <li><strong>Female Catheter Advance Depth:</strong> Remember to advance 2.5–3 cm further after urine first appears before balloon inflation.</li>
+                      <li><strong>Tourniquet Release Timing:</strong> Release tourniquet immediately upon visual blood flashback to prevent vein extravasation.</li>
+                      <li><strong>Ergonomic Hand Positioning:</strong> Maintain non-dominant hand stabilization on the catheter hub during syringe connection.</li>
+                    </ul>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Tab 3: Procedure Mastery Breakdown -->
+              <div id="portal-tab-competency" class="portal-dossier-pane" style="display: none;">
+                
+                <div class="feedback-card">
+                  <h4 style="margin: 0 0 1.25rem 0; font-size: 1.1rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-medal" style="color: #facc15;"></i> Competency Verification by Procedural Module
+                  </h4>
+
+                  <div class="competency-bar-row">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                      <span style="font-weight: 600; color: var(--text-main);">
+                        <i class="fas fa-lungs" style="color: var(--primary); margin-right: 0.4rem;"></i> Nasogastric Tube Insertion (Adult &amp; Neonate)
+                      </span>
+                      <span style="color: #6ee7b7; font-weight: 700;">95.5% · Mastery Level 2 Cleared</span>
+                    </div>
+                    <div class="competency-bar-track">
+                      <div class="competency-bar-fill" style="width: 95.5%; background: linear-gradient(90deg, #3b82f6, #10b981);"></div>
+                    </div>
+                    <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.3rem;">6 trials completed · Mean time: 3m 48s · 0 uncorrected safety alerts</div>
+                  </div>
+
+                  <div class="competency-bar-row">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                      <span style="font-weight: 600; color: var(--text-main);">
+                        <i class="fas fa-procedures" style="color: #a855f7; margin-right: 0.4rem;"></i> Indwelling Urinary Catheterization (Male &amp; Female)
+                      </span>
+                      <span style="color: #93c5fd; font-weight: 700;">90.0% · Mastery Level 2 Cleared</span>
+                    </div>
+                    <div class="competency-bar-track">
+                      <div class="competency-bar-fill" style="width: 90%; background: linear-gradient(90deg, #8b5cf6, #3b82f6);"></div>
+                    </div>
+                    <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.3rem;">5 trials completed · Mean time: 4m 32s · 1 self-corrected sterile boundary alert</div>
+                  </div>
+
+                  <div class="competency-bar-row" style="margin-bottom: 0;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                      <span style="font-weight: 600; color: var(--text-main);">
+                        <i class="fas fa-syringe" style="color: #f59e0b; margin-right: 0.4rem;"></i> Peripheral IV Cannulation (18G &amp; 20G)
+                      </span>
+                      <span style="color: #fcd34d; font-weight: 700;">87.3% · Mastery Level 1 Cleared</span>
+                    </div>
+                    <div class="competency-bar-track">
+                      <div class="competency-bar-fill" style="width: 87.3%; background: linear-gradient(90deg, #f59e0b, #10b981);"></div>
+                    </div>
+                    <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.3rem;">3 trials completed · Mean time: 3m 05s · Ready for Level 2 catheter advancement trial</div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Bottom Quick Actions -->
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 1.25rem; background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); margin-top: 1.5rem;">
+                <div style="font-size: 0.88rem; color: var(--text-muted);">
+                  <i class="fas fa-info-circle" style="color: var(--primary); margin-right: 0.35rem;"></i>
+                  Ready for deliberate practice? Launch the 2D interactive simulator.
+                </div>
+                <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                  <a href="../index.html#prototype-section" class="btn btn-primary" style="font-size: 0.88rem; padding: 0.6rem 1.25rem;">
+                    <i class="fas fa-play" style="margin-right: 0.4rem;"></i> Practice in Prototype
+                  </a>
+                  <a href="student-history.html" class="btn btn-secondary" style="font-size: 0.88rem; padding: 0.6rem 1rem;">
+                    <i class="fas fa-file-medical-alt" style="margin-right: 0.4rem;"></i> Full Trainee History Page
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="../assets/js/main.js"></script>
+
+  <script>
+    (function(){
+      // Elements
+      var tabSignin = document.getElementById('tab-signin-btn');
+      var tabSignup = document.getElementById('tab-signup-btn');
+      var tabRecords = document.getElementById('tab-records-btn');
+      var formSignin = document.getElementById('form-signin');
+      var formSignup = document.getElementById('form-signup');
+      var authView = document.getElementById('trainee-authenticated-view');
+      var portalTabs = document.getElementById('portal-tab-group');
+      var quickDemoBtn = document.getElementById('quick-demo-login-btn');
+      var topSigninBtn = document.getElementById('top-signin-btn');
+      var topRecordsBtn = document.getElementById('top-trainee-records-btn');
+      var signoutBtn = document.getElementById('auth-signout-btn');
+
+      function renderTraineeProfile(trainee) {
+        if (!trainee) return;
+        var initials = trainee.name ? trainee.name.split(' ').map(function(n){ return n[0]; }).join('').substring(0,2).toUpperCase() : 'SC';
+        var avatarEl = document.getElementById('auth-avatar');
+        var nameEl = document.getElementById('auth-name');
+        var roleEl = document.getElementById('auth-role');
+        var idEl = document.getElementById('auth-id');
+        var mentorEl = document.getElementById('auth-mentor');
+
+        if (avatarEl) avatarEl.textContent = initials;
+        if (nameEl) nameEl.textContent = trainee.name;
+        if (roleEl) roleEl.textContent = (trainee.role || 'Medical Trainee') + ' · ' + (trainee.hospital || 'Accredited Clinical Site');
+        if (idEl) idEl.textContent = trainee.id || 'SHN-RES-88219';
+        if (mentorEl) mentorEl.textContent = trainee.mentor || 'Dr. D. Cook, MD';
+      }
+
+      function switchTab(mode) {
+        if (tabSignin) tabSignin.classList.remove('active');
+        if (tabSignup) tabSignup.classList.remove('active');
+        if (tabRecords) tabRecords.classList.remove('active');
+
+        if (mode === 'signup') {
+          if (tabSignup) tabSignup.classList.add('active');
+          if (formSignup) formSignup.style.display = 'block';
+          if (formSignin) formSignin.style.display = 'none';
+          if (authView) authView.style.display = 'none';
+        } else if (mode === 'records') {
+          if (tabRecords) tabRecords.classList.add('active');
+          if (formSignup) formSignup.style.display = 'none';
+          if (formSignin) formSignin.style.display = 'none';
+          var trainee = null;
+          try { trainee = JSON.parse(sessionStorage.getItem('virtucare_trainee')); } catch(e){}
+          if (!trainee) {
+            trainee = {
+              name: 'Dr. Sarah Chen, MD',
+              role: 'Medical Resident (PGY-2)',
+              hospital: 'Scarborough Health Network',
+              id: 'SHN-RES-88219',
+              mentor: 'Dr. D. Cook, MD'
+            };
+            sessionStorage.setItem('virtucare_trainee', JSON.stringify(trainee));
+          }
+          renderTraineeProfile(trainee);
+          if (authView) authView.style.display = 'block';
+        } else {
+          // Default: signin
+          if (tabSignin) tabSignin.classList.add('active');
+          if (formSignin) formSignin.style.display = 'block';
+          if (formSignup) formSignup.style.display = 'none';
+          if (authView) authView.style.display = 'none';
+        }
+      }
+
+      window.handlePortalAuth = function(type) {
+        var trainee;
+        if (type === 'signup') {
+          var name = document.getElementById('signup-name').value || 'Dr. Student Trainee';
+          var role = document.getElementById('signup-role').value;
+          var hospital = document.getElementById('signup-hospital').value;
+          var id = document.getElementById('signup-id').value || 'MED-2026-9041';
+          var mentor = document.getElementById('signup-mentor').value || 'Dr. Clinical Preceptor';
+          trainee = { name: name, role: role, hospital: hospital, id: id, mentor: mentor };
+        } else {
+          var email = document.getElementById('signin-email').value;
+          var hosp = document.getElementById('signin-hospital').value;
+          trainee = { name: 'Dr. Sarah Chen, MD', role: 'Medical Resident (PGY-2)', hospital: hosp, id: email.includes('-') ? email : 'SHN-RES-88219', mentor: 'Dr. D. Cook, MD' };
+        }
+        sessionStorage.setItem('virtucare_trainee', JSON.stringify(trainee));
+        switchTab('records');
+      };
+
+      if (tabSignin) {
+        tabSignin.addEventListener('click', function() { switchTab('signin'); });
+      }
+      if (tabSignup) {
+        tabSignup.addEventListener('click', function() { switchTab('signup'); });
+      }
+      if (tabRecords) {
+        tabRecords.addEventListener('click', function() { switchTab('records'); });
+      }
+
+      if (topSigninBtn) {
+        topSigninBtn.addEventListener('click', function() {
+          switchTab('signin');
+          var card = document.getElementById('portal-card-container');
+          if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+
+      if (topRecordsBtn) {
+        topRecordsBtn.addEventListener('click', function() {
+          switchTab('records');
+          var card = document.getElementById('portal-card-container');
+          if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+
+      if (quickDemoBtn) {
+        quickDemoBtn.addEventListener('click', function() {
+          var demoTrainee = {
+            name: 'Dr. Sarah Chen, MD',
+            role: 'Medical Resident (PGY-2)',
+            hospital: 'Scarborough Health Network',
+            id: 'SHN-RES-88219',
+            mentor: 'Dr. D. Cook, MD'
+          };
+          sessionStorage.setItem('virtucare_trainee', JSON.stringify(demoTrainee));
+          switchTab('records');
+        });
+      }
+
+      if (signoutBtn) {
+        signoutBtn.addEventListener('click', function() {
+          sessionStorage.removeItem('virtucare_trainee');
+          switchTab('signin');
+        });
+      }
+
+      // Dossier Tab Switching
+      var dossierTabBtns = document.querySelectorAll('[data-portal-tab]');
+      var dossierPanes = document.querySelectorAll('.portal-dossier-pane');
+      dossierTabBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var targetId = 'portal-' + btn.getAttribute('data-portal-tab');
+          dossierTabBtns.forEach(function(b) { b.classList.remove('active'); });
+          dossierPanes.forEach(function(p) { p.style.display = 'none'; });
+          btn.classList.add('active');
+          var targetPane = document.getElementById(targetId);
+          if (targetPane) targetPane.style.display = 'block';
+        });
+      });
+
+      // Dossier Filter Pills & Search
+      var filterPills = document.querySelectorAll('#portal-trial-filters .procedure-filter-pill');
+      var trialRows = document.querySelectorAll('#portal-trials-table tbody tr');
+      var searchInput = document.getElementById('portal-trial-search');
+
+      function applyTrialFilters(filter, query) {
+        query = (query || '').toLowerCase().trim();
+        trialRows.forEach(function(row) {
+          var procMatch = (filter === 'all' || row.getAttribute('data-proc') === filter);
+          var textMatch = !query || row.textContent.toLowerCase().indexOf(query) !== -1;
+          row.style.display = (procMatch && textMatch) ? '' : 'none';
+        });
+      }
+
+      filterPills.forEach(function(pill) {
+        pill.addEventListener('click', function() {
+          filterPills.forEach(function(p) { p.classList.remove('active'); });
+          pill.classList.add('active');
+          var filter = pill.getAttribute('data-filter');
+          applyTrialFilters(filter, searchInput ? searchInput.value : '');
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', function() {
+          var activePill = document.querySelector('#portal-trial-filters .procedure-filter-pill.active');
+          var filter = activePill ? activePill.getAttribute('data-filter') : 'all';
+          applyTrialFilters(filter, searchInput.value);
+        });
+      }
+
+      // Initial tab on load
+      var hash = window.location.hash;
+      if (hash === '#records' || hash === '#dossier') {
+        switchTab('records');
+      } else if (hash === '#signup' || hash === '#register') {
+        switchTab('signup');
+      } else {
+        switchTab('signin');
+      }
+
+      window.addEventListener('hashchange', function() {
+        var h = window.location.hash;
+        if (h === '#records' || h === '#dossier') switchTab('records');
+        else if (h === '#signup' || h === '#register') switchTab('signup');
+        else if (h === '#signin') switchTab('signin');
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team Members & Roles | Virtucare</title>
+  <meta name="description" content="Meet the Virtucare project team and learn about each member's contributions and research roles.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/premium.css">
+  <link rel="stylesheet" href="../assets/css/app.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <style>
+    .member-profile-card {
+      background: var(--surface-color);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .member-profile-card:hover {
+      border-color: rgba(59, 130, 246, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+    .member-avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .avatar-noah { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+    .avatar-yvonne { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+    .avatar-paul { background: linear-gradient(135deg, #10b981, #047857); }
+    .avatar-minh { background: linear-gradient(135deg, #f59e0b, #b45309); }
+    .contribution-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 99px;
+      background: rgba(255,255,255,0.05);
+      color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+  </style>
+</head>
+<body data-page="members">
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div class="container section" style="padding-top: 6rem; min-height: 80vh;">
+      <div style="margin-bottom: 2.5rem;">
+        <span class="research-badge research-badge-blue" style="font-size: 0.8rem; padding: 0.35rem 0.85rem; margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+          <i class="fas fa-users"></i> Project Team &amp; Collaboration
+        </span>
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.75rem;">Team Members &amp; Roles</h1>
+        <p class="lede" style="color: var(--text-muted); font-size: 1.15rem; max-width: 900px; line-height: 1.6;">
+          All team members contributed actively across all phases as <strong>Presenters, Researchers, and Reporters</strong> to investigate AI clinical simulation ethics, hospital practice standards, and technical feasibility for the MHIA 648M Small-Group Project.
+        </p>
+      </div>
+
+      <!-- Team Members Grid -->
+      <div class="grid-2" style="gap: 2rem; margin-bottom: 3.5rem;">
+        
+        <!-- Noah Choi -->
+        <div class="member-profile-card">
+          <div class="member-avatar avatar-noah">NC</div>
+          <h3 style="font-size: 1.45rem; margin: 0 0 0.35rem 0; color: var(--text-main);">Noah Choi</h3>
+          <div style="margin-bottom: 1rem;">
+            <span class="member-role" style="font-size: 0.82rem; padding: 0.3rem 0.8rem;">Presenter · Research · Reporter</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; margin-bottom: 1.25rem; flex-grow: 1;">
+            Researches generative AI clinical literature and hallucination risks, analyzing how AI errors, automation bias, and algorithmic misinformation impact health professions education.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06);">
+            <span class="contribution-pill"><i class="fas fa-brain"></i> AI Misinformation</span>
+            <span class="contribution-pill"><i class="fas fa-user-check"></i> Automation Bias</span>
+            <span class="contribution-pill"><i class="fas fa-balance-scale"></i> Ethical Governance</span>
+          </div>
+        </div>
+
+        <!-- Yvonne Ma -->
+        <div class="member-profile-card">
+          <div class="member-avatar avatar-yvonne">YM</div>
+          <h3 style="font-size: 1.45rem; margin: 0 0 0.35rem 0; color: var(--text-main);">Yvonne Ma</h3>
+          <div style="margin-bottom: 1rem;">
+            <span class="member-role" style="font-size: 0.82rem; padding: 0.3rem 0.8rem;">Presenter · Research · Reporter</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; margin-bottom: 1.25rem; flex-grow: 1;">
+            Reviews hospital practice standards and summarizes medical literature to establish verified clinical steps, neonatal vs. adult procedural variations, and safety checkpoints.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06);">
+            <span class="contribution-pill"><i class="fas fa-hospital"></i> SHN Standards</span>
+            <span class="contribution-pill"><i class="fas fa-baby"></i> Neonatal Safety</span>
+            <span class="contribution-pill"><i class="fas fa-clipboard-check"></i> NG Tube Protocol</span>
+          </div>
+        </div>
+
+        <!-- Paul Leung -->
+        <div class="member-profile-card">
+          <div class="member-avatar avatar-paul">PL</div>
+          <h3 style="font-size: 1.45rem; margin: 0 0 0.35rem 0; color: var(--text-main);">Paul Leung</h3>
+          <div style="margin-bottom: 1rem;">
+            <span class="member-role" style="font-size: 0.82rem; padding: 0.3rem 0.8rem;">Presenter · Research · Reporter</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; margin-bottom: 1.25rem; flex-grow: 1;">
+            Researches hospital care policies, catheterization standards, and medical journal articles, synthesizing sterility protocols, patient safety benchmarks, and infection prevention criteria.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06);">
+            <span class="contribution-pill"><i class="fas fa-procedures"></i> HRH Standards</span>
+            <span class="contribution-pill"><i class="fas fa-shield-virus"></i> Sterility &amp; CAUTI</span>
+            <span class="contribution-pill"><i class="fas fa-syringe"></i> Vascular Access</span>
+          </div>
+        </div>
+
+        <!-- Minh Vuong -->
+        <div class="member-profile-card">
+          <div class="member-avatar avatar-minh">MV</div>
+          <h3 style="font-size: 1.45rem; margin: 0 0 0.35rem 0; color: var(--text-main);">Minh Vuong</h3>
+          <div style="margin-bottom: 1rem;">
+            <span class="member-role" style="font-size: 0.82rem; padding: 0.3rem 0.8rem;">Presenter · Research · Reporter</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; margin-bottom: 1.25rem; flex-grow: 1;">
+            Built the web application and interactive clinical simulation prototype, while verifying clinical questions, references, and responsive user experience design.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06);">
+            <span class="contribution-pill"><i class="fas fa-laptop-code"></i> Prototype Build</span>
+            <span class="contribution-pill"><i class="fas fa-vr-cardboard"></i> UI Architecture</span>
+            <span class="contribution-pill"><i class="fas fa-check-double"></i> Citation Audit</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Academic Project Details Card -->
+      <div class="card" style="border-top: 3px solid var(--primary); padding: 2.25rem;">
+        <h3 style="margin-bottom: 0.75rem; font-size: 1.35rem;">Project &amp; Course Metadata</h3>
+        <div class="grid-2" style="gap: 1.5rem; margin-top: 1.5rem;">
+          <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.05);">
+            <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Academic Program</div>
+            <div style="font-size: 1.15rem; font-weight: 600; color: var(--text-main); margin-top: 0.25rem;">Master of Health Informatics (MHI)</div>
+            <div style="font-size: 0.95rem; color: var(--primary); margin-top: 0.25rem;">Course: MHIA 648M Small-Group Project</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.05);">
+            <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Core Concept</div>
+            <div style="font-size: 1.15rem; font-weight: 600; color: var(--text-main); margin-top: 0.25rem;">Virtucare Clinical Simulation</div>
+            <div style="font-size: 0.95rem; color: #94a3b8; margin-top: 0.25rem;">Conceptual Prototype · Not Clinically Validated</div>
+          </div>
+        </div>
+        <p style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+          <strong>Shared Accountability Statement:</strong> This project represents a collaborative effort where all members conducted primary literature research, audited generative AI outputs against hospital standards, created presentation deliverables, and authored the written project report.
+        </p>
+      </div>
+
+      <!-- Quick Back to Prototype -->
+      <div style="margin-top: 3rem; text-align: center;">
+        <a href="../index.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem;">
+          <i class="fas fa-arrow-left"></i> Return to Interactive Prototype
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

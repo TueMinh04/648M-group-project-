@@ -4,1340 +4,594 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Virtucare - The Future of Clinical Training</title>
-  <meta name="description" content="Virtucare is a virtual reality clinical education system to revolutionize training and improve patient outcomes.">
-  <link rel="stylesheet" href="./assets/css/premium.css">
-  <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
-  <!-- FontAwesome for Icons -->
+  <meta name="description" content="Virtucare is an AI-assisted clinical simulation concept that helps students practice procedures before working with real patients.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/premium.css">
+  <link rel="stylesheet" href="./assets/css/app.css">
+  <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
 </head>
-<body>
+<body data-mode="app" data-page="prototype">
 
   <!-- Navigation -->
   <nav class="navbar">
     <div class="container">
-      <div class="logo">VIRTU<span>CARE</span></div>
+      <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">VIRTU<span>CARE</span></a></div>
       <div class="nav-links">
-        <a href="#problem">Problem</a>
-        <a href="#proposal">Proposal</a>
-        <a href="#guidelines">Guidelines</a>
-        <a href="#demo">Demo</a>
-        <a href="#ethics">Ethics</a>
-        <a href="#research">Research</a>
-        <a href="#claude">AI Use</a>
+        <a href="index.html" class="active">Prototype</a>
+        <a href="pages/problem.html">Problem</a>
+        <a href="pages/benefits-limitations.html">Benefits &amp; Limitations</a>
+        <a href="pages/guidelines.html">Guidelines</a>
+        <a href="pages/ethics.html">Ethics</a>
+        <a href="pages/research.html">Research</a>
+        <a href="pages/ai-use.html">AI Use</a>
+        <a href="pages/members.html">Members</a>
+        <a href="pages/student-portal.html"><i class="fas fa-user-circle" style="margin-right: 0.35rem;"></i>Sign In / Sign Up</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero" id="home">
+  <header class="hero">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
     <div class="container">
       <div class="hero-content">
+        <div style="margin-bottom: 1.25rem;">
+          <span class="research-badge research-badge-blue" style="font-size: 0.82rem; padding: 0.35rem 0.95rem;">
+            <i class="fas fa-flask"></i> Concept Prototype · Not Clinically Validated
+          </span>
+        </div>
         <h1>Virtucare</h1>
-        <p class="hero-subtitle" style="font-size: 1.5rem; font-weight: 500; color: var(--primary); margin-top: -0.5rem; margin-bottom: 1.5rem; letter-spacing: -0.01em;">The future of clinical training</p>
-        <p class="lede">Virtucare is a virtual reality clinical education system to revolutionize training and improve patient outcomes.</p>
-        <p class="team-names" style="margin-bottom: 2.5rem; font-weight: 500; color: var(--text-muted);">Team: Noah Choi, Yvonne Ma, Paul Leung, Minh Vuong</p>
-        <div class="cta">
-          <a class="btn btn-primary" href="pages/prototype.html">Explore the Prototype Flow</a>
+        <p class="hero-subtitle" style="font-size: 1.5rem; font-weight: 500; color: var(--primary); margin-top: -0.5rem; margin-bottom: 1.5rem; letter-spacing: -0.01em;">
+          The future of clinical training
+        </p>
+        <p class="lede" style="max-width: 820px; margin-left: auto; margin-right: auto; margin-bottom: 2.25rem;">
+          An AI-assisted clinical simulation platform concept that helps students practice complex procedures safely in a repeatable, risk-free virtual environment before working with real patients.
+        </p>
+        <div class="cta" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a class="btn btn-primary" href="#prototype-section">
+            <i class="fas fa-play" style="margin-right: 0.5rem;"></i> Launch Interactive Prototype
+          </a>
+          <button type="button" class="btn btn-secondary" id="hero-watch-demo-btn">
+            <i class="fas fa-video" style="margin-right: 0.5rem;"></i> Watch Video Walkthrough
+          </button>
         </div>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- 1. The Problem -->
-  <section id="problem" class="section">
-    <div class="container">
-      <h2>1. The Problem</h2>
-      <p>Clinical procedural training today relies primarily on <strong>physical simulation labs and static manikin-based practice</strong>. Meta-analyses synthesizing over 600 studies confirm that while technology-enhanced simulation significantly improves knowledge, procedural skills, and patient outcomes over no intervention, outcomes vary widely across activities and traditional programs face steep resource bottlenecks<a href="#ref-1" class="cite-num"><sup>[1]</sup></a><a href="#ref-7" class="cite-num"><sup>[7]</sup></a>:</p>
+  <!-- Main Prototype Experience -->
+  <main id="main">
 
-      <div class="grid-2" style="margin-top: 2rem;">
-        <div class="card">
-          <div class="card-icon" style="color: var(--danger); background: rgba(239, 68, 68, 0.1);"><i class="fas fa-times-circle"></i></div>
-          <h3>Shortcomings of Existing Technology</h3>
-          <ul>
-            <li><p><strong>Lack of Realism &amp; Deformative Feedback:</strong> Traditional physical manikins and static models fail to capture the true, deformative anatomical complexity of human tissue and catheter navigation<a href="#ref-1" class="cite-num"><sup>[1]</sup></a>.</p></li>
-            <li><p><strong>Time-Based Rather Than Competency-Gated:</strong> Conventional simulation relies on arbitrary elapsed lab hours rather than verified skill mastery, whereas competency-based simulation training is proven far superior for psychomotor procedural skill acquisition<a href="#ref-2" class="cite-num"><sup>[2]</sup></a>.</p></li>
-            <li><p><strong>Subjective Assessment Bottlenecks:</strong> Assessment depends heavily on direct faculty presence, limiting practice frequency and creating unstandardized feedback<a href="#ref-3" class="cite-num"><sup>[3]</sup></a>.</p></li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
-          <h3>Why This Matters for Patient Safety</h3>
-          <p>Procedural confidence and patient safety are directly linked. When residents lack sufficient high-fidelity practice opportunities, clinical complications increase sharply:</p>
-          <ul style="padding-left: 1.25rem; margin-bottom: 1rem;">
-            <li style="margin-bottom: 0.5rem;"><p style="margin: 0;"><strong>Nasogastric (NG) Intubation:</strong> Inadvertent bronchial/pulmonary placement remains a critical hazard requiring strict radiographic or pH verification<a href="#ref-16" class="cite-num"><sup>[16]</sup></a>.</p></li>
-            <li style="margin-bottom: 0.5rem;"><p style="margin: 0;"><strong>Urinary Catheterization:</strong> Female urethral misidentification and breached sterility introduce catastrophic catheter-associated infections<a href="#ref-16" class="cite-num"><sup>[16]</sup></a>.</p></li>
-            <li style="margin-bottom: 0.5rem;"><p style="margin: 0;"><strong>Peripheral Vascular Access:</strong> Missed veins and undetected interstitial extravasation cause severe tissue damage<a href="#ref-16" class="cite-num"><sup>[16]</sup></a>.</p></li>
-          </ul>
-          <p style="margin-top: 1rem;">There is a vital need for an <strong>evidence-based virtual reality education system that standardizes training, tracks performance, and improves patient outcomes</strong><a href="#ref-14" class="cite-num"><sup>[14]</sup></a>.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 2. Our Proposal -->
-  <section id="proposal" class="section" style="background: rgba(255,255,255,0.02);">
-    <div class="container">
-      <h2>2. Our Proposal: Virtucare</h2>
-      <p><strong>Virtucare is a virtual reality clinical education system to revolutionize training and improve patient outcomes.</strong></p>
-      <p>By blending immersive simulation with precision analytics, Virtucare empowers healthcare trainees to gain competence and confidence across four core categories:</p>
-
-      <div class="grid-4" style="margin-top: 2rem;">
-        <div class="card">
-          <div class="card-icon" style="color: var(--primary); background: rgba(59, 130, 246, 0.1);"><i class="fas fa-vr-cardboard"></i></div>
-          <h3>Immersive VR scenarios</h3>
-          <p>Realistic procedural environments that place learners directly into high-fidelity simulated clinical settings, driving self-directed learning<a href="#ref-14" class="cite-num"><sup>[14]</sup></a>. Balanced with accessible 2D screen modes to prevent extraneous cognitive overload<a href="#ref-8" class="cite-num"><sup>[8]</sup></a>.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon" style="color: var(--secondary); background: rgba(139, 92, 246, 0.1);"><i class="fas fa-hand-holding-medical"></i></div>
-          <h3>Experience hands-on clinical practice</h3>
-          <p>Interactive procedural practice allowing trainees to build muscle memory, master techniques, and refine decision-making in a risk-free environment through competency-based progression<a href="#ref-2" class="cite-num"><sup>[2]</sup></a><a href="#ref-1" class="cite-num"><sup>[1]</sup></a>.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon" style="color: var(--accent); background: rgba(16, 185, 129, 0.1);"><i class="fas fa-chart-line"></i></div>
-          <h3>Analyze performance tracking and feedback</h3>
-          <p>Objective metrics and kinematic motion tracking compare trainee performance against expert baselines. Delivers terminal post-task feedback (pooled effect size <em>d</em> = 0.74) for superior retention over disruptive concurrent cues<a href="#ref-3" class="cite-num"><sup>[3]</sup></a>.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1);"><i class="fas fa-graduation-cap"></i></div>
-          <h3>Standardize consistent curriculum delivery</h3>
-          <p>Repeatable, scalable training modules structured along the 6-dimension FACETS framework<a href="#ref-13" class="cite-num"><sup>[13]</sup></a>, ensuring uniform quality and ongoing algorithmic maintenance<a href="#ref-12" class="cite-num"><sup>[12]</sup></a>.</p>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top: 2.5rem; border-top: 3px solid var(--primary);">
-        <h3 style="margin-bottom: 0.5rem;">What Virtucare Can Do</h3>
-        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">A direct comparison between traditional clinical training and how Virtucare transforms procedural education:</p>
-        <div class="grid-2">
-          <div style="background: rgba(239, 68, 68, 0.05); padding: 1.75rem; border-radius: var(--radius); border: 1px solid rgba(239, 68, 68, 0.2);">
-            <p style="color: var(--danger); font-weight: 600; font-size: 1.15rem; margin-bottom: 1rem;"><i class="fas fa-user-clock" style="margin-right: 0.5rem;"></i>How skills are taught today</p>
-            <ul style="padding-left: 1.25rem;">
-              <li style="margin-bottom: 0.75rem;"><p style="margin: 0;">Clinicians learn skills only when opportunities arise<a href="#ref-1" class="cite-num"><sup>[1]</sup></a>.</p></li>
-              <li style="margin-bottom: 0.75rem;"><p style="margin: 0;">Independent practice is restricted until clinical judgement is proven<a href="#ref-2" class="cite-num"><sup>[2]</sup></a>.</p></li>
-              <li style="margin-bottom: 0.5rem;"><p style="margin: 0; color: #fca5a5; font-weight: 500;">This means a clinician’s first attempt at a critical skill may occur on a live patient.</p></li>
-            </ul>
-          </div>
-          <div style="background: rgba(59, 130, 246, 0.05); padding: 1.75rem; border-radius: var(--radius); border: 1px solid rgba(59, 130, 246, 0.2);">
-            <p style="color: var(--primary); font-weight: 600; font-size: 1.15rem; margin-bottom: 1rem;"><i class="fas fa-vr-cardboard" style="margin-right: 0.5rem;"></i>How Virtucare teaches the skill</p>
-            <ul style="padding-left: 1.25rem;">
-              <li style="margin-bottom: 0.75rem;"><p style="margin: 0;">Hands-on practice without patient risk<a href="#ref-1" class="cite-num"><sup>[1]</sup></a>.</p></li>
-              <li style="margin-bottom: 0.75rem;"><p style="margin: 0;">Performance feedback and metrics with terminal debriefing<a href="#ref-3" class="cite-num"><sup>[3]</sup></a>.</p></li>
-              <li style="margin-bottom: 0.5rem;"><p style="margin: 0; color: #93c5fd; font-weight: 500;">Accessible ‘anytime, anywhere’ learning safe environment to master complex skills<a href="#ref-14" class="cite-num"><sup>[14]</sup></a><a href="#ref-8" class="cite-num"><sup>[8]</sup></a>.</p></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clinical Practice Guidelines -->
-  <section id="guidelines" class="section">
-    <div class="container">
-      <h2>Evidence-Based Clinical Practice Guidelines</h2>
-      <p>Virtucare’s simulation curriculum is directly mapped to accredited hospital clinical standards<a href="#ref-16" class="cite-num"><sup>[16]</sup></a>, addressing common procedural errors, safety-critical steps, and placement verification standards across three foundational procedures:</p>
-
-      <div class="guideline-tabs" id="home-guideline-tabs">
-        <button type="button" class="guideline-tab active" data-target="home-tab-ngt"><i class="fas fa-lungs"></i> NG Tube Insertion</button>
-        <button type="button" class="guideline-tab" data-target="home-tab-foley"><i class="fas fa-procedures"></i> Urinary Catheterization</button>
-        <button type="button" class="guideline-tab" data-target="home-tab-iv"><i class="fas fa-syringe"></i> Peripheral IV Insertion</button>
-      </div>
-
-      <!-- NGT -->
-      <div id="home-tab-ngt" class="guideline-pane">
-        <div class="card" style="border-top: 3px solid var(--primary);">
-          <div style="font-size: 0.88rem; color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-book-medical" style="margin-right: 0.4rem;"></i><strong>Clinical Standard:</strong> Scarborough Health Network (Practice Standard SHN-PRSTAND-0102)<a href="#ref-16" class="cite-num"><sup>[16]</sup></a></div>
-          <div class="guideline-badge-gap">
-            <strong><i class="fas fa-exclamation-triangle"></i> Common Training Gap:</strong> Tube inserted into the lung
-          </div>
-          <div class="grid-2">
-            <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.05);">
-              <h4 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-user" style="margin-right: 0.5rem;"></i>Adult Critical Steps</h4>
-              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Check doctor’s order</span></div>
-              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Collect equipment</span></div>
-              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Measure the length of the tube to be inserted (NEX: Nose to Ear lobe to Xiphoid)</span></div>
-              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Lubricate the tube with jelly</span></div>
-              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Insert the tube into the nare while instructing the patient to drink water through a straw to ensure NG tube enters the esophagus</span></div>
-              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Document procedure</span></div>
-              <div class="guideline-badge-verify">
-                <strong><i class="fas fa-x-ray" style="margin-right: 0.4rem;"></i>Adult Placement Verification:</strong><br>
-                Chest x-ray initially and measure external length of tube every 4 hours<a href="#ref-16" class="cite-num"><sup>[16]</sup></a>.
-              </div>
-            </div>
-            <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.05);">
-              <h4 style="color: var(--secondary); margin-bottom: 1rem;"><i class="fas fa-baby" style="margin-right: 0.5rem;"></i>Neonate Critical Steps</h4>
-              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Check doctor’s order</span></div>
-              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Collect equipment</span></div>
-              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Measure the length of the tube to be inserted</span></div>
-              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Lubricate the tube with sterile water</span></div>
-              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Insert the tube quickly into the nare</span></div>
-              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Provide pain management</span></div>
-              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Document procedure</span></div>
-              <div class="guideline-badge-verify">
-                <strong><i class="fas fa-vial" style="margin-right: 0.4rem;"></i>Neonate Placement Verification:</strong><br>
-                Aspirate stomach contents and check the pH using a pH strip; less than 5.5 is the appropriate pH<a href="#ref-16" class="cite-num"><sup>[16]</sup></a>.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Foley -->
-      <div id="home-tab-foley" class="guideline-pane" style="display: none;">
-        <div class="card" style="border-top: 3px solid var(--primary);">
-          <div style="font-size: 0.88rem; color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-book-medical" style="margin-right: 0.4rem;"></i><strong>Clinical Standard:</strong> Humber River Health (Reference No. 2734)<a href="#ref-16" class="cite-num"><sup>[16]</sup></a></div>
-          <div class="guideline-badge-gap">
-            <strong><i class="fas fa-exclamation-triangle"></i> Common Training Gap:</strong> Inability to locate the urethra (in females); breaking sterility
-          </div>
-          <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.05);">
-            <h4 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>Critical Clinical Steps</h4>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Check doctor’s order</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Collect equipment</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Maintain sterility throughout the procedure</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Lubricate tube with lidocaine jelly</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Insert the tube and advance until urine flow is observed</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Attach syringe to inflate catheter balloon</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Do not exceed three attempts<a href="#ref-16" class="cite-num"><sup>[16]</sup></a></span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Document the procedure</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Must be assessed every 24 hours when catheter is indwelling</span></div>
-            <div class="guideline-badge-verify">
-              <strong><i class="fas fa-check-double" style="margin-right: 0.4rem;"></i>Placement Verification:</strong><br>
-              When urine flow through the catheter is observed<a href="#ref-16" class="cite-num"><sup>[16]</sup></a>.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PIV -->
-      <div id="home-tab-iv" class="guideline-pane" style="display: none;">
-        <div class="card" style="border-top: 3px solid var(--primary);">
-          <div style="font-size: 0.88rem; color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-book-medical" style="margin-right: 0.4rem;"></i><strong>Clinical Standard:</strong> Humber River Health (Vascular Access Devices Policy)<a href="#ref-16" class="cite-num"><sup>[16]</sup></a></div>
-          <div class="guideline-badge-gap">
-            <strong><i class="fas fa-exclamation-triangle"></i> Common Training Gap:</strong> Selecting the correct catheter gauge size; missing the vein upon insertion; uncertainty at an interstitial site
-          </div>
-          <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.05);">
-            <h4 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>Critical Clinical Steps</h4>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Check doctor’s order</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Collect equipment</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Use tourniquet to engorge the veins</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Disinfect site with antiseptic solution</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Visualize the vein and insert the needle with the catheter</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Advance the catheter</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Flush to ensure patency</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Secure cannula with Tegaderm</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>No more than 2 attempts<a href="#ref-16" class="cite-num"><sup>[16]</sup></a></span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Document the procedure</span></div>
-            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Must be assessed every hour</span></div>
-            <div class="guideline-badge-verify">
-              <strong><i class="fas fa-check-double" style="margin-right: 0.4rem;"></i>Placement Verification:</strong><br>
-              When flashback is visualized in the catheter; flush the catheter and monitor the site to ensure patency<a href="#ref-16" class="cite-num"><sup>[16]</sup></a>.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. Prototype / Demo -->
-  <section id="demo" class="section">
-    <div class="container">
-      <h2>3. Prototype Demo</h2>
-      <p>The walkthrough below illustrates the proposed platform workflow in Virtucare. This prototype demonstrates the web-based dashboard where clinical and surgical procedure videos are uploaded, processed by AI, and reviewed.</p>
-
-      <div class="flow-steps" style="margin-top: 2.5rem;">
-
-        <div class="flow-step card">
-          <div class="flow-step-number">01</div>
-          <div class="card-icon"><i class="fas fa-file-signature"></i></div>
-          <h3>Consent &amp; Video Upload</h3>
-          <p>The clinician or surgeon obtains informed patient consent and uploads a de-identified, stabilized recording of the clinical or surgical procedure, governed by procedural and surgical video ethical frameworks<a href="#ref-17" class="cite-num"><sup>[17]</sup></a>.</p>
-          <div class="flow-badge">HIPAA Compliant. End-to-End Encrypted.</div>
-        </div>
-
-        <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
-
-        <div class="flow-step card">
-          <div class="flow-step-number">02</div>
-          <div class="card-icon"><i class="fas fa-microchip"></i></div>
-          <h3>AI Video Processing</h3>
-          <p>The AI extracts spatial data from the video, mapping the anatomy into a 2D interactive plane for web-based simulation without the need for manual artists.</p>
-          <div class="flow-badge">Computer Vision. 2D Mapping.</div>
-        </div>
-
-        <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
-
-        <div class="flow-step card">
-          <div class="flow-step-number">03</div>
-          <div class="card-icon"><i class="fas fa-laptop-medical"></i></div>
-          <h3>Web-Based Practice</h3>
-          <p>Students access the module directly in their browser, practicing the exact steps using interactive sliders and UI controls to simulate instrument manipulation.</p>
-          <div class="flow-badge">Web Interface. Real-Time Tracking.</div>
-        </div>
-
-        <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
-
-        <div class="flow-step card">
-          <div class="flow-step-number">04</div>
-          <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-          <h3>Kinematic Feedback</h3>
-          <p>AI evaluates the session. Feedback is structured around tool economy of motion, instrument angles, and tissue handling safety compared to the expert baseline.</p>
-          <div class="flow-badge">Objective Metrics. Expert Baseline.</div>
-        </div>
-
-      </div>
-
-      <div style="text-align: center; margin-top: 3rem;">
-        <a href="pages/prototype.html" class="btn btn-primary"><i class="fas fa-play" style="margin-right: 0.5rem;"></i> Watch Video Demo &amp; Launch Prototype</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. Ethical Analysis -->
-  <section id="ethics" class="section" style="background: rgba(255,255,255,0.02);">
-    <div class="container">
-      <h2>4. Ethical &amp; Social Analysis</h2>
-      <p>Deploying AI and virtual reality in clinical education introduces distinct ethical and legal responsibilities. Virtucare addresses each core challenge directly, grounded in peer-reviewed literature:</p>
-
-      <div class="grid-2" style="margin-top: 2rem;">
-        
-        <!-- Consent & Privacy -->
-        <div class="card ethics-card" id="ethics-privacy">
-          <div class="research-card-header">
-            <h3><i class="fas fa-file-signature" style="margin-right: 0.5rem; color: var(--secondary);"></i>Consent, Copyright &amp; De-Identification</h3>
-            <span class="research-badge research-badge-purple">IRB &amp; Privacy Mandates</span>
-          </div>
-          <p><strong>The Challenge:</strong> Clinical images and operative video used for training risk becoming unconsented educational commodities<a href="#ref-6" class="cite-num"><sup>[6]</sup></a>. A systematic review on surgical video recording ethics reveals that educational beneficence must be strictly balanced against patient autonomy and anti-maleficence risks like unauthorized discoverability<a href="#ref-17" class="cite-num"><sup>[17]</sup></a>. Institutional Review Board (IRB) standards require any identifiable patient data to be fully de-identified prior to publication. Because explicit consent is not always obtainable during acute procedures, software must guarantee non-identifiability algorithmically<a href="#ref-12" class="cite-num"><sup>[12]</sup></a>.</p>
-          <div class="research-implication">
-            <strong>Virtucare Safeguard:</strong> Transparent consent protocols, automated stripping of facial and biometric markers, and strict educational-use restrictions<a href="#ref-6" class="cite-num"><sup>[6]</sup></a><a href="#ref-17" class="cite-num"><sup>[17]</sup></a>.
-          </div>
-        </div>
-
-        <!-- Cybersecurity & Threat Defense -->
-        <div class="card ethics-card" id="ethics-cybersecurity">
-          <div class="research-card-header">
-            <h3><i class="fas fa-shield-alt" style="margin-right: 0.5rem; color: var(--secondary);"></i>Cybersecurity &amp; Threat Defense</h3>
-            <span class="research-badge research-badge-red">Threat Intelligence</span>
-          </div>
-          <p><strong>The Challenge:</strong> Healthcare has been the #1 global target for cyber threats since 2025, and networked AI tools expand attack surfaces for data breaches<a href="#ref-5" class="cite-num"><sup>[5]</sup></a>.</p>
-          <p><strong>Four-Pillar Defense Strategy<a href="#ref-5" class="cite-num"><sup>[5]</sup></a>:</strong></p>
-          <ul class="research-findings-list" style="margin-top: 0.25rem;">
-            <li><strong>Technical Security:</strong> End-to-end encryption, multi-factor authentication (MFA), and automated routine patching.</li>
-            <li><strong>Risk Management:</strong> Corporate risk oversight and third-party vendor audits.</li>
-            <li><strong>Education:</strong> Mandatory, ongoing staff cybersecurity training.</li>
-            <li><strong>Incident Readiness:</strong> Simulated cyber-attack exercises and architectural redundancies.</li>
-          </ul>
-          <div class="research-implication">
-            <strong>Virtucare Safeguard:</strong> Zero-trust isolated sandboxes, AES-256 encrypted telemetry, and zero persistent patient data storage.
-          </div>
-        </div>
-
-        <!-- AI Misinformation & Hallucinations -->
-        <div class="card ethics-card" id="ethics-hallucinations">
-          <div class="research-card-header">
-            <h3><i class="fas fa-brain" style="margin-right: 0.5rem; color: var(--secondary);"></i>AI Misinformation &amp; Error Taxonomy</h3>
-            <span class="research-badge research-badge-amber">Clinical Safety</span>
-          </div>
-          <p><strong>Language Ethics:</strong> Labeling software errors as "hallucinations" inappropriately anthropomorphizes algorithms and stigmatizes psychiatric conditions. We adopt the clinically rigorous term <strong>"AI misinformation"</strong><a href="#ref-4" class="cite-num"><sup>[4]</sup></a>.</p>
-          <p><strong>Model Hazards:</strong> Over 90% of surveyed clinicians report encountering medical hallucinations in foundation models, driven by causal and temporal tracking failures<a href="#ref-11" class="cite-num"><sup>[11]</sup></a>. Standardized error taxonomies (31 sub-types) are essential to prevent fabricated narratives from eroding digital trust<a href="#ref-10" class="cite-num"><sup>[10]</sup></a>.</p>
-          <div class="research-implication">
-            <strong>Virtucare Safeguard:</strong> Feedback is anchored to deterministic clinical guidelines rather than generative text, preserving human clinical values and judgment<a href="#ref-4" class="cite-num"><sup>[4]</sup></a>.
-          </div>
-        </div>
-
-        <!-- Automation Bias & Oversight -->
-        <div class="card ethics-card" id="ethics-automation-bias">
-          <div class="research-card-header">
-            <h3><i class="fas fa-user-check" style="margin-right: 0.5rem; color: var(--secondary);"></i>Human Oversight &amp; Automation Bias</h3>
-            <span class="research-badge research-badge-blue">Pedagogical Oversight</span>
-          </div>
-          <p><strong>The Challenge:</strong> While automated scoring speeds assessment, users frequently succumb to automation bias—failing to notice errors introduced by the software<a href="#ref-9" class="cite-num"><sup>[9]</sup></a>. This risk rises under heavy clinical workload, urgent time pressure, and low trainee experience.</p>
-          <p><strong>Clear Accountability:</strong> Clear lines of human responsibility must govern educational AI deployment<a href="#ref-12" class="cite-num"><sup>[12]</sup></a>.</p>
-          <div class="research-implication">
-            <strong>Virtucare Safeguard:</strong> Mandatory "Human-in-the-Loop" educator review. AI kinematic scores are presented as explainable suggestions, ensuring faculty retain final sign-off.
-          </div>
-        </div>
-
-        <!-- XR Ethics & Cognitive Load -->
-        <div class="card social-card" id="ethics-xr">
-          <div class="research-card-header">
-            <h3><i class="fas fa-vr-cardboard" style="margin-right: 0.5rem; color: var(--accent);"></i>XR Ethics &amp; Cognitive Load</h3>
-            <span class="research-badge research-badge-green">Neuro-Ergonomics</span>
-          </div>
-          <p><strong>Cognitive Load Trade-Offs:</strong> A meta-analysis of 12 RCTs (n = 856) revealed that 2D screen-based simulation often outperforms full VR for complex clinical reasoning, as immersive VR can induce sensory noise and cognitive overload<a href="#ref-8" class="cite-num"><sup>[8]</sup></a>.</p>
-          <p><strong>XR Safeguards:</strong> Frameworks require protecting learners from cybersickness, sensory fatigue, and unconsented behavioral tracking<a href="#ref-15" class="cite-num"><sup>[15]</sup></a>.</p>
-          <div class="research-implication">
-            <strong>Virtucare Safeguard:</strong> Dual-mode delivery lets trainees toggle between immersive VR<a href="#ref-14" class="cite-num"><sup>[14]</sup></a> and low-cognitive-load 2D mode<a href="#ref-8" class="cite-num"><sup>[8]</sup></a>, with VR sessions capped at 30 minutes.
-          </div>
-        </div>
-
-        <!-- Governance: 12 Tips & FACETS -->
-        <div class="card social-card" id="ethics-governance">
-          <div class="research-card-header">
-            <h3><i class="fas fa-sitemap" style="margin-right: 0.5rem; color: var(--accent);"></i>Institutional Governance: 12 Tips &amp; FACETS</h3>
-            <span class="research-badge research-badge-purple">Curricular Framework</span>
-          </div>
-          <p><strong>Operational Guidelines:</strong> Virtucare operationalizes the 12-tip AI ethics roadmap<a href="#ref-12" class="cite-num"><sup>[12]</sup></a>, prioritizing transparency, algorithmic bias audits, output validation, student privacy, and ethics committee/IRB engagement.</p>
-          <p><strong>FACETS Evaluation:</strong> Evaluated across 6 dimensions—Form, Application, Context, Instructional mode, Technology, and SAMR progression<a href="#ref-13" class="cite-num"><sup>[13]</sup></a>—to ensure AI augments rather than replaces critical procedural reasoning.</p>
-          <div class="research-implication">
-            <strong>Virtucare Safeguard:</strong> Regular curriculum audits and faculty board oversight ensure continuous accuracy and demographic fairness<a href="#ref-12" class="cite-num"><sup>[12]</sup></a>.
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. Research Findings & Evidence Base -->
-  <section id="research" class="section">
-    <div class="container">
-      <h2>5. Research Literature &amp; Evidence Base</h2>
-      <p>Virtucare’s curriculum, kinematic metrics, cybersecurity, and ethics are grounded in <strong>17 peer-reviewed academic publications and accredited hospital practice standards</strong>. The 6 foundational studies are highlighted below:</p>
-
-      <!-- Topic Filter Tabs -->
-      <div class="research-filters" id="research-filters">
-        <button type="button" class="research-filter-btn active" data-filter="all">All Evidence (17)</button>
-        <button type="button" class="research-filter-btn" data-filter="simulation-competency">Simulation &amp; Competency (5)</button>
-        <button type="button" class="research-filter-btn" data-filter="feedback-automation">Feedback &amp; Automation (2)</button>
-        <button type="button" class="research-filter-btn" data-filter="ai-hallucination">AI Misinformation (3)</button>
-        <button type="button" class="research-filter-btn" data-filter="privacy-cybersecurity">Privacy &amp; Cybersecurity (2)</button>
-        <button type="button" class="research-filter-btn" data-filter="ethics-governance">Ethics &amp; Governance (4)</button>
-        <button type="button" class="research-filter-btn" data-filter="practice-guidelines">Hospital Guidelines (1)</button>
-      </div>
-
-      <!-- Featured: 6 Core Foundation Cards -->
-      <div class="grid-2" id="research-cards-grid">
-
-        <!-- 1. Cook et al. 2011 -->
-        <div class="research-card" data-category="simulation-competency" id="study-1">
-          <span id="ref-cook-2011"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-blue"><span class="ref-card-num">[1]</span><i class="fas fa-chart-pie"></i> Landmark Meta-Analysis (600+ Studies)</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">JAMA · 2011</span>
-            </div>
-            <h4 class="research-title">Technology-Enhanced Simulation in Healthcare</h4>
-            <span class="research-citation">Cook, D. A., Hatala, R., Brydges, R., et al. (2011). JAMA, 306(9), 978–988.</span>
-            <ul class="research-findings-list">
-              <li>Demonstrated large significant associations with procedural skills and clinical behavior across 600+ trials.</li>
-              <li>Deliberate repetitive practice directly transfers to improved patient safety and clinical outcomes.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Validates repetitive virtual practice to build psychomotor proficiency before treating live patients.
-          </div>
-          <a href="#ref-1" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [1]</a>
-        </div>
-
-        <!-- 2. SIH 2024 -->
-        <div class="research-card" data-category="simulation-competency" id="study-2">
-          <span id="ref-sih-2024"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-green"><span class="ref-card-num">[2]</span><i class="fas fa-graduation-cap"></i> Meta-Analysis (48 Studies / 19 Scorers)</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Simulation in Healthcare · 2024</span>
-            </div>
-            <h4 class="research-title">Competency-Based Procedural Simulation</h4>
-            <span class="research-citation">Simulation in Healthcare. (2024). Simulation in Healthcare, 19.</span>
-            <ul class="research-findings-list">
-              <li>Competency-based training significantly outperformed hours-based training in procedural retention.</li>
-              <li>19 analyzed trials validated automated, objective motion metrics over subjective grading.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Gates learner advancement on verified procedural technique rather than elapsed seat-time.
-          </div>
-          <a href="#ref-2" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [2]</a>
-        </div>
-
-        <!-- 3. Hatala et al. 2014 -->
-        <div class="research-card" data-category="feedback-automation" id="study-3">
-          <span id="ref-hatala-2014"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-amber"><span class="ref-card-num">[3]</span><i class="fas fa-comments"></i> Pooled Effect Size d = 0.74</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Adv Health Sci Educ · 2014</span>
-            </div>
-            <h4 class="research-title">Feedback for Simulation-Based Procedural Training</h4>
-            <span class="research-citation">Hatala, R., Cook, D. A., Zendejas, B., et al. (2014). AHSE, 19(2), 251–272.</span>
-            <ul class="research-findings-list">
-              <li>Procedural feedback demonstrated a strong pooled effect size of <em>d</em> = 0.74 for skill acquisition.</li>
-              <li>Terminal post-task debriefing proved significantly superior to concurrent popup alerts for motor retention.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Kinematic analytics deliver comprehensive debriefs post-procedure, preventing mid-task disruption.
-          </div>
-          <a href="#ref-3" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [3]</a>
-        </div>
-
-        <!-- 4. Hatem et al. 2023 -->
-        <div class="research-card" data-category="ai-hallucination" id="study-4">
-          <span id="ref-hatem-2023"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-amber"><span class="ref-card-num">[4]</span><i class="fas fa-comment-medical"></i> Language Ethics &amp; Clinician Survey</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Cureus (2023) / arXiv (2025)</span>
-            </div>
-            <h4 class="research-title">AI Misinformation &amp; Medical Hallucinations</h4>
-            <span class="research-citation">Hatem, R., et al. (2023). Cureus, 15(9), e44720. / Kim, Y., et al. (2025). arXiv:2503.05777.</span>
-            <ul class="research-findings-list">
-              <li>Replaces "hallucination" with "AI misinformation" to avoid anthropomorphizing algorithms.</li>
-              <li>Over 90% of surveyed clinicians report medical hallucinations, driven by causal and temporal tracking failures.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Binds feedback to verified hospital rubrics, preventing fabricated generative recommendations.
-          </div>
-          <a href="#ref-4" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [4]</a>
-        </div>
-
-        <!-- 5. Brooks 2026 -->
-        <div class="research-card" data-category="privacy-cybersecurity" id="study-5">
-          <span id="ref-brooks-2026"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-red"><span class="ref-card-num">[5]</span><i class="fas fa-shield-virus"></i> Cybersecurity Threat</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Forbes · 2026</span>
-            </div>
-            <h4 class="research-title">AI Cybersecurity Challenges in Healthcare</h4>
-            <span class="research-citation">Brooks, C. (2026, June 9). Forbes.</span>
-            <ul class="research-findings-list">
-              <li>Healthcare has been the #1 global target for cyber threats since 2025; AI tools widen network attack surfaces.</li>
-              <li>Mandates 4-pillar defense: technical controls (encryption, MFA, patching), risk oversight, employee education, and drills.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Enforces zero-trust sandboxing, end-to-end encrypted telemetry, and routine automated patching.
-          </div>
-          <a href="#ref-5" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [5]</a>
-        </div>
-
-        <!-- 6. Bhattacharjee et al. 2023 -->
-        <div class="research-card" data-category="privacy-cybersecurity" id="study-6">
-          <span id="ref-bhattacharjee-2023"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-purple"><span class="ref-card-num">[6]</span><i class="fas fa-balance-scale"></i> IRB &amp; Privacy Mandates</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Law, Innovation &amp; Tech · 2023</span>
-            </div>
-            <h4 class="research-title">Informed Consent, Copyright &amp; Patient Privacy</h4>
-            <span class="research-citation">Bhattacharjee, M., Kaposy, C., Grossman, M. R., &amp; Marshall, Z. (2023). Law, Innov &amp; Tech, 15(2), 536–557.</span>
-            <ul class="research-findings-list">
-              <li>IRB standards mandate complete de-identification of patient imagery prior to publication or educational use.</li>
-              <li>Educational systems must guarantee non-identifiability algorithmically when acute consent cannot be obtained.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Verifies consent and automatically strips facial and biometric identifiers prior to module generation.
-          </div>
-          <a href="#ref-6" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [6]</a>
-        </div>
-
-      </div>
-
-      <!-- Explore More Button -->
-      <div class="explore-toggle-wrap">
-        <button type="button" class="explore-toggle-btn" id="explore-more-btn">
-          <span>Explore Additional Research Studies (+11)</span>
-          <i class="fas fa-chevron-down"></i>
-        </button>
-      </div>
-
-      <!-- Secondary Expandable Grid: 10 Additional Studies -->
-      <div class="grid-2 explore-more-pane" id="explore-more-pane">
-
-        <!-- 7. Mitchell & Ivimey-Cook 2023 -->
-        <div class="research-card" data-category="simulation-competency" id="study-7">
-          <span id="ref-mitchell-2023"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-blue"><span class="ref-card-num">[7]</span><i class="fas fa-sync-alt"></i> Contemporary Meta-Analysis</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Frontiers in Med · 2023</span>
-            </div>
-            <h4 class="research-title">Simulation for Healthcare Professionals: Meta-Analysis</h4>
-            <span class="research-citation">Mitchell, A. A., &amp; Ivimey-Cook, E. R. (2023). Frontiers in Med, 10, 1149048.</span>
-            <ul class="research-findings-list">
-              <li>Reconfirmed strong positive associations with technical skills and clinical decision-making.</li>
-              <li>Demonstrated moderate error reduction in subsequent clinical workflows.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Validates repeatable digital simulation to eliminate disparities across regional training sites.
-          </div>
-          <a href="#ref-7" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [7]</a>
-        </div>
-
-        <!-- 8. Sim et al. 2022 -->
-        <div class="research-card" data-category="simulation-competency" id="study-8">
-          <span id="ref-sim-2022"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-purple"><span class="ref-card-num">[8]</span><i class="fas fa-laptop-medical"></i> 12 RCTs Meta-Analysis (n = 856)</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Clin Sim Nurs · 2022</span>
-            </div>
-            <h4 class="research-title">Virtual Simulation &amp; Clinical Reasoning in Nursing</h4>
-            <span class="research-citation">Sim, J. J. M., Rusli, K. D. B., Seah, B., et al. (2022). Clin Sim Nurs, 69, 26–39.</span>
-            <ul class="research-findings-list">
-              <li>Synthesized 12 RCTs (n = 856); optimal reasoning benefits observed when sessions exceed 30 minutes.</li>
-              <li>2D screen-based simulation often outperformed fully immersive VR due to lower cognitive noise.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Provides a low-cognitive-load 2D web mode alongside VR, ensuring accessible practice without sensory overload.
-          </div>
-          <a href="#ref-8" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [8]</a>
-        </div>
-
-        <!-- 9. Goddard et al. 2012 -->
-        <div class="research-card" data-category="feedback-automation" id="study-9">
-          <span id="ref-goddard-2012"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-blue"><span class="ref-card-num">[9]</span><i class="fas fa-user-shield"></i> Automation Bias Systematic Review</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">JAMIA · 2012</span>
-            </div>
-            <h4 class="research-title">Automation Bias: Frequency, Mediators, and Mitigators</h4>
-            <span class="research-citation">Goddard, K., Roudsari, A., &amp; Wyatt, J. C. (2012). JAMIA, 19(1), 121–127.</span>
-            <ul class="research-findings-list">
-              <li>Clinicians frequently fail to notice system errors when automated advice is presented without friction.</li>
-              <li>High cognitive workload and uncalibrated operator trust exacerbate automation bias.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Mandates educator sign-off and presents explainable confidence bounds rather than unquestioned automation.
-          </div>
-          <a href="#ref-9" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [9]</a>
-        </div>
-
-        <!-- 10. Sun et al. 2024 -->
-        <div class="research-card" data-category="ai-hallucination" id="study-10">
-          <span id="ref-sun-2024"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-amber"><span class="ref-card-num">[10]</span><i class="fas fa-project-diagram"></i> Empirical Taxonomy (31 Error Types)</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Nature Portfolio (HSSC) · 2024</span>
-            </div>
-            <h4 class="research-title">Classification of Distorted Information in AIGC</h4>
-            <span class="research-citation">Sun, Y., Sheng, D., Zhou, Z., et al. (2024). Humanit Soc Sci Commun, 11, 1278.</span>
-            <ul class="research-findings-list">
-              <li>Classifies 31 error modes spanning factual inaccuracies, flawed reasoning, and unfounded fabrications.</li>
-              <li>Demonstrates how sophisticated false narratives degrade trust in educational systems.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Restricts simulation scoring to bounded, deterministic rubrics to prevent algorithmic fabrications.
-          </div>
-          <a href="#ref-10" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [10]</a>
-        </div>
-
-        <!-- 11. Kim et al. 2025 -->
-        <div class="research-card" data-category="ai-hallucination" id="study-11">
-          <span id="ref-kim-2025"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-red"><span class="ref-card-num">[11]</span><i class="fas fa-stethoscope"></i> 11 Models &amp; 70 Clinicians</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">arXiv · 2025</span>
-            </div>
-            <h4 class="research-title">Medical Hallucinations in Foundation Models</h4>
-            <span class="research-citation">Kim, Y., Jeong, H., Chen, S., et al. (2025). arXiv:2503.05777.</span>
-            <ul class="research-findings-list">
-              <li>Over 90% of surveyed practicing clinicians encountered medical hallucinations in AI outputs.</li>
-              <li>Inaccuracies stem primarily from reasoning failures (causal/temporal tracking) rather than factual gaps.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Prohibits unconstrained generative models from issuing procedural training directives.
-          </div>
-          <a href="#ref-11" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [11]</a>
-        </div>
-
-        <!-- 12. Franco D'Souza et al. 2024 -->
-        <div class="research-card" data-category="ethics-governance" id="study-12">
-          <span id="ref-dsouza-2024"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-purple"><span class="ref-card-num">[12]</span><i class="fas fa-list-ol"></i> 12 Tips Framework</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Med Educ Online · 2024</span>
-            </div>
-            <h4 class="research-title">Twelve Tips for Ethical AI in Medical Education</h4>
-            <span class="research-citation">Franco D’Souza, R., Mathew, M., Mishra, V., &amp; Surapaneni, K. M. (2024). Med Educ Online, 29(1), 2330250.</span>
-            <ul class="research-findings-list">
-              <li>Defines 12 actionable principles covering algorithmic bias, privacy, output validation, and consent.</li>
-              <li>Emphasizes multidisciplinary governance, faculty development, and institutional oversight.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Embeds all 12 operational tips into Virtucare’s consent, diversity auditing, and educator review layers.
-          </div>
-          <a href="#ref-12" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [12]</a>
-        </div>
-
-        <!-- 13. Izquierdo-Condoy et al. 2026 -->
-        <div class="research-card" data-category="ethics-governance" id="study-13">
-          <span id="ref-izquierdo-2026"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-purple"><span class="ref-card-num">[13]</span><i class="fas fa-cube"></i> FACETS Framework</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">JMIR Med Educ · 2026</span>
-            </div>
-            <h4 class="research-title">AI in Medical Education: The FACETS Framework</h4>
-            <span class="research-citation">Izquierdo-Condoy, J., et al. (2026). JMIR Med Educ, 12, e77127.</span>
-            <ul class="research-findings-list">
-              <li>Evaluates integration across Form, Application, Context, Mode, Technology, and SAMR alignment.</li>
-              <li>Advocates for technological equity to prevent disparities across under-resourced training centers.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Applies FACETS to evaluate 2D and VR modes, ensuring augmentation without degrading critical thinking.
-          </div>
-          <a href="#ref-13" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [13]</a>
-        </div>
-
-        <!-- 14. Sung et al. 2024 -->
-        <div class="research-card" data-category="simulation-competency" id="study-14">
-          <span id="ref-sung-2024"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-blue"><span class="ref-card-num">[14]</span><i class="fas fa-vr-cardboard"></i> VR Meta-Analysis</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Sustainability · 2024</span>
-            </div>
-            <h4 class="research-title">Effectiveness of Virtual Reality in Healthcare Education</h4>
-            <span class="research-citation">Sung, H., Kim, M., Park, J., et al. (2024). Sustainability, 16(19), 8520.</span>
-            <ul class="research-findings-list">
-              <li>VR simulations foster self-directed, asynchronous practice via interactive experiential feedback.</li>
-              <li>Significant improvements documented in procedural confidence and anatomical spatial understanding.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Enables self-directed VR procedural practice for learners to build technique prior to live patient care.
-          </div>
-          <a href="#ref-14" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [14]</a>
-        </div>
-
-        <!-- 15. XR Ethics -->
-        <div class="research-card" data-category="ethics-governance" id="study-15">
-          <span id="ref-xr-ethics"></span><span id="ref-skulmowski-2023"></span><span id="ref-cox-2025"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-purple"><span class="ref-card-num">[15]</span><i class="fas fa-shield-alt"></i> XR Ethics Review</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">CEXR (2023) / Open Res Eur (2025)</span>
-            </div>
-            <h4 class="research-title">Ethical Frameworks for Extended Reality (XR)</h4>
-            <span class="research-citation">Skulmowski, A. (2023). CEXR, 2, 100023. / Cox, S., et al. (2025). Open Res Eur, 4, 74.</span>
-            <ul class="research-findings-list">
-              <li>Highlights risks of cybersickness and sensory fatigue during prolonged headset immersion.</li>
-              <li>Classifies behavioral movement telemetry as sensitive biometric data requiring strict security.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Implements 30-minute immersion timers, strips biometric movement data, and provides desktop 2D fallback.
-          </div>
-          <a href="#ref-15" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [15]</a>
-        </div>
-
-        <!-- 16. Hospital Guidelines -->
-        <div class="research-card" data-category="practice-guidelines" id="study-16">
-          <span id="ref-shn-2025"></span><span id="ref-hrh-2023"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-green"><span class="ref-card-num">[16]</span><i class="fas fa-hospital"></i> Hospital Practice Standards</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">SHN (2025) · HRH (2023)</span>
-            </div>
-            <h4 class="research-title">Invasive Tube and Catheter Practice Standards</h4>
-            <span class="research-citation">Scarborough Health Network (2025, SHN-PRSTAND-0102) &amp; Humber River Health (2023, Ref 2734).</span>
-            <ul class="research-findings-list">
-              <li><strong>NG Tube (SHN, 2025):</strong> Common gap is lung insertion. Adults require NEX measurement &amp; X-ray; neonates require aspirate pH &lt; 5.5.</li>
-              <li><strong>Catheterization &amp; PIV (HRH, 2023):</strong> Strict sterility and urine flow verification (max 3 attempts); PIV flashback and flush verification (max 2 attempts).</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Simulation logic directly enforces these hospital safety thresholds, alerting learners upon protocol breach.
-          </div>
-          <a href="#ref-16" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [16]</a>
-        </div>
-
-        <!-- 17. Walsh et al. 2023 -->
-        <div class="research-card" data-category="ethics-governance" id="study-17">
-          <span id="ref-walsh-2023"></span>
-          <div>
-            <div class="research-card-header">
-              <span class="research-badge research-badge-purple"><span class="ref-card-num">[17]</span><i class="fas fa-video"></i> Systematic Review (Surgical Recording)</span>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">BJS Open · 2023</span>
-            </div>
-            <h4 class="research-title">Ethical Perspectives on Surgical Video Recording</h4>
-            <span class="research-citation">Walsh, R., Kearns, E. C., Moynihan, A., Gerke, S., Duffourc, M., Corrales Compagnucci, M., Minssen, T., &amp; Cahill, R. A. (2023). BJS Open, 7(3), zrad063.</span>
-            <ul class="research-findings-list">
-              <li>Systematic review mapping surgical video capture across the 4 biomedical ethics principles: Beneficence (35%), Non-maleficence (27%), Justice (22%), and Autonomy (16%).</li>
-              <li>Highlights the imperative for clear data custodianship, patient opt-out rights, and protection against unauthorized discovery.</li>
-            </ul>
-          </div>
-          <div class="research-implication">
-            <strong>Virtucare Application:</strong> Embeds strict video consent protocols, cryptographic anonymization, and educational-use isolation to protect patient and surgeon rights.
-          </div>
-          <a href="#ref-17" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [17]</a>
-        </div>
-
-      </div>
-
-      <!-- Formal APA 7th Edition Bibliography Dropdown -->
-      <div class="biblio-dropdown" id="bibliography">
-        <button type="button" class="biblio-toggle-btn" id="biblio-toggle-btn" aria-expanded="false" aria-controls="biblio-pane">
-          <div class="biblio-toggle-left">
-            <i class="fas fa-book" style="color: var(--primary); font-size: 1.15rem;"></i>
-            <h3>Complete References (APA 7th Edition)</h3>
-            <span class="research-badge research-badge-blue" style="font-size: 0.75rem; padding: 0.2rem 0.6rem;">17 Citations</span>
-          </div>
-          <div class="biblio-toggle-right">
-            <span class="biblio-toggle-hint">Click to expand</span>
-            <i class="fas fa-chevron-down biblio-arrow"></i>
-          </div>
-        </button>
-        
-        <div class="biblio-pane" id="biblio-pane">
+    <!-- Trainee Sign In / Sign Up Access Card -->
+    <section id="trainee-access" style="padding: 2.25rem 0 1rem;">
+      <div class="container">
+        <div class="portal-card" id="home-portal-card" style="max-width: 920px; margin: 0 auto; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(59, 130, 246, 0.28); box-shadow: 0 12px 36px rgba(0,0,0,0.35);">
           
-          <!-- [1] Cook et al. 2011 -->
-          <div class="biblio-item" id="ref-1">
-            <span id="ref-cook-2011"></span>
-            <div class="biblio-num">[1]</div>
-            <div class="biblio-text">
-              Cook, D. A., Hatala, R., Brydges, R., Zendejas, B., Szostek, J. H., Wang, A. T., Erwin, P. J., &amp; Hamstra, S. J. (2011). Technology-enhanced simulation for health professions education: A systematic review and meta-analysis. <em>JAMA</em>, 306(9), 978–988.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1001/jama.2011.1234</span>
-                <a href="#study-1" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+          <!-- Card Header -->
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <div style="width: 46px; height: 46px; border-radius: 50%; background: rgba(59, 130, 246, 0.15); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.25rem;">
+                <i class="fas fa-user-graduate"></i>
+              </div>
+              <div>
+                <h3 style="margin: 0; font-size: 1.15rem; color: var(--text-main);">Clinical Student &amp; Healthcare Trainee Portal</h3>
+                <p style="margin: 0.2rem 0 0; font-size: 0.86rem; color: var(--text-muted);">
+                  Sign in or register to log simulation attempts, inspect AI kinematic feedback, and view preceptor evaluations.
+                </p>
               </div>
             </div>
+            <a href="pages/student-portal.html" class="btn btn-secondary btn-sm" style="font-size: 0.84rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+              <i class="fas fa-external-link-alt"></i> Full Portal &amp; Dossier &rarr;
+            </a>
           </div>
 
-          <!-- [2] SIH 2024 -->
-          <div class="biblio-item" id="ref-2">
-            <span id="ref-sih-2024"></span>
-            <div class="biblio-num">[2]</div>
-            <div class="biblio-text">
-              Simulation in Healthcare. (2024). Competency-based simulation training for procedural skills: A systematic review and meta-analysis. <em>Simulation in Healthcare: The Journal of the Society for Simulation in Healthcare</em>, 19.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1097/SIH.0000000000000895</span>
-                <a href="#study-2" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+          <!-- Tabs: Sign In / Sign Up -->
+          <div class="portal-tabs" id="home-portal-tab-group" style="margin-bottom: 1.5rem;">
+            <button type="button" class="portal-tab-btn active" id="home-tab-signin-btn">
+              <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+            <button type="button" class="portal-tab-btn" id="home-tab-signup-btn">
+              <i class="fas fa-user-plus"></i> Sign Up (New Registration)
+            </button>
+          </div>
+
+          <!-- Sign In Form -->
+          <form id="home-form-signin" onsubmit="event.preventDefault(); window.handleHomeAuth('signin');">
+            <div class="portal-grid-2">
+              <div class="portal-field">
+                <label class="portal-label" for="home-signin-email">
+                  <i class="fas fa-envelope" style="color: var(--primary);"></i> Institutional Email or Student ID
+                </label>
+                <input type="text" id="home-signin-email" class="portal-input" value="s.chen@med.utoronto.ca" placeholder="e.g. s.chen@med.utoronto.ca or SHN-89214" required>
+              </div>
+
+              <div class="portal-field">
+                <label class="portal-label" for="home-signin-hospital">
+                  <i class="fas fa-hospital" style="color: var(--secondary);"></i> Teaching Hospital / Academic Institution
+                </label>
+                <select id="home-signin-hospital" class="portal-select" required>
+                  <option value="Scarborough Health Network">Scarborough Health Network (SHN)</option>
+                  <option value="Humber River Health">Humber River Health (HRH)</option>
+                  <option value="University of Toronto">University of Toronto Faculty of Medicine</option>
+                  <option value="Sunnybrook Health Sciences Centre">Sunnybrook Health Sciences Centre</option>
+                  <option value="University Health Network">University Health Network (UHN)</option>
+                  <option value="Michael Garron Hospital">Michael Garron Hospital</option>
+                </select>
               </div>
             </div>
-          </div>
 
-          <!-- [3] Hatala et al. 2014 -->
-          <div class="biblio-item" id="ref-3">
-            <span id="ref-hatala-2014"></span>
-            <div class="biblio-num">[3]</div>
-            <div class="biblio-text">
-              Hatala, R., Cook, D. A., Zendejas, B., Hamstra, S. J., &amp; Brydges, R. (2014). Feedback for simulation-based procedural skills training: A meta-analysis and critical narrative synthesis. <em>Advances in Health Sciences Education</em>, 19(2), 251–272.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1001/s10459-013-9462-8</span>
-                <a href="#study-3" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+            <div class="portal-field">
+              <label class="portal-label" for="home-signin-password">
+                <i class="fas fa-lock" style="color: var(--accent);"></i> Simulation Password
+              </label>
+              <input type="password" id="home-signin-password" class="portal-input" value="demo12345" placeholder="Enter password (demo: any value)" required>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin: 0.25rem 0 1.25rem;">
+              <label style="display: flex; align-items: center; gap: 0.45rem; font-size: 0.86rem; color: var(--text-muted); cursor: pointer;">
+                <input type="checkbox" checked style="accent-color: var(--primary);"> Remember workstation session
+              </label>
+              <a href="javascript:void(0)" onclick="alert('Demo reset instructions sent to institutional email.')" style="font-size: 0.84rem; color: var(--primary); text-decoration: none;">Forgot password?</a>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button type="submit" class="btn btn-primary" style="flex: 1; min-width: 220px; justify-content: center; padding: 0.75rem 1.25rem;">
+                <i class="fas fa-sign-in-alt" style="margin-right: 0.4rem;"></i> Sign In &amp; Launch Simulation
+              </button>
+              <button type="button" class="btn btn-secondary" id="home-demo-login-btn" style="justify-content: center; padding: 0.75rem 1.1rem;">
+                <i class="fas fa-bolt" style="color: #facc15; margin-right: 0.4rem;"></i> 1-Click Demo Login
+              </button>
+              <a href="pages/student-portal.html#records" class="btn btn-secondary" style="justify-content: center; padding: 0.75rem 1.1rem;">
+                <i class="fas fa-clipboard-check" style="margin-right: 0.4rem;"></i> Trainee Records &amp; Feedback Dossier &rarr;
+              </a>
+            </div>
+          </form>
+
+          <!-- Sign Up Form -->
+          <form id="home-form-signup" style="display: none;" onsubmit="event.preventDefault(); window.handleHomeAuth('signup');">
+            <div class="portal-grid-2">
+              <div class="portal-field">
+                <label class="portal-label" for="home-signup-name">
+                  <i class="fas fa-user" style="color: var(--primary);"></i> Full Legal Name &amp; Degree
+                </label>
+                <input type="text" id="home-signup-name" class="portal-input" placeholder="e.g. Dr. Alex Mercer, MD" required>
+              </div>
+
+              <div class="portal-field">
+                <label class="portal-label" for="home-signup-role">
+                  <i class="fas fa-id-badge" style="color: var(--primary);"></i> Trainee Role / Stage
+                </label>
+                <select id="home-signup-role" class="portal-select" required>
+                  <option value="Medical Resident (PGY-1)">Medical Resident (PGY-1)</option>
+                  <option value="Medical Resident (PGY-2)" selected>Medical Resident (PGY-2)</option>
+                  <option value="Senior Resident (PGY-3+)">Senior Resident (PGY-3+)</option>
+                  <option value="Clinical Fellow">Clinical Fellow</option>
+                  <option value="Medical Student (Clerkship)">Medical Student (Clerkship)</option>
+                  <option value="Advanced Practice Nursing Trainee">Advanced Practice Nursing Trainee</option>
+                </select>
               </div>
             </div>
-          </div>
 
-          <!-- [4] Hatem et al. 2023 -->
-          <div class="biblio-item" id="ref-4">
-            <span id="ref-hatem-2023"></span>
-            <div class="biblio-num">[4]</div>
-            <div class="biblio-text">
-              Hatem, R., Simmons, B., &amp; Thornton, J. E. (2023). A call to address AI "hallucinations" and how healthcare professionals can mitigate their risks. <em>Cureus</em>, 15(9), Article e44720.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.7759/cureus.44720</span>
-                <a href="#study-4" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+            <div class="portal-grid-2">
+              <div class="portal-field">
+                <label class="portal-label" for="home-signup-hospital">
+                  <i class="fas fa-hospital-user" style="color: var(--secondary);"></i> Teaching Hospital / Clinical Site
+                </label>
+                <select id="home-signup-hospital" class="portal-select" required>
+                  <option value="Scarborough Health Network">Scarborough Health Network (SHN)</option>
+                  <option value="Humber River Health">Humber River Health (HRH)</option>
+                  <option value="University of Toronto">University of Toronto Faculty of Medicine</option>
+                  <option value="Sunnybrook Health Sciences Centre">Sunnybrook Health Sciences Centre</option>
+                  <option value="University Health Network">University Health Network (UHN)</option>
+                  <option value="Michael Garron Hospital">Michael Garron Hospital</option>
+                </select>
+              </div>
+
+              <div class="portal-field">
+                <label class="portal-label" for="home-signup-id">
+                  <i class="fas fa-hashtag" style="color: var(--secondary);"></i> Trainee ID / License #
+                </label>
+                <input type="text" id="home-signup-id" class="portal-input" placeholder="e.g. SHN-RES-91820" required>
               </div>
             </div>
-          </div>
 
-          <!-- [5] Brooks 2026 -->
-          <div class="biblio-item" id="ref-5">
-            <span id="ref-brooks-2026"></span>
-            <div class="biblio-num">[5]</div>
-            <div class="biblio-text">
-              Brooks, C. (2026, June 9). Growing AI cybersecurity challenges facing the healthcare industry. <em>Forbes</em>.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-shield-virus"></i> Forbes Threat Intelligence</span>
-                <a href="#study-5" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+            <div class="portal-grid-2">
+              <div class="portal-field">
+                <label class="portal-label" for="home-signup-password">
+                  <i class="fas fa-lock" style="color: var(--accent);"></i> Create Password
+                </label>
+                <input type="password" id="home-signup-password" class="portal-input" placeholder="At least 8 characters" required>
+              </div>
+
+              <div class="portal-field">
+                <label class="portal-label" for="home-signup-mentor">
+                  <i class="fas fa-user-tie" style="color: var(--secondary);"></i> Supervising Preceptor
+                </label>
+                <input type="text" id="home-signup-mentor" class="portal-input" placeholder="e.g. Dr. D. Cook, MD" required>
               </div>
             </div>
-          </div>
 
-          <!-- [6] Bhattacharjee et al. 2023 -->
-          <div class="biblio-item" id="ref-6">
-            <span id="ref-bhattacharjee-2023"></span>
-            <div class="biblio-num">[6]</div>
-            <div class="biblio-text">
-              Bhattacharjee, M., Kaposy, C., Grossman, M. R., &amp; Marshall, Z. (2023). Patient photographs on Google Images: A commentary on informed consent, copyright, and privacy laws. <em>Law, Innovation and Technology</em>, 15(2), 536–557.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1080/17579961.2023.2245684</span>
-                <a href="#study-6" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
-              </div>
+            <label class="portal-checkbox-label" style="font-size: 0.86rem; color: var(--text-muted); display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 1.25rem;">
+              <input type="checkbox" required style="margin-top: 0.2rem; accent-color: var(--primary);">
+              <span>I confirm I am an authorized healthcare trainee and agree to practice according to hospital procedural standards. (Concept prototype; no real patient data stored).</span>
+            </label>
+
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button type="submit" class="btn btn-primary" style="flex: 1; min-width: 220px; justify-content: center; padding: 0.75rem 1.25rem;">
+                <i class="fas fa-user-plus" style="margin-right: 0.4rem;"></i> Register Trainee Account
+              </button>
+              <button type="button" class="btn btn-secondary" id="home-toggle-to-signin-btn" style="justify-content: center; padding: 0.75rem 1.1rem;">
+                Already Registered? Sign In
+              </button>
             </div>
-          </div>
+          </form>
 
-          <!-- [7] Mitchell & Ivimey-Cook 2023 -->
-          <div class="biblio-item" id="ref-7">
-            <span id="ref-mitchell-2023"></span>
-            <div class="biblio-num">[7]</div>
-            <div class="biblio-text">
-              Mitchell, A. A., &amp; Ivimey-Cook, E. R. (2023). Technology-enhanced simulation for healthcare professionals: A meta-analysis. <em>Frontiers in Medicine</em>, 10, Article 1149048.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.3389/fmed.2023.1149048</span>
-                <a href="#study-7" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+          <!-- Authenticated State (shown once signed in) -->
+          <div id="home-auth-state" style="display: none; padding-top: 0.25rem;">
+            <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+              <div style="display: flex; align-items: center; gap: 0.85rem;">
+                <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6, #10b981); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 1.15rem;" id="home-auth-avatar">SC</div>
+                <div>
+                  <div style="font-size: 1.1rem; font-weight: 600; color: var(--text-main);" id="home-auth-name">Dr. Sarah Chen, MD</div>
+                  <div style="font-size: 0.84rem; color: #86efac;" id="home-auth-details">Medical Resident (PGY-2) · Scarborough Health Network · Workstation Active</div>
+                </div>
               </div>
-            </div>
-          </div>
-
-          <!-- [8] Sim et al. 2022 -->
-          <div class="biblio-item" id="ref-8">
-            <span id="ref-sim-2022"></span>
-            <div class="biblio-num">[8]</div>
-            <div class="biblio-text">
-              Sim, J. J. M., Rusli, K. D. B., Seah, B., Levett-Jones, T., Lau, Y., &amp; Liaw, S. Y. (2022). Virtual simulation to enhance clinical reasoning in nursing: A systematic review and meta-analysis. <em>Clinical Simulation in Nursing</em>, 69, 26–39.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1016/j.ecns.2022.05.006</span>
-                <a href="#study-8" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- [9] Goddard et al. 2012 -->
-          <div class="biblio-item" id="ref-9">
-            <span id="ref-goddard-2012"></span>
-            <div class="biblio-num">[9]</div>
-            <div class="biblio-text">
-              Goddard, K., Roudsari, A., &amp; Wyatt, J. C. (2012). Automation bias: A systematic review of frequency, effect mediators, and mitigators. <em>Journal of the American Medical Informatics Association</em>, 19(1), 121–127.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1136/amiajnl-2011-000089</span>
-                <a href="#study-9" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- [10] Sun et al. 2024 -->
-          <div class="biblio-item" id="ref-10">
-            <span id="ref-sun-2024"></span>
-            <div class="biblio-num">[10]</div>
-            <div class="biblio-text">
-              Sun, Y., Sheng, D., Zhou, Z., et al. (2024). AI hallucination: Towards a comprehensive classification of distorted information in artificial intelligence-generated content. <em>Humanities and Social Sciences Communications</em>, 11, Article 1278.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1057/s41599-024-03811-x</span>
-                <a href="#study-10" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- [11] Kim et al. 2025 -->
-          <div class="biblio-item" id="ref-11">
-            <span id="ref-kim-2025"></span>
-            <div class="biblio-num">[11]</div>
-            <div class="biblio-text">
-              Kim, Y., Jeong, H., Chen, S., Li, S. S., Park, C., Lu, M., Alhamoud, K., Mun, J., Grau, C., Jung, M., Gameiro, R., Fan, L., Park, E., Lin, T., Yoon, J., Yoon, W., Sap, M., Tsvetkov, Y., Liang, P., … Breazeal, C. (2025). <em>Medical hallucinations in foundation models and their impact on healthcare</em>. arXiv preprint arXiv:2503.05777.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-brain"></i> arXiv: 2503.05777 [cs.CL]</span>
-                <a href="#study-11" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- [12] Franco D'Souza et al. 2024 -->
-          <div class="biblio-item" id="ref-12">
-            <span id="ref-dsouza-2024"></span>
-            <div class="biblio-num">[12]</div>
-            <div class="biblio-text">
-              Franco D’Souza, R., Mathew, M., Mishra, V., &amp; Surapaneni, K. M. (2024). Twelve tips for addressing ethical concerns in the implementation of artificial intelligence in medical education. <em>Medical Education Online</em>, 29(1), Article 2330250.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1080/10872981.2024.2330250</span>
-                <a href="#study-12" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- [13] Izquierdo-Condoy et al. 2026 -->
-          <div class="biblio-item" id="ref-13">
-            <span id="ref-izquierdo-2026"></span>
-            <div class="biblio-num">[13]</div>
-            <div class="biblio-text">
-              Izquierdo-Condoy, J., Arias-Intriago, M., Montero Corrales, L., &amp; Ortiz-Prado, E. (2026). Artificial intelligence in medical education: Transformative potential, current applications, and future implications. <em>JMIR Medical Education</em>, 12, Article e77127.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.2196/77127</span>
-                <a href="#study-13" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- [14] Sung et al. 2024 -->
-          <div class="biblio-item" id="ref-14">
-            <span id="ref-sung-2024"></span>
-            <div class="biblio-num">[14]</div>
-            <div class="biblio-text">
-              Sung, H., Kim, M., Park, J., Shin, N., &amp; Han, Y. (2024). Effectiveness of virtual reality in healthcare education: Systematic review and meta-analysis. <em>Sustainability</em>, 16(19), Article 8520.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.3390/su16198520</span>
-                <a href="#study-14" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- [15] Skulmowski 2023 & Cox et al. 2025 -->
-          <div class="biblio-item" id="ref-15">
-            <span id="ref-xr-ethics"></span><span id="ref-skulmowski-2023"></span><span id="ref-cox-2025"></span>
-            <div class="biblio-num">[15]</div>
-            <div class="biblio-text">
-              Skulmowski, A. (2023). Ethical issues of educational virtual reality. <em>Computers &amp; Education: X Reality</em>, 2, Article 100023. &amp; Cox, S., Kadlubsky, A., Svarverud, E., Adams, J., Baraas, R. C., &amp; Bernabe, R. D. L. C. (2025). A scoping review of the ethics frameworks describing issues related to the use of extended reality. <em>Open Research Europe</em>, 4, 74.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-vr-cardboard"></i> XR Neuro-Ergonomics &amp; Biometrics</span>
-                <a href="#study-15" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- [16] Hospital Practice Guidelines: SHN & HRH -->
-          <div class="biblio-item" id="ref-16">
-            <span id="ref-shn-2025"></span><span id="ref-hrh-2023"></span>
-            <div class="biblio-num">[16]</div>
-            <div class="biblio-text">
-              Scarborough Health Network. (2025). <em>Insertion of nasal and oral gastrointestinal tubes and nasogastric tube for gastric suction</em> (Practice Standard No. SHN-PRSTAND-0102). SHN Intranet / SharePoint. &amp; Humber River Health. (2023). <em>Adult urinary catheterization (straight, indwelling, coudé) and bladder irrigation</em> (Reference No. 2734) &amp; <em>Vascular access devices: Device &amp; site selection, placement &amp; removal</em> (Policy and Procedure). Policy and Procedure Manager.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-hospital"></i> Accredited Hospital Clinical Practice Standards</span>
-                <a href="#study-16" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- [17] Walsh et al. 2023 -->
-          <div class="biblio-item" id="ref-17">
-            <span id="ref-walsh-2023"></span>
-            <div class="biblio-num">[17]</div>
-            <div class="biblio-text">
-              Walsh, R., Kearns, E. C., Moynihan, A., Gerke, S., Duffourc, M., Corrales Compagnucci, M., Minssen, T., &amp; Cahill, R. A. (2023). Ethical perspectives on surgical video recording for patients, surgeons and society: systematic review. <em>BJS Open</em>, 7(3), Article zrad063.
-              <div class="biblio-meta">
-                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1093/bjsopen/zrad063</span>
-                <a href="#study-17" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                <a href="#prototype-section" class="btn btn-primary btn-sm"><i class="fas fa-play" style="margin-right: 0.35rem;"></i> Jump to Simulation &darr;</a>
+                <a href="pages/student-portal.html#records" class="btn btn-secondary btn-sm"><i class="fas fa-clipboard-list" style="margin-right: 0.35rem;"></i> Trainee Dossier &rarr;</a>
+                <button type="button" class="btn btn-secondary btn-sm" id="home-auth-signout-btn"><i class="fas fa-sign-out-alt"></i> Sign Out / Switch</button>
               </div>
             </div>
           </div>
 
         </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 6. How We Used Generative AI (Claude & Gemini) -->
-  <section id="claude" class="section" style="background: rgba(255,255,255,0.02);">
-    <div class="container">
-      <div style="margin-bottom: 1.5rem;">
-        <h2>6. How We Used Generative AI (Claude &amp; Gemini)</h2>
-        <p style="margin-bottom: 0; font-size: 1.15rem; color: var(--primary); font-weight: 500;">
-          A transparent disclosure of AI assistance, failure modes caught, and human verification.
-        </p>
-      </div>
+        <section id="prototype-section" class="section" style="padding-top: 3rem; min-height: 80vh;">
+      <div class="container">
+        
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <span class="research-badge research-badge-green" style="font-size: 0.8rem; padding: 0.35rem 0.85rem; margin-bottom: 0.75rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+            <i class="fas fa-microchip"></i> Live Interactive Demo
+          </span>
+          <h2 style="font-size: 2.25rem; margin-bottom: 0.75rem;">Virtucare Clinical Simulation Prototype</h2>
+          <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+            A simulated walkthrough of clinical practice guidelines, virtual procedure simulation checkpoints, and objective rule-based kinematic feedback across three foundational procedures.
+          </p>
+        </div>
 
-      <!-- Transparent Statement Banner -->
-      <div class="ai-disclosure-banner">
-        <p><strong><i class="fas fa-balance-scale" style="color: var(--secondary); margin-right: 0.5rem;"></i>Academic Integrity &amp; Transparency Statement:</strong> Generative AI tools (Claude and Gemini) were used strictly as an assistive aid for frontend layout scaffolding, code syntax structuring, analyzing procedure video into 2D simulation images, and editorial polishing. Following health professions AI governance<a href="#ref-12" class="cite-num"><sup>[12]</sup></a> and our core principle—<em>"AI assists; humans remain accountable"</em>—<strong>all clinical guidelines, research syntheses, ethical arguments, and simulation scoring rules were 100% human-authored and verified by our student team.</strong></p>
-      </div>
+        <!-- Collapsible Video Demo Dropdown -->
+        <div class="video-demo-dropdown" id="video-demo-dropdown" style="margin-bottom: 3rem;">
+          <button type="button" class="video-toggle-btn" id="video-toggle-btn" aria-expanded="false" aria-controls="video-pane">
+            <div class="video-toggle-left">
+              <i class="fas fa-play-circle" style="color: var(--primary); font-size: 1.35rem;"></i>
+              <h3 style="margin: 0; font-size: 1.15rem; font-weight: 600; color: var(--text-main);">
+                Video Demo <span style="font-size: 0.95rem; font-weight: 400; color: var(--text-muted); margin-left: 0.25rem;">— Recorded Prototype Walkthrough</span>
+              </h3>
+              <span class="research-badge research-badge-blue" style="font-size: 0.75rem; padding: 0.2rem 0.65rem;">
+                <i class="fas fa-video"></i> Watch Demo
+              </span>
+            </div>
+            <div class="video-toggle-right">
+              <span class="video-toggle-hint">Click to expand demo video</span>
+              <i class="fas fa-chevron-down video-toggle-arrow"></i>
+            </div>
+          </button>
 
-      <!-- Clean 4-Column Table: Area | Contributed | Risk Caught | How Verified -->
-      <div class="ai-column-table-wrap" style="margin-top: 1.5rem;">
-        <table class="ai-column-table">
-          <thead>
-            <tr>
-              <th style="width: 20%;">Project Area &amp; Tools</th>
-              <th style="width: 27%;">What AI Helped With</th>
-              <th style="width: 26%;">What Went Wrong (Risks Caught)</th>
-              <th style="width: 27%;">How We Checked &amp; Fixed It</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="ai-col-area">
-                <strong>Website &amp; Prototype</strong><br>
-                <span class="ai-badge ai-badge-purple" style="margin-top: 0.35rem;">Claude</span>
-                <span class="ai-badge ai-badge-blue" style="margin-top: 0.35rem;">Gemini</span>
-              </td>
-              <td class="ai-col-contrib">
-                <ul>
-                  <li>Helped build the responsive layout and CSS styling for the website.</li>
-                  <li>Set up browser session saving so user progress is remembered between steps.</li>
-                </ul>
-              </td>
-              <td class="ai-col-risk">
-                <ul>
-                  <li>Suggested heavy third-party software packages that we didn't need for a simple static site.</li>
-                  <li>Suggested using live AI to score students, which was slow and gave unpredictable feedback.</li>
-                </ul>
-              </td>
-              <td class="ai-col-verify">
-                <ul>
-                  <li>Kept the code lightweight and simple using standard HTML, CSS, and JavaScript.</li>
-                  <li>Replaced live AI scoring with fixed, clear rules so feedback is always accurate and reliable.</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class="ai-col-area">
-                <strong>Video &amp; 2D Images</strong><br>
-                <span class="ai-badge ai-badge-blue" style="margin-top: 0.35rem;">Gemini</span>
-              </td>
-              <td class="ai-col-contrib">
-                <ul>
-                  <li>Analyzed procedure videos and generated 2D anatomical images for the interactive simulation.</li>
-                </ul>
-              </td>
-              <td class="ai-col-risk">
-                <ul>
-                  <li>Generated blurry images, distorted anatomical boundaries, and awkward instrument angles.</li>
-                </ul>
-              </td>
-              <td class="ai-col-verify">
-                <ul>
-                  <li>Hand-checked and filtered every 2D image against real medical anatomical charts before using it in the demo.</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class="ai-col-area">
-                <strong>Clinical Questions &amp; Data</strong><br>
-                <span class="ai-badge ai-badge-purple" style="margin-top: 0.35rem;">Claude</span>
-              </td>
-              <td class="ai-col-contrib">
-                <ul>
-                  <li>Turned hospital procedural checklists into quiz questions, multiple-choice options, and explanations.</li>
-                </ul>
-              </td>
-              <td class="ai-col-risk">
-                <ul>
-                  <li>Made up wrong measurements (like tube insertion depth landmarks) and gave incorrect catheter sizes.</li>
-                </ul>
-              </td>
-              <td class="ai-col-verify">
-                <ul>
-                  <li>Audited every single question, landmark, and number directly against official hospital policies (Scarborough Health Network and Humber River Health).</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class="ai-col-area">
-                <strong>Ethics &amp; Research</strong><br>
-                <span class="ai-badge ai-badge-purple" style="margin-top: 0.35rem;">Claude</span>
-                <span class="ai-badge ai-badge-blue" style="margin-top: 0.35rem;">Gemini</span>
-              </td>
-              <td class="ai-col-contrib">
-                <ul>
-                  <li>Brainstormed initial ethical topics (patient consent, data privacy, user fatigue).</li>
-                </ul>
-              </td>
-              <td class="ai-col-risk">
-                <ul>
-                  <li>Gave vague buzzwords ("ensure fairness", "protect data") without legal backing and hallucinated fake journal citations.</li>
-                </ul>
-              </td>
-              <td class="ai-col-verify">
-                <ul>
-                  <li>Threw out the fake citations and independently searched academic databases to find 17 real, peer-reviewed medical studies.</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class="ai-col-area">
-                <strong>Writing &amp; Tone</strong><br>
-                <span class="ai-badge ai-badge-purple" style="margin-top: 0.35rem;">Claude</span>
-              </td>
-              <td class="ai-col-contrib">
-                <ul>
-                  <li>Proofread draft paragraphs for clarity, active voice, and smoother flow.</li>
-                </ul>
-              </td>
-              <td class="ai-col-risk">
-                <ul>
-                  <li>Kept using the clinical word "hallucinations" and exaggerated marketing hype ("revolutionizes medicine overnight").</li>
-                </ul>
-              </td>
-              <td class="ai-col-verify">
-                <ul>
-                  <li>Changed "hallucinations" to "AI misinformation", and toned down hype so it clearly reads as an academic student prototype.</li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <h3>VIRTUCARE</h3>
-      <p style="color: var(--primary); font-weight: 500; font-size: 1rem; margin-top: -0.5rem; margin-bottom: 0.75rem;">The future of clinical training</p>
-      <p>A conceptual academic prototype for the 648M Small-Group Project.</p>
-
-      <div class="team-members">
-        <h4>Team &amp; Roles</h4>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: -0.75rem; margin-bottom: 2rem;">
-          All team members contributed as <strong>Presenters, Researchers, and Reporters</strong>:
-        </p>
-        <div class="team-grid">
-          <div class="team-member">
-            <span class="member-name">Noah Choi</span>
-            <span class="member-role">Presenter · Research · Reporter</span>
-            <p class="member-desc">Researches AI literature and hallucination risks, analyzing how AI errors and misinformation affect clinical training.</p>
-          </div>
-          <div class="team-member">
-            <span class="member-name">Yvonne Ma</span>
-            <span class="member-role">Presenter · Research · Reporter</span>
-            <p class="member-desc">Reviews hospital guidelines and summarizes medical literature to establish accurate clinical training steps.</p>
-          </div>
-          <div class="team-member">
-            <span class="member-name">Paul Leung</span>
-            <span class="member-role">Presenter · Research · Reporter</span>
-            <p class="member-desc">Researches hospital care policies and medical articles, summarizing clinical standards and safety protocols.</p>
-          </div>
-          <div class="team-member">
-            <span class="member-name">Minh Vuong</span>
-            <span class="member-role">Presenter · Research · Reporter</span>
-            <p class="member-desc">Built the website and interactive simulation prototype, while verifying clinical information and references.</p>
+          <div class="video-pane" id="video-pane">
+            <p class="muted" style="margin: 0 0 1.25rem 0; font-size: 0.92rem;">
+              Recorded demonstration of the Virtucare prototype flow, clinical practice guidelines, and virtual procedure simulation.
+            </p>
+            <div class="video-container" style="position: relative; width: 100%; border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
+              <video id="demo-video-player" controls playsinline preload="metadata" style="width: 100%; max-height: 520px; display: block; margin: 0 auto; background: #000;">
+                <source src="./assets/videos/demo_prototype.mp4" type="video/mp4">
+                <source src="./assets/videos/demo_prototype.mov" type="video/quicktime">
+                <source src="./demo prototype.mov" type="video/quicktime">
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
         </div>
+
+        <!-- Interactive Simulation Container -->
+        <div id="proto"></div>
+
+        <!-- Project Deliverables & Course Documentation Hub -->
+        <div style="margin-top: 6rem; padding-top: 4rem; border-top: 1px solid rgba(255,255,255,0.08);">
+          <div style="text-align: center; margin-bottom: 3rem;">
+            <span class="research-badge research-badge-blue" style="font-size: 0.8rem; padding: 0.35rem 0.85rem; margin-bottom: 0.75rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+              <i class="fas fa-graduation-cap"></i> MHIA 648M Deliverables
+            </span>
+            <h2 style="font-size: 2.1rem; margin-bottom: 0.75rem;">Course Documentation &amp; Research Sections</h2>
+            <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+              All background research, hospital guidelines, ethical governance frameworks, and generative AI disclosure logs authored for the project are accessible below:
+            </p>
+          </div>
+
+          <div class="grid-3" style="gap: 1.75rem;">
+            
+            <!-- Problem Card -->
+            <div class="card" style="display: flex; flex-direction: column; padding: 2rem;">
+              <div class="card-icon" style="color: var(--danger); background: rgba(239, 68, 68, 0.1); margin-bottom: 1.25rem;">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">1. The Clinical Problem</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; flex-grow: 1; margin-bottom: 1.5rem;">
+                Shortcomings of static physical manikins, elapsed seat-time bottlenecks, and procedural error hazards on live patients.
+              </p>
+              <a href="pages/problem.html" class="btn btn-secondary" style="font-size: 0.88rem; width: 100%; text-align: center; justify-content: center;">
+                Read Section 1 <i class="fas fa-arrow-right" style="margin-left: 0.4rem;"></i>
+              </a>
+            </div>
+
+            <!-- Benefits & Limitations Card -->
+            <div class="card" style="display: flex; flex-direction: column; padding: 2rem;">
+              <div class="card-icon" style="color: var(--primary); background: rgba(59, 130, 246, 0.1); margin-bottom: 1.25rem;">
+                <i class="fas fa-balance-scale"></i>
+              </div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">2. Benefits &amp; Limitations</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; flex-grow: 1; margin-bottom: 1.5rem;">
+                A balanced assessment: 4 proven educational benefits vs. 6 current prototype limitations and long-term architecture.
+              </p>
+              <a href="pages/benefits-limitations.html" class="btn btn-secondary" style="font-size: 0.88rem; width: 100%; text-align: center; justify-content: center;">
+                Read Section 2 <i class="fas fa-arrow-right" style="margin-left: 0.4rem;"></i>
+              </a>
+            </div>
+
+            <!-- Guidelines Card -->
+            <div class="card" style="display: flex; flex-direction: column; padding: 2rem;">
+              <div class="card-icon" style="color: var(--secondary); background: rgba(139, 92, 246, 0.1); margin-bottom: 1.25rem;">
+                <i class="fas fa-notes-medical"></i>
+              </div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">3. Hospital Guidelines</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; flex-grow: 1; margin-bottom: 1.5rem;">
+                Accredited clinical practice checklists from Scarborough Health Network (NGT) and Humber River Health (Foley &amp; PIV).
+              </p>
+              <a href="pages/guidelines.html" class="btn btn-secondary" style="font-size: 0.88rem; width: 100%; text-align: center; justify-content: center;">
+                Read Section 3 <i class="fas fa-arrow-right" style="margin-left: 0.4rem;"></i>
+              </a>
+            </div>
+
+            <!-- Ethics Card -->
+            <div class="card" style="display: flex; flex-direction: column; padding: 2rem;">
+              <div class="card-icon" style="color: var(--accent); background: rgba(16, 185, 129, 0.1); margin-bottom: 1.25rem;">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">4. Ethical &amp; Social Analysis</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; flex-grow: 1; margin-bottom: 1.5rem;">
+                The 6 core ethical pillars: patient consent, cybersecurity, re-identification risks, automation bias, and XR cognitive load.
+              </p>
+              <a href="pages/ethics.html" class="btn btn-secondary" style="font-size: 0.88rem; width: 100%; text-align: center; justify-content: center;">
+                Read Section 4 <i class="fas fa-arrow-right" style="margin-left: 0.4rem;"></i>
+              </a>
+            </div>
+
+            <!-- Research Card -->
+            <div class="card" style="display: flex; flex-direction: column; padding: 2rem;">
+              <div class="card-icon" style="color: #60a5fa; background: rgba(96, 165, 250, 0.1); margin-bottom: 1.25rem;">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">5. Research &amp; References</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; flex-grow: 1; margin-bottom: 1.5rem;">
+                17 peer-reviewed study cards and the complete 19-citation APA 7th Edition reference bibliography with active DOI links.
+              </p>
+              <a href="pages/research.html" class="btn btn-secondary" style="font-size: 0.88rem; width: 100%; text-align: center; justify-content: center;">
+                Read Section 5 <i class="fas fa-arrow-right" style="margin-left: 0.4rem;"></i>
+              </a>
+            </div>
+
+            <!-- AI Use Card -->
+            <div class="card" style="display: flex; flex-direction: column; padding: 2rem;">
+              <div class="card-icon" style="color: #c084fc; background: rgba(192, 132, 252, 0.1); margin-bottom: 1.25rem;">
+                <i class="fas fa-robot"></i>
+              </div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">6. Generative AI Use</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; flex-grow: 1; margin-bottom: 1.5rem;">
+                Full academic disclosure of Claude &amp; Gemini: contributions, hallucination errors caught, and independent human audits.
+              </p>
+              <a href="pages/ai-use.html" class="btn btn-secondary" style="font-size: 0.88rem; width: 100%; text-align: center; justify-content: center;">
+                Read Section 6 <i class="fas fa-arrow-right" style="margin-left: 0.4rem;"></i>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Team Members Banner Callout -->
+          <div class="card" style="margin-top: 2rem; padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; border-left: 4px solid var(--primary); background: rgba(59, 130, 246, 0.04);">
+            <div>
+              <div style="font-size: 0.82rem; color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.25rem;">
+                Project Team &amp; Roles
+              </div>
+              <h3 style="margin: 0; font-size: 1.35rem; color: var(--text-main);">Noah Choi, Yvonne Ma, Paul Leung, and Minh Vuong</h3>
+              <p style="margin: 0.35rem 0 0 0; color: var(--text-muted); font-size: 0.95rem;">
+                Presenters · Researchers · Reporters for the MHIA 648M Small-Group Project.
+              </p>
+            </div>
+            <a href="pages/members.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-users"></i> View Team &amp; Roles
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Clean Professional Footer -->
+  <footer style="background: var(--surface-color); padding: 4rem 0 3rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem;">
+    <div class="container">
+      <div style="font-size: 1.5rem; font-weight: 700; color: var(--text-main); letter-spacing: 1px;">VIRTU<span style="color: var(--primary);">CARE</span></div>
+      <p style="color: var(--primary); font-weight: 500; font-size: 0.95rem; margin-top: 0.25rem; margin-bottom: 0.75rem;">The future of clinical training</p>
+      
+      <div style="display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; margin: 1.5rem 0; font-size: 0.92rem;">
+        <a href="index.html" style="color: var(--primary); font-weight: 600; text-decoration: none;">Prototype</a>
+        <a href="pages/problem.html" style="color: var(--text-muted); text-decoration: none;">Problem</a>
+        <a href="pages/benefits-limitations.html" style="color: var(--text-muted); text-decoration: none;">Benefits &amp; Limitations</a>
+        <a href="pages/guidelines.html" style="color: var(--text-muted); text-decoration: none;">Guidelines</a>
+        <a href="pages/ethics.html" style="color: var(--text-muted); text-decoration: none;">Ethics</a>
+        <a href="pages/research.html" style="color: var(--text-muted); text-decoration: none;">Research</a>
+        <a href="pages/ai-use.html" style="color: var(--text-muted); text-decoration: none;">AI Use</a>
+        <a href="pages/members.html" style="color: var(--text-muted); text-decoration: none;">Members</a>
+        <a href="pages/student-portal.html" style="color: var(--text-muted); text-decoration: none;">Sign In / Sign Up</a>
       </div>
 
-      <p class="disclaimer">648M Small-Group Project &nbsp;·&nbsp; Not a medical system &nbsp;·&nbsp; Not clinically validated</p>
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0.5rem 0;">A conceptual academic prototype for the MHIA 648M Small-Group Project.</p>
+      <p style="font-size: 0.82rem; color: #94a3b8; margin: 0;">Not a medical system. Not clinically validated.</p>
     </div>
   </footer>
 
-  <script src="assets/js/data/research.js"></script>
+  <!-- Scripts -->
+  <script src="assets/js/state.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/prototype.js"></script>
   <script>
-    (function(){
-      // Guidelines Tab Switcher
-      var tabBtns = document.querySelectorAll('#home-guideline-tabs .guideline-tab');
-      var panes = document.querySelectorAll('.guideline-pane');
-      tabBtns.forEach(function(btn){
-        btn.addEventListener('click', function(){
-          tabBtns.forEach(function(b){ b.classList.remove('active'); });
-          panes.forEach(function(p){ p.style.display = 'none'; });
-          btn.classList.add('active');
-          var target = document.getElementById(btn.getAttribute('data-target'));
-          if(target) target.style.display = 'block';
-        });
-      });
+    (function() {
+      // Home Trainee Auth Handlers
+      var homeTabSignin = document.getElementById('home-tab-signin-btn');
+      var homeTabSignup = document.getElementById('home-tab-signup-btn');
+      var homeFormSignin = document.getElementById('home-form-signin');
+      var homeFormSignup = document.getElementById('home-form-signup');
+      var homeAuthState = document.getElementById('home-auth-state');
+      var homeDemoBtn = document.getElementById('home-demo-login-btn');
+      var homeToggleSigninBtn = document.getElementById('home-toggle-to-signin-btn');
+      var homeSignoutBtn = document.getElementById('home-auth-signout-btn');
 
-      // Explore More Research Toggle
-      var exploreBtn = document.getElementById('explore-more-btn');
-      var explorePane = document.getElementById('explore-more-pane');
-      if (exploreBtn && explorePane) {
-        exploreBtn.addEventListener('click', function() {
-          var isOpen = explorePane.classList.toggle('open');
-          exploreBtn.classList.toggle('expanded', isOpen);
-          var btnLabel = exploreBtn.querySelector('span');
-          if (btnLabel) {
-            btnLabel.textContent = isOpen ? 'Collapse Additional Studies (-11)' : 'Explore Additional Research Studies (+11)';
-          }
+      function setHomeAuth(trainee) {
+        if (!trainee) {
+          if (homeAuthState) homeAuthState.style.display = 'none';
+          if (homeFormSignin) homeFormSignin.style.display = 'block';
+          if (homeFormSignup) homeFormSignup.style.display = 'none';
+          if (homeTabSignin) homeTabSignin.classList.add('active');
+          if (homeTabSignup) homeTabSignup.classList.remove('active');
+          sessionStorage.removeItem('virtucare_trainee');
+          return;
+        }
+        sessionStorage.setItem('virtucare_trainee', JSON.stringify(trainee));
+        if (homeFormSignin) homeFormSignin.style.display = 'none';
+        if (homeFormSignup) homeFormSignup.style.display = 'none';
+        if (homeAuthState) {
+          homeAuthState.style.display = 'block';
+          var initials = trainee.name ? trainee.name.split(' ').map(function(n){ return n[0]; }).join('').substring(0,2).toUpperCase() : 'SC';
+          var avatar = document.getElementById('home-auth-avatar');
+          var name = document.getElementById('home-auth-name');
+          var details = document.getElementById('home-auth-details');
+          if (avatar) avatar.textContent = initials;
+          if (name) name.textContent = trainee.name;
+          if (details) details.textContent = (trainee.role || 'Medical Trainee') + ' · ' + (trainee.hospital || 'Clinical Site') + ' · Workstation Active';
+        }
+      }
+
+      window.handleHomeAuth = function(type) {
+        var trainee;
+        if (type === 'signup') {
+          var n = document.getElementById('home-signup-name').value || 'Dr. Alex Mercer, MD';
+          var r = document.getElementById('home-signup-role').value;
+          var h = document.getElementById('home-signup-hospital').value;
+          var id = document.getElementById('home-signup-id').value || 'SHN-RES-91820';
+          var m = document.getElementById('home-signup-mentor').value || 'Dr. D. Cook, MD';
+          trainee = { name: n, role: r, hospital: h, id: id, mentor: m };
+        } else {
+          var email = document.getElementById('home-signin-email').value;
+          var hosp = document.getElementById('home-signin-hospital').value;
+          trainee = { name: 'Dr. Sarah Chen, MD', role: 'Medical Resident (PGY-2)', hospital: hosp, id: email.includes('-') ? email : 'SHN-RES-88219', mentor: 'Dr. D. Cook, MD' };
+        }
+        setHomeAuth(trainee);
+      };
+
+      if (homeTabSignin && homeTabSignup) {
+        homeTabSignin.addEventListener('click', function() {
+          homeTabSignin.classList.add('active');
+          homeTabSignup.classList.remove('active');
+          if (homeFormSignin) homeFormSignin.style.display = 'block';
+          if (homeFormSignup) homeFormSignup.style.display = 'none';
+        });
+        homeTabSignup.addEventListener('click', function() {
+          homeTabSignup.classList.add('active');
+          homeTabSignin.classList.remove('active');
+          if (homeFormSignup) homeFormSignup.style.display = 'block';
+          if (homeFormSignin) homeFormSignin.style.display = 'none';
         });
       }
 
-      // Research Literature Topic Filter
-      var filterBtns = document.querySelectorAll('#research-filters .research-filter-btn');
-      var allResearchCards = document.querySelectorAll('.research-card');
-      filterBtns.forEach(function(fBtn){
-        fBtn.addEventListener('click', function(){
-          filterBtns.forEach(function(b){ b.classList.remove('active'); });
-          fBtn.classList.add('active');
-          var filterVal = fBtn.getAttribute('data-filter');
+      if (homeToggleSigninBtn) {
+        homeToggleSigninBtn.addEventListener('click', function() {
+          if (homeTabSignin) homeTabSignin.click();
+        });
+      }
 
-          // Auto-expand explore pane if a specific filter is chosen
-          if (filterVal !== 'all' && explorePane && !explorePane.classList.contains('open')) {
-            explorePane.classList.add('open');
-            if (exploreBtn) {
-              exploreBtn.classList.add('expanded');
-              var lbl = exploreBtn.querySelector('span');
-              if (lbl) lbl.textContent = 'Collapse Additional Studies (-11)';
-            }
-          }
-
-          allResearchCards.forEach(function(card){
-            if (filterVal === 'all' || card.getAttribute('data-category') === filterVal) {
-              card.style.display = 'flex';
-            } else {
-              card.style.display = 'none';
-            }
+      if (homeDemoBtn) {
+        homeDemoBtn.addEventListener('click', function() {
+          setHomeAuth({
+            name: 'Dr. Sarah Chen, MD',
+            role: 'Medical Resident (PGY-2)',
+            hospital: 'Scarborough Health Network',
+            id: 'SHN-RES-88219',
+            mentor: 'Dr. D. Cook, MD'
           });
         });
-      });
+      }
 
-      // Bibliography Dropdown Toggle
-      var biblioBtn = document.getElementById('biblio-toggle-btn');
-      var biblioPane = document.getElementById('biblio-pane');
-      if (biblioBtn && biblioPane) {
-        biblioBtn.addEventListener('click', function() {
-          var isOpen = biblioPane.classList.toggle('open');
-          biblioBtn.classList.toggle('expanded', isOpen);
-          biblioBtn.setAttribute('aria-expanded', isOpen);
-          var hint = biblioBtn.querySelector('.biblio-toggle-hint');
+      if (homeSignoutBtn) {
+        homeSignoutBtn.addEventListener('click', function() {
+          setHomeAuth(null);
+        });
+      }
+
+      try {
+        var savedTrainee = sessionStorage.getItem('virtucare_trainee');
+        if (savedTrainee) {
+          setHomeAuth(JSON.parse(savedTrainee));
+        }
+      } catch(e){}
+
+      // Video dropdown toggle
+      var toggleBtn = document.getElementById('video-toggle-btn');
+      var pane = document.getElementById('video-pane');
+      var video = document.getElementById('demo-video-player');
+      var heroVideoBtn = document.getElementById('hero-watch-demo-btn');
+
+      function openVideo() {
+        if (pane && !pane.classList.contains('open')) {
+          pane.classList.add('open');
+          if (toggleBtn) {
+            toggleBtn.classList.add('expanded');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            var hint = toggleBtn.querySelector('.video-toggle-hint');
+            if (hint) hint.textContent = 'Click to hide video';
+          }
+        }
+      }
+
+      if (toggleBtn && pane) {
+        toggleBtn.addEventListener('click', function() {
+          var isOpen = pane.classList.toggle('open');
+          toggleBtn.classList.toggle('expanded', isOpen);
+          toggleBtn.setAttribute('aria-expanded', isOpen);
+          var hint = toggleBtn.querySelector('.video-toggle-hint');
           if (hint) {
-            hint.textContent = isOpen ? 'Click to collapse' : 'Click to expand';
+            hint.textContent = isOpen ? 'Click to hide video' : 'Click to expand demo video';
+          }
+          if (!isOpen && video && !video.paused) {
+            video.pause();
           }
         });
       }
 
-      // Anchor hash listener for in-text citations linking to references or study cards
-      function handleCitationJump(hash) {
-        if (!hash) return;
-        var targetEl = document.querySelector(hash);
-        if (!targetEl) return;
-
-        // If target is inside explore-more-pane (additional studies)
-        if (explorePane && explorePane.contains(targetEl)) {
-          explorePane.classList.add('open');
-          if (exploreBtn) {
-            exploreBtn.classList.add('expanded');
-            var lbl = exploreBtn.querySelector('span');
-            if (lbl) lbl.textContent = 'Collapse Additional Studies (-11)';
-          }
-          setTimeout(function(){
-            targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            targetEl.classList.add('highlight');
-            setTimeout(function(){ targetEl.classList.remove('highlight'); }, 2200);
-          }, 120);
-        }
-        // If target is inside bibliography pane or is #bibliography
-        else if (hash === '#bibliography' || (biblioPane && biblioPane.contains(targetEl))) {
-          if (biblioPane && !biblioPane.classList.contains('open')) {
-            biblioPane.classList.add('open');
-            if (biblioBtn) {
-              biblioBtn.classList.add('expanded');
-              biblioBtn.setAttribute('aria-expanded', 'true');
-              var hint = biblioBtn.querySelector('.biblio-toggle-hint');
-              if (hint) hint.textContent = 'Click to collapse';
-            }
-          }
-          setTimeout(function(){
-            targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            targetEl.classList.add('highlight');
-            setTimeout(function(){ targetEl.classList.remove('highlight'); }, 2200);
-          }, 120);
-        }
-        // General scroll for study cards or sections
-        else {
-          setTimeout(function(){
-            targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            targetEl.classList.add('highlight');
-            setTimeout(function(){ targetEl.classList.remove('highlight'); }, 2200);
-          }, 80);
-        }
-      }
-
-      document.querySelectorAll('a[href^="#ref-"], a[href^="#study-"], a[href="#bibliography"]').forEach(function(link){
-        link.addEventListener('click', function(e){
-          var href = this.getAttribute('href');
-          if (href && href.startsWith('#')) {
-            handleCitationJump(href);
+      if (heroVideoBtn) {
+        heroVideoBtn.addEventListener('click', function() {
+          openVideo();
+          var dropdown = document.getElementById('video-demo-dropdown');
+          if (dropdown) {
+            dropdown.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         });
-      });
-
-      if (window.location.hash) {
-        handleCitationJump(window.location.hash);
       }
+
     })();
   </script>
-
 </body>
 </html>

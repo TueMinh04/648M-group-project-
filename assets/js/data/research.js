@@ -96,11 +96,11 @@ VC.RESEARCH = [
     topicLabel: "Competency-Based Education",
     purpose: "Proves that competency-based simulation training is superior to traditional time-based simulation",
     title: "Competency-Based Simulation Training for Procedural Skills: A Systematic Review and Meta-analysis",
-    authors: "Simulation in Healthcare Research Consortium",
-    year: 2024,
+    authors: "Vermylen, J. H., Cohen, E. R., Cook, D. A., et al.",
+    year: 2025,
     publication: "Simulation in Healthcare: The Journal of the Society for Simulation in Healthcare",
     url: "https://doi.org/10.1097/SIH.0000000000000895",
-    apaCitation: "Simulation in Healthcare. (2024). Competency-Based Simulation Training for Procedural Skills: A Systematic Review and Meta-analysis. Simulation in Healthcare, 19.",
+    apaCitation: "Vermylen, J. H., Cohen, E. R., Cook, D. A., et al. (2025). Competency-based simulation training for procedural skills: A systematic review and meta-analysis. Simulation in Healthcare.",
     badge: "Meta-Analysis (48 Studies / 19 Automated Scorers)",
     summary: "Meta-analysis of 48 studies demonstrating that competency-based simulation—where trainees advance only upon verified skill mastery—significantly outperforms time-based educational formats.",
     findings: [
@@ -146,8 +146,8 @@ VC.RESEARCH = [
     badge: "Pooled Effect Size d = 0.74",
     summary: "Meta-analysis evaluating the modality, frequency, and timing of feedback in procedural simulation training.",
     findings: [
-      "Structured feedback exerted a strong, positive pooled effect size of 0.74 on procedural skill acquisition.",
-      "Terminal feedback (delivered after task completion) proved significantly superior to concurrent feedback for novice skill retention.",
+      "Structured feedback exerted a moderate, positive pooled effect size of 0.74 on procedural skill acquisition.",
+      "Terminal feedback (delivered after task completion) appears more effective than concurrent feedback for novice skill retention.",
       "Concurrent feedback frequently interrupted motor planning and created dependency, reducing independent retention.",
       "Noted a research gap in multi-month longitudinal retention studies."
     ],

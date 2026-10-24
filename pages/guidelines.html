@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clinical Guidelines | Virtucare</title>
+  <meta name="description" content="Accredited hospital clinical practice standards and procedural competency checklists from Scarborough Health Network and Humber River Health.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/premium.css">
+  <link rel="stylesheet" href="../assets/css/app.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+</head>
+<body data-page="guidelines">
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div class="container section" style="padding-top: 6rem; min-height: 80vh;">
+      <div style="margin-bottom: 2rem;">
+        <span class="research-badge research-badge-blue" style="font-size: 0.8rem; padding: 0.35rem 0.85rem; margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+          <i class="fas fa-notes-medical"></i> Section 3 · Clinical Practice Standards
+        </span>
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.75rem;">3. Hospital Clinical Guidelines &amp; Competency Checklists</h1>
+        <p class="lede" style="color: var(--text-muted); font-size: 1.15rem; max-width: 900px; line-height: 1.6;">
+          Virtucare’s simulation curriculum is directly mapped to accredited hospital clinical standards from Scarborough Health Network and Humber River Health, addressing critical procedural errors, mandatory sterile techniques, and placement verification rules across three foundational clinical procedures.
+        </p>
+      </div>
+
+      <!-- Guideline Tabs -->
+      <div class="guideline-tabs" id="guidelines-tab-container" style="margin-bottom: 2rem;">
+        <button type="button" class="guideline-tab active" data-target="pane-ngt"><i class="fas fa-lungs"></i> Nasogastric (NG) Tube</button>
+        <button type="button" class="guideline-tab" data-target="pane-foley"><i class="fas fa-procedures"></i> Urinary Catheterization</button>
+        <button type="button" class="guideline-tab" data-target="pane-iv"><i class="fas fa-syringe"></i> Peripheral IV Cannulation</button>
+      </div>
+
+      <!-- Tab 1: NGT -->
+      <div id="pane-ngt" class="guideline-pane">
+        <div class="card" style="border-top: 3px solid var(--primary); padding: 2.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem;">
+            <div style="font-size: 0.95rem; color: var(--primary);">
+              <i class="fas fa-hospital" style="margin-right: 0.4rem;"></i><strong>Clinical Standard:</strong> Scarborough Health Network (Practice Standard SHN-PRSTAND-0102)
+            </div>
+            <span class="research-badge research-badge-blue"><i class="fas fa-check-circle"></i> Hospital Accredited</span>
+          </div>
+
+          <div class="guideline-badge-gap" style="margin-bottom: 2rem;">
+            <strong><i class="fas fa-exclamation-triangle"></i> Common Training Gap:</strong> Tube inadvertently inserted into the lung / bronchial airway.
+          </div>
+
+          <div class="grid-2" style="gap: 1.75rem;">
+            <div style="background: rgba(255,255,255,0.03); padding: 1.75rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.06);">
+              <h4 style="color: var(--primary); margin-bottom: 1.25rem; font-size: 1.15rem;"><i class="fas fa-user" style="margin-right: 0.5rem;"></i>Adult Critical Steps</h4>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Check doctor’s order &amp; confirm 2 patient identifiers</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Collect equipment and verify contraindications (e.g. base of skull fracture)</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Measure length of tube to insert (NEX: Nose to Ear lobe to Xiphoid process)</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Lubricate tube with water-soluble jelly</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Insert tube into nare while instructing patient to swallow water through a straw</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Secure tube and document insertion depth at nare</span></div>
+              <div class="guideline-badge-verify" style="margin-top: 1.5rem;">
+                <strong><i class="fas fa-x-ray" style="margin-right: 0.4rem;"></i>Adult Placement Verification:</strong><br>
+                Chest X-ray initially prior to any feed or medication; measure external tube length every 4 hours.
+              </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); padding: 1.75rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.06);">
+              <h4 style="color: var(--secondary); margin-bottom: 1.25rem; font-size: 1.15rem;"><i class="fas fa-baby" style="margin-right: 0.5rem;"></i>Neonate Critical Steps</h4>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Check doctor’s order and verify infant identity</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Collect neonatal-specific soft feeding tube equipment</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Accurately measure insertion depth (Nose to Ear to Mid-sternum/Xiphoid)</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Lubricate tube with sterile water (never petroleum or heavy oils)</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Insert tube smoothly and quickly into nare</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Provide supportive pain management / non-nutritive sucking</span></div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Document tube size, length marker, and infant tolerance</span></div>
+              <div class="guideline-badge-verify" style="margin-top: 1.5rem;">
+                <strong><i class="fas fa-vial" style="margin-right: 0.4rem;"></i>Neonate Placement Verification:</strong><br>
+                Aspirate stomach contents and verify pH using pH test strip; pH &lt; 5.5 confirms gastric placement.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Foley -->
+      <div id="pane-foley" class="guideline-pane" style="display: none;">
+        <div class="card" style="border-top: 3px solid var(--primary); padding: 2.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem;">
+            <div style="font-size: 0.95rem; color: var(--primary);">
+              <i class="fas fa-hospital" style="margin-right: 0.4rem;"></i><strong>Clinical Standard:</strong> Humber River Health (Reference No. 2734)
+            </div>
+            <span class="research-badge research-badge-blue"><i class="fas fa-check-circle"></i> Hospital Accredited</span>
+          </div>
+
+          <div class="guideline-badge-gap" style="margin-bottom: 2rem;">
+            <strong><i class="fas fa-exclamation-triangle"></i> Common Training Gap:</strong> Inability to locate the urethra (in female patients); breaking sterility of sterile field; inflating balloon inside urethra.
+          </div>
+
+          <div style="background: rgba(255,255,255,0.03); padding: 1.75rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.06);">
+            <h4 style="color: var(--primary); margin-bottom: 1.25rem; font-size: 1.15rem;"><i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>Critical Clinical Steps</h4>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Check doctor’s order &amp; clinical indication for catheterization</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Collect sterile catheter kit, gloves, and correct French size</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Maintain absolute strict sterile technique throughout setup and insertion</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Lubricate catheter tip with sterile lidocaine/water-soluble jelly</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Insert tube gently and advance until clear urine flow is observed</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Advance further to bifurcation before attaching syringe to inflate balloon with sterile water</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Do not exceed three attempts per patient encounter</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Document catheter type, size, balloon volume, and urine characteristics</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Must be clinically re-assessed every 24 hours to minimize CAUTI risk</span></div>
+            <div class="guideline-badge-verify" style="margin-top: 1.5rem;">
+              <strong><i class="fas fa-check-double" style="margin-right: 0.4rem;"></i>Placement Verification:</strong><br>
+              Direct visualization of urine flow through catheter tubing into drainage bag; gentle pull back to resistance once balloon is inflated.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: PIV -->
+      <div id="pane-iv" class="guideline-pane" style="display: none;">
+        <div class="card" style="border-top: 3px solid var(--primary); padding: 2.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem;">
+            <div style="font-size: 0.95rem; color: var(--primary);">
+              <i class="fas fa-hospital" style="margin-right: 0.4rem;"></i><strong>Clinical Standard:</strong> Humber River Health (Vascular Access Devices Policy)
+            </div>
+            <span class="research-badge research-badge-blue"><i class="fas fa-check-circle"></i> Hospital Accredited</span>
+          </div>
+
+          <div class="guideline-badge-gap" style="margin-bottom: 2rem;">
+            <strong><i class="fas fa-exclamation-triangle"></i> Common Training Gap:</strong> Selecting wrong catheter gauge; missing vein on initial puncture; undetected interstitial extravasation.
+          </div>
+
+          <div style="background: rgba(255,255,255,0.03); padding: 1.75rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.06);">
+            <h4 style="color: var(--primary); margin-bottom: 1.25rem; font-size: 1.15rem;"><i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>Critical Clinical Steps</h4>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Check doctor’s order, verify identity, and assess clinical need</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Select appropriate cannula gauge (e.g. 20G/22G for routine infusions)</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Apply tourniquet to engorge distal veins (start distal, save proximal veins)</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Disinfect site with 2% chlorhexidine in 70% alcohol and let air dry completely</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Anchor vein, insert needle bevel up at 15–30 degree angle until blood flashback</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Lower angle, advance plastic cannula over needle into vein, and release tourniquet</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Flush with sterile 0.9% saline to confirm free-flowing patency without swelling</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Secure cannula with sterile transparent Tegaderm dressing</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Limit to no more than 2 attempts per clinician</span></div>
+            <div class="checklist-item"><i class="fas fa-check-circle"></i><span>Assess site every hour during continuous infusions for signs of phlebitis or infiltration</span></div>
+            <div class="guideline-badge-verify" style="margin-top: 1.5rem;">
+              <strong><i class="fas fa-check-double" style="margin-right: 0.4rem;"></i>Placement Verification:</strong><br>
+              Immediate visualization of blood flashback in flash chamber; smooth saline flush with zero resistance, pain, or blanching tissue swelling.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation to Next Section -->
+      <div style="margin-top: 3.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 1.75rem 2rem; background: var(--surface-color); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius);">
+        <div>
+          <span style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Course Navigation</span>
+          <h4 style="margin: 0.25rem 0 0 0; font-size: 1.15rem;">Next: 4. Ethical, Social and Legal Analysis</h4>
+        </div>
+        <a href="ethics.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+          Read Ethical Analysis <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    (function(){
+      var tabBtns = document.querySelectorAll('#guidelines-tab-container .guideline-tab');
+      var panes = document.querySelectorAll('.guideline-pane');
+      tabBtns.forEach(function(btn){
+        btn.addEventListener('click', function(){
+          tabBtns.forEach(function(b){ b.classList.remove('active'); });
+          panes.forEach(function(p){ p.style.display = 'none'; });
+          btn.classList.add('active');
+          var targetId = btn.getAttribute('data-target');
+          var target = document.getElementById(targetId);
+          if(target) target.style.display = 'block';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

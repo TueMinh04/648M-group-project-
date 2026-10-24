@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trainee Simulation Feedback &amp; History | Virtucare</title>
+  <meta name="description" content="View comprehensive procedural trial logs, preceptor feedback evaluations, and competency metrics for clinical trainees.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/premium.css">
+  <link rel="stylesheet" href="../assets/css/app.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <style>
+    .trial-detail-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .trial-detail-modal.active {
+      display: flex;
+    }
+    .trial-modal-content {
+      background: var(--surface-color);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      max-width: 650px;
+      width: 100%;
+      padding: 2rem;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+    .trial-row-clickable {
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .trial-row-clickable:hover {
+      background: rgba(59, 130, 246, 0.1) !important;
+    }
+  </style>
+</head>
+<body data-mode="app" data-page="student-history">
+
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div class="container section" style="padding-top: 5.5rem; min-height: 80vh;">
+      
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" style="margin-bottom: 1.5rem; font-size: 0.88rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="../index.html" style="color: var(--text-muted); text-decoration: none;">Virtucare</a>
+        <i class="fas fa-chevron-right" style="font-size: 0.7rem; opacity: 0.6;"></i>
+        <a href="student-portal.html" style="color: var(--text-muted); text-decoration: none;">Sign In / Sign Up</a>
+        <i class="fas fa-chevron-right" style="font-size: 0.7rem; opacity: 0.6;"></i>
+        <span style="color: var(--primary); font-weight: 500;">Trainee Dossier &amp; Trial History</span>
+      </nav>
+
+      <!-- Trainee Profile Card Banner -->
+      <div class="trainee-profile-active" style="margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.25rem;">
+          <div style="display: flex; align-items: center; gap: 1.25rem;">
+            <div style="width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6, #10b981); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: #fff; font-weight: 700; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);" id="dossier-avatar">
+              SC
+            </div>
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+                <h2 style="margin: 0; font-size: 1.65rem; color: var(--text-main);" id="dossier-name">Dr. Sarah Chen, MD</h2>
+                <span class="research-badge research-badge-green" style="font-size: 0.75rem; padding: 0.25rem 0.75rem;">
+                  <i class="fas fa-check-circle"></i> In Good Standing
+                </span>
+              </div>
+              <div style="font-size: 0.95rem; color: var(--primary); font-weight: 500; margin-top: 0.2rem;" id="dossier-role">
+                Medical Resident (PGY-2) · Scarborough Health Network
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+            <a href="../index.html#prototype-section" class="btn btn-primary" style="font-size: 0.88rem; padding: 0.6rem 1.2rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+              <i class="fas fa-play"></i> Start Simulation
+            </a>
+            <button type="button" onclick="window.print()" class="btn btn-secondary" style="font-size: 0.88rem; padding: 0.6rem 1rem; display: inline-flex; align-items: center; gap: 0.4rem;" title="Print official transcript">
+              <i class="fas fa-print"></i> Export PDF
+            </button>
+            <a href="student-portal.html#signin" class="btn btn-secondary" style="font-size: 0.88rem; padding: 0.6rem 1rem;" title="Switch or log out">
+              <i class="fas fa-user-edit"></i> Switch Trainee
+            </a>
+          </div>
+        </div>
+
+        <div class="grid-3" style="gap: 1rem; margin-top: 0.5rem;">
+          <div style="background: rgba(0,0,0,0.25); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+            <div style="font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Institutional Trainee ID</div>
+            <div style="font-size: 1.1rem; font-weight: 600; color: var(--text-main); margin-top: 0.25rem;" id="dossier-id">SHN-RES-88219</div>
+          </div>
+          <div style="background: rgba(0,0,0,0.25); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+            <div style="font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Accreditation Status</div>
+            <div style="font-size: 1.1rem; font-weight: 600; color: #93c5fd; margin-top: 0.25rem;">Pre-Clinical Mastery Level 2 Cleared</div>
+          </div>
+          <div style="background: rgba(0,0,0,0.25); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+            <div style="font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Assigned Supervising Preceptor</div>
+            <div style="font-size: 1.1rem; font-weight: 600; color: var(--text-main); margin-top: 0.25rem;" id="dossier-mentor">Dr. D. Cook, MD (Clinical Lead)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Summary KPIs -->
+      <div class="dossier-kpis" style="margin-bottom: 2rem;">
+        <div class="dossier-kpi-card">
+          <div class="dossier-kpi-label"><i class="fas fa-history" style="color: var(--primary);"></i> Completed Trials</div>
+          <div class="dossier-kpi-val">14 <span style="font-size: 0.95rem; font-weight: 500; color: var(--text-muted);">attempts</span></div>
+          <div class="dossier-kpi-sub"><i class="fas fa-check-double"></i> 3 Core Procedure Modules</div>
+        </div>
+        <div class="dossier-kpi-card">
+          <div class="dossier-kpi-label"><i class="fas fa-chart-line" style="color: var(--secondary);"></i> Cumulative Competency</div>
+          <div class="dossier-kpi-val" style="color: #6ee7b7;">92.8%</div>
+          <div class="dossier-kpi-sub"><i class="fas fa-arrow-up"></i> +14.8% above baseline</div>
+        </div>
+        <div class="dossier-kpi-card">
+          <div class="dossier-kpi-label"><i class="fas fa-shield-alt" style="color: #f59e0b;"></i> Safety Gate Compliance</div>
+          <div class="dossier-kpi-val" style="color: #93c5fd;">100%</div>
+          <div class="dossier-kpi-sub" style="color: #93c5fd;"><i class="fas fa-check-circle"></i> 0 Uncorrected Breaches</div>
+        </div>
+        <div class="dossier-kpi-card">
+          <div class="dossier-kpi-label"><i class="fas fa-stamp" style="color: #facc15;"></i> Faculty Sign-Off</div>
+          <div class="dossier-kpi-val" style="font-size: 1.35rem; color: #facc15;">Level 2 Cleared</div>
+          <div class="dossier-kpi-sub" style="color: #facc15;"><i class="fas fa-certificate"></i> Inpatient Ward Ready</div>
+        </div>
+      </div>
+
+      <!-- Dossier Navigation Tabs -->
+      <div class="dossier-nav-tabs" role="tablist">
+        <button type="button" class="dossier-nav-tab active" data-tab="tab-trials">
+          <i class="fas fa-list-ol"></i> Practice Trials &amp; Attempt History (14)
+        </button>
+        <button type="button" class="dossier-nav-tab" data-tab="tab-feedback">
+          <i class="fas fa-comment-medical"></i> Faculty &amp; AI Diagnostic Feedback
+        </button>
+        <button type="button" class="dossier-nav-tab" data-tab="tab-competency">
+          <i class="fas fa-tasks"></i> Procedure Mastery &amp; Competency Breakdown
+        </button>
+      </div>
+
+      <!-- Tab Content 1: Full 14-Trial History Table -->
+      <div id="tab-trials" class="dossier-pane" style="display: block; margin-top: 1.5rem;">
+        
+        <div class="dossier-filter-row">
+          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;" id="trial-filter-group">
+            <button type="button" class="procedure-filter-pill active" data-filter="all">All Procedures (14)</button>
+            <button type="button" class="procedure-filter-pill" data-filter="ng-tube">Nasogastric Tube (6)</button>
+            <button type="button" class="procedure-filter-pill" data-filter="catheter">Foley Catheter (5)</button>
+            <button type="button" class="procedure-filter-pill" data-filter="iv-cannula">Peripheral IV (3)</button>
+          </div>
+          <div style="position: relative; min-width: 260px;">
+            <input type="text" id="trial-search-input" placeholder="Search trials by procedure or note..." class="portal-input" style="padding: 0.5rem 0.85rem 0.5rem 2.2rem; font-size: 0.88rem; height: 38px;">
+            <i class="fas fa-search" style="position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.85rem;"></i>
+          </div>
+        </div>
+
+        <div class="trials-table-container">
+          <table class="trials-table" id="full-trials-table">
+            <thead>
+              <tr>
+                <th>Trial #</th>
+                <th>Date &amp; Time</th>
+                <th>Procedure Module</th>
+                <th>Duration</th>
+                <th>Score</th>
+                <th>Safety Checkpoint</th>
+                <th>Preceptor / AI Feedback Summary</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Trial 14 -->
+              <tr class="trial-row-clickable" data-proc="ng-tube" data-id="14">
+                <td><strong style="color: var(--primary);">#14</strong></td>
+                <td style="white-space: nowrap; color: var(--text-muted);">Today · 14:10</td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-main);">Adult Nasogastric (NG) Tube Insertion</div>
+                  <span style="font-size: 0.76rem; color: #93c5fd;">High-Fowler's · NEX 52cm mark</span>
+                </td>
+                <td style="white-space: nowrap; font-family: monospace;">3m 42s</td>
+                <td><span class="trial-score-pill trial-score-high">96% (Distinction)</span></td>
+                <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (6/6)</span></td>
+                <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                  <em>"Optimal lubrication and patient swallowing cue timing. Syringe aspirate pH 3.2 verified prior to flush."</em>
+                  <div style="font-size: 0.75rem; color: var(--primary); margin-top: 0.2rem;">— AI Rule Engine (Validated)</div>
+                </td>
+                <td><button type="button" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">Details</button></td>
+              </tr>
+              <!-- Trial 13 -->
+              <tr class="trial-row-clickable" data-proc="catheter" data-id="13">
+                <td><strong style="color: var(--primary);">#13</strong></td>
+                <td style="white-space: nowrap; color: var(--text-muted);">Yesterday · 16:45</td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-main);">Female Indwelling Urinary Catheterization</div>
+                  <span style="font-size: 0.76rem; color: #c4b5fd;">14 Fr Foley · 10mL retention balloon</span>
+                </td>
+                <td style="white-space: nowrap; font-family: monospace;">4m 15s</td>
+                <td><span class="trial-score-pill trial-score-high">92% (Pass)</span></td>
+                <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (5/5)</span></td>
+                <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                  <em>"Rigorous sterile field maintained. Remember to advance 2.5cm further after first urine flash before balloon inflation."</em>
+                  <div style="font-size: 0.75rem; color: #facc15; margin-top: 0.2rem;">— Dr. D. Cook, MD</div>
+                </td>
+                <td><button type="button" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">Details</button></td>
+              </tr>
+              <!-- Trial 12 -->
+              <tr class="trial-row-clickable" data-proc="iv-cannula" data-id="12">
+                <td><strong style="color: var(--primary);">#12</strong></td>
+                <td style="white-space: nowrap; color: var(--text-muted);">Oct 22 · 09:20</td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-main);">Peripheral IV Cannulation (Antebrachial)</div>
+                  <span style="font-size: 0.76rem; color: #fcd34d;">18 Gauge · Cephalic Vein</span>
+                </td>
+                <td style="white-space: nowrap; font-family: monospace;">2m 58s</td>
+                <td><span class="trial-score-pill trial-score-med">88% (Pass)</span></td>
+                <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (5/5)</span></td>
+                <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                  <em>"Smooth 25° bevel-up penetration. Flashback brisk. Practice releasing tourniquet immediately before saline flush."</em>
+                  <div style="font-size: 0.75rem; color: var(--primary); margin-top: 0.2rem;">— AI Rule Engine (Validated)</div>
+                </td>
+                <td><button type="button" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">Details</button></td>
+              </tr>
+              <!-- Trial 11 -->
+              <tr class="trial-row-clickable" data-proc="ng-tube" data-id="11">
+                <td><strong style="color: var(--primary);">#11</strong></td>
+                <td style="white-space: nowrap; color: var(--text-muted);">Oct 21 · 11:30</td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-main);">Neonatal Feeding Tube Insertion</div>
+                  <span style="font-size: 0.76rem; color: #93c5fd;">6 Fr Enteral · Neo-NEX measurement</span>
+                </td>
+                <td style="white-space: nowrap; font-family: monospace;">3m 10s</td>
+                <td><span class="trial-score-pill trial-score-high">95% (Distinction)</span></td>
+                <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (6/6)</span></td>
+                <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                  <em>"Gentle insertion trajectory with zero vagal distress triggers. Measured markings verified at nares prior to securement."</em>
+                  <div style="font-size: 0.75rem; color: #facc15; margin-top: 0.2rem;">— Dr. D. Cook, MD</div>
+                </td>
+                <td><button type="button" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">Details</button></td>
+              </tr>
+              <!-- Trial 10 -->
+              <tr class="trial-row-clickable" data-proc="catheter" data-id="10">
+                <td><strong style="color: var(--primary);">#10</strong></td>
+                <td style="white-space: nowrap; color: var(--text-muted);">Oct 20 · 15:10</td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-main);">Male Indwelling Urinary Catheterization</div>
+                  <span style="font-size: 0.76rem; color: #c4b5fd;">16 Fr Foley · Syringe pre-test</span>
+                </td>
+                <td style="white-space: nowrap; font-family: monospace;">5m 20s</td>
+                <td><span class="trial-score-pill trial-score-warn">78% (Remediated)</span></td>
+                <td><span class="research-badge research-badge-amber" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-exclamation-triangle"></i> Self-Corrected</span></td>
+                <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                  <em>"Sterile boundary warning tripped on fenestrated drape corner. Trainee successfully halted, exchanged sterile gloves, and cleared."</em>
+                  <div style="font-size: 0.75rem; color: #f59e0b; margin-top: 0.2rem;">— AI Safety Engine</div>
+                </td>
+                <td><button type="button" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">Details</button></td>
+              </tr>
+              <!-- Trial 09 -->
+              <tr class="trial-row-clickable" data-proc="ng-tube" data-id="09">
+                <td><strong style="color: var(--primary);">#09</strong></td>
+                <td style="white-space: nowrap; color: var(--text-muted);">Oct 19 · 10:05</td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-main);">Adult Nasogastric (NG) Tube Insertion</div>
+                  <span style="font-size: 0.76rem; color: #93c5fd;">Resistance Simulation · 14 Fr Levin</span>
+                </td>
+                <td style="white-space: nowrap; font-family: monospace;">4m 30s</td>
+                <td><span class="trial-score-pill trial-score-med">84% (Pass)</span></td>
+                <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (5/6)</span></td>
+                <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                  <em>"Encountered pharyngeal resistance; safely withdrew 2cm, re-angled tube, and cued patient forward flexion and swallow."</em>
+                  <div style="font-size: 0.75rem; color: var(--primary); margin-top: 0.2rem;">— AI Rule Engine (Validated)</div>
+                </td>
+                <td><button type="button" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">Details</button></td>
+              </tr>
+              <!-- Trial 08 -->
+              <tr class="trial-row-clickable" data-proc="iv-cannula" data-id="08">
+                <td><strong style="color: var(--primary);">#08</strong></td>
+                <td style="white-space: nowrap; color: var(--text-muted);">Oct 18 · 14:40</td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-main);">Peripheral IV Cannulation (Dorsal Hand)</div>
+                  <span style="font-size: 0.76rem; color: #fcd34d;">20 Gauge · Fragile Vein Scenario</span>
+                </td>
+                <td style="white-space: nowrap; font-family: monospace;">3m 15s</td>
+                <td><span class="trial-score-pill trial-score-high">90% (Pass)</span></td>
+                <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (5/5)</span></td>
+                <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                  <em>"Low insertion angle maintained well (15°). Prompt flashback and smooth stylet withdrawal. Occlusion pressure stable."</em>
+                  <div style="font-size: 0.75rem; color: var(--primary); margin-top: 0.2rem;">— AI Rule Engine (Validated)</div>
+                </td>
+                <td><button type="button" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">Details</button></td>
+              </tr>
+              <!-- Trial 07 -->
+              <tr class="trial-row-clickable" data-proc="catheter" data-id="07">
+                <td><strong style="color: var(--primary);">#07</strong></td>
+                <td style="white-space: nowrap; color: var(--text-muted);">Oct 17 · 09:15</td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-main);">Female Indwelling Urinary Catheterization</div>
+                  <span style="font-size: 0.76rem; color: #c4b5fd;">14 Fr Foley · Aseptic Prep</span>
+                </td>
+                <td style="white-space: nowrap; font-family: monospace;">4m 40s</td>
+                <td><span class="trial-score-pill trial-score-med">89% (Pass)</span></td>
+                <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (5/5)</span></td>
+                <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                  <em>"Swabbing sequence executed strictly anterior-to-posterior with fresh cotton swabs. Adequate lubrication applied."</em>
+                  <div style="font-size: 0.75rem; color: #facc15; margin-top: 0.2rem;">— Dr. D. Cook, MD</div>
+                </td>
+                <td><button type="button" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">Details</button></td>
+              </tr>
+              <!-- Trial 06 -->
+              <tr class="trial-row-clickable" data-proc="ng-tube" data-id="06">
+                <td><strong style="color: var(--primary);">#06</strong></td>
+                <td style="white-space: nowrap; color: var(--text-muted);">Oct 16 · 11:20</td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-main);">Adult Nasogastric (NG) Tube Insertion</div>
+                  <span style="font-size: 0.76rem; color: #93c5fd;">Standard Protocol · 14 Fr</span>
+                </td>
+                <td style="white-space: nowrap; font-family: monospace;">3m 50s</td>
+                <td><span class="trial-score-pill trial-score-high">93% (Distinction)</span></td>
+                <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (6/6)</span></td>
+                <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                  <em>"Excellent patient reassurance and clear explanation. NEX measurement marked with surgical tape accurately."</em>
+                  <div style="font-size: 0.75rem; color: var(--primary); margin-top: 0.2rem;">— AI Rule Engine (Validated)</div>
+                </td>
+                <td><button type="button" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">Details</button></td>
+              </tr>
+              <!-- Trial 05 -->
+              <tr class="trial-row-clickable" data-proc="catheter" data-id="05">
+                <td><strong style="color: var(--primary);">#05</strong></td>
+                <td style="white-space: nowrap; color: var(--text-muted);">Oct 15 · 16:00</td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-main);">Male Indwelling Urinary Catheterization</div>
+                  <span style="font-size: 0.76rem; color: #c4b5fd;">16 Fr Foley · Prostatic Resistance</span>
+                </td>
+                <td style="white-space: nowrap; font-family: monospace;">5m 05s</td>
+                <td><span class="trial-score-pill trial-score-med">88% (Pass)</span></td>
+                <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (5/5)</span></td>
+                <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                  <em>"Patient penis held at 90° tension to straighten urethra. Paused at sphincter resistance and guided gentle deep breath."</em>
+                  <div style="font-size: 0.75rem; color: #facc15; margin-top: 0.2rem;">— Dr. D. Cook, MD</div>
+                </td>
+                <td><button type="button" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">Details</button></td>
+              </tr>
+              <!-- Trial 04 -->
+              <tr class="trial-row-clickable" data-proc="iv-cannula" data-id="04">
+                <td><strong style="color: var(--primary);">#04</strong></td>
+                <td style="white-space: nowrap; color: var(--text-muted);">Oct 14 · 13:10</td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-main);">Peripheral IV Cannulation (Antebrachial)</div>
+                  <span style="font-size: 0.76rem; color: #fcd34d;">18 Gauge · Median Cubital</span>
+                </td>
+                <td style="white-space: nowrap; font-family: monospace;">3m 45s</td>
+                <td><span class="trial-score-pill trial-score-med">84% (Pass)</span></td>
+                <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (4/5)</span></td>
+                <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                  <em>"Skin traction was solid. Catheter advanced slightly abruptly after flash; practice slower 2mm advance before needle retraction."</em>
+                  <div style="font-size: 0.75rem; color: var(--primary); margin-top: 0.2rem;">— AI Rule Engine (Validated)</div>
+                </td>
+                <td><button type="button" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">Details</button></td>
+              </tr>
+              <!-- Trial 03 -->
+              <tr class="trial-row-clickable" data-proc="ng-tube" data-id="03">
+                <td><strong style="color: var(--primary);">#03</strong></td>
+                <td style="white-space: nowrap; color: var(--text-muted);">Oct 13 · 10:50</td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-main);">Neonatal Feeding Tube Insertion</div>
+                  <span style="font-size: 0.76rem; color: #93c5fd;">5 Fr Enteral · Baseline Practice</span>
+                </td>
+                <td style="white-space: nowrap; font-family: monospace;">3m 25s</td>
+                <td><span class="trial-score-pill trial-score-high">92% (Pass)</span></td>
+                <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (6/6)</span></td>
+                <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                  <em>"Calm procedural pace. Accurate measurement of nose-to-earlobe-to-mid-umbilicus. Verified position with aspirate."</em>
+                  <div style="font-size: 0.75rem; color: #facc15; margin-top: 0.2rem;">— Dr. D. Cook, MD</div>
+                </td>
+                <td><button type="button" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">Details</button></td>
+              </tr>
+              <!-- Trial 02 -->
+              <tr class="trial-row-clickable" data-proc="catheter" data-id="02">
+                <td><strong style="color: var(--primary);">#02</strong></td>
+                <td style="white-space: nowrap; color: var(--text-muted);">Oct 11 · 15:30</td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-main);">Female Indwelling Urinary Catheterization</div>
+                  <span style="font-size: 0.76rem; color: #c4b5fd;">14 Fr Foley · Baseline Assessment</span>
+                </td>
+                <td style="white-space: nowrap; font-family: monospace;">5m 30s</td>
+                <td><span class="trial-score-pill trial-score-med">82% (Pass)</span></td>
+                <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (4/5)</span></td>
+                <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                  <em>"Initial baseline trial. Good sterile awareness. Inflated balloon immediately upon urine return; coached on extra 2cm depth."</em>
+                  <div style="font-size: 0.75rem; color: #facc15; margin-top: 0.2rem;">— Dr. D. Cook, MD</div>
+                </td>
+                <td><button type="button" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">Details</button></td>
+              </tr>
+              <!-- Trial 01 -->
+              <tr class="trial-row-clickable" data-proc="ng-tube" data-id="01">
+                <td><strong style="color: var(--primary);">#01</strong></td>
+                <td style="white-space: nowrap; color: var(--text-muted);">Oct 10 · 09:00</td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-main);">Adult Nasogastric (NG) Tube Insertion</div>
+                  <span style="font-size: 0.76rem; color: #93c5fd;">Orientation &amp; Diagnostic Baseline</span>
+                </td>
+                <td style="white-space: nowrap; font-family: monospace;">5m 55s</td>
+                <td><span class="trial-score-pill trial-score-warn">78% (Baseline Pass)</span></td>
+                <td><span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;"><i class="fas fa-check"></i> Passed (4/6)</span></td>
+                <td style="font-size: 0.84rem; color: #cbd5e1; max-width: 320px;">
+                  <em>"Initial simulator run. Demonstrated theoretical understanding; took extra time verifying NEX anatomical landmark."</em>
+                  <div style="font-size: 0.75rem; color: var(--primary); margin-top: 0.2rem;">— AI Rule Engine (Diagnostic)</div>
+                </td>
+                <td><button type="button" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">Details</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 1.25rem; font-size: 0.88rem; color: var(--text-muted);">
+          <div>Showing all 14 recorded simulation trials for this trainee portfolio.</div>
+          <button type="button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.8rem;">
+            <i class="fas fa-arrow-up"></i> Back to Top
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Tab Content 2: Preceptor & AI Feedback Summary -->
+      <div id="tab-feedback" class="dossier-pane" style="display: none; margin-top: 1.5rem;">
+        
+        <!-- Faculty Preceptor Evaluation -->
+        <div class="feedback-card" style="border-left: 4px solid var(--secondary);">
+          <div class="feedback-card-header">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.4); display: flex; align-items: center; justify-content: center; color: #6ee7b7; font-weight: 700; font-size: 1.1rem;">
+                DC
+              </div>
+              <div>
+                <h3 style="margin: 0; font-size: 1.15rem; color: var(--text-main);">Clinical Faculty Preceptor Evaluation &amp; Formal Clearance</h3>
+                <span style="font-size: 0.84rem; color: var(--text-muted);">Dr. D. Cook, MD · Director of Clinical Procedural Education, Scarborough Health Network</span>
+              </div>
+            </div>
+            <span class="research-badge research-badge-green" style="font-size: 0.78rem; padding: 0.35rem 0.85rem;">
+              <i class="fas fa-certificate"></i> Clinical Observation Cleared
+            </span>
+          </div>
+          <div class="feedback-quote">
+            "Over 14 simulated encounters, Dr. Sarah Chen has demonstrated exceptional maturation in psychomotor skill and situational mindfulness. Her initial hesitation during anatomical NEX landmark measurement has evolved into fluid, decisive execution (accurate to ±0.4 cm). Most commendable is her unwavering adherence to sterility and verification gates: across all trials, she never skipped syringe gastric aspirate pH testing before test flushes. I certify her as having satisfied Level 2 pre-clinical simulation requirements and endorse her for supervised bedside clinical transitions on the inpatient medicine service."
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.88rem;">
+            <div><strong style="color: var(--text-main);">Formal Clearance Level:</strong> Mastery Level 2 (Supervised Bedside Transitions)</div>
+            <div><strong style="color: var(--text-main);">Next Verification Milestone:</strong> Direct Observation of Procedural Skills (DOPS) on Ward</div>
+            <div><strong style="color: var(--text-main);">Evaluation Date:</strong> October 24, 2026 · Valid for 12 Months</div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="gap: 1.5rem;">
+          
+          <!-- AI Diagnostic Evaluation -->
+          <div class="feedback-card">
+            <div class="feedback-card-header">
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <i class="fas fa-microchip" style="color: var(--primary); font-size: 1.2rem;"></i>
+                <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">AI Simulation Engine Analytics</h4>
+              </div>
+              <span class="research-badge research-badge-blue" style="font-size: 0.72rem;">Continuous Kinematic Audit</span>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 0.9rem; font-size: 0.9rem;">
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                  <span style="color: var(--text-main); font-weight: 500;">Aseptic Barrier &amp; Hand Hygiene</span>
+                  <span style="color: #6ee7b7; font-weight: 700;">98.4% (Top 5% Cohort)</span>
+                </div>
+                <div class="competency-bar-track"><div class="competency-bar-fill" style="width: 98.4%; background: #10b981;"></div></div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                  <span style="color: var(--text-main); font-weight: 500;">Anatomical Landmark Precision</span>
+                  <span style="color: #93c5fd; font-weight: 700;">95.2% (±0.4 cm error margin)</span>
+                </div>
+                <div class="competency-bar-track"><div class="competency-bar-fill" style="width: 95.2%; background: #3b82f6;"></div></div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                  <span style="color: var(--text-main); font-weight: 500;">Complication &amp; Resistance Response</span>
+                  <span style="color: #93c5fd; font-weight: 700;">91.0% (Appropriate neck flexion/pause)</span>
+                </div>
+                <div class="competency-bar-track"><div class="competency-bar-fill" style="width: 91%; background: #3b82f6;"></div></div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                  <span style="color: var(--text-main); font-weight: 500;">Procedural Fluidity &amp; Ergonomics</span>
+                  <span style="color: #fcd34d; font-weight: 700;">87.8% (Occasional catheter hub hesitation)</span>
+                </div>
+                <div class="competency-bar-track"><div class="competency-bar-fill" style="width: 87.8%; background: #f59e0b;"></div></div>
+              </div>
+            </div>
+
+            <p style="margin: 1.25rem 0 0 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+              <i class="fas fa-info-circle" style="color: var(--primary);"></i> Kinematic tracking evaluated tool trajectory, insertion velocity curves, angle stability, and critical safety checklist adherence.
+            </p>
+          </div>
+
+          <!-- Targeted Deliberate Practice Guidance -->
+          <div class="feedback-card">
+            <div class="feedback-card-header">
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <i class="fas fa-bullseye" style="color: #f59e0b; font-size: 1.2rem;"></i>
+                <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Targeted Deliberate Practice Guide</h4>
+              </div>
+              <span class="research-badge research-badge-amber" style="font-size: 0.72rem;">Curated Recommendations</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.9rem;">
+              <div style="padding: 0.85rem; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #f59e0b;">
+                <strong style="color: var(--text-main); display: block; margin-bottom: 0.25rem;">
+                  1. Female Foley Catheter: Extra Advancement Depth
+                </strong>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">
+                  In trials #02 and #13, balloon inflation commenced immediately upon first urine droplet observation. In female anatomy, always advance an additional 2.5–3 cm to guarantee the balloon is fully intravesical prior to inflating 10mL sterile water.
+                </p>
+              </div>
+
+              <div style="padding: 0.85rem; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid var(--primary);">
+                <strong style="color: var(--text-main); display: block; margin-bottom: 0.25rem;">
+                  2. Peripheral IV: Tourniquet Release Timing
+                </strong>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">
+                  Remember to unclip the venous tourniquet prior to connection and flush of the saline extension set. Releasing tension earlier prevents vein rupture and hematoma formation in fragile vessels.
+                </p>
+              </div>
+
+              <div style="padding: 0.85rem; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid var(--secondary);">
+                <strong style="color: var(--text-main); display: block; margin-bottom: 0.25rem;">
+                  3. Nasogastric Tube: Swallow Cue Synchronization
+                </strong>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">
+                  Maintain rhythm during posterior oropharyngeal pass by advancing 5–7 cm increments exactly concurrent with simulated patient swallows to avert tracheal deflection.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Tab Content 3: Procedure Mastery Breakdown -->
+      <div id="tab-competency" class="dossier-pane" style="display: none; margin-top: 1.5rem;">
+        
+        <div class="feedback-card" style="margin-bottom: 1.5rem;">
+          <h3 style="margin: 0 0 1.25rem 0; font-size: 1.25rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-award" style="color: #facc15;"></i> Procedural Competency Verification &amp; Curricular Progress
+          </h3>
+
+          <div style="display: flex; flex-direction: column; gap: 1.75rem;">
+            
+            <div class="competency-bar-row">
+              <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 0.35rem;">
+                <span style="font-weight: 600; color: var(--text-main);">
+                  <i class="fas fa-lungs" style="color: var(--primary); margin-right: 0.45rem;"></i> Module 1: Nasogastric Tube Insertion (Adult &amp; Neonate)
+                </span>
+                <span style="color: #6ee7b7; font-weight: 700;">95.5% · Mastery Level 2 Cleared</span>
+              </div>
+              <div class="competency-bar-track" style="height: 10px;">
+                <div class="competency-bar-fill" style="width: 95.5%; background: linear-gradient(90deg, #3b82f6, #10b981);"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-top: 0.4rem;">
+                <span>6 completed trials · Mean trial duration: 3m 48s</span>
+                <span style="color: #86efac;"><i class="fas fa-check"></i> NEX precision ±0.4cm · Aspirate pH confirmed</span>
+              </div>
+            </div>
+
+            <div class="competency-bar-row">
+              <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 0.35rem;">
+                <span style="font-weight: 600; color: var(--text-main);">
+                  <i class="fas fa-procedures" style="color: #a855f7; margin-right: 0.45rem;"></i> Module 2: Indwelling Urinary Catheterization (Male &amp; Female)
+                </span>
+                <span style="color: #93c5fd; font-weight: 700;">90.0% · Mastery Level 2 Cleared</span>
+              </div>
+              <div class="competency-bar-track" style="height: 10px;">
+                <div class="competency-bar-fill" style="width: 90%; background: linear-gradient(90deg, #8b5cf6, #3b82f6);"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-top: 0.4rem;">
+                <span>5 completed trials · Mean trial duration: 4m 32s</span>
+                <span style="color: #93c5fd;"><i class="fas fa-check"></i> Sterile barrier respected · 1 self-corrected drape alert</span>
+              </div>
+            </div>
+
+            <div class="competency-bar-row">
+              <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 0.35rem;">
+                <span style="font-weight: 600; color: var(--text-main);">
+                  <i class="fas fa-syringe" style="color: #f59e0b; margin-right: 0.45rem;"></i> Module 3: Peripheral IV Cannulation (18G &amp; 20G)
+                </span>
+                <span style="color: #fcd34d; font-weight: 700;">87.3% · Mastery Level 1 Cleared</span>
+              </div>
+              <div class="competency-bar-track" style="height: 10px;">
+                <div class="competency-bar-fill" style="width: 87.3%; background: linear-gradient(90deg, #f59e0b, #10b981);"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-top: 0.4rem;">
+                <span>3 completed trials · Mean trial duration: 3m 05s</span>
+                <span style="color: #fcd34d;"><i class="fas fa-hourglass-half"></i> Level 2 cannulation trial scheduled next</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Curricular Progression Milestones -->
+        <div class="card" style="padding: 2rem;">
+          <h4 style="margin: 0 0 1.25rem 0; font-size: 1.15rem; color: var(--text-main);">
+            <i class="fas fa-road" style="color: var(--primary); margin-right: 0.4rem;"></i> Simulation Training Milestone Progression
+          </h4>
+          <div class="grid-3" style="gap: 1.25rem;">
+            <div style="padding: 1.25rem; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <strong style="color: #6ee7b7; font-size: 0.95rem;">Milestone 1: Fundamentals</strong>
+                <span class="research-badge research-badge-green" style="font-size: 0.7rem; padding: 0.15rem 0.5rem;">Completed</span>
+              </div>
+              <p style="margin: 0; font-size: 0.84rem; color: var(--text-muted);">
+                Aseptic setup, anatomical measurement calibration, and sterile field preservation. Cleared in trials 1–4.
+              </p>
+            </div>
+            <div style="padding: 1.25rem; background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 8px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <strong style="color: #93c5fd; font-size: 0.95rem;">Milestone 2: Complications</strong>
+                <span class="research-badge research-badge-blue" style="font-size: 0.7rem; padding: 0.15rem 0.5rem;">Completed</span>
+              </div>
+              <p style="margin: 0; font-size: 0.84rem; color: var(--text-muted);">
+                Handling pharyngeal resistance, fragile vein scenarios, and self-correcting sterile breaches. Cleared in trials 5–14.
+              </p>
+            </div>
+            <div style="padding: 1.25rem; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <strong style="color: #fcd34d; font-size: 0.95rem;">Milestone 3: Clinical Transition</strong>
+                <span class="research-badge research-badge-amber" style="font-size: 0.7rem; padding: 0.15rem 0.5rem;">Active</span>
+              </div>
+              <p style="margin: 0; font-size: 0.84rem; color: var(--text-muted);">
+                Supervised bedside procedural encounters on inpatient medicine wards under Dr. D. Cook, MD.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Actions -->
+      <div style="margin-top: 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 1.75rem 2rem; background: var(--surface-color); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius);">
+        <div>
+          <span style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Ready for deliberate practice?</span>
+          <h4 style="margin: 0.25rem 0 0 0; font-size: 1.15rem;">Return to the Virtucare Procedural Simulator</h4>
+        </div>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <a href="../index.html#prototype-section" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-play"></i> Launch Simulation Prototype
+          </a>
+          <a href="student-portal.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-user-graduate"></i> Student Portal Sign-In
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Trial Detail Modal / Drawer -->
+  <div class="trial-detail-modal" id="trial-detail-modal" role="dialog" aria-modal="true">
+    <div class="trial-modal-content">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1rem;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="trial-score-pill trial-score-high" id="modal-score">96%</span>
+            <span style="font-size: 0.85rem; color: var(--text-muted);" id="modal-trial-id">Trial #14</span>
+          </div>
+          <h3 style="margin: 0.5rem 0 0.25rem 0; font-size: 1.35rem; color: var(--text-main);" id="modal-proc-title">
+            Adult Nasogastric Tube Insertion
+          </h3>
+          <span style="font-size: 0.84rem; color: var(--primary);" id="modal-datetime">Today · 14:10 · Duration: 3m 42s</span>
+        </div>
+        <button type="button" id="modal-close-btn" style="background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer; padding: 0.25rem;" aria-label="Close modal">
+          &times;
+        </button>
+      </div>
+
+      <div style="margin-bottom: 1.25rem;">
+        <h4 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; color: var(--text-main);">Clinical Step Verification Checklist</h4>
+        <ul style="padding-left: 1.2rem; font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.4rem; margin: 0;" id="modal-checkpoints">
+          <li><i class="fas fa-check" style="color: #6ee7b7; margin-right: 0.4rem;"></i> Patient identification &amp; informed procedural consent confirmed</li>
+          <li><i class="fas fa-check" style="color: #6ee7b7; margin-right: 0.4rem;"></i> Hand hygiene &amp; personal protective equipment donned</li>
+          <li><i class="fas fa-check" style="color: #6ee7b7; margin-right: 0.4rem;"></i> High-Fowler's position established (90° upright)</li>
+          <li><i class="fas fa-check" style="color: #6ee7b7; margin-right: 0.4rem;"></i> NEX anatomical measurement marked at 52 cm with tape</li>
+          <li><i class="fas fa-check" style="color: #6ee7b7; margin-right: 0.4rem;"></i> Water-soluble lubricant applied to distal 10 cm</li>
+          <li><i class="fas fa-check" style="color: #6ee7b7; margin-right: 0.4rem;"></i> Syringe aspirate obtained; pH test strip confirms pH &le; 4.0</li>
+        </ul>
+      </div>
+
+      <div style="padding: 1rem; background: rgba(59, 130, 246, 0.08); border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.25); margin-bottom: 1.25rem;">
+        <div style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: #93c5fd; margin-bottom: 0.35rem;">Preceptor / AI Kinematic Evaluation</div>
+        <p style="margin: 0; font-size: 0.9rem; color: var(--text-main); font-style: italic;" id="modal-feedback-text">
+          "Optimal lubrication and patient swallowing cue timing. Syringe aspirate pH 3.2 verified prior to flush."
+        </p>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+        <button type="button" class="btn btn-secondary" id="modal-close-btn2" style="font-size: 0.88rem; padding: 0.5rem 1rem;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer id="site-footer"></footer>
+  <script src="../assets/js/main.js"></script>
+
+  <script>
+    (function(){
+      // Sync Trainee Session if present
+      try {
+        var saved = sessionStorage.getItem('virtucare_trainee');
+        if (saved) {
+          var t = JSON.parse(saved);
+          var initials = t.name ? t.name.split(' ').map(function(n){ return n[0]; }).join('').substring(0,2).toUpperCase() : 'SC';
+          var avEl = document.getElementById('dossier-avatar');
+          var nameEl = document.getElementById('dossier-name');
+          var roleEl = document.getElementById('dossier-role');
+          var idEl = document.getElementById('dossier-id');
+          var mentorEl = document.getElementById('dossier-mentor');
+
+          if (avEl) avEl.textContent = initials;
+          if (nameEl) nameEl.textContent = t.name;
+          if (roleEl) roleEl.textContent = (t.role || 'Medical Trainee') + ' · ' + (t.hospital || 'Accredited Clinical Site');
+          if (idEl) idEl.textContent = t.id || 'SHN-RES-88219';
+          if (mentorEl) mentorEl.textContent = t.mentor || 'Dr. D. Cook, MD (Clinical Lead)';
+        }
+      } catch(e) {}
+
+      // Tab Switching
+      var tabs = document.querySelectorAll('.dossier-nav-tab');
+      var panes = document.querySelectorAll('.dossier-pane');
+      tabs.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var targetId = btn.getAttribute('data-tab');
+          tabs.forEach(function(b){ b.classList.remove('active'); });
+          panes.forEach(function(p){ p.style.display = 'none'; });
+          btn.classList.add('active');
+          var targetPane = document.getElementById(targetId);
+          if (targetPane) targetPane.style.display = 'block';
+        });
+      });
+
+      // Filter Pills & Search in Tab 1
+      var filterPills = document.querySelectorAll('#trial-filter-group .procedure-filter-pill');
+      var trialRows = document.querySelectorAll('#full-trials-table tbody tr');
+      var searchInput = document.getElementById('trial-search-input');
+
+      function filterTrials(filter, query) {
+        query = (query || '').toLowerCase().trim();
+        trialRows.forEach(function(row) {
+          var matchProc = (filter === 'all' || row.getAttribute('data-proc') === filter);
+          var matchQuery = !query || row.textContent.toLowerCase().indexOf(query) !== -1;
+          row.style.display = (matchProc && matchQuery) ? '' : 'none';
+        });
+      }
+
+      filterPills.forEach(function(pill) {
+        pill.addEventListener('click', function() {
+          filterPills.forEach(function(p){ p.classList.remove('active'); });
+          pill.classList.add('active');
+          var filter = pill.getAttribute('data-filter');
+          filterTrials(filter, searchInput ? searchInput.value : '');
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', function() {
+          var activePill = document.querySelector('#trial-filter-group .procedure-filter-pill.active');
+          var filter = activePill ? activePill.getAttribute('data-filter') : 'all';
+          filterTrials(filter, searchInput.value);
+        });
+      }
+
+      // Modal Details on Row Click
+      var modal = document.getElementById('trial-detail-modal');
+      var closeBtn = document.getElementById('modal-close-btn');
+      var closeBtn2 = document.getElementById('modal-close-btn2');
+
+      trialRows.forEach(function(row) {
+        row.addEventListener('click', function() {
+          var title = row.querySelector('td:nth-child(3) div').textContent;
+          var date = row.querySelector('td:nth-child(2)').textContent;
+          var duration = row.querySelector('td:nth-child(4)').textContent;
+          var score = row.querySelector('.trial-score-pill').textContent;
+          var feedback = row.querySelector('td:nth-child(7) em').textContent;
+          var trialId = row.querySelector('td:nth-child(1) strong').textContent;
+
+          document.getElementById('modal-proc-title').textContent = title;
+          document.getElementById('modal-trial-id').textContent = 'Trial ' + trialId;
+          document.getElementById('modal-datetime').textContent = date + ' · Duration: ' + duration;
+          document.getElementById('modal-score').textContent = score;
+          document.getElementById('modal-feedback-text').textContent = feedback;
+
+          if (modal) modal.classList.add('active');
+        });
+      });
+
+      function closeModal() {
+        if (modal) modal.classList.remove('active');
+      }
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (closeBtn2) closeBtn2.addEventListener('click', closeModal);
+      if (modal) {
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) closeModal();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

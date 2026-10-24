@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research Literature & Evidence Base | Virtucare</title>
+  <meta name="description" content="Curated peer-reviewed medical informatics, clinical simulation meta-analyses, and APA 7th Edition references supporting Virtucare.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/premium.css">
+  <link rel="stylesheet" href="../assets/css/app.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+</head>
+<body data-page="research">
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div class="container section" style="padding-top: 6rem; min-height: 80vh;">
+      <div style="margin-bottom: 2rem;">
+        <span class="research-badge research-badge-blue" style="font-size: 0.8rem; padding: 0.35rem 0.85rem; margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+          <i class="fas fa-book-open"></i> Section 5 · Evidence Base &amp; APA References
+        </span>
+      </div>
+
+      <h1 style="font-size: 2.5rem; margin-bottom: 0.75rem;">5. Research Literature &amp; Evidence Base</h1>
+      <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 900px; line-height: 1.6; margin-bottom: 2rem;">Virtucare’s curriculum, kinematic metrics, cybersecurity, and ethics are grounded in <strong>peer-reviewed academic publications and accredited hospital practice standards</strong>. The 6 foundational studies are highlighted below:</p>
+
+      <!-- Topic Filter Tabs -->
+      <div class="research-filters" id="research-filters">
+        <button type="button" class="research-filter-btn active" data-filter="all">All Evidence (17)</button>
+        <button type="button" class="research-filter-btn" data-filter="simulation-competency">Simulation &amp; Competency (5)</button>
+        <button type="button" class="research-filter-btn" data-filter="feedback-automation">Feedback &amp; Automation (2)</button>
+        <button type="button" class="research-filter-btn" data-filter="ai-hallucination">AI Misinformation (3)</button>
+        <button type="button" class="research-filter-btn" data-filter="privacy-cybersecurity">Privacy &amp; Cybersecurity (2)</button>
+        <button type="button" class="research-filter-btn" data-filter="ethics-governance">Ethics &amp; Governance (4)</button>
+        <button type="button" class="research-filter-btn" data-filter="practice-guidelines">Hospital Guidelines (1)</button>
+      </div>
+
+      <!-- Featured: 6 Core Foundation Cards -->
+      <div class="grid-2" id="research-cards-grid">
+
+        <!-- 1. Cook et al. 2011 -->
+        <div class="research-card" data-category="simulation-competency" id="study-1">
+          <span id="ref-cook-2011"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-blue"><span class="ref-card-num">[1]</span><i class="fas fa-chart-pie"></i> Landmark Meta-Analysis (600+ Studies)</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">JAMA · 2011</span>
+            </div>
+            <h4 class="research-title">Technology-Enhanced Simulation in Healthcare</h4>
+            <span class="research-citation">Cook, D. A., Hatala, R., Brydges, R., et al. (2011). JAMA, 306(9), 978–988.</span>
+            <ul class="research-findings-list">
+              <li>Demonstrated large significant associations with procedural skills and clinical behavior across 600+ trials.</li>
+              <li>Deliberate repetitive practice shows moderate effects on patient outcomes and clinical skills.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Validates repetitive virtual practice to build psychomotor proficiency before treating live patients.
+          </div>
+          <a href="#ref-1" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [1]</a>
+        </div>
+
+        <!-- 2. Vermylen et al. 2025 -->
+        <div class="research-card" data-category="simulation-competency" id="study-2">
+          <span id="ref-sih-2024"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-green"><span class="ref-card-num">[2]</span><i class="fas fa-graduation-cap"></i> Meta-Analysis (48 Studies / 19 Automated Scorers)</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Simulation in Healthcare · 2025</span>
+            </div>
+            <h4 class="research-title">Competency-Based Procedural Simulation</h4>
+            <span class="research-citation">Vermylen, J. H., Cohen, E. R., Cook, D. A., et al. (2025). <em>Simulation in Healthcare</em>.</span>
+            <ul class="research-findings-list">
+              <li>Competency-based training significantly outperformed hours-based training in procedural retention.</li>
+              <li>19 analyzed trials validated automated, objective motion metrics over subjective grading.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Gates learner advancement on verified procedural technique rather than elapsed seat-time.
+          </div>
+          <a href="#ref-2" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [2]</a>
+        </div>
+
+        <!-- 3. Hatala et al. 2014 -->
+        <div class="research-card" data-category="feedback-automation" id="study-3">
+          <span id="ref-hatala-2014"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-amber"><span class="ref-card-num">[3]</span><i class="fas fa-comments"></i> Pooled Effect Size d = 0.74</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Adv Health Sci Educ · 2014</span>
+            </div>
+            <h4 class="research-title">Feedback for Simulation-Based Procedural Training</h4>
+            <span class="research-citation">Hatala, R., Cook, D. A., Zendejas, B., et al. (2014). AHSE, 19(2), 251–272.</span>
+            <ul class="research-findings-list">
+              <li>Procedural feedback demonstrated a moderate pooled effect size of <em>d</em> = 0.74 for skill acquisition.</li>
+              <li>Terminal post-task debriefing appears more effective than concurrent popup alerts for motor retention.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Kinematic analytics deliver comprehensive debriefs post-procedure, preventing mid-task disruption.
+          </div>
+          <a href="#ref-3" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [3]</a>
+        </div>
+
+        <!-- 4. Hatem et al. 2023 -->
+        <div class="research-card" data-category="ai-hallucination" id="study-4">
+          <span id="ref-hatem-2023"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-amber"><span class="ref-card-num">[4]</span><i class="fas fa-comment-medical"></i> Language Ethics &amp; Clinician Survey</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Cureus (2023) / arXiv (2025)</span>
+            </div>
+            <h4 class="research-title">AI Misinformation &amp; Medical Hallucinations</h4>
+            <span class="research-citation">Hatem, R., et al. (2023). Cureus, 15(9), e44720. / Kim, Y., et al. (2025). arXiv:2503.05777.</span>
+            <ul class="research-findings-list">
+              <li>Replaces "hallucination" with "AI misinformation" to avoid anthropomorphizing algorithms.</li>
+              <li>Over 90% of surveyed clinicians report medical hallucinations, driven by causal and temporal tracking failures.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Binds feedback to verified hospital rubrics, preventing fabricated generative recommendations.
+          </div>
+          <a href="#ref-4" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [4]</a>
+        </div>
+
+        <!-- 5. Brooks 2026 -->
+        <div class="research-card" data-category="privacy-cybersecurity" id="study-5">
+          <span id="ref-brooks-2026"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-red"><span class="ref-card-num">[5]</span><i class="fas fa-shield-virus"></i> Cybersecurity Threat</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Forbes · 2026</span>
+            </div>
+            <h4 class="research-title">AI Cybersecurity Challenges in Healthcare</h4>
+            <span class="research-citation">Brooks, C. (2026, June 9). Forbes.</span>
+            <ul class="research-findings-list">
+              <li>Healthcare has been the #1 global target for cyber threats since 2025; AI tools widen network attack surfaces.</li>
+              <li>Mandates 4-pillar defense: technical controls (encryption, MFA, patching), risk oversight, employee education, and drills.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Planned safeguard:</strong> Enforces zero-trust sandboxing, end-to-end encrypted telemetry, and routine automated patching.
+          </div>
+          <a href="#ref-5" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [5]</a>
+        </div>
+
+        <!-- 6. Bhattacharjee et al. 2023 -->
+        <div class="research-card" data-category="privacy-cybersecurity" id="study-6">
+          <span id="ref-bhattacharjee-2023"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-purple"><span class="ref-card-num">[6]</span><i class="fas fa-balance-scale"></i> IRB &amp; Privacy Mandates</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Law, Innovation &amp; Tech · 2023</span>
+            </div>
+            <h4 class="research-title">Informed Consent, Copyright &amp; Patient Privacy</h4>
+            <span class="research-citation">Bhattacharjee, M., Kaposy, C., Grossman, M. R., &amp; Marshall, Z. (2023). Law, Innov &amp; Tech, 15(2), 536–557.</span>
+            <ul class="research-findings-list">
+              <li>IRB standards mandate complete de-identification of patient imagery prior to publication or educational use.</li>
+              <li>Educational systems must guarantee non-identifiability algorithmically when acute consent cannot be obtained.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Verifies consent and automatically strips facial and biometric identifiers prior to module generation.
+          </div>
+          <a href="#ref-6" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [6]</a>
+        </div>
+
+      </div>
+
+      <!-- Explore More Button -->
+      <div class="explore-toggle-wrap">
+        <button type="button" class="explore-toggle-btn" id="explore-more-btn">
+          <span>Explore Additional Research Studies (+11)</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+      </div>
+
+      <!-- Secondary Expandable Grid: 10 Additional Studies -->
+      <div class="grid-2 explore-more-pane" id="explore-more-pane">
+
+        <!-- 7. Mitchell & Ivimey-Cook 2023 -->
+        <div class="research-card" data-category="simulation-competency" id="study-7">
+          <span id="ref-mitchell-2023"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-blue"><span class="ref-card-num">[7]</span><i class="fas fa-sync-alt"></i> Contemporary Meta-Analysis</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Frontiers in Med · 2023</span>
+            </div>
+            <h4 class="research-title">Simulation for Healthcare Professionals: Meta-Analysis</h4>
+            <span class="research-citation">Mitchell, A. A., &amp; Ivimey-Cook, E. R. (2023). Frontiers in Med, 10, 1149048.</span>
+            <ul class="research-findings-list">
+              <li>Reconfirmed strong positive associations with technical skills and clinical decision-making.</li>
+              <li>Demonstrated moderate error reduction in subsequent clinical workflows.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Validates repeatable digital simulation to eliminate disparities across regional training sites.
+          </div>
+          <a href="#ref-7" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [7]</a>
+        </div>
+
+        <!-- 8. Sim et al. 2022 -->
+        <div class="research-card" data-category="simulation-competency" id="study-8">
+          <span id="ref-sim-2022"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-purple"><span class="ref-card-num">[8]</span><i class="fas fa-laptop-medical"></i> 12 RCTs Meta-Analysis (n = 856)</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Clin Sim Nurs · 2022</span>
+            </div>
+            <h4 class="research-title">Virtual Simulation &amp; Clinical Reasoning in Nursing</h4>
+            <span class="research-citation">Sim, J. J. M., Rusli, K. D. B., Seah, B., et al. (2022). Clin Sim Nurs, 69, 26–39.</span>
+            <ul class="research-findings-list">
+              <li>Synthesized 12 RCTs (n = 856); optimal reasoning benefits observed when sessions exceed 30 minutes.</li>
+              <li>2D screen-based simulation often outperformed fully immersive VR due to lower cognitive noise.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Provides a low-cognitive-load 2D web mode alongside VR, ensuring accessible practice without sensory overload.
+          </div>
+          <a href="#ref-8" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [8]</a>
+        </div>
+
+        <!-- 9. Goddard et al. 2012 -->
+        <div class="research-card" data-category="feedback-automation" id="study-9">
+          <span id="ref-goddard-2012"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-blue"><span class="ref-card-num">[9]</span><i class="fas fa-user-shield"></i> Automation Bias Systematic Review</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">JAMIA · 2012</span>
+            </div>
+            <h4 class="research-title">Automation Bias: Frequency, Mediators, and Mitigators</h4>
+            <span class="research-citation">Goddard, K., Roudsari, A., &amp; Wyatt, J. C. (2012). JAMIA, 19(1), 121–127.</span>
+            <ul class="research-findings-list">
+              <li>Clinicians frequently fail to notice system errors when automated advice is presented without friction.</li>
+              <li>High cognitive workload and uncalibrated operator trust exacerbate automation bias.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Mandates educator sign-off and presents explainable confidence bounds rather than unquestioned automation.
+          </div>
+          <a href="#ref-9" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [9]</a>
+        </div>
+
+        <!-- 10. Sun et al. 2024 -->
+        <div class="research-card" data-category="ai-hallucination" id="study-10">
+          <span id="ref-sun-2024"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-amber"><span class="ref-card-num">[10]</span><i class="fas fa-project-diagram"></i> Empirical Taxonomy (31 Error Types)</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Nature Portfolio (HSSC) · 2024</span>
+            </div>
+            <h4 class="research-title">Classification of Distorted Information in AIGC</h4>
+            <span class="research-citation">Sun, Y., Sheng, D., Zhou, Z., et al. (2024). Humanit Soc Sci Commun, 11, 1278.</span>
+            <ul class="research-findings-list">
+              <li>Classifies 31 error modes spanning factual inaccuracies, flawed reasoning, and unfounded fabrications.</li>
+              <li>Demonstrates how sophisticated false narratives degrade trust in educational systems.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Restricts simulation scoring to bounded, deterministic rubrics to prevent algorithmic fabrications.
+          </div>
+          <a href="#ref-10" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [10]</a>
+        </div>
+
+        <!-- 11. Kim et al. 2025 -->
+        <div class="research-card" data-category="ai-hallucination" id="study-11">
+          <span id="ref-kim-2025"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-red"><span class="ref-card-num">[11]</span><i class="fas fa-stethoscope"></i> 11 Models &amp; 70 Clinicians</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">arXiv · 2025</span>
+            </div>
+            <h4 class="research-title">Medical Hallucinations in Foundation Models</h4>
+            <span class="research-citation">Kim, Y., Jeong, H., Chen, S., et al. (2025). arXiv:2503.05777.</span>
+            <ul class="research-findings-list">
+              <li>Over 90% of surveyed practicing clinicians encountered medical hallucinations in AI outputs.</li>
+              <li>Inaccuracies stem primarily from reasoning failures (causal/temporal tracking) rather than factual gaps.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Prohibits unconstrained generative models from issuing procedural training directives.
+          </div>
+          <a href="#ref-11" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [11]</a>
+        </div>
+
+        <!-- 12. Franco D'Souza et al. 2024 -->
+        <div class="research-card" data-category="ethics-governance" id="study-12">
+          <span id="ref-dsouza-2024"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-purple"><span class="ref-card-num">[12]</span><i class="fas fa-list-ol"></i> 12 Tips Framework</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Med Educ Online · 2024</span>
+            </div>
+            <h4 class="research-title">Twelve Tips for Ethical AI in Medical Education</h4>
+            <span class="research-citation">Franco D’Souza, R., Mathew, M., Mishra, V., &amp; Surapaneni, K. M. (2024). Med Educ Online, 29(1), 2330250.</span>
+            <ul class="research-findings-list">
+              <li>Defines 12 actionable principles covering algorithmic bias, privacy, output validation, and consent.</li>
+              <li>Emphasizes multidisciplinary governance, faculty development, and institutional oversight.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Embeds all 12 operational tips into Virtucare’s consent, diversity auditing, and educator review layers.
+          </div>
+          <a href="#ref-12" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [12]</a>
+        </div>
+
+        <!-- 13. Izquierdo-Condoy et al. 2026 -->
+        <div class="research-card" data-category="ethics-governance" id="study-13">
+          <span id="ref-izquierdo-2026"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-purple"><span class="ref-card-num">[13]</span><i class="fas fa-cube"></i> FACETS Framework</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">JMIR Med Educ · 2026</span>
+            </div>
+            <h4 class="research-title">AI in Medical Education: The FACETS Framework</h4>
+            <span class="research-citation">Izquierdo-Condoy, J., et al. (2026). JMIR Med Educ, 12, e77127.</span>
+            <ul class="research-findings-list">
+              <li>Evaluates integration across Form, Application, Context, Mode, Technology, and SAMR alignment.</li>
+              <li>Advocates for technological equity to prevent disparities across under-resourced training centers.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Applies FACETS to evaluate 2D and VR modes, ensuring augmentation without degrading critical thinking.
+          </div>
+          <a href="#ref-13" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [13]</a>
+        </div>
+
+        <!-- 14. Sung et al. 2024 -->
+        <div class="research-card" data-category="simulation-competency" id="study-14">
+          <span id="ref-sung-2024"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-blue"><span class="ref-card-num">[14]</span><i class="fas fa-vr-cardboard"></i> VR Meta-Analysis</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Sustainability · 2024</span>
+            </div>
+            <h4 class="research-title">Effectiveness of Virtual Reality in Healthcare Education</h4>
+            <span class="research-citation">Sung, H., Kim, M., Park, J., et al. (2024). Sustainability, 16(19), 8520.</span>
+            <ul class="research-findings-list">
+              <li>VR simulations foster self-directed, asynchronous practice via interactive experiential feedback.</li>
+              <li>Significant improvements documented in procedural confidence and anatomical spatial understanding.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Enables self-directed VR procedural practice for learners to build technique prior to live patient care.
+          </div>
+          <a href="#ref-14" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [14]</a>
+        </div>
+
+        <!-- 15. XR Ethics -->
+        <div class="research-card" data-category="ethics-governance" id="study-15">
+          <span id="ref-xr-ethics"></span><span id="ref-skulmowski-2023"></span><span id="ref-cox-2025"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-purple"><span class="ref-card-num">[15]</span><i class="fas fa-shield-alt"></i> XR Ethics Review</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">CEXR (2023) / Open Res Eur (2025)</span>
+            </div>
+            <h4 class="research-title">Ethical Frameworks for Extended Reality (XR)</h4>
+            <span class="research-citation">Skulmowski, A. (2023). CEXR, 2, 100023. / Cox, S., et al. (2025). Open Res Eur, 4, 74.</span>
+            <ul class="research-findings-list">
+              <li>Highlights risks of cybersickness and sensory fatigue during prolonged headset immersion.</li>
+              <li>Classifies behavioral movement telemetry as sensitive biometric data requiring strict security.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Implements 30-minute immersion timers, strips biometric movement data, and provides desktop 2D fallback.
+          </div>
+          <a href="#ref-15" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [15]</a>
+        </div>
+
+        <!-- 16. Hospital Guidelines -->
+        <div class="research-card" data-category="practice-guidelines" id="study-16">
+          <span id="ref-shn-2025"></span><span id="ref-hrh-2023"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-green"><span class="ref-card-num">[16]</span><i class="fas fa-hospital"></i> Hospital Practice Standards</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">SHN (2025) · HRH (2023)</span>
+            </div>
+            <h4 class="research-title">Invasive Tube and Catheter Practice Standards</h4>
+            <span class="research-citation">Scarborough Health Network (2025, SHN-PRSTAND-0102) &amp; Humber River Health (2023, Ref 2734).</span>
+            <ul class="research-findings-list">
+              <li><strong>NG Tube (SHN, 2025):</strong> Common gap is lung insertion. Adults require NEX measurement &amp; X-ray; neonates require aspirate pH &lt; 5.5.</li>
+              <li><strong>Catheterization &amp; PIV (HRH, 2023):</strong> Strict sterility and urine flow verification (max 3 attempts); PIV flashback and flush verification (max 2 attempts).</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Simulation logic directly enforces these hospital safety thresholds, alerting learners upon protocol breach.
+          </div>
+          <a href="#ref-16" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [16]</a>
+        </div>
+
+        <!-- 17. Walsh et al. 2023 -->
+        <div class="research-card" data-category="ethics-governance" id="study-17">
+          <span id="ref-walsh-2023"></span>
+          <div>
+            <div class="research-card-header">
+              <span class="research-badge research-badge-purple"><span class="ref-card-num">[17]</span><i class="fas fa-video"></i> Systematic Review (Surgical Recording)</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">BJS Open · 2023</span>
+            </div>
+            <h4 class="research-title">Ethical Perspectives on Surgical Video Recording</h4>
+            <span class="research-citation">Walsh, R., Kearns, E. C., Moynihan, A., Gerke, S., Duffourc, M., Corrales Compagnucci, M., Minssen, T., &amp; Cahill, R. A. (2023). BJS Open, 7(3), zrad063.</span>
+            <ul class="research-findings-list">
+              <li>Systematic review mapping surgical video capture across the 4 biomedical ethics principles: Beneficence (35%), Non-maleficence (27%), Justice (22%), and Autonomy (16%).</li>
+              <li>Highlights the imperative for clear data custodianship, patient opt-out rights, and protection against unauthorized discovery.</li>
+            </ul>
+          </div>
+          <div class="research-implication">
+            <strong>Virtucare Application:</strong> Embeds strict video consent protocols, cryptographic anonymization, and educational-use isolation to protect patient and surgeon rights.
+          </div>
+          <a href="#ref-17" class="research-link"><i class="fas fa-book-open"></i> Full Reference Citation [17]</a>
+        </div>
+
+      </div>
+
+      <!-- Formal APA 7th Edition Bibliography Dropdown -->
+      <div class="biblio-dropdown" id="bibliography">
+        <button type="button" class="biblio-toggle-btn" id="biblio-toggle-btn" aria-expanded="false" aria-controls="biblio-pane">
+          <div class="biblio-toggle-left">
+            <i class="fas fa-book" style="color: var(--primary); font-size: 1.15rem;"></i>
+            <h3>Complete References (APA 7th Edition)</h3>
+            <span class="research-badge research-badge-blue" style="font-size: 0.75rem; padding: 0.2rem 0.6rem;">19 Citations</span>
+          </div>
+          <div class="biblio-toggle-right">
+            <span class="biblio-toggle-hint">Click to expand</span>
+            <i class="fas fa-chevron-down biblio-arrow"></i>
+          </div>
+        </button>
+        
+        <div class="biblio-pane" id="biblio-pane">
+          
+          <!-- [1] Cook et al. 2011 -->
+          <div class="biblio-item" id="ref-1">
+            <span id="ref-cook-2011"></span>
+            <div class="biblio-num">[1]</div>
+            <div class="biblio-text">
+              Cook, D. A., Hatala, R., Brydges, R., Zendejas, B., Szostek, J. H., Wang, A. T., Erwin, P. J., &amp; Hamstra, S. J. (2011). Technology-enhanced simulation for health professions education: A systematic review and meta-analysis. <em>JAMA</em>, 306(9), 978–988.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1001/jama.2011.1234</span>
+                <a href="#study-1" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [2] Vermylen et al. 2025 -->
+          <div class="biblio-item" id="ref-2">
+            <span id="ref-sih-2024"></span>
+            <div class="biblio-num">[2]</div>
+            <div class="biblio-text">
+              Vermylen, J. H., Cohen, E. R., Cook, D. A., et al. (2025). Competency-based simulation training for procedural skills: A systematic review and meta-analysis. <em>Simulation in Healthcare</em>.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1097/SIH.0000000000000895</span>
+                <a href="#study-2" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [3] Hatala et al. 2014 -->
+          <div class="biblio-item" id="ref-3">
+            <span id="ref-hatala-2014"></span>
+            <div class="biblio-num">[3]</div>
+            <div class="biblio-text">
+              Hatala, R., Cook, D. A., Zendejas, B., Hamstra, S. J., &amp; Brydges, R. (2014). Feedback for simulation-based procedural skills training: A meta-analysis and critical narrative synthesis. <em>Advances in Health Sciences Education</em>, 19(2), 251–272.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1001/s10459-013-9462-8</span>
+                <a href="#study-3" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [4] Hatem et al. 2023 -->
+          <div class="biblio-item" id="ref-4">
+            <span id="ref-hatem-2023"></span>
+            <div class="biblio-num">[4]</div>
+            <div class="biblio-text">
+              Hatem, R., Simmons, B., &amp; Thornton, J. E. (2023). A call to address AI "hallucinations" and how healthcare professionals can mitigate their risks. <em>Cureus</em>, 15(9), Article e44720.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.7759/cureus.44720</span>
+                <a href="#study-4" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [5] Brooks 2026 -->
+          <div class="biblio-item" id="ref-5">
+            <span id="ref-brooks-2026"></span>
+            <div class="biblio-num">[5]</div>
+            <div class="biblio-text">
+              Brooks, C. (2026, June 9). Growing AI cybersecurity challenges facing the healthcare industry. <em>Forbes</em>.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-shield-virus"></i> Forbes Threat Intelligence</span>
+                <a href="#study-5" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [6] Bhattacharjee et al. 2023 -->
+          <div class="biblio-item" id="ref-6">
+            <span id="ref-bhattacharjee-2023"></span>
+            <div class="biblio-num">[6]</div>
+            <div class="biblio-text">
+              Bhattacharjee, M., Kaposy, C., Grossman, M. R., &amp; Marshall, Z. (2023). Patient photographs on Google Images: A commentary on informed consent, copyright, and privacy laws. <em>Law, Innovation and Technology</em>, 15(2), 536–557.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1080/17579961.2023.2245684</span>
+                <a href="#study-6" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [7] Mitchell & Ivimey-Cook 2023 -->
+          <div class="biblio-item" id="ref-7">
+            <span id="ref-mitchell-2023"></span>
+            <div class="biblio-num">[7]</div>
+            <div class="biblio-text">
+              Mitchell, A. A., &amp; Ivimey-Cook, E. R. (2023). Technology-enhanced simulation for healthcare professionals: A meta-analysis. <em>Frontiers in Medicine</em>, 10, Article 1149048.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.3389/fmed.2023.1149048</span>
+                <a href="#study-7" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [8] Sim et al. 2022 -->
+          <div class="biblio-item" id="ref-8">
+            <span id="ref-sim-2022"></span>
+            <div class="biblio-num">[8]</div>
+            <div class="biblio-text">
+              Sim, J. J. M., Rusli, K. D. B., Seah, B., Levett-Jones, T., Lau, Y., &amp; Liaw, S. Y. (2022). Virtual simulation to enhance clinical reasoning in nursing: A systematic review and meta-analysis. <em>Clinical Simulation in Nursing</em>, 69, 26–39.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1016/j.ecns.2022.05.006</span>
+                <a href="#study-8" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [9] Goddard et al. 2012 -->
+          <div class="biblio-item" id="ref-9">
+            <span id="ref-goddard-2012"></span>
+            <div class="biblio-num">[9]</div>
+            <div class="biblio-text">
+              Goddard, K., Roudsari, A., &amp; Wyatt, J. C. (2012). Automation bias: A systematic review of frequency, effect mediators, and mitigators. <em>Journal of the American Medical Informatics Association</em>, 19(1), 121–127.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1136/amiajnl-2011-000089</span>
+                <a href="#study-9" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [10] Sun et al. 2024 -->
+          <div class="biblio-item" id="ref-10">
+            <span id="ref-sun-2024"></span>
+            <div class="biblio-num">[10]</div>
+            <div class="biblio-text">
+              Sun, Y., Sheng, D., Zhou, Z., et al. (2024). AI hallucination: Towards a comprehensive classification of distorted information in artificial intelligence-generated content. <em>Humanities and Social Sciences Communications</em>, 11, Article 1278.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1057/s41599-024-03811-x</span>
+                <a href="#study-10" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [11] Kim et al. 2025 -->
+          <div class="biblio-item" id="ref-11">
+            <span id="ref-kim-2025"></span>
+            <div class="biblio-num">[11]</div>
+            <div class="biblio-text">
+              Kim, Y., Jeong, H., Chen, S., Li, S. S., Park, C., Lu, M., Alhamoud, K., Mun, J., Grau, C., Jung, M., Gameiro, R., Fan, L., Park, E., Lin, T., Yoon, J., Yoon, W., Sap, M., Tsvetkov, Y., Liang, P., … Breazeal, C. (2025). <em>Medical hallucinations in foundation models and their impact on healthcare</em>. arXiv preprint arXiv:2503.05777.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-brain"></i> arXiv: 2503.05777 [cs.CL]</span>
+                <a href="#study-11" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [12] Franco D'Souza et al. 2024 -->
+          <div class="biblio-item" id="ref-12">
+            <span id="ref-dsouza-2024"></span>
+            <div class="biblio-num">[12]</div>
+            <div class="biblio-text">
+              Franco D’Souza, R., Mathew, M., Mishra, V., &amp; Surapaneni, K. M. (2024). Twelve tips for addressing ethical concerns in the implementation of artificial intelligence in medical education. <em>Medical Education Online</em>, 29(1), Article 2330250.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1080/10872981.2024.2330250</span>
+                <a href="#study-12" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [13] Izquierdo-Condoy et al. 2026 -->
+          <div class="biblio-item" id="ref-13">
+            <span id="ref-izquierdo-2026"></span>
+            <div class="biblio-num">[13]</div>
+            <div class="biblio-text">
+              Izquierdo-Condoy, J., Arias-Intriago, M., Montero Corrales, L., &amp; Ortiz-Prado, E. (2026). Artificial intelligence in medical education: Transformative potential, current applications, and future implications. <em>JMIR Medical Education</em>, 12, Article e77127.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.2196/77127</span>
+                <a href="#study-13" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [14] Sung et al. 2024 -->
+          <div class="biblio-item" id="ref-14">
+            <span id="ref-sung-2024"></span>
+            <div class="biblio-num">[14]</div>
+            <div class="biblio-text">
+              Sung, H., Kim, M., Park, J., Shin, N., &amp; Han, Y. (2024). Effectiveness of virtual reality in healthcare education: Systematic review and meta-analysis. <em>Sustainability</em>, 16(19), Article 8520.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.3390/su16198520</span>
+                <a href="#study-14" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [15] Skulmowski 2023 & Cox et al. 2025 -->
+          <div class="biblio-item" id="ref-15">
+            <span id="ref-xr-ethics"></span><span id="ref-skulmowski-2023"></span><span id="ref-cox-2025"></span>
+            <div class="biblio-num">[15]</div>
+            <div class="biblio-text">
+              Skulmowski, A. (2023). Ethical issues of educational virtual reality. <em>Computers &amp; Education: X Reality</em>, 2, Article 100023. &amp; Cox, S., Kadlubsky, A., Svarverud, E., Adams, J., Baraas, R. C., &amp; Bernabe, R. D. L. C. (2025). A scoping review of the ethics frameworks describing issues related to the use of extended reality. <em>Open Research Europe</em>, 4, 74.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-vr-cardboard"></i> XR Neuro-Ergonomics &amp; Biometrics</span>
+                <a href="#study-15" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [16] Hospital Practice Guidelines: SHN & HRH -->
+          <div class="biblio-item" id="ref-16">
+            <span id="ref-shn-2025"></span><span id="ref-hrh-2023"></span>
+            <div class="biblio-num">[16]</div>
+            <div class="biblio-text">
+              Scarborough Health Network. (2025). <em>Insertion of nasal and oral gastrointestinal tubes and nasogastric tube for gastric suction</em> (Practice Standard No. SHN-PRSTAND-0102). SHN Intranet / SharePoint. &amp; Humber River Health. (2023). <em>Adult urinary catheterization (straight, indwelling, coudé) and bladder irrigation</em> (Reference No. 2734) &amp; <em>Vascular access devices: Device &amp; site selection, placement &amp; removal</em> (Policy and Procedure). Policy and Procedure Manager.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-hospital"></i> Accredited Hospital Clinical Practice Standards</span>
+                <a href="#study-16" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [17] Walsh et al. 2023 -->
+          <div class="biblio-item" id="ref-17">
+            <span id="ref-walsh-2023"></span>
+            <div class="biblio-num">[17]</div>
+            <div class="biblio-text">
+              Walsh, R., Kearns, E. C., Moynihan, A., Gerke, S., Duffourc, M., Corrales Compagnucci, M., Minssen, T., &amp; Cahill, R. A. (2023). Ethical perspectives on surgical video recording for patients, surgeons and society: systematic review. <em>BJS Open</em>, 7(3), Article zrad063.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1093/bjsopen/zrad063</span>
+                <a href="#study-17" class="biblio-study-link"><i class="fas fa-layer-group"></i> View Research Card</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- [18] Dawe et al. 2014 -->
+          <div class="biblio-item" id="ref-18">
+            <span id="ref-a"></span>
+            <span id="ref-dawe-2014"></span>
+            <div class="biblio-num">[18]</div>
+            <div class="biblio-text">
+              Dawe, S. R., Pena, G. N., Windsor, J. A., Broeders, J. A. J. L., Cregan, P. C., Hewett, P. J., &amp; Maddern, G. J. (2014). Systematic review of skills transfer after surgical simulation-based training. <em>British Journal of Surgery</em>, 101(9), 1063–1076.
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-link"></i> <a href="https://digital.library.adelaide.edu.au/dspace/handle/2440/90789" target="_blank" rel="noopener">Adelaide Repository</a></span>
+                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1002/bjs.9482</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- [19] Rocher et al. 2019 -->
+          <div class="biblio-item" id="ref-19">
+            <span id="ref-e"></span>
+            <span id="ref-rocher-2019"></span>
+            <div class="biblio-num">[19]</div>
+            <div class="biblio-text">
+              Rocher, L., Hendrickx, J. M., &amp; de Montjoye, Y.-A. (2019). Estimating the success of re-identifications in incomplete datasets using generative models. <em>Nature Communications</em>, 10, Article 3069. <a href="https://doi.org/10.1038/s41467-019-10933-3" target="_blank" rel="noopener">https://doi.org/10.1038/s41467-019-10933-3</a>
+              <div class="biblio-meta">
+                <span class="biblio-meta-badge"><i class="fas fa-link"></i> <a href="https://research.dial.uclouvain.be/handle/2078.5/254758" target="_blank" rel="noopener">UCLouvain DIAL</a></span>
+                <span class="biblio-meta-badge"><i class="fas fa-fingerprint"></i> DOI: 10.1038/s41467-019-10933-3</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Navigation to Next Section -->
+      <div style="margin-top: 3.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 1.75rem 2rem; background: var(--surface-color); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius);">
+        <div>
+          <span style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Course Navigation</span>
+          <h4 style="margin: 0.25rem 0 0 0; font-size: 1.15rem;">Next: 6. How We Used Generative AI (Claude &amp; Gemini)</h4>
+        </div>
+        <a href="ai-use.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+          Read AI Usage Log <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="../assets/js/data/research.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    (function(){
+      // Explore More Research Toggle
+      var exploreBtn = document.getElementById('explore-more-btn');
+      var explorePane = document.getElementById('explore-more-pane');
+      if (exploreBtn && explorePane) {
+        exploreBtn.addEventListener('click', function() {
+          var isOpen = explorePane.classList.toggle('open');
+          exploreBtn.classList.toggle('expanded', isOpen);
+          var btnLabel = exploreBtn.querySelector('span');
+          if (btnLabel) {
+            btnLabel.textContent = isOpen ? 'Collapse Additional Studies (-11)' : 'Explore Additional Research Studies (+11)';
+          }
+        });
+      }
+
+      // Research Literature Topic Filter
+      var filterBtns = document.querySelectorAll('#research-filters .research-filter-btn');
+      var allResearchCards = document.querySelectorAll('.research-card');
+      filterBtns.forEach(function(fBtn){
+        fBtn.addEventListener('click', function(){
+          filterBtns.forEach(function(b){ b.classList.remove('active'); });
+          fBtn.classList.add('active');
+          var filterVal = fBtn.getAttribute('data-filter');
+
+          if (filterVal !== 'all' && explorePane && !explorePane.classList.contains('open')) {
+            explorePane.classList.add('open');
+            if (exploreBtn) {
+              exploreBtn.classList.add('expanded');
+              var lbl = exploreBtn.querySelector('span');
+              if (lbl) lbl.textContent = 'Collapse Additional Studies (-11)';
+            }
+          }
+
+          allResearchCards.forEach(function(card){
+            if (filterVal === 'all' || card.getAttribute('data-category') === filterVal) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Bibliography Dropdown Toggle
+      var biblioBtn = document.getElementById('biblio-toggle-btn');
+      var biblioPane = document.getElementById('biblio-pane');
+      if (biblioBtn && biblioPane) {
+        biblioBtn.addEventListener('click', function() {
+          var isOpen = biblioPane.classList.toggle('open');
+          biblioBtn.classList.toggle('expanded', isOpen);
+          biblioBtn.setAttribute('aria-expanded', isOpen);
+          var hint = biblioBtn.querySelector('.biblio-toggle-hint');
+          if (hint) {
+            hint.textContent = isOpen ? 'Click to collapse' : 'Click to expand';
+          }
+        });
+      }
+
+      // Anchor hash listener
+      function handleCitationJump(hash) {
+        if (!hash) return;
+        var targetEl = document.querySelector(hash);
+        if (!targetEl) return;
+
+        if (explorePane && explorePane.contains(targetEl)) {
+          explorePane.classList.add('open');
+          if (exploreBtn) {
+            exploreBtn.classList.add('expanded');
+            var lbl = exploreBtn.querySelector('span');
+            if (lbl) lbl.textContent = 'Collapse Additional Studies (-11)';
+          }
+          setTimeout(function(){
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            targetEl.classList.add('highlight');
+            setTimeout(function(){ targetEl.classList.remove('highlight'); }, 2200);
+          }, 120);
+        } else if (hash === '#bibliography' || (biblioPane && biblioPane.contains(targetEl))) {
+          if (biblioPane && !biblioPane.classList.contains('open')) {
+            biblioPane.classList.add('open');
+            if (biblioBtn) {
+              biblioBtn.classList.add('expanded');
+              biblioBtn.setAttribute('aria-expanded', 'true');
+              var hint = biblioBtn.querySelector('.biblio-toggle-hint');
+              if (hint) hint.textContent = 'Click to collapse';
+            }
+          }
+          setTimeout(function(){
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            targetEl.classList.add('highlight');
+            setTimeout(function(){ targetEl.classList.remove('highlight'); }, 2200);
+          }, 120);
+        }
+      }
+
+      window.addEventListener('hashchange', function(){ handleCitationJump(window.location.hash); });
+      if (window.location.hash) {
+        setTimeout(function(){ handleCitationJump(window.location.hash); }, 300);
+      }
+    })();
+  </script>
+</body>
+</html>

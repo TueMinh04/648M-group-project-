@@ -1,7 +1,7 @@
 # Virtucare
 **(The future of clinical training)**
 
-Virtucare is a virtual reality clinical education system to revolutionize training and improve patient outcomes.
+Virtucare is an AI-assisted clinical simulation concept that helps students practice procedures before working with real patients.
 
 ### Core Categories
 - **Immersive VR scenarios:** Realistic procedural environments for deep situational readiness.
@@ -54,7 +54,7 @@ All team members contributed as **Presenters**, **Researchers**, and **Reporters
   Built the website and interactive simulation prototype, while verifying clinical information and references.
 
 ## Research Literature & Clinical Guidelines
-All research literature and hospital standards are curated in `assets/js/data/research.js` and rendered on `index.html` (Section 5) and `docs/ethics-framework.md`. The platform incorporates 16 peer-reviewed academic sources covering:
+All research literature and hospital standards are curated in `assets/js/data/research.js` and rendered on `index.html` (Section 5) and `docs/ethics-framework.md`. The platform incorporates peer-reviewed academic sources covering:
 - Procedural simulation & competency-based progression (Cook et al., 2011; Mitchell & Ivimey-Cook, 2023; Simulation in Healthcare, 2024; Sung et al., 2024; Sim et al., 2022)
 - Feedback timing & automation bias (Hatala et al., 2014; Goddard et al., 2012)
 - AI misinformation, taxonomy & foundation model hazards (Hatem et al., 2023; Sun et al., 2024; Kim et al., 2025)
