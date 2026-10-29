@@ -1,7 +1,7 @@
 /* One guided prototype: Consent & Upload → AI 3DGS Processing → VR Simulation → Kinematic Feedback. All simulated. */
 (function(){
-var root=document.getElementById('proto'),e=VC.esc,cfg,ST=['Consent & Upload','AI 3DGS Processing','VR Simulation','Kinematic Feedback'];
-var HELP=['Confirm patient consent to proceed (video upload is optional — a sample clinical procedure is preloaded).','Watch the AI process the video into a 3D Gaussian Splatting digital twin.','Experience the first-person physics-enabled VR practice module with clinical guidelines.','Review your objective kinematic performance and clinical protocol verification.'];
+var root=document.getElementById('proto'),e=VC.esc,cfg,ST=['Ethical Consent & Ingestion','AI 3DGS Processing','VR Simulation','Kinematic Feedback'];
+var HELP=['Verify institutional informed consent, algorithmic de-identification, and purpose limitation before spatial reconstruction.','Watch the AI process the video into a 3D Gaussian Splatting digital twin.','Experience the first-person physics-enabled VR practice module with clinical guidelines.','Review your objective kinematic performance and clinical protocol verification.'];
 var STAGES=['Extracting spatial point cloud...','Training 3D Gaussian Splats...','Masking surgical instruments...','Generating XPBD soft-tissue physics mesh...','Compiling interactive VR module...'];
 var NOTES=['Analyzing monocular video to estimate depth and structure.','Rendering high-fidelity tissue with real-time lighting.','Separating tools from anatomy for clean interaction.','Applying Extended Position Based Dynamics for realistic tissue deformation.','Finalizing module for standalone headset deployment.'];
 
@@ -160,6 +160,7 @@ function attachGuidelineEvents(container) {
 }
 
 function draw(){
+ if(!root) return;
  var n=VC.get().stage || 0;
  cfg={ok:false,label:'Continue',onNext:null,showNext:true};
  var quickJump = n !== 2 ? '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.5rem; background: rgba(59,130,246,0.08); padding: 0.75rem 1.25rem; border-radius: var(--radius); border: 1px solid rgba(59,130,246,0.2);"><span style="font-size:0.95rem; color: var(--text-main);"><i class="fas fa-stethoscope" style="color:var(--primary); margin-right:0.5rem;"></i>Explore the Interactive Simulation & Guidelines:</span><button class="btn btn-sm btn-primary" id="quick-sim-btn"><i class="fas fa-play" style="margin-right:0.4rem;"></i>Jump to Step 3: VR Simulation</button></div>' : '';
@@ -200,34 +201,127 @@ function focusTop(){document.getElementById('ptop').focus()}
 var V=[
 function consent(el){
  var s=VC.get();
- el.innerHTML='<div class="card"><h3>Upload Clinical &amp; Surgical Recording</h3><p>Select a video captured from a clinical procedure camera, endoscope, or bedside recording, or proceed with the preloaded clinical procedure. In a real system, only recordings with appropriate patient consent and de-identification would proceed<a href="../index.html#ref-17" class="cite-num"><sup>[17]</sup></a>.</p>' +
- '<div style="margin: 1.5rem 0; display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem;"><label for="recording" class="btn btn-secondary" style="cursor:pointer;"><i class="fas fa-upload"></i> Choose Video File <span style="font-size:0.8rem; opacity:0.8;">(Optional)</span></label><input id="recording" type="file" accept="video/*" style="display:none;"><span id="file-status" class="muted"></span></div></div>'+
- '<div class="card" style="margin-top: 1.5rem;"><label class="check"><input type="checkbox" id="c1"><span><strong>Patient consent confirmed (simulated).</strong> Verified that the patient has consented to their anonymized data being used for educational VR generation<a href="../index.html#ref-17" class="cite-num"><sup>[17]</sup></a>.</span></label>'+
- '<label class="check"><input type="checkbox" id="c2"><span>I confirm this video contains no visible Protected Health Information (PHI) outside the procedural/anatomical field.</span></label></div>';
+ el.innerHTML='<div class="card" style="padding: 1.75rem 2rem; margin-bottom: 1.5rem; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(59, 130, 246, 0.25); border-left: 4px solid var(--primary);">' +
+ '<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem;">' +
+   '<h3 style="margin: 0; font-size: 1.4rem; color: var(--text-main); display: flex; align-items: center; gap: 0.6rem;"><i class="fas fa-file-contract" style="color: var(--primary);"></i> Clinical Recording Ingestion &amp; Consent Verification</h3>' +
+   '<div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">' +
+     '<span class="research-badge research-badge-blue" style="font-size: 0.72rem; padding: 0.2rem 0.6rem;"><i class="fas fa-shield-alt"></i> REB Protocol #2026-ETH</span>' +
+     '<span class="research-badge research-badge-purple" style="font-size: 0.72rem; padding: 0.2rem 0.6rem;"><i class="fas fa-user-shield"></i> TCPS 2 / PHIPA Compliant</span>' +
+   '</div>' +
+ '</div>' +
+ '<p style="color: #cbd5e1; font-size: 0.98rem; line-height: 1.6; margin-bottom: 1.25rem;">' +
+   'In healthcare AI simulation, clinical video must never become an unconsented commodity<a href="../pages/ethics.html#ethics-privacy" class="cite-num"><sup>[6]</sup></a>. Before spatial reconstruction can proceed, you must verify patient informed consent, algorithmic de-identification, and strict educational purpose limitation.' +
+ '</p>' +
+ '<div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.85rem; padding: 1rem 1.25rem; background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.12); border-radius: 8px;">' +
+   '<label for="recording" class="btn btn-secondary" style="cursor:pointer; font-size: 0.9rem; padding: 0.5rem 1rem;"><i class="fas fa-upload"></i> Upload Procedure Video <span style="font-size:0.75rem; opacity:0.8;">(Optional)</span></label>' +
+   '<input id="recording" type="file" accept="video/*" style="display:none;">' +
+   '<span id="file-status" class="muted" style="font-size: 0.88rem;"></span>' +
+   '<button type="button" class="btn btn-ghost btn-sm" id="toggle-protocol-btn" style="margin-left: auto; font-size: 0.82rem; padding: 0.4rem 0.75rem; display: inline-flex; align-items: center; gap: 0.4rem;">' +
+     '<i class="fas fa-file-medical-alt" style="color: var(--secondary);"></i> View Institutional Consent Protocol <i class="fas fa-chevron-down" id="protocol-arrow" style="font-size: 0.7rem; transition: transform 0.2s;"></i>' +
+   '</button>' +
+ '</div>' +
  
- var c1=el.querySelector('#c1'),c2=el.querySelector('#c2'),file=el.querySelector('#recording'),fileStatus=el.querySelector('#file-status');
- c1.checked=s.consent?s.consent.recording:false;
- c2.checked=s.consent?s.consent.phi:false;
+ '<!-- Expandable Institutional Consent Protocol Spec -->' +
+ '<div id="protocol-drawer" style="display: none; margin-top: 1rem; padding: 1.25rem 1.5rem; background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 8px; font-size: 0.86rem; line-height: 1.6; color: #cbd5e1;">' +
+   '<div style="font-weight: 700; color: #e2e8f0; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">' +
+     '<i class="fas fa-hospital-symbol" style="color: var(--secondary);"></i> Institutional Clinical AI Research Ethics Protocol (Summary #REB-2026-ETH)' +
+   '</div>' +
+   '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin-top: 0.65rem;">' +
+     '<div><strong style="color: #93c5fd;">Governing Body:</strong> Scarborough Health Network &amp; Humber River Health Joint REB</div>' +
+     '<div><strong style="color: #93c5fd;">Consent Architecture:</strong> Tiered dynamic consent (Clinical Care vs. Educational VR vs. External Sharing)</div>' +
+     '<div><strong style="color: #93c5fd;">De-Identification Standard:</strong> Automated 3D face blanking, voice pitch shift, DICOM tag purge</div>' +
+     '<div><strong style="color: #93c5fd;">Patient Withdrawal:</strong> Dynamic revocation right; 1-click token destruction under 24 hrs</div>' +
+   '</div>' +
+ '</div>' +
+ '</div>' +
+
+ '<!-- 4-Checkpoint Ethical & Legal Consent Gate -->' +
+ '<div class="card" style="padding: 1.75rem 2rem; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; margin-top: 1.25rem;">' +
+   '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">' +
+     '<h4 style="margin: 0; font-size: 1.15rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem;">' +
+       '<i class="fas fa-clipboard-check" style="color: var(--accent);"></i> Mandatory Ethical Consent &amp; Governance Checkpoints' +
+     '</h4>' +
+     '<span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-info-circle"></i> All 4 checkpoints required to unlock AI reconstruction</span>' +
+   '</div>' +
+
+   '<label class="check" style="margin-bottom: 1.15rem; padding: 0.85rem 1rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">' +
+     '<input type="checkbox" id="c1">' +
+     '<span><strong>1. Tiered Patient Informed Consent Verified.</strong> Documented that the patient (or legally authorized Substitute Decision-Maker) signed explicit informed consent authorizing secondary educational digital twin simulation under institutional REB guidelines (Bhattacharjee et al., 2023; TCPS 2 Art. 3.1).</span>' +
+   '</label>' +
+
+   '<label class="check" style="margin-bottom: 1.15rem; padding: 0.85rem 1rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">' +
+     '<input type="checkbox" id="c2">' +
+     '<span><strong>2. Algorithmic PHI De-Identification &amp; Anonymization Audit.</strong> Confirmed that neural de-identification has stripped all 18 HIPAA Safe Harbor identifiers: facial geometry has been suppressed, voice frequencies modulated, institutional room telemetry purged, and anatomical markings outside the procedural field masked (Franco D\'Souza et al., 2024, Tip 4).</span>' +
+   '</label>' +
+
+   '<label class="check" style="margin-bottom: 1.15rem; padding: 0.85rem 1rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">' +
+     '<input type="checkbox" id="c3">' +
+     '<span><strong>3. Educational Purpose Limitation &amp; Anti-Commodification.</strong> Certified that this recording and resulting 3D Gaussian Splats are quarantined strictly for accredited institutional medical training. Commercialization, external foundation model training, and third-party data broker distribution are legally prohibited.</span>' +
+   '</label>' +
+
+   '<label class="check" style="margin-bottom: 1.25rem; padding: 0.85rem 1rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">' +
+     '<input type="checkbox" id="c4">' +
+     '<span><strong>4. Dynamic Patient Revocation &amp; Right to Erasure Registry.</strong> Verified that the procedure is indexed with an active patient withdrawal token. If the patient revokes consent at any time, automated protocols trigger permanent cryptographic shredding of spatial twin checkpoints and derived weights.</span>' +
+   '</label>' +
+
+   '<!-- Dynamic Compliance Status Banner -->' +
+   '<div id="consent-status-banner" style="padding: 1rem 1.25rem; border-radius: 8px; font-size: 0.92rem; display: flex; align-items: center; gap: 0.85rem; transition: all 0.3s ease;">' +
+   '</div>' +
+ '</div>';
+ 
+ var c1=el.querySelector('#c1'),c2=el.querySelector('#c2'),c3=el.querySelector('#c3'),c4=el.querySelector('#c4');
+ var file=el.querySelector('#recording'),fileStatus=el.querySelector('#file-status');
+ var banner=el.querySelector('#consent-status-banner');
+ var toggleBtn=el.querySelector('#toggle-protocol-btn'),drawer=el.querySelector('#protocol-drawer'),arrow=el.querySelector('#protocol-arrow');
+ 
+ if(toggleBtn && drawer) {
+   toggleBtn.onclick = function() {
+     var open = drawer.style.display === 'block';
+     drawer.style.display = open ? 'none' : 'block';
+     if(arrow) arrow.style.transform = open ? 'rotate(0deg)' : 'rotate(180deg)';
+   };
+ }
+
+ c1.checked = s.consent ? !!s.consent.recording : false;
+ c2.checked = s.consent ? !!s.consent.phi : false;
+ c3.checked = s.consent ? !!s.consent.purpose : false;
+ c4.checked = s.consent ? !!s.consent.revocation : false;
  
  function updateStatus() {
    var cur=VC.get();
    if(cur.recordingName) {
      fileStatus.innerHTML='<span style="color:var(--text-main);"><i class="fas fa-check-circle" style="color:var(--accent); margin-right:0.35rem;"></i>Selected: <strong>'+e(cur.recordingName)+'</strong></span>';
    } else {
-     fileStatus.innerHTML='<span class="muted"><i class="fas fa-info-circle" style="margin-right:0.35rem;"></i>No file selected (Optional — preloaded clinical procedure will be used)</span>';
+     fileStatus.innerHTML='<span class="muted"><i class="fas fa-info-circle" style="margin-right:0.35rem;"></i>Using Preloaded Case: <strong>SHN-NGT-2026 (Nasogastric Tube Placement)</strong></span>';
    }
  }
  updateStatus();
 
+ function updateBanner() {
+   var count = (c1.checked ? 1 : 0) + (c2.checked ? 1 : 0) + (c3.checked ? 1 : 0) + (c4.checked ? 1 : 0);
+   if(count === 4) {
+     banner.style.background = 'rgba(16, 185, 129, 0.12)';
+     banner.style.border = '1px solid rgba(16, 185, 129, 0.4)';
+     banner.style.color = '#86efac';
+     banner.innerHTML = '<i class="fas fa-shield-check" style="font-size: 1.35rem; color: #10b981; flex-shrink: 0;"></i><div><strong>Ethical Clearance Approved (4/4 Verifications Satisfied)</strong><br><span style="font-size: 0.82rem; color: #cbd5e1;">Institutional REB/IRB Protocol Compliant. Informed consent verified, PHI purged, and purpose limitation certified. Ready to initiate 3D AI Reconstruction.</span></div>';
+   } else {
+     banner.style.background = 'rgba(245, 158, 11, 0.08)';
+     banner.style.border = '1px solid rgba(245, 158, 11, 0.3)';
+     banner.style.color = '#fde68a';
+     banner.innerHTML = '<i class="fas fa-lock" style="font-size: 1.25rem; color: #f59e0b; flex-shrink: 0;"></i><div><strong>Ethical Clearance Gate Locked (' + count + ' of 4 Completed)</strong><br><span style="font-size: 0.82rem; color: #cbd5e1;">The spatial AI reconstruction pipeline is disabled until all ethical, legal, and privacy checkpoints are verified.</span></div>';
+   }
+ }
+
  function checkOk() {
-   cfg.ok = c1.checked && c2.checked;
-   cfg.label = 'Begin AI 3D Reconstruction';
+   cfg.ok = c1.checked && c2.checked && c3.checked && c4.checked;
+   cfg.label = cfg.ok ? 'Begin AI 3D Reconstruction \u2192' : 'Complete Consent Checkpoints (Locked)';
    cfg.onNext = function() {
      var cur=VC.get();
      if(!cur.recordingName) {
        VC.set({recordingName: 'preloaded_clinical_procedure_shn.mp4'});
      }
    };
+   updateBanner();
    bar();
  }
  
@@ -239,9 +333,14 @@ function consent(el){
    checkOk();
  };
 
- c1.onchange=c2.onchange=function(){
+ c1.onchange=c2.onchange=c3.onchange=c4.onchange=function(){
   VC.set({
-   consent:{recording:c1.checked,phi:c2.checked}
+   consent:{
+     recording: c1.checked,
+     phi: c2.checked,
+     purpose: c3.checked,
+     revocation: c4.checked
+   }
   });
   checkOk();
  };

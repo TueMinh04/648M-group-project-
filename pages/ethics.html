@@ -28,16 +28,137 @@
 
       <div class="grid-2" style="gap: 2rem;">
         
-        <!-- 1. Consent & Privacy -->
-        <div class="card ethics-card" id="ethics-privacy" style="padding: 2rem;">
-          <div class="research-card-header" style="margin-bottom: 1.25rem;">
-            <h3 style="font-size: 1.25rem; margin: 0;"><i class="fas fa-file-signature" style="margin-right: 0.5rem; color: var(--secondary);"></i>Consent, Copyright &amp; De-Identification</h3>
-            <span class="research-badge research-badge-purple">IRB &amp; Privacy Mandates</span>
+        <!-- 1. Consent & Privacy (Flagship Deep Dive) -->
+        <div class="card ethics-card" id="ethics-privacy" style="grid-column: 1 / -1; padding: 2.5rem 2.75rem; background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(59, 130, 246, 0.35); border-left: 5px solid var(--primary); border-radius: 16px; box-shadow: 0 12px 32px rgba(0,0,0,0.35);">
+          
+          <div class="research-card-header" style="margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1.5px;">Core Ethical Cornerstone</span>
+              <h2 style="font-size: 1.85rem; margin: 0.25rem 0 0 0; color: var(--text-main); display: flex; align-items: center; gap: 0.65rem;">
+                <i class="fas fa-file-signature" style="color: var(--primary);"></i> 1. Patient Informed Consent, Autonomy &amp; Algorithmic De-Identification
+              </h2>
+            </div>
+            <div style="display: flex; gap: 0.45rem; flex-wrap: wrap;">
+              <span class="research-badge research-badge-purple"><i class="fas fa-balance-scale"></i> TCPS 2 &amp; PHIPA</span>
+              <span class="research-badge research-badge-blue"><i class="fas fa-user-shield"></i> IRB / REB Protocol #2026-ETH</span>
+              <span class="research-badge research-badge-green"><i class="fas fa-check-shield"></i> AMEE Tips 4 &amp; 5</span>
+            </div>
           </div>
-          <p><strong>The Challenge:</strong> Clinical images and operative video used for training risk becoming unconsented educational commodities. Systematic reviews on surgical video recording ethics reveal that educational beneficence must be strictly balanced against patient autonomy and anti-maleficence risks like unauthorized discoverability. Institutional Review Board (IRB) standards require any identifiable patient data to be fully de-identified prior to publication. Because explicit consent is not always obtainable during acute procedures, software must guarantee non-identifiability algorithmically.</p>
-          <div class="research-implication" style="margin-top: 1.25rem;">
-            <strong>Virtucare Safeguard:</strong> Transparent consent protocols, automated stripping of facial and biometric markers, and strict educational-use restrictions.
+
+          <div style="font-size: 1.05rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 1.75rem;">
+            <p style="margin-bottom: 1rem;">
+              <strong>The Ethical &amp; Legal Tension:</strong> In modern health professions education, high-fidelity procedural video (e.g. endoscopy, laparoscopy, bedside nasogastric intubation) offers immense pedagogical value. However, clinical video must never become an unconsented training commodity. Systematic legal analyses of clinical photographs and operative footage demonstrate that educational beneficence must be strictly balanced against patient bodily autonomy and anti-maleficence risks, such as unauthorized online indexing or biometric re-identification <em>(Bhattacharjee et al., 2023)</em>. Implied consent for clinical therapy does <strong>not</strong> legally or ethically extend to secondary machine learning or spatial simulation.
+            </p>
+            <p style="margin: 0;">
+              Under Institutional Review Board (IRB) and Canadian Research Ethics Board (REB) standards, educational software must establish non-identifiability algorithmically and guarantee transparent, dynamic consent management before any procedural data is ingested into AI training pipelines.
+            </p>
           </div>
+
+          <!-- 4 Pillars of Virtucare's Operational Consent Architecture -->
+          <div style="margin-bottom: 2rem;">
+            <h4 style="font-size: 1.15rem; color: var(--text-main); margin: 0 0 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-shield-alt" style="color: var(--secondary);"></i> Four-Pillar Operational Consent Framework in Virtucare
+            </h4>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+              
+              <!-- Pillar 1 -->
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 1.25rem 1.35rem;">
+                <div style="font-size: 0.95rem; font-weight: 700; color: #93c5fd; margin-bottom: 0.45rem; display: flex; align-items: center; gap: 0.45rem;">
+                  <i class="fas fa-user-check" style="color: var(--primary);"></i> 1. Tiered Dynamic Consent
+                </div>
+                <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.55; margin: 0;">
+                  Replaces binary "all-or-nothing" consent forms with granular tiered options. Patients explicitly choose between clinical documentation (Tier 1), internal educational simulation (Tier 2), and multi-institution sharing (Tier 3), preventing scope creep and unconsented secondary use <em>(TCPS 2 Article 3.1)</em>.
+                </p>
+              </div>
+
+              <!-- Pillar 2 -->
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 1.25rem 1.35rem;">
+                <div style="font-size: 0.95rem; font-weight: 700; color: #93c5fd; margin-bottom: 0.45rem; display: flex; align-items: center; gap: 0.45rem;">
+                  <i class="fas fa-heartbeat" style="color: var(--primary);"></i> 2. Acute Care &amp; Vulnerability Protocols
+                </div>
+                <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.55; margin: 0;">
+                  In emergent or pediatric care where prospective consent cannot be obtained without delaying lifesaving interventions, Virtucare enforces a strict Substitute Decision-Maker (SDM) delayed consent protocol within 48 hours. If consent is unavailable, the pipeline falls back strictly to synthetic anatomical geometry.
+                </p>
+              </div>
+
+              <!-- Pillar 3 -->
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 1.25rem 1.35rem;">
+                <div style="font-size: 0.95rem; font-weight: 700; color: #93c5fd; margin-bottom: 0.45rem; display: flex; align-items: center; gap: 0.45rem;">
+                  <i class="fas fa-mask" style="color: var(--primary);"></i> 3. Algorithmic De-Identification
+                </div>
+                <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.55; margin: 0;">
+                  Automated neural redaction purges all 18 HIPAA Safe Harbor identifiers: facial landmarks are blurred using multi-view neural meshes, voice audio is pitch-shifted to remove harmonic vocal biometrics, and DICOM patient metadata (tags 0010,0010 through 0010,0040) is cryptographically wiped <em>(Franco D'Souza et al., 2024, Tip 4)</em>.
+                </p>
+              </div>
+
+              <!-- Pillar 4 -->
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 1.25rem 1.35rem;">
+                <div style="font-size: 0.95rem; font-weight: 700; color: #93c5fd; margin-bottom: 0.45rem; display: flex; align-items: center; gap: 0.45rem;">
+                  <i class="fas fa-undo-alt" style="color: var(--primary);"></i> 4. Dynamic Revocation &amp; Erasure
+                </div>
+                <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.55; margin: 0;">
+                  Upholds the "Right to be Forgotten" via a centralized patient withdrawal registry. If a patient revokes consent, an automated cryptographic revocation pipeline shreds the source video, 3D point cloud assets, and derived kinematic weights within 24 hours, ensuring persistent autonomy.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Institutional & Regulatory Compliance Table -->
+          <div style="margin-bottom: 1.75rem; overflow-x: auto;">
+            <h4 style="font-size: 1.15rem; color: var(--text-main); margin: 0 0 0.85rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-table" style="color: var(--accent);"></i> Regulatory &amp; Ethical Standards Compliance Matrix
+            </h4>
+            <table class="data-table" style="width: 100%; font-size: 0.86rem; border-collapse: collapse; background: rgba(0,0,0,0.25); border-radius: 8px; overflow: hidden;">
+              <thead>
+                <tr style="background: rgba(59, 130, 246, 0.12); color: var(--text-main); text-align: left;">
+                  <th style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">Governance Standard</th>
+                  <th style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">Statutory / Ethical Requirement</th>
+                  <th style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">Virtucare Operational Safeguard</th>
+                  <th style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">Academic / Legal Citation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 0.75rem 1rem; font-weight: 600; color: #93c5fd;">Ontario PHIPA (2004)</td>
+                  <td style="padding: 0.75rem 1rem; color: #cbd5e1;">Express consent required for non-direct healthcare secondary uses of PHI.</td>
+                  <td style="padding: 0.75rem 1rem; color: #cbd5e1;">Enforces explicit digital consent logging; rejects implied care consent for AI training.</td>
+                  <td style="padding: 0.75rem 1rem; color: var(--text-muted);">IPC Ontario Guidelines</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 0.75rem 1rem; font-weight: 600; color: #93c5fd;">Canadian TCPS 2 (2022)</td>
+                  <td style="padding: 0.75rem 1rem; color: #cbd5e1;">Free, informed, and ongoing consent (Chapter 3) &amp; respect for vulnerable persons.</td>
+                  <td style="padding: 0.75rem 1rem; color: #cbd5e1;">Dynamic withdrawal token registry + delayed SDM protocol for acute intubations.</td>
+                  <td style="padding: 0.75rem 1rem; color: var(--text-muted);">TCPS 2 Arts. 3.1 &amp; 5.5</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 0.75rem 1rem; font-weight: 600; color: #93c5fd;">US HIPAA Safe Harbor</td>
+                  <td style="padding: 0.75rem 1rem; color: #cbd5e1;">Removal of 18 specified direct and quasi-identifiers including full-face images.</td>
+                  <td style="padding: 0.75rem 1rem; color: #cbd5e1;">Multi-stage neural suppression of facial geometry, voice acoustics, and timestamps.</td>
+                  <td style="padding: 0.75rem 1rem; color: var(--text-muted);">45 CFR § 164.514</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.75rem 1rem; font-weight: 600; color: #93c5fd;">AMEE 12 Tips (2024)</td>
+                  <td style="padding: 0.75rem 1rem; color: #cbd5e1;">Tip 4 (Data Privacy) &amp; Tip 5 (Stakeholder Consent across students &amp; patients).</td>
+                  <td style="padding: 0.75rem 1rem; color: #cbd5e1;">Dual consent gates: Patient consent for media ingestion + Student consent for kinematic logging.</td>
+                  <td style="padding: 0.75rem 1rem; color: var(--text-muted);">Franco D'Souza et al. (2024)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Cross-Navigation Footer -->
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.88rem;">
+            <div style="color: #94a3b8; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-info-circle" style="color: var(--primary);"></i>
+              Operationalized in <strong>Stage 1</strong> of the Virtucare prototype flow.
+            </div>
+            <a href="prototype.html" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 0.4rem;">
+              <i class="fas fa-play"></i> Test Stage 1 Consent Verification Gate &rarr;
+            </a>
+          </div>
+
         </div>
 
         <!-- 2. Cybersecurity & Threat Defense -->

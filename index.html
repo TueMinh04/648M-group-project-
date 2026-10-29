@@ -11,14 +11,15 @@
   <link rel="stylesheet" href="./assets/css/app.css">
   <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
 </head>
-<body data-mode="app" data-page="prototype">
+<body data-mode="app" data-page="home">
 
   <!-- Navigation -->
   <nav class="navbar">
     <div class="container">
       <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">VIRTU<span>CARE</span></a></div>
       <div class="nav-links">
-        <a href="index.html" class="active">Prototype</a>
+        <a href="index.html" class="active">Home</a>
+        <a href="pages/prototype.html">Prototype</a>
         <a href="pages/problem.html">Problem</a>
         <a href="pages/benefits-limitations.html">Benefits &amp; Limitations</a>
         <a href="pages/guidelines.html">Guidelines</a>
@@ -50,7 +51,7 @@
           An AI-assisted clinical simulation platform concept that helps students practice complex procedures safely in a repeatable, risk-free virtual environment before working with real patients.
         </p>
         <div class="cta" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-          <a class="btn btn-primary" href="#prototype-section">
+          <a class="btn btn-primary" href="pages/prototype.html">
             <i class="fas fa-play" style="margin-right: 0.5rem;"></i> Launch Interactive Prototype
           </a>
           <button type="button" class="btn btn-secondary" id="hero-watch-demo-btn">
@@ -64,184 +65,75 @@
   <!-- Main Prototype Experience -->
   <main id="main">
 
-    <!-- Trainee Sign In / Sign Up Access Card -->
-    <section id="trainee-access" style="padding: 2.25rem 0 1rem;">
+    <!-- Trainee Sign In / Quick Access Section -->
+    <section id="trainee-access" style="padding: 1.75rem 0 0.75rem;">
       <div class="container">
-        <div class="portal-card" id="home-portal-card" style="max-width: 920px; margin: 0 auto; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(59, 130, 246, 0.28); box-shadow: 0 12px 36px rgba(0,0,0,0.35);">
+        <div class="portal-card" id="home-portal-card" style="max-width: 920px; margin: 0 auto; background: rgba(15, 23, 42, 0.72); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 14px; padding: 1.35rem 1.6rem; box-shadow: 0 12px 32px rgba(0,0,0,0.32); backdrop-filter: blur(10px);">
           
-          <!-- Card Header -->
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.08);">
-            <div style="display: flex; align-items: center; gap: 0.85rem;">
-              <div style="width: 46px; height: 46px; border-radius: 50%; background: rgba(59, 130, 246, 0.15); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.25rem;">
-                <i class="fas fa-user-graduate"></i>
-              </div>
-              <div>
-                <h3 style="margin: 0; font-size: 1.15rem; color: var(--text-main);">Clinical Student &amp; Healthcare Trainee Portal</h3>
-                <p style="margin: 0.2rem 0 0; font-size: 0.86rem; color: var(--text-muted);">
-                  Sign in or register to log simulation attempts, inspect AI kinematic feedback, and view preceptor evaluations.
-                </p>
-              </div>
-            </div>
-            <a href="pages/student-portal.html" class="btn btn-secondary btn-sm" style="font-size: 0.84rem; display: inline-flex; align-items: center; gap: 0.4rem;">
-              <i class="fas fa-external-link-alt"></i> Full Portal &amp; Dossier &rarr;
-            </a>
-          </div>
-
-          <!-- Tabs: Sign In / Sign Up -->
-          <div class="portal-tabs" id="home-portal-tab-group" style="margin-bottom: 1.5rem;">
-            <button type="button" class="portal-tab-btn active" id="home-tab-signin-btn">
-              <i class="fas fa-sign-in-alt"></i> Sign In
-            </button>
-            <button type="button" class="portal-tab-btn" id="home-tab-signup-btn">
-              <i class="fas fa-user-plus"></i> Sign Up (New Registration)
-            </button>
-          </div>
-
-          <!-- Sign In Form -->
-          <form id="home-form-signin" onsubmit="event.preventDefault(); window.handleHomeAuth('signin');">
-            <div class="portal-grid-2">
-              <div class="portal-field">
-                <label class="portal-label" for="home-signin-email">
-                  <i class="fas fa-envelope" style="color: var(--primary);"></i> Institutional Email or Student ID
-                </label>
-                <input type="text" id="home-signin-email" class="portal-input" value="s.chen@med.utoronto.ca" placeholder="e.g. s.chen@med.utoronto.ca or SHN-89214" required>
-              </div>
-
-              <div class="portal-field">
-                <label class="portal-label" for="home-signin-hospital">
-                  <i class="fas fa-hospital" style="color: var(--secondary);"></i> Teaching Hospital / Academic Institution
-                </label>
-                <select id="home-signin-hospital" class="portal-select" required>
-                  <option value="Scarborough Health Network">Scarborough Health Network (SHN)</option>
-                  <option value="Humber River Health">Humber River Health (HRH)</option>
-                  <option value="University of Toronto">University of Toronto Faculty of Medicine</option>
-                  <option value="Sunnybrook Health Sciences Centre">Sunnybrook Health Sciences Centre</option>
-                  <option value="University Health Network">University Health Network (UHN)</option>
-                  <option value="Michael Garron Hospital">Michael Garron Hospital</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="portal-field">
-              <label class="portal-label" for="home-signin-password">
-                <i class="fas fa-lock" style="color: var(--accent);"></i> Simulation Password
-              </label>
-              <input type="password" id="home-signin-password" class="portal-input" value="demo12345" placeholder="Enter password (demo: any value)" required>
-            </div>
-
-            <div style="display: flex; justify-content: space-between; align-items: center; margin: 0.25rem 0 1.25rem;">
-              <label style="display: flex; align-items: center; gap: 0.45rem; font-size: 0.86rem; color: var(--text-muted); cursor: pointer;">
-                <input type="checkbox" checked style="accent-color: var(--primary);"> Remember workstation session
-              </label>
-              <a href="javascript:void(0)" onclick="alert('Demo reset instructions sent to institutional email.')" style="font-size: 0.84rem; color: var(--primary); text-decoration: none;">Forgot password?</a>
-            </div>
-
-            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <button type="submit" class="btn btn-primary" style="flex: 1; min-width: 220px; justify-content: center; padding: 0.75rem 1.25rem;">
-                <i class="fas fa-sign-in-alt" style="margin-right: 0.4rem;"></i> Sign In &amp; Launch Simulation
-              </button>
-              <button type="button" class="btn btn-secondary" id="home-demo-login-btn" style="justify-content: center; padding: 0.75rem 1.1rem;">
-                <i class="fas fa-bolt" style="color: #facc15; margin-right: 0.4rem;"></i> 1-Click Demo Login
-              </button>
-              <a href="pages/student-portal.html#records" class="btn btn-secondary" style="justify-content: center; padding: 0.75rem 1.1rem;">
-                <i class="fas fa-clipboard-check" style="margin-right: 0.4rem;"></i> Trainee Records &amp; Feedback Dossier &rarr;
-              </a>
-            </div>
-          </form>
-
-          <!-- Sign Up Form -->
-          <form id="home-form-signup" style="display: none;" onsubmit="event.preventDefault(); window.handleHomeAuth('signup');">
-            <div class="portal-grid-2">
-              <div class="portal-field">
-                <label class="portal-label" for="home-signup-name">
-                  <i class="fas fa-user" style="color: var(--primary);"></i> Full Legal Name &amp; Degree
-                </label>
-                <input type="text" id="home-signup-name" class="portal-input" placeholder="e.g. Dr. Alex Mercer, MD" required>
-              </div>
-
-              <div class="portal-field">
-                <label class="portal-label" for="home-signup-role">
-                  <i class="fas fa-id-badge" style="color: var(--primary);"></i> Trainee Role / Stage
-                </label>
-                <select id="home-signup-role" class="portal-select" required>
-                  <option value="Medical Resident (PGY-1)">Medical Resident (PGY-1)</option>
-                  <option value="Medical Resident (PGY-2)" selected>Medical Resident (PGY-2)</option>
-                  <option value="Senior Resident (PGY-3+)">Senior Resident (PGY-3+)</option>
-                  <option value="Clinical Fellow">Clinical Fellow</option>
-                  <option value="Medical Student (Clerkship)">Medical Student (Clerkship)</option>
-                  <option value="Advanced Practice Nursing Trainee">Advanced Practice Nursing Trainee</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="portal-grid-2">
-              <div class="portal-field">
-                <label class="portal-label" for="home-signup-hospital">
-                  <i class="fas fa-hospital-user" style="color: var(--secondary);"></i> Teaching Hospital / Clinical Site
-                </label>
-                <select id="home-signup-hospital" class="portal-select" required>
-                  <option value="Scarborough Health Network">Scarborough Health Network (SHN)</option>
-                  <option value="Humber River Health">Humber River Health (HRH)</option>
-                  <option value="University of Toronto">University of Toronto Faculty of Medicine</option>
-                  <option value="Sunnybrook Health Sciences Centre">Sunnybrook Health Sciences Centre</option>
-                  <option value="University Health Network">University Health Network (UHN)</option>
-                  <option value="Michael Garron Hospital">Michael Garron Hospital</option>
-                </select>
-              </div>
-
-              <div class="portal-field">
-                <label class="portal-label" for="home-signup-id">
-                  <i class="fas fa-hashtag" style="color: var(--secondary);"></i> Trainee ID / License #
-                </label>
-                <input type="text" id="home-signup-id" class="portal-input" placeholder="e.g. SHN-RES-91820" required>
-              </div>
-            </div>
-
-            <div class="portal-grid-2">
-              <div class="portal-field">
-                <label class="portal-label" for="home-signup-password">
-                  <i class="fas fa-lock" style="color: var(--accent);"></i> Create Password
-                </label>
-                <input type="password" id="home-signup-password" class="portal-input" placeholder="At least 8 characters" required>
-              </div>
-
-              <div class="portal-field">
-                <label class="portal-label" for="home-signup-mentor">
-                  <i class="fas fa-user-tie" style="color: var(--secondary);"></i> Supervising Preceptor
-                </label>
-                <input type="text" id="home-signup-mentor" class="portal-input" placeholder="e.g. Dr. D. Cook, MD" required>
-              </div>
-            </div>
-
-            <label class="portal-checkbox-label" style="font-size: 0.86rem; color: var(--text-muted); display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 1.25rem;">
-              <input type="checkbox" required style="margin-top: 0.2rem; accent-color: var(--primary);">
-              <span>I confirm I am an authorized healthcare trainee and agree to practice according to hospital procedural standards. (Concept prototype; no real patient data stored).</span>
-            </label>
-
-            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <button type="submit" class="btn btn-primary" style="flex: 1; min-width: 220px; justify-content: center; padding: 0.75rem 1.25rem;">
-                <i class="fas fa-user-plus" style="margin-right: 0.4rem;"></i> Register Trainee Account
-              </button>
-              <button type="button" class="btn btn-secondary" id="home-toggle-to-signin-btn" style="justify-content: center; padding: 0.75rem 1.1rem;">
-                Already Registered? Sign In
-              </button>
-            </div>
-          </form>
-
-          <!-- Authenticated State (shown once signed in) -->
-          <div id="home-auth-state" style="display: none; padding-top: 0.25rem;">
-            <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-              <div style="display: flex; align-items: center; gap: 0.85rem;">
-                <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6, #10b981); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 1.15rem;" id="home-auth-avatar">SC</div>
+          <!-- Streamlined Unauthenticated Quick Access Bar -->
+          <div id="home-unauth-container">
+            <!-- Header Row -->
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.85rem; margin-bottom: 1rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(59, 130, 246, 0.15); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.15rem; flex-shrink: 0;">
+                  <i class="fas fa-user-graduate"></i>
+                </div>
                 <div>
-                  <div style="font-size: 1.1rem; font-weight: 600; color: var(--text-main);" id="home-auth-name">Dr. Sarah Chen, MD</div>
-                  <div style="font-size: 0.84rem; color: #86efac;" id="home-auth-details">Medical Resident (PGY-2) · Scarborough Health Network · Workstation Active</div>
+                  <h3 style="margin: 0; font-size: 1.05rem; font-weight: 600; color: var(--text-main); display: flex; align-items: center; gap: 0.45rem;">
+                    Clinical Trainee Quick Access
+                    <span class="research-badge research-badge-blue" style="font-size: 0.7rem; padding: 0.15rem 0.5rem; font-weight: 500;">Optional</span>
+                  </h3>
+                  <p style="margin: 0.2rem 0 0; font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">
+                    Sign in to associate simulation metrics with your training records, or explore the prototype below without an account.
+                  </p>
                 </div>
               </div>
-              <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-                <a href="#prototype-section" class="btn btn-primary btn-sm"><i class="fas fa-play" style="margin-right: 0.35rem;"></i> Jump to Simulation &darr;</a>
-                <a href="pages/student-portal.html#records" class="btn btn-secondary btn-sm"><i class="fas fa-clipboard-list" style="margin-right: 0.35rem;"></i> Trainee Dossier &rarr;</a>
-                <button type="button" class="btn btn-secondary btn-sm" id="home-auth-signout-btn"><i class="fas fa-sign-out-alt"></i> Sign Out / Switch</button>
+              <a href="pages/student-portal.html" class="btn btn-secondary btn-sm" style="font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 0.9rem;">
+                <i class="fas fa-external-link-alt"></i> Full Sign In / Sign Up Page &rarr;
+              </a>
+            </div>
+
+            <!-- 1-Line Quick Access Form -->
+            <form id="home-form-signin" onsubmit="event.preventDefault(); window.handleHomeAuth('signin');" style="margin: 0;">
+              <div style="display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap;">
+                <div style="position: relative; flex: 1; min-width: 250px;">
+                  <i class="fas fa-id-badge" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--primary); font-size: 0.9rem; pointer-events: none;"></i>
+                  <input type="text" id="home-signin-email" class="portal-input" value="s.chen@med.utoronto.ca" placeholder="Institutional Email or Student ID (e.g. s.chen@med.utoronto.ca)" required style="padding-left: 2.6rem; height: 42px; font-size: 0.88rem;">
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm" style="height: 42px; padding: 0 1.25rem; font-size: 0.86rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; white-space: nowrap;">
+                  <i class="fas fa-sign-in-alt"></i> Quick Sign In
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" id="home-demo-login-btn" style="height: 42px; padding: 0 1.15rem; font-size: 0.86rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; white-space: nowrap; border-color: rgba(250, 204, 21, 0.4); background: rgba(250, 204, 21, 0.08);">
+                  <i class="fas fa-bolt" style="color: #facc15;"></i> 1-Click Demo Login
+                </button>
+              </div>
+            </form>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; padding-top: 0.65rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.78rem; color: var(--text-muted); flex-wrap: wrap; gap: 0.5rem;">
+              <span><i class="fas fa-info-circle" style="color: var(--secondary); margin-right: 0.3rem;"></i> 1st-time user? Click <strong>1-Click Demo Login</strong> to instantly load resident profile <em>(Dr. Sarah Chen, MD)</em>.</span>
+              <a href="#prototype-section" style="color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">
+                Explore Prototype Overview &darr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Authenticated State (shown once signed in) -->
+          <div id="home-auth-state" style="display: none;">
+            <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 10px; padding: 0.95rem 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.85rem;">
+              <div style="display: flex; align-items: center; gap: 0.85rem;">
+                <div style="width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6, #10b981); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 1rem; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);" id="home-auth-avatar">SC</div>
+                <div>
+                  <div style="font-size: 1rem; font-weight: 600; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem;">
+                    <span id="home-auth-name">Dr. Sarah Chen, MD</span>
+                    <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981;"></span>
+                  </div>
+                  <div style="font-size: 0.8rem; color: #86efac;" id="home-auth-details">Medical Resident (PGY-2) · Scarborough Health Network · Workstation Active</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 0.55rem; flex-wrap: wrap;">
+                <a href="pages/prototype.html" class="btn btn-primary btn-sm" style="font-size: 0.82rem; padding: 0.45rem 0.9rem;"><i class="fas fa-play" style="margin-right: 0.35rem;"></i> Launch Simulation &rarr;</a>
+                <a href="pages/student-portal.html#records" class="btn btn-secondary btn-sm" style="font-size: 0.82rem; padding: 0.45rem 0.9rem;"><i class="fas fa-clipboard-list" style="margin-right: 0.35rem;"></i> Trainee Dossier &rarr;</a>
+                <button type="button" class="btn btn-secondary btn-sm" id="home-auth-signout-btn" style="font-size: 0.82rem; padding: 0.45rem 0.85rem;"><i class="fas fa-sign-out-alt"></i> Sign Out / Switch</button>
               </div>
             </div>
           </div>
@@ -250,21 +142,224 @@
       </div>
     </section>
 
-        <section id="prototype-section" class="section" style="padding-top: 3rem; min-height: 80vh;">
+    <!-- Prototype Introduction Section -->
+    <section id="prototype-section" class="section" style="padding-top: 3.5rem;">
       <div class="container">
         
-        <div style="text-align: center; margin-bottom: 3rem;">
+        <!-- Section Header -->
+        <div style="text-align: center; margin-bottom: 2.75rem;">
           <span class="research-badge research-badge-green" style="font-size: 0.8rem; padding: 0.35rem 0.85rem; margin-bottom: 0.75rem; display: inline-flex; align-items: center; gap: 0.4rem;">
-            <i class="fas fa-microchip"></i> Live Interactive Demo
+            <i class="fas fa-vr-cardboard"></i> Interactive Simulation Architecture
           </span>
           <h2 style="font-size: 2.25rem; margin-bottom: 0.75rem;">Virtucare Clinical Simulation Prototype</h2>
-          <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 800px; margin: 0 auto; line-height: 1.6;">
-            A simulated walkthrough of clinical practice guidelines, virtual procedure simulation checkpoints, and objective rule-based kinematic feedback across three foundational procedures.
+          <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 820px; margin: 0 auto; line-height: 1.6;">
+            A 4-stage procedural training pipeline that converts standard clinical video into physics-enabled 3D simulation with objective rule-based kinematic feedback.
           </p>
         </div>
 
-        <!-- Collapsible Video Demo Dropdown -->
-        <div class="video-demo-dropdown" id="video-demo-dropdown" style="margin-bottom: 3rem;">
+        <!-- Vertical Stack of 4 Big Spacious Pipeline Frames -->
+        <div style="max-width: 900px; margin: 0 auto 3rem; display: flex; flex-direction: column; gap: 1.5rem;">
+          
+          <!-- Frame 1: Ethical Consent & De-Identification Gate -->
+          <div class="card" style="padding: 2.5rem 2.75rem; background: rgba(15, 23, 42, 0.78); border: 1px solid rgba(59, 130, 246, 0.35); border-left: 5px solid var(--primary); border-radius: 16px; box-shadow: 0 12px 32px rgba(0,0,0,0.3);">
+            <div style="display: flex; align-items: flex-start; gap: 1.75rem; flex-wrap: wrap;">
+              <div style="width: 64px; height: 64px; border-radius: 16px; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.35); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.75rem; flex-shrink: 0; box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);">
+                <i class="fas fa-file-contract"></i>
+              </div>
+              <div style="flex: 1; min-width: 280px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+                  <span style="font-size: 0.82rem; font-weight: 700; color: var(--primary); letter-spacing: 1.5px; text-transform: uppercase;">
+                    Stage 01 · Ethical Governance &amp; Patient Autonomy
+                  </span>
+                  <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+                    <span class="research-badge research-badge-blue" style="font-size: 0.72rem; padding: 0.15rem 0.55rem;"><i class="fas fa-lock"></i> IRB Safeguard</span>
+                    <span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.15rem 0.55rem;"><i class="fas fa-check-shield"></i> Consent Gate</span>
+                  </div>
+                </div>
+                
+                <h3 style="font-size: 1.55rem; color: var(--text-main); margin: 0 0 0.65rem 0; font-weight: 600;">
+                  Patient Consent Verification &amp; Privacy De-Identification
+                </h3>
+                
+                <p style="color: #cbd5e1; font-size: 1.02rem; line-height: 1.65; margin: 0 0 1.15rem 0;">
+                  In healthcare informatics, clinical video must never become an unconsented training commodity. Virtucare enforces an explicit ethical consent verification gate before any spatial AI processing is permitted:
+                </p>
+
+                <!-- 4 Pillars of Consent & Ethics in Virtucare -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.85rem; margin-bottom: 1.25rem;">
+                  <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 0.9rem 1rem;">
+                    <div style="font-size: 0.92rem; font-weight: 600; color: #93c5fd; margin-bottom: 0.3rem;">
+                      <i class="fas fa-user-check" style="color: var(--primary); margin-right: 0.4rem;"></i> 1. Tiered Informed Consent
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+                      Verifies explicit dynamic consent authorizing clinical video strictly for educational simulation, separating care from AI training <em>(TCPS 2 Art. 3.1)</em>.
+                    </div>
+                  </div>
+
+                  <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 0.9rem 1rem;">
+                    <div style="font-size: 0.92rem; font-weight: 600; color: #93c5fd; margin-bottom: 0.3rem;">
+                      <i class="fas fa-heartbeat" style="color: var(--primary); margin-right: 0.4rem;"></i> 2. Acute &amp; SDM Protocols
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+                      Governs emergent bedside intubations via Substitute Decision-Maker delayed consent, with synthetic anatomical fallback if consent is unobtainable.
+                    </div>
+                  </div>
+
+                  <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 0.9rem 1rem;">
+                    <div style="font-size: 0.92rem; font-weight: 600; color: #93c5fd; margin-bottom: 0.3rem;">
+                      <i class="fas fa-mask" style="color: var(--primary); margin-right: 0.4rem;"></i> 3. Algorithmic De-Identification
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+                      Automated neural redaction purges 18 HIPAA Safe Harbor identifiers: facial geometry, room clocks, voice audio, and identifying marks.
+                    </div>
+                  </div>
+
+                  <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 0.9rem 1rem;">
+                    <div style="font-size: 0.92rem; font-weight: 600; color: #93c5fd; margin-bottom: 0.3rem;">
+                      <i class="fas fa-undo-alt" style="color: var(--primary); margin-right: 0.4rem;"></i> 4. Dynamic Right of Erasure
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+                      Guarantees the patient's "Right to be Forgotten" via automated cryptographic purging of raw video and 3D Gaussian weights within 24 hours.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Live Checklist Preview -->
+                <div style="background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 8px; padding: 0.85rem 1.15rem; margin-bottom: 1.25rem;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <span style="font-size: 0.84rem; font-weight: 700; color: #86efac; display: flex; align-items: center; gap: 0.4rem;">
+                      <i class="fas fa-clipboard-check" style="color: #10b981;"></i> Stage 1 Gatekeeper Checklist in Prototype:
+                    </span>
+                    <span style="font-size: 0.75rem; color: #6ee7b7; background: rgba(16, 185, 129, 0.15); padding: 0.15rem 0.5rem; border-radius: 4px;">4/4 Clearances Required</span>
+                  </div>
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.4rem; font-size: 0.8rem; color: #cbd5e1;">
+                    <div><i class="fas fa-check" style="color: #10b981; margin-right: 0.35rem;"></i> REB Consent Protocol #2026-ETH</div>
+                    <div><i class="fas fa-check" style="color: #10b981; margin-right: 0.35rem;"></i> HIPAA PHI Neural Scrub</div>
+                    <div><i class="fas fa-check" style="color: #10b981; margin-right: 0.35rem;"></i> Purpose Limitation Sandbox</div>
+                    <div><i class="fas fa-check" style="color: #10b981; margin-right: 0.35rem;"></i> Dynamic Revocation Registry</div>
+                  </div>
+                </div>
+
+                <!-- Ethical Citations & Deep Dive Link -->
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; padding-top: 0.85rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.82rem; color: #94a3b8;">
+                  <span>
+                    <i class="fas fa-book-medical" style="color: var(--primary); margin-right: 0.35rem;"></i>
+                    Anchored to surgical ethics reviews <em>(Bhattacharjee et al., 2023)</em> &amp; AMEE 12 Tips for AI in Education <em>(Franco D'Souza et al., 2024, Tips 4 &amp; 5)</em>.
+                  </span>
+                  <div style="display: flex; gap: 0.75rem; align-items: center;">
+                    <a href="pages/ethics.html#ethics-privacy" style="color: var(--primary); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.35rem;">
+                      Section 4: Ethical Governance &rarr;
+                    </a>
+                    <a href="pages/prototype.html" style="color: var(--secondary); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.35rem;">
+                      Try Stage 1 Gate &rarr;
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Frame 2 -->
+          <div class="card" style="padding: 2.25rem 2.5rem; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(168, 85, 247, 0.25); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
+            <div style="display: flex; align-items: flex-start; gap: 1.75rem; flex-wrap: wrap;">
+              <div style="width: 58px; height: 58px; border-radius: 14px; background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.3); display: flex; align-items: center; justify-content: center; color: var(--secondary); font-size: 1.6rem; flex-shrink: 0; box-shadow: 0 4px 16px rgba(168, 85, 247, 0.2);">
+                <i class="fas fa-cubes"></i>
+              </div>
+              <div style="flex: 1; min-width: 260px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; flex-wrap: wrap; gap: 0.5rem;">
+                  <span style="font-size: 0.8rem; font-weight: 700; color: var(--secondary); letter-spacing: 1.5px; text-transform: uppercase;">Stage 02 · Neural Rendering</span>
+                  <span class="research-badge" style="background: rgba(168, 85, 247, 0.15); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.3); font-size: 0.72rem; padding: 0.15rem 0.55rem;">AI Reconstruction</span>
+                </div>
+                <h3 style="font-size: 1.45rem; color: var(--text-main); margin: 0 0 0.5rem 0; font-weight: 600;">3D Gaussian Splatting &amp; Soft-Tissue Physics</h3>
+                <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 1rem 0;">
+                  Converts standard 2D surgical recordings into interactive 3D digital twins with realistic soft-tissue deformation.
+                </p>
+                <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
+                  <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 0.35rem 0.8rem; border-radius: 6px; font-size: 0.84rem; color: #94a3b8;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 0.35rem;"></i> Neural radiance fields</span>
+                  <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 0.35rem 0.8rem; border-radius: 6px; font-size: 0.84rem; color: #94a3b8;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 0.35rem;"></i> Real-time tissue physics (XPBD)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frame 3 -->
+          <div class="card" style="padding: 2.25rem 2.5rem; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
+            <div style="display: flex; align-items: flex-start; gap: 1.75rem; flex-wrap: wrap;">
+              <div style="width: 58px; height: 58px; border-radius: 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1.6rem; flex-shrink: 0; box-shadow: 0 4px 16px rgba(16, 185, 129, 0.2);">
+                <i class="fas fa-vr-cardboard"></i>
+              </div>
+              <div style="flex: 1; min-width: 260px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; flex-wrap: wrap; gap: 0.5rem;">
+                  <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent); letter-spacing: 1.5px; text-transform: uppercase;">Stage 03 · Procedural Practice</span>
+                  <span class="research-badge research-badge-green" style="font-size: 0.72rem; padding: 0.15rem 0.55rem;">Hospital Standards</span>
+                </div>
+                <h3 style="font-size: 1.45rem; color: var(--text-main); margin: 0 0 0.5rem 0; font-weight: 600;">Virtual Procedure Simulation</h3>
+                <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 1rem 0;">
+                  Step-by-step guidance across 3 foundational procedures (NG Tube, Foley, and Peripheral IV) with live clinical alerts.
+                </p>
+                <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
+                  <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 0.35rem 0.8rem; border-radius: 6px; font-size: 0.84rem; color: #94a3b8;"><i class="fas fa-check" style="color: var(--accent); margin-right: 0.35rem;"></i> Scarborough &amp; Humber River guidelines</span>
+                  <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 0.35rem 0.8rem; border-radius: 6px; font-size: 0.84rem; color: #94a3b8;"><i class="fas fa-check" style="color: var(--accent); margin-right: 0.35rem;"></i> Adult &amp; Neonate cohorts</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frame 4 -->
+          <div class="card" style="padding: 2.25rem 2.5rem; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(250, 204, 21, 0.25); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
+            <div style="display: flex; align-items: flex-start; gap: 1.75rem; flex-wrap: wrap;">
+              <div style="width: 58px; height: 58px; border-radius: 14px; background: rgba(250, 204, 21, 0.15); border: 1px solid rgba(250, 204, 21, 0.3); display: flex; align-items: center; justify-content: center; color: #facc15; font-size: 1.6rem; flex-shrink: 0; box-shadow: 0 4px 16px rgba(250, 204, 21, 0.2);">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div style="flex: 1; min-width: 260px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; flex-wrap: wrap; gap: 0.5rem;">
+                  <span style="font-size: 0.8rem; font-weight: 700; color: #facc15; letter-spacing: 1.5px; text-transform: uppercase;">Stage 04 · Performance Scoring</span>
+                  <span class="research-badge" style="background: rgba(250, 204, 21, 0.15); color: #fef08a; border: 1px solid rgba(250, 204, 21, 0.3); font-size: 0.72rem; padding: 0.15rem 0.55rem;">Kinematic Rubrics</span>
+                </div>
+                <h3 style="font-size: 1.45rem; color: var(--text-main); margin: 0 0 0.5rem 0; font-weight: 600;">Objective Kinematic Scoring &amp; Debriefing</h3>
+                <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 1rem 0;">
+                  Automated metric scoring on insertion angle, speed, and safety thresholds with terminal debriefing and faculty oversight.
+                </p>
+                <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
+                  <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 0.35rem 0.8rem; border-radius: 6px; font-size: 0.84rem; color: #94a3b8;"><i class="fas fa-check" style="color: #facc15; margin-right: 0.35rem;"></i> Objective kinematic rubrics</span>
+                  <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 0.35rem 0.8rem; border-radius: 6px; font-size: 0.84rem; color: #94a3b8;"><i class="fas fa-check" style="color: #facc15; margin-right: 0.35rem;"></i> Verified preceptor dossier logs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Big Launch Frame -->
+        <div class="card" style="max-width: 900px; margin: 0 auto 2.5rem; padding: 2.75rem 3rem; background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 58, 138, 0.35)); border: 1px solid rgba(59, 130, 246, 0.38); border-radius: 18px; box-shadow: 0 20px 48px rgba(0,0,0,0.4);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+            <div style="max-width: 540px;">
+              <span class="research-badge research-badge-green" style="font-size: 0.78rem; padding: 0.25rem 0.75rem; margin-bottom: 0.65rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                <i class="fas fa-play-circle"></i> Ready for Deliberate Practice
+              </span>
+              <h3 style="font-size: 1.65rem; margin: 0 0 0.5rem 0; color: #fff; font-weight: 600;">Experience the Interactive Prototype</h3>
+              <p style="font-size: 1.02rem; color: var(--text-muted); margin: 0; line-height: 1.6;">
+                Practice catheter advancement, test clinical reflex timing, and inspect AI kinematic safety rubrics in the dedicated interactive simulation app.
+              </p>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; font-size: 0.82rem; color: #94a3b8;">
+                <span><i class="fas fa-check" style="color: var(--accent); margin-right: 0.3rem;"></i> Runs directly in browser</span>
+                <span><i class="fas fa-check" style="color: var(--accent); margin-right: 0.3rem;"></i> No VR headset required</span>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.85rem; min-width: 250px;">
+              <a href="pages/prototype.html" class="btn btn-primary" style="justify-content: center; font-size: 1.05rem; padding: 0.95rem 1.6rem; box-shadow: 0 6px 24px rgba(59, 130, 246, 0.45); font-weight: 600;">
+                <i class="fas fa-play" style="margin-right: 0.5rem;"></i> Launch Full Prototype &rarr;
+              </a>
+              <button type="button" class="btn btn-secondary" id="intro-video-toggle-btn" style="justify-content: center; font-size: 0.92rem; padding: 0.8rem 1.25rem;">
+                <i class="fas fa-video" style="margin-right: 0.45rem; color: var(--secondary);"></i> Watch Demo Video
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Collapsible Video Demo Dropdown (Saves space on homepage until toggled) -->
+        <div class="video-demo-dropdown" id="video-demo-dropdown" style="max-width: 900px; margin: 0 auto 3rem;">
           <button type="button" class="video-toggle-btn" id="video-toggle-btn" aria-expanded="false" aria-controls="video-pane">
             <div class="video-toggle-left">
               <i class="fas fa-play-circle" style="color: var(--primary); font-size: 1.35rem;"></i>
@@ -295,9 +390,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Interactive Simulation Container -->
-        <div id="proto"></div>
 
         <!-- Project Deliverables & Course Documentation Hub -->
         <div style="margin-top: 6rem; padding-top: 4rem; border-top: 1px solid rgba(255,255,255,0.08);">
@@ -428,7 +520,8 @@
       <p style="color: var(--primary); font-weight: 500; font-size: 0.95rem; margin-top: 0.25rem; margin-bottom: 0.75rem;">The future of clinical training</p>
       
       <div style="display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; margin: 1.5rem 0; font-size: 0.92rem;">
-        <a href="index.html" style="color: var(--primary); font-weight: 600; text-decoration: none;">Prototype</a>
+        <a href="index.html" style="color: var(--primary); font-weight: 600; text-decoration: none;">Home</a>
+        <a href="pages/prototype.html" style="color: var(--text-muted); text-decoration: none;">Prototype</a>
         <a href="pages/problem.html" style="color: var(--text-muted); text-decoration: none;">Problem</a>
         <a href="pages/benefits-limitations.html" style="color: var(--text-muted); text-decoration: none;">Benefits &amp; Limitations</a>
         <a href="pages/guidelines.html" style="color: var(--text-muted); text-decoration: none;">Guidelines</a>
@@ -450,29 +543,21 @@
   <script src="assets/js/prototype.js"></script>
   <script>
     (function() {
-      // Home Trainee Auth Handlers
-      var homeTabSignin = document.getElementById('home-tab-signin-btn');
-      var homeTabSignup = document.getElementById('home-tab-signup-btn');
-      var homeFormSignin = document.getElementById('home-form-signin');
-      var homeFormSignup = document.getElementById('home-form-signup');
+      // Home Trainee Auth Handlers (Streamlined)
+      var homeUnauthContainer = document.getElementById('home-unauth-container');
       var homeAuthState = document.getElementById('home-auth-state');
       var homeDemoBtn = document.getElementById('home-demo-login-btn');
-      var homeToggleSigninBtn = document.getElementById('home-toggle-to-signin-btn');
       var homeSignoutBtn = document.getElementById('home-auth-signout-btn');
 
       function setHomeAuth(trainee) {
         if (!trainee) {
           if (homeAuthState) homeAuthState.style.display = 'none';
-          if (homeFormSignin) homeFormSignin.style.display = 'block';
-          if (homeFormSignup) homeFormSignup.style.display = 'none';
-          if (homeTabSignin) homeTabSignin.classList.add('active');
-          if (homeTabSignup) homeTabSignup.classList.remove('active');
+          if (homeUnauthContainer) homeUnauthContainer.style.display = 'block';
           sessionStorage.removeItem('virtucare_trainee');
           return;
         }
         sessionStorage.setItem('virtucare_trainee', JSON.stringify(trainee));
-        if (homeFormSignin) homeFormSignin.style.display = 'none';
-        if (homeFormSignup) homeFormSignup.style.display = 'none';
+        if (homeUnauthContainer) homeUnauthContainer.style.display = 'none';
         if (homeAuthState) {
           homeAuthState.style.display = 'block';
           var initials = trainee.name ? trainee.name.split(' ').map(function(n){ return n[0]; }).join('').substring(0,2).toUpperCase() : 'SC';
@@ -481,54 +566,29 @@
           var details = document.getElementById('home-auth-details');
           if (avatar) avatar.textContent = initials;
           if (name) name.textContent = trainee.name;
-          if (details) details.textContent = (trainee.role || 'Medical Trainee') + ' · ' + (trainee.hospital || 'Clinical Site') + ' · Workstation Active';
+          if (details) details.textContent = (trainee.role || 'Medical Trainee') + ' · ' + (trainee.hospital || 'Scarborough Health Network (SHN)') + ' · Workstation Active';
         }
       }
 
       window.handleHomeAuth = function(type) {
-        var trainee;
-        if (type === 'signup') {
-          var n = document.getElementById('home-signup-name').value || 'Dr. Alex Mercer, MD';
-          var r = document.getElementById('home-signup-role').value;
-          var h = document.getElementById('home-signup-hospital').value;
-          var id = document.getElementById('home-signup-id').value || 'SHN-RES-91820';
-          var m = document.getElementById('home-signup-mentor').value || 'Dr. D. Cook, MD';
-          trainee = { name: n, role: r, hospital: h, id: id, mentor: m };
-        } else {
-          var email = document.getElementById('home-signin-email').value;
-          var hosp = document.getElementById('home-signin-hospital').value;
-          trainee = { name: 'Dr. Sarah Chen, MD', role: 'Medical Resident (PGY-2)', hospital: hosp, id: email.includes('-') ? email : 'SHN-RES-88219', mentor: 'Dr. D. Cook, MD' };
-        }
+        var emailInput = document.getElementById('home-signin-email');
+        var emailVal = emailInput ? emailInput.value.trim() : '';
+        var trainee = {
+          name: emailVal && emailVal.toLowerCase().indexOf('sarah') === -1 && emailVal.toLowerCase().indexOf('s.chen') === -1 ? ('Trainee (' + emailVal.split('@')[0] + ')') : 'Dr. Sarah Chen, MD',
+          role: 'Medical Resident (PGY-2)',
+          hospital: 'Scarborough Health Network (SHN)',
+          id: emailVal || 'SHN-RES-88219',
+          mentor: 'Dr. D. Cook, MD'
+        };
         setHomeAuth(trainee);
       };
-
-      if (homeTabSignin && homeTabSignup) {
-        homeTabSignin.addEventListener('click', function() {
-          homeTabSignin.classList.add('active');
-          homeTabSignup.classList.remove('active');
-          if (homeFormSignin) homeFormSignin.style.display = 'block';
-          if (homeFormSignup) homeFormSignup.style.display = 'none';
-        });
-        homeTabSignup.addEventListener('click', function() {
-          homeTabSignup.classList.add('active');
-          homeTabSignin.classList.remove('active');
-          if (homeFormSignup) homeFormSignup.style.display = 'block';
-          if (homeFormSignin) homeFormSignin.style.display = 'none';
-        });
-      }
-
-      if (homeToggleSigninBtn) {
-        homeToggleSigninBtn.addEventListener('click', function() {
-          if (homeTabSignin) homeTabSignin.click();
-        });
-      }
 
       if (homeDemoBtn) {
         homeDemoBtn.addEventListener('click', function() {
           setHomeAuth({
             name: 'Dr. Sarah Chen, MD',
             role: 'Medical Resident (PGY-2)',
-            hospital: 'Scarborough Health Network',
+            hospital: 'Scarborough Health Network (SHN)',
             id: 'SHN-RES-88219',
             mentor: 'Dr. D. Cook, MD'
           });
@@ -553,6 +613,7 @@
       var pane = document.getElementById('video-pane');
       var video = document.getElementById('demo-video-player');
       var heroVideoBtn = document.getElementById('hero-watch-demo-btn');
+      var introVideoBtn = document.getElementById('intro-video-toggle-btn');
 
       function openVideo() {
         if (pane && !pane.classList.contains('open')) {
@@ -583,6 +644,16 @@
 
       if (heroVideoBtn) {
         heroVideoBtn.addEventListener('click', function() {
+          openVideo();
+          var dropdown = document.getElementById('video-demo-dropdown');
+          if (dropdown) {
+            dropdown.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      }
+
+      if (introVideoBtn) {
+        introVideoBtn.addEventListener('click', function() {
           openVideo();
           var dropdown = document.getElementById('video-demo-dropdown');
           if (dropdown) {

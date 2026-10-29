@@ -13,7 +13,8 @@ if(h) {
     <div class="container">
       <div class="logo"><a href="${R}index.html" style="color: inherit; text-decoration: none;">VIRTU<span>CARE</span></a></div>
       <div class="nav-links">
-        <a href="${R}index.html" class="${page==='prototype'||page==='home'?'active':''}">Prototype</a>
+        <a href="${R}index.html" class="${page==='home'?'active':''}">Home</a>
+        <a href="${R}pages/prototype.html" class="${page==='prototype'?'active':''}">Prototype</a>
         <a href="${R}pages/problem.html" class="${page==='problem'?'active':''}">Problem</a>
         <a href="${R}pages/benefits-limitations.html" class="${page==='benefits'||page==='benefits-limitations'?'active':''}">Benefits &amp; Limitations</a>
         <a href="${R}pages/guidelines.html" class="${page==='guidelines'?'active':''}">Guidelines</a>
@@ -43,7 +44,8 @@ if(f) {
       <div style="font-size: 1.4rem; font-weight: 700; color: var(--text-main); letter-spacing: 1px;">VIRTU<span style="color: var(--primary);">CARE</span></div>
       <p style="color: var(--primary); font-weight: 500; font-size: 0.95rem; margin-top: 0.25rem; margin-bottom: 0.75rem;">The future of clinical training</p>
       <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 1.25rem 0; font-size: 0.9rem;">
-        <a href="${R}index.html" style="color: var(--text-muted); text-decoration: none;">Prototype</a>
+        <a href="${R}index.html" style="color: var(--text-muted); text-decoration: none;">Home</a>
+        <a href="${R}pages/prototype.html" style="color: var(--text-muted); text-decoration: none;">Prototype</a>
         <a href="${R}pages/problem.html" style="color: var(--text-muted); text-decoration: none;">Problem</a>
         <a href="${R}pages/benefits-limitations.html" style="color: var(--text-muted); text-decoration: none;">Benefits &amp; Limitations</a>
         <a href="${R}pages/guidelines.html" style="color: var(--text-muted); text-decoration: none;">Guidelines</a>
