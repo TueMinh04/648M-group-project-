@@ -16,7 +16,7 @@ if(h) {
         <a href="${R}index.html" class="${page==='home'?'active':''}">Home</a>
         <a href="${R}pages/prototype.html" class="${page==='prototype'?'active':''}">Prototype</a>
         <a href="${R}pages/problem.html" class="${page==='problem'?'active':''}">Problem</a>
-        <a href="${R}pages/benefits-limitations.html" class="${page==='benefits'||page==='benefits-limitations'?'active':''}">Benefits &amp; Limitations</a>
+        <a href="${R}pages/benefits-limitations.html" class="${page==='benefits'||page==='benefits-limitations'?'active':''}">Our Proposal &amp; Assessment</a>
         <a href="${R}pages/guidelines.html" class="${page==='guidelines'?'active':''}">Guidelines</a>
         <a href="${R}pages/ethics.html" class="${page==='ethics'?'active':''}">Ethics</a>
         <a href="${R}pages/research.html" class="${page==='research'?'active':''}">Research</a>
@@ -47,7 +47,7 @@ if(f) {
         <a href="${R}index.html" style="color: var(--text-muted); text-decoration: none;">Home</a>
         <a href="${R}pages/prototype.html" style="color: var(--text-muted); text-decoration: none;">Prototype</a>
         <a href="${R}pages/problem.html" style="color: var(--text-muted); text-decoration: none;">Problem</a>
-        <a href="${R}pages/benefits-limitations.html" style="color: var(--text-muted); text-decoration: none;">Benefits &amp; Limitations</a>
+        <a href="${R}pages/benefits-limitations.html" style="color: var(--text-muted); text-decoration: none;">Our Proposal</a>
         <a href="${R}pages/guidelines.html" style="color: var(--text-muted); text-decoration: none;">Guidelines</a>
         <a href="${R}pages/ethics.html" style="color: var(--text-muted); text-decoration: none;">Ethics</a>
         <a href="${R}pages/research.html" style="color: var(--text-muted); text-decoration: none;">Research</a>
